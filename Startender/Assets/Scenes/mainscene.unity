@@ -212,7 +212,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1363988849}
-  m_LocalRotation: {x: 0, y: 0, z: -.382683486, w: .923879564}
+  m_LocalRotation: {x: 0, y: 0, z: .382683486, w: -.923879504}
   m_LocalPosition: {x: -7.94000006, y: -4.94999981, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -231,8 +231,7 @@ MonoBehaviour:
   redBubble: {fileID: 400000, guid: b8bf69bb0b521a7498a741a14699f957, type: 2}
   xForce: 1
   yForce: 1
-  bubbleOffset: 4.53999996
-  bubbleSpeed: 10
+  bubbleSpeed: 2
   rotateSpeed: 10
 --- !u!1 &1443952707
 GameObject:
@@ -344,7 +343,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1553129873}
   m_LocalRotation: {x: 0, y: 0, z: .81955564, w: .572999716}
-  m_LocalPosition: {x: 3.17759275, y: -.522725344, z: 0}
+  m_LocalPosition: {x: 4.41255856, y: .633414865, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

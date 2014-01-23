@@ -3,12 +3,13 @@ using System.Collections;
 
 public class BubbleButton : MonoBehaviour {
 
-    // SHE'S SO FAAAAT
-    // BUBUBUBUBUBUBUBUBBUBUBBLE-BUTTON
+    GameObject cannon;
+    Cannon cannonScript;
 
 	// Use this for initialization
 	void Start () {
-	
+        cannon = GameObject.Find("Cannon");
+        cannonScript = (Cannon) cannon.GetComponent(typeof(Cannon));
 	}
 	
 	// Update is called once per frame
@@ -20,6 +21,7 @@ public class BubbleButton : MonoBehaviour {
             if (collider2D == Physics2D.OverlapPoint(touchPos))
             {
                 Debug.Log("Touched");
+                cannonScript.SpawnBubble();
             }
         }
 	}

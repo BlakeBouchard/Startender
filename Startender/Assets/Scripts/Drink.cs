@@ -20,6 +20,10 @@ public class Drink : MonoBehaviour
 		return this.ingredients;
 	}
 
+	public int getIngredientCount() {
+		return this.ingredients.GetLength;
+	}
+
 	public string getName() {
 		return this.name;
 	}

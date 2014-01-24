@@ -10,7 +10,7 @@
 using System;
 using System.Collections.Generic;
 
-public class DrinkManager : Mono {
+public class DrinkManager {
 	
 	// need to call populate drinks list before anything
 	private List<Drink> drinkList;
@@ -45,7 +45,7 @@ public class DrinkManager : Mono {
 	// making sure it is over 0!
 	public float getTipAmount(bool drinkSuccess) {
 		if(!drinkSuccess){
-		 	finalTip = -1;
+		 	return -1.0f;
 		}
 
 		Random rand = new Random (this.maxTip);
@@ -63,13 +63,13 @@ public class DrinkManager : Mono {
 		int actualIngredientCount = this.currentDrink.getIngredientCount();
 
 		if (ingredients.Count != actualIngredientCount) {
-			Debug.Log('Wrong Ingredient Count!');
+			Debug.Log("Wrong Ingredient Count!");
 			return false;
 		}
 
 		foreach (Ingredient ingredient in this.currentDrink.getIngredients()) {
 			if(!ingredients.Contains(ingredient)) {
-				Debug.Log('Missing Drink Ingredient: ' + ingredient.getName());
+				Debug.Log("Missing Drink Ingredient: " + ingredient.getName());
 				return false;
 			}
 		}

@@ -4,7 +4,7 @@ using System.Collections;
 public class Drink : MonoBehaviour
 {
 	private Ingredient[] ingredients;
-	private string name;
+	private string drinkName;
 	private float difficulty;
 	private Color drinkColor;
 
@@ -21,11 +21,11 @@ public class Drink : MonoBehaviour
 	}
 
 	public int getIngredientCount() {
-		return this.ingredients.GetLength;
+		return this.ingredients.Length;
 	}
 
-	public string getName() {
-		return this.name;
+	public string getDrinkName() {
+		return this.drinkName;
 	}
 
 	public float getDifficulty() {

@@ -20,7 +20,7 @@ public class BubbleButton : MonoBehaviour {
             Vector2 touchPos = new Vector2(wp.x, wp.y);
             if (collider2D == Physics2D.OverlapPoint(touchPos))
             {
-                Debug.Log("Touched");
+                Debug.Log("Touched Bubble Button");
                 cannonScript.SpawnBubble();
             }
         }

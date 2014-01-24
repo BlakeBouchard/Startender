@@ -231,7 +231,7 @@ MonoBehaviour:
   redBubble: {fileID: 400000, guid: b8bf69bb0b521a7498a741a14699f957, type: 2}
   xForce: 1
   yForce: 1
-  bubbleSpeed: 2
+  bubbleSpeed: 3
   rotateSpeed: 10
 --- !u!1 &1443952707
 GameObject:
@@ -342,8 +342,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1553129873}
-  m_LocalRotation: {x: 0, y: 0, z: .81955564, w: .572999716}
-  m_LocalPosition: {x: 4.41255856, y: .633414865, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 5.26062775, y: -3.59086943, z: -3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -370,7 +370,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 1553129873}
   m_Enabled: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Size: {x: 1.20000005, y: 1.20000005}
   m_Center: {x: 0, y: 0}
 --- !u!1 &2017704800
@@ -432,7 +432,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2017704800}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.38560486, y: -2.18868661, z: -.700195312}
+  m_LocalPosition: {x: -7.38560486, y: 3.78869581, z: -.700195312}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

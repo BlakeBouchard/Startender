@@ -11,7 +11,7 @@ public class Drink : MonoBehaviour
 	public Drink(string name, float difficulty, Ingredient[] ingredients, Color color)
 	{
 		this.ingredients = ingredients;
-		this.name = name;
+		this.drinkName = name;
 		this.difficulty = difficulty;
 		this.drinkColor = color;
 	}

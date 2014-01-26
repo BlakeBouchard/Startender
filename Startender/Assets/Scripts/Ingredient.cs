@@ -18,7 +18,7 @@ public class Ingredient
 	
 	public Ingredient(string name, bool liquid, Color color){
 		this.name = name;
-		this.isLiquid = liquid;
+		this.liquid = liquid;
 		this.drinkColor = color;
 	}
 

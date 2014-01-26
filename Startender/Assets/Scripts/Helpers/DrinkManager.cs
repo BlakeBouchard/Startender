@@ -9,8 +9,9 @@
 // ------------------------------------------------------------------------------
 using System;
 using System.Collections.Generic;
+using UnityEngine;
 
-public class DrinkManager {
+public class DrinkManager : MonoBehaviour {
 	
 	// need to call populate drinks list before anything
 	private List<Drink> drinkList;
@@ -20,21 +21,35 @@ public class DrinkManager {
 
 	public DrinkManager() {
 		this.drinkList = new List<Drink>();
+
+		//sample drink
+		Ingredient[] quasar = new Ingredient[2];
+		quasar [0] = new Ingredient ("Vodka", true, Color.white);
+		quasar[1] = new Ingredient("Space Clam", false, Color.red);
+
+		this.drinkList.Add(new Drink("Quasar", 0.3f, quasar, Color.red));
+
+		//sets the biggest possible tip a player can get
 		this.maxTip = 20;
 	}
 
+	void OnGUI() {
+		if (this.currentDrink == null) {
+			this.setNextDrink();
+		}
+
+		GUI.TextArea(new Rect (2, 2, 100, 30), "Order: " + this.currentDrink.getDrinkName());
+	}
+
 	// selects random drink from the drink array list
-	public Drink nextDrink()
-	{
+	public void setNextDrink() {
 		int randomNumber = getRandomNumber(drinkList.Count);
-		this.currentDrink = drinkList[randomNumber];
-		return this.currentDrink;
+		this.currentDrink = drinkList[randomNumber];;
 	}
 	
 	// picks random number between 0 and the integer given (includes 0 but not max)
-	public int getRandomNumber(int max)
-	{
-		Random random = new Random(max);
+	public int getRandomNumber(int max) {
+		System.Random random = new System.Random(max);
 		int randomNumber = random.Next();
 		return randomNumber;
 	}
@@ -48,17 +63,15 @@ public class DrinkManager {
 		 	return -1.0f;
 		}
 
-		Random rand = new Random (this.maxTip);
+		System.Random rand = new System.Random (this.maxTip);
 		return this.currentDrink.getDifficulty() * rand.Next();
 	}
 	
-	float roundTip(float tip)
-	{
-		return Math.Round(tip * 100f) / 100f;;
+	private float roundTip(float tip) {
+		return Mathf.Round((tip * 100f) / 100f);
 	}
 	
-	public bool madeSuccessfully(List<Ingredient> ingredients)
-	{
+	public bool madeSuccessfully(List<Ingredient> ingredients) {
 
 		int actualIngredientCount = this.currentDrink.getIngredientCount();
 

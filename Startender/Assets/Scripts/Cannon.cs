@@ -14,7 +14,7 @@ public class Cannon : MonoBehaviour {
 
     public float bubbleSpeed = 10.0f;
 
-    public float rotateSpeed = 1.0f;
+    public float rotateSpeed = 2.0f;
 
 	// Use this for initialization
 	void Start () {

@@ -13,6 +13,7 @@ public class Cup : MonoBehaviour {
     void checkTouch()
     {
         Touch touch = Input.GetTouch(0);
+		Debug.Log (touch);
         if (touch.phase == TouchPhase.Began)
         {
             Vector3 wp = Camera.main.ScreenToWorldPoint(touch.position);
@@ -47,9 +48,9 @@ public class Cup : MonoBehaviour {
         }
         else if (isDragging && Input.GetMouseButton(0))
         {
-            Vector3 newPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            newPosition.z = 0;
-            transform.position = newPosition;
+			Vector3 newPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+    		newPosition.z = 0;
+    		transform.position = newPosition;
         }
         else if (isDragging && Input.GetMouseButtonUp(0))
         {

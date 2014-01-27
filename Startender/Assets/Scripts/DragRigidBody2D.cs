@@ -6,6 +6,9 @@ using UnityEngine;
 
 using System.Collections;
 
+/**
+ * Not Attached to anything
+ */
 public class DragRigidBody2D : MonoBehaviour
 {
 
@@ -26,8 +29,9 @@ public class DragRigidBody2D : MonoBehaviour
 	void Update ()
 	{
 
-        if(!Input.GetMouseButtonDown (0))
-        	return;
+        if(!Input.GetMouseButtonDown (0)) {
+			return;
+		}
 
         Camera mainCamera = FindCamera ();
         int layerMask = 1 << 8;

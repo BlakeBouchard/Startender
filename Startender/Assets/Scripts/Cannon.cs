@@ -9,16 +9,22 @@ public class Cannon : MonoBehaviour {
 
     private bool goingUp;
 
-    public static float MIN_CANNON_ANGLE = 300.0f;
+    public static float MIN_CANNON_ANGLE = 310.0f;
     public static float MAX_CANNON_ANGLE = 345.0f;
 
-    public float bubbleSpeed = 10.0f;
-
-    public float rotateSpeed = 2.0f;
+    public float bubbleSpeed;
+    public float rotateSpeed;
+	public float bubbleMass;
+	public float bubbleDrag;
+	public float gravityScale;
 
 	// Use this for initialization
 	void Start () {
-        
+		bubbleMass = 10.0f;
+		bubbleSpeed = 10.0f;
+		rotateSpeed = 25.0f;
+		bubbleDrag = 0.1f;
+		gravityScale = 9.81f;
 	}
 
     public void SpawnBubble()
@@ -26,6 +32,9 @@ public class Cannon : MonoBehaviour {
         Transform bubble = Instantiate(redBubble, new Vector3(transform.position.x, transform.position.y, transform.position.z + 2), Quaternion.identity) as Transform;
         float bubbleAngle = (transform.rotation.eulerAngles.z - 270) * Mathf.Deg2Rad;
         bubble.gameObject.rigidbody2D.velocity = new Vector2(Mathf.Cos(bubbleAngle) * bubbleSpeed, Mathf.Sin(bubbleAngle) * bubbleSpeed);
+		bubble.gameObject.rigidbody2D.drag = bubbleDrag;
+		bubble.gameObject.rigidbody2D.mass = bubbleMass;
+		bubble.gameObject.rigidbody2D.gravityScale = gravityScale;
     }
 
     void IncrementAngle()

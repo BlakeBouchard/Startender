@@ -336,6 +336,11 @@ MonoBehaviour:
   bubbleMass: 20
   bubbleDrag: 0
   gravityScale: 0
+  fireDelayTimer: 0
+  fireDelayTime: 0
+  reloadTime: 0
+  loadedBubbles: 0
+  cannonLoaded: 0
 --- !u!1 &1443952707
 GameObject:
   m_ObjectHideFlags: 0
@@ -413,6 +418,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7632f3e2d2f04e6899975b2f00457ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  roundTime: 90
 --- !u!4 &1453596064
 Transform:
   m_ObjectHideFlags: 0
@@ -541,6 +547,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccfe2762520ec41e39d48487811c6c9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  menuXFromCenter: 30
+  menuYFromCenter: 30
+  menuWidth: 240
+  menuHeight: 100
 --- !u!4 &1687254156
 Transform:
   m_ObjectHideFlags: 0

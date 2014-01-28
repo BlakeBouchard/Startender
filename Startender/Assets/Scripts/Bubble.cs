@@ -10,6 +10,16 @@ public class Bubble : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        
+		//TODO: Fix garbage collection below
+		//this.checkInBounds();
+	}
+
+	private void checkInBounds() {
+		Vector3 pos = transform.position;
+		if(pos.x > Screen.width) {
+			Destroy(this.gameObject);
+		} else if(pos.y < 0) {
+			Destroy(this.gameObject);
+		}
 	}
 }

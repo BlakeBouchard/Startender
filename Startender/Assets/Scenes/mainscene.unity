@@ -124,6 +124,56 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
+--- !u!1 &421232296
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 421232298}
+  - 132: {fileID: 421232297}
+  m_Layer: 0
+  m_Name: CurrentOrder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!132 &421232297
+GUIText:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 421232296}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Text: 'Order:'
+  m_Anchor: 0
+  m_Alignment: 0
+  m_PixelOffset: {x: 0, y: 0}
+  m_LineSpacing: 1
+  m_TabSize: 4
+  m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+  m_Material: {fileID: 0}
+  m_FontSize: 0
+  m_FontStyle: 0
+  m_Color:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_PixelCorrect: 1
+  m_RichText: 1
+--- !u!4 &421232298
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 421232296}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: .150000006, y: .99000001, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
 --- !u!1 &927040059
 GameObject:
   m_ObjectHideFlags: 0
@@ -283,6 +333,14 @@ MonoBehaviour:
   yForce: 1
   bubbleSpeed: 3
   rotateSpeed: 10
+  bubbleMass: 20
+  bubbleDrag: 0
+  gravityScale: 0
+  fireDelayTimer: 0
+  fireDelayTime: 0
+  reloadTime: 0
+  loadedBubbles: 0
+  cannonLoaded: 0
 --- !u!1 &1443952707
 GameObject:
   m_ObjectHideFlags: 0
@@ -360,6 +418,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7632f3e2d2f04e6899975b2f00457ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  roundTime: 90
 --- !u!4 &1453596064
 Transform:
   m_ObjectHideFlags: 0
@@ -488,6 +547,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccfe2762520ec41e39d48487811c6c9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  menuXFromCenter: 30
+  menuYFromCenter: 30
+  menuWidth: 240
+  menuHeight: 100
 --- !u!4 &1687254156
 Transform:
   m_ObjectHideFlags: 0

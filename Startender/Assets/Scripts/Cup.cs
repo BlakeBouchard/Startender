@@ -3,60 +3,79 @@ using System.Collections;
 
 public class Cup : MonoBehaviour {
 
-    private bool isDragging;
+    private bool clicked;
 
 	// Use this for initialization
 	void Start () {
-        this.isDragging = false;
+        this.clicked = false;
 	}
 
-    void checkTouch()
+    private void checkSimpleTouch()
     {
         Touch touch = Input.GetTouch(0);
 		Debug.Log (touch);
-        if (touch.phase == TouchPhase.Began)
+
+        if (!clicked && touch.phase == TouchPhase.Began)
         {
             Vector3 wp = Camera.main.ScreenToWorldPoint(touch.position);
             Vector2 touchPos = new Vector2(wp.x, wp.y);
             if (collider2D == Physics2D.OverlapPoint(touchPos))
             {
                 Debug.Log("Touched Cup");
-                isDragging = true;
+                clicked = true;
             }
         }
-        else if (isDragging && touch.phase == TouchPhase.Moved)
+        else if (clicked && touch.phase == TouchPhase.Moved)
         {
             Vector3 newPosition = Camera.main.ScreenToWorldPoint(touch.position);
             newPosition.z = 0;
             transform.position = newPosition;
         }
-        else if (isDragging && touch.phase == TouchPhase.Ended)
+        else if (clicked && touch.phase == TouchPhase.Ended)
         {
             Debug.Log("Let go of cup");
-            isDragging = false;
+            clicked = false;
         }
     }
+
+	private void doubleTouch() {
+
+		//get our two touch positions
+		Vector3 leftTouch = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
+		Vector3 rightTouch = Camera.main.ScreenToWorldPoint(Input.GetTouch(1).position);
+
+		//determine if left is actually left
+		if(leftTouch.x > rightTouch.x) {
+			Vector3 temp = leftTouch;
+			leftTouch = rightTouch;
+			rightTouch = temp;
+		}
+
+		//TODO: figure out the god damn math to pivot/rotate the cup based on double touch turning
+
+	}
 
     private void checkClick()
     {
         Vector3 worldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector2 mousePosition = new Vector2(worldPoint.x, worldPoint.y);
-        if (collider2D == Physics2D.OverlapPoint(mousePosition))
+        
+		if(!clicked && Input.GetMouseButtonDown(0) && collider2D == Physics2D.OverlapPoint(mousePosition))
         {
-            Debug.Log("Touched Cup");
-            isDragging = true;
-        }
-        else if (isDragging && Input.GetMouseButton(0))
-        {
+            Debug.Log("Clicked Cup");
+            clicked = true;
+		} 
+		else if(clicked && Input.GetMouseButtonUp(0)) {
+			clicked = false;
+			Debug.Log("Let go of cup");
+		}
+
+		if(clicked) {
 			Vector3 newPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
     		newPosition.z = 0;
     		transform.position = newPosition;
-        }
-        else if (isDragging && Input.GetMouseButtonUp(0))
-        {
-            Debug.Log("Let go of cup");
-            isDragging = false;
-        }
+		}
+
     }
 
     void OnTriggerEnter2D(Collider2D collider)
@@ -71,10 +90,13 @@ public class Cup : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (Input.touchCount == 1)
+        if(Input.touchCount == 1)
         {
-            checkTouch();
+            checkSimpleTouch();
         }
+		else if(clicked && Input.touchCount == 2) {
+			doubleTouch();
+		}
         else if (Input.GetMouseButton(0))
         {
             checkClick();

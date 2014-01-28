@@ -21,8 +21,18 @@ public class BubbleButton : MonoBehaviour {
             if (collider2D == Physics2D.OverlapPoint(touchPos))
             {
                 Debug.Log("Touched Bubble Button");
-                cannonScript.SpawnBubble();
+                cannonScript.loadBubble();
             }
         }
+		if (Input.GetMouseButtonDown(0))
+		{
+			Vector3 wp = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+			Vector2 touchPos = new Vector2(wp.x, wp.y);
+			if (collider2D == Physics2D.OverlapPoint(touchPos))
+			{
+				Debug.Log("Touched Bubble Button");
+				cannonScript.loadBubble();
+			}
+		}
 	}
 }

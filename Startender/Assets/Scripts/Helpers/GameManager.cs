@@ -3,36 +3,24 @@ using System.Collections;
 
 public class GameManager : MonoBehaviour
 {
-	private enum GameState { Playing, Paused, Menu }
+	private enum GameState { Playing, Paused, Menu, RoundOver }
 	private GameState gameState;
+	public float roundTime;
+
 	private GUIDrawer guiDrawer;
-	private float roundTime;
+	private DrinkManager drinkManager;
 
 	public GameManager() {
+
+		this.drinkManager = new DrinkManager();
+
 		this.gameState = GameState.Menu;
 		this.roundTime = 90.0f;
 	}
 
-	void OnGUI() {
-
-		switch(this.gameState) {
-			case GameState.Playing:
-				this.guiDrawer.drawHUD();
-				return;
-			case GameState.Menu:
-				this.guiDrawer.drawMainMenu();
-				break;
-			case GameState.Paused:
-				this.guiDrawer.drawPauseMenu();
-				break;
-		}
-
-	}
-
 	public void startGame() {
 
-		print("Starting game");
-
+		Debug.Log("Starting game");
 		Time.timeScale = 1;
 		
 //		DontDestroyOnLoad(gamestate.Instance);
@@ -44,10 +32,14 @@ public class GameManager : MonoBehaviour
 
 	public void pauseGame() {
 		Time.timeScale = 0;
-		this.gameState = GameState.Paused;
 	}
 
-	public void resumeGame() {
+	public void endRound() {
+		Time.timeScale = 0;
+		this.gameState = GameState.RoundOver;
+	}
+
+	public void resumeRound() {
 		Time.timeScale = 1;
 		this.gameState = GameState.Playing;
 	}
@@ -67,27 +59,50 @@ public class GameManager : MonoBehaviour
 	}
 
 	// Use this for initialization
-	void Start ()
+	void Start()
 	{
+		Time.timeScale = 0;
+
+		//Get HUD Manager
 		GameObject gui = GameObject.Find("GUIDrawer");
 		this.guiDrawer = (GUIDrawer) gui.GetComponent(typeof(GUIDrawer));
-		this.guiDrawer.setGameManager(this);
-
-		Time.timeScale = 0;
+		Debug.DebugBreak();
+		this.guiDrawer.setManagers(this, this.drinkManager);
+	
 	}
 
 	// Update is called once per frame
-	void Update ()
+	void Update()
 	{
-		if(this.gameState != GameState.Paused) {
+		if(this.gameState == GameState.Playing) {
 			this.roundTime -= Time.deltaTime;
-		}
 
-		if(Input.GetKeyDown(KeyCode.Escape)) {
-			this.pauseGame();
+			if(this.roundTime <= 0.0f) {
+				this.endRound ();
+			}
+
+			if(Input.GetKeyDown(KeyCode.Escape)) {
+				this.pauseGame();
+			}
 		}
 	}
-
-
+	
+	void OnGUI() {
+		switch(this.gameState) {
+		case GameState.Playing:
+			this.guiDrawer.drawHUD();
+			return;
+		case GameState.Menu:
+			this.guiDrawer.drawMainMenu();
+			break;
+		case GameState.Paused:
+			this.guiDrawer.drawPauseMenu();
+			break;
+		case GameState.RoundOver:
+			this.guiDrawer.drawRoundStats();
+			break;
+		}
+	}
+	
 }
 

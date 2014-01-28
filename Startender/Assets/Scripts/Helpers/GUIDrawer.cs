@@ -4,26 +4,46 @@ using System.Collections;
 public class GUIDrawer : MonoBehaviour
 {
 	private GameManager gameManager;
+	private DrinkManager drinkManager;
 
 	private GUIText roundTime;
+	private GUIText currentOrder;
+
+	public int menuXFromCenter;
+	public int menuYFromCenter;
+	public int menuWidth;
+	public int menuHeight;
 
 	public GUIDrawer() {
+
 	}
 
-	public void setGameManager(GameManager gameManager) {
+	public void setManagers(GameManager gameManager, DrinkManager drinkManager) {
 		this.gameManager = gameManager;
+		this.drinkManager = drinkManager;
 	}
 
 	void Start() {
-		//Create HUD
+
+		//setup basic drawing params
+		this.menuWidth = 240;
+		this.menuHeight = 100;
+		this.menuXFromCenter = this.menuWidth / 2;
+		this.menuYFromCenter = this.menuHeight / 2;
+
+		//Prep HUD
 		GameObject roundTime = GameObject.Find("RoundTime");
 		this.roundTime = (GUIText) roundTime.GetComponent(typeof(GUIText));
 		this.roundTime.text = "";
+
+		GameObject currentOrder = GameObject.Find("CurrentOrder");
+		this.currentOrder = (GUIText) currentOrder.GetComponent(typeof(GUIText));
+		this.currentOrder.text = "";
 	}
 
 	public void drawMainMenu() {
 		//Draw Game Menu Here
-		GUILayout.BeginArea(new Rect(Screen.width / 2 - 30, Screen.height /2 - 30, 100, 100));
+		GUILayout.BeginArea(new Rect(Screen.width / 2 - this.menuXFromCenter, Screen.height /2 - this.menuYFromCenter, this.menuWidth, this.menuHeight));
 
 		this.drawBaseMenu();
 
@@ -37,13 +57,14 @@ public class GUIDrawer : MonoBehaviour
 
 	public void drawPauseMenu() {
 		//Draw Game Menu Here
-		GUILayout.BeginArea(new Rect(Screen.width / 2 - 30, Screen.height /2 - 30, 100, 100));
+		GUILayout.BeginArea(new Rect(Screen.width / 2 - this.menuXFromCenter, Screen.height /2 - this.menuYFromCenter, this.menuWidth, this.menuHeight));
+
 		
 		this.drawBaseMenu();
 		
 		if(GUILayout.Button("Resume")) {
 			Debug.Log("Resume button clicked");
-			gameManager.resumeGame();
+			gameManager.resumeRound();
 		}
 		else if(GUILayout.Button("Reset Round")) {
 			Debug.Log ("Resetting Game");
@@ -55,6 +76,14 @@ public class GUIDrawer : MonoBehaviour
 
 	public void drawHUD() {
 		roundTime.text = "Time Left: " + gameManager.getRoundTime().ToString("F0");
+
+		Drink currentDrink = drinkManager.getCurrentDrink();
+		currentOrder.text = "Order: " + currentDrink.getDrinkName() + " - " + currentDrink.getFormattedIngredients();
+	}
+
+	public void drawRoundStats() {
+		GUILayout.BeginArea(new Rect(Screen.width / 2 - this.menuXFromCenter, Screen.height /2 - this.menuYFromCenter, this.menuWidth, this.menuHeight));
+		GUILayout.EndArea();
 	}
 	
 	private void drawBaseMenu() {

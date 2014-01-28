@@ -9,7 +9,7 @@ public class Cannon : MonoBehaviour {
 
     private bool goingUp;
 
-    public static float MIN_CANNON_ANGLE = 315.0f;
+    public static float MIN_CANNON_ANGLE = 320.0f;
     public static float MAX_CANNON_ANGLE = 345.0f;
 
     public float bubbleSpeed;
@@ -27,9 +27,9 @@ public class Cannon : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		bubbleMass = 15.0f;
-		bubbleSpeed = 10.0f;
+		bubbleSpeed = 12.5f;
 		rotateSpeed = 30.0f;
-		bubbleDrag = 0.15f;
+		bubbleDrag = 0.2f;
 		gravityScale = 10.0f;
 
 		cannonLoaded = false;

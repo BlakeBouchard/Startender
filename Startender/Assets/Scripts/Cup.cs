@@ -1,9 +1,16 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+using System.Collections.Generic;
+
 public class Cup : MonoBehaviour {
 
     private bool clicked;
+	private List<Ingredient> ingredients;
+
+	public Cup() {
+		this.ingredients = new List<Ingredient>();
+	}
 
 	// Use this for initialization
 	void Start () {
@@ -83,9 +90,21 @@ public class Cup : MonoBehaviour {
         Debug.Log("Trigger detected from: " + collider.gameObject.name);
         if (collider.gameObject.name == "RedBubble(Clone)")
         {
+			Bubble bubble = (Bubble) collider.gameObject.GetComponent(typeof(Bubble));
+			this.ingredients.Add(bubble.getIngredient());
+
             Destroy(collider.gameObject);
             Debug.Log("Killed bubble");
         }
+		else if(collider.gameObject.name == "Tray")
+		{
+//			//TODO: figure out the most elegant way to handle this interaction
+//			GameObject dm = GameObject.Find("DrinkManager");
+//			DrinkManager drinkManager = (DrinkManager) dm.GetComponent(typeof(DrinkManager));
+//
+//			bool success = drinkManager.madeSuccessfully(this.ingredients);
+
+		}
     }
 	
 	// Update is called once per frame

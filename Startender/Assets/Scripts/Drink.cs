@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class Drink : MonoBehaviour
+public class Drink
 {
 	private Ingredient[] ingredients;
 	private string drinkName;
@@ -14,6 +14,9 @@ public class Drink : MonoBehaviour
 		this.drinkName = name;
 		this.difficulty = difficulty;
 		this.drinkColor = color;
+
+		Debug.Log ("Drink Created!");
+		Debug.Log(this);
 	}
 
 	public Ingredient[] getIngredients() {

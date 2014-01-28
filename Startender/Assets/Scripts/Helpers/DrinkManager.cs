@@ -11,7 +11,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DrinkManager : MonoBehaviour {
+public class DrinkManager {
 	
 	// need to call populate drinks list before anything
 	private List<Drink> drinkList;
@@ -24,34 +24,40 @@ public class DrinkManager : MonoBehaviour {
 
 		//sample drink
 		Ingredient[] quasar = new Ingredient[2];
-		quasar [0] = new Ingredient ("Vodka", true, Color.white);
+		quasar[0] = new Ingredient("Vodka", true, Color.white);
 		quasar[1] = new Ingredient("Space Clam", false, Color.red);
 
 		this.drinkList.Add(new Drink("Quasar", 0.3f, quasar, Color.red));
+
+		Debug.Log ("Creating Drink MANAGER!");
+		Debug.Log(this.drinkList);
 
 		//sets the biggest possible tip a player can get
 		this.maxTip = 20;
 	}
 
-	void OnGUI() {
-		if (this.currentDrink == null) {
+	public Drink getCurrentDrink() {
+		if(this.currentDrink == null) {
 			this.setNextDrink();
 		}
 
-		GUI.TextArea(new Rect (2, 2, 100, 30), "Order: " + this.currentDrink.getDrinkName());
+		return this.currentDrink;
 	}
 
 	// selects random drink from the drink array list
 	public void setNextDrink() {
 		int randomNumber = getRandomNumber(drinkList.Count);
-		this.currentDrink = drinkList[randomNumber];;
+		this.currentDrink = this.drinkList[randomNumber];
 	}
 	
 	// picks random number between 0 and the integer given (includes 0 but not max)
 	public int getRandomNumber(int max) {
-		System.Random random = new System.Random(max);
-		int randomNumber = random.Next();
-		return randomNumber;
+		System.Random random = new System.Random();
+		int randomNumber = random.Next(max);
+		Debug.Log ("RNG: " + randomNumber);
+
+		//return a 0 inclusive number
+		return randomNumber - 1;
 	}
 	
 	// figures out tip amount

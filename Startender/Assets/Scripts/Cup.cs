@@ -10,7 +10,7 @@ public class Cup : MonoBehaviour {
         this.clicked = false;
 	}
 
-    void checkTouch()
+    private void checkSimpleTouch()
     {
         Touch touch = Input.GetTouch(0);
 		Debug.Log (touch);
@@ -37,6 +37,23 @@ public class Cup : MonoBehaviour {
             clicked = false;
         }
     }
+
+	private void doubleTouch() {
+
+		//get our two touch positions
+		Vector3 leftTouch = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
+		Vector3 rightTouch = Camera.main.ScreenToWorldPoint(Input.GetTouch(1).position);
+
+		//determine if left is actually left
+		if(leftTouch.x > rightTouch.x) {
+			Vector3 temp = leftTouch;
+			leftTouch = rightTouch;
+			rightTouch = temp;
+		}
+
+		//TODO: figure out the god damn math to pivot/rotate the cup based on double touch turning
+
+	}
 
     private void checkClick()
     {
@@ -73,10 +90,13 @@ public class Cup : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (Input.touchCount == 1)
+        if(Input.touchCount == 1)
         {
-            checkTouch();
+            checkSimpleTouch();
         }
+		else if(clicked && Input.touchCount == 2) {
+			doubleTouch();
+		}
         else if (Input.GetMouseButton(0))
         {
             checkClick();

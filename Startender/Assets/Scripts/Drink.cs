@@ -8,15 +8,11 @@ public class Drink
 	private float difficulty;
 	private Color drinkColor;
 
-	public Drink(string name, float difficulty, Ingredient[] ingredients, Color color)
-	{
+	public Drink(string name, float difficulty, Ingredient[] ingredients, Color color) {
 		this.ingredients = ingredients;
 		this.drinkName = name;
 		this.difficulty = difficulty;
 		this.drinkColor = color;
-
-		Debug.Log ("Drink Created!");
-		Debug.Log(this);
 	}
 
 	public string getFormattedIngredients() {

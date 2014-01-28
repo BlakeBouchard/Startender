@@ -20,9 +20,6 @@ public class DrinkManager {
 
 		this.drinkList.Add(new Drink("Quasar", 0.3f, quasar, Color.red));
 
-		Debug.Log ("Creating Drink MANAGER!");
-		Debug.Log(this.drinkList);
-
 		//sets the biggest possible tip a player can get
 		this.maxTip = 20;
 	}
@@ -38,8 +35,6 @@ public class DrinkManager {
 	// selects random drink from the drink array list
 	public void setNextDrink() {
 		int randomNumber = getRandomNumber(drinkList.Count);
-		Debug.Log ("RNG: " + randomNumber);
-		Debug.Log ("Drink Count: " + drinkList.Count);
 		this.currentDrink = this.drinkList[randomNumber];
 	}
 	

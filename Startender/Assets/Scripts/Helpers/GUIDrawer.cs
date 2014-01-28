@@ -76,7 +76,9 @@ public class GUIDrawer : MonoBehaviour
 
 	public void drawHUD() {
 		roundTime.text = "Time Left: " + gameManager.getRoundTime().ToString("F0");
-		currentOrder.text = "Order: " + drinkManager.getCurrentDrink().getDrinkName();
+
+		Drink currentDrink = drinkManager.getCurrentDrink();
+		currentOrder.text = "Order: " + currentDrink.getDrinkName() + " - " + currentDrink.getFormattedIngredients();
 	}
 
 	public void drawRoundStats() {

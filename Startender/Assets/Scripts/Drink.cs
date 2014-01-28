@@ -19,6 +19,22 @@ public class Drink
 		Debug.Log(this);
 	}
 
+	public string getFormattedIngredients() {
+
+		string formatted = "";
+
+		for(int x = 0; x < this.ingredients.Length; x++) {
+			formatted += ingredients[x].getName();
+
+			if(x + 1 < this.ingredients.Length) {
+				formatted += ", ";
+			}
+		}
+
+		return formatted;
+
+	}
+
 	public Ingredient[] getIngredients() {
 		return this.ingredients;
 	}

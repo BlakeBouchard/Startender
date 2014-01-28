@@ -5,7 +5,7 @@ public class GameManager : MonoBehaviour
 {
 	private enum GameState { Playing, Paused, Menu, RoundOver }
 	private GameState gameState;
-	private float roundTime;
+	public float roundTime;
 
 	private GUIDrawer guiDrawer;
 	private DrinkManager drinkManager;

@@ -8,6 +8,8 @@ public class GUIDrawer : MonoBehaviour
 
 	private GUIText roundTime;
 	private GUIText currentOrder;
+	private GUIText tipsEarned;
+	private GUIText drinksServed;
 
 	public int menuXFromCenter;
 	public int menuYFromCenter;
@@ -39,6 +41,14 @@ public class GUIDrawer : MonoBehaviour
 		GameObject currentOrder = GameObject.Find("CurrentOrder");
 		this.currentOrder = (GUIText) currentOrder.GetComponent(typeof(GUIText));
 		this.currentOrder.text = "";
+
+		GameObject tipsEarned = GameObject.Find ("TipsEarned");
+		this.tipsEarned = (GUIText) tipsEarned.GetComponent(typeof(GUIText));
+		this.tipsEarned.text = "";
+
+		GameObject drinkCount = GameObject.Find ("DrinkCount");
+		this.drinksServed = (GUIText) drinkCount.GetComponent(typeof(GUIText));
+		this.drinksServed.text = "";
 	}
 
 	public void drawMainMenu() {
@@ -59,16 +69,15 @@ public class GUIDrawer : MonoBehaviour
 		//Draw Game Menu Here
 		GUILayout.BeginArea(new Rect(Screen.width / 2 - this.menuXFromCenter, Screen.height /2 - this.menuYFromCenter, this.menuWidth, this.menuHeight));
 
-		
 		this.drawBaseMenu();
 		
 		if(GUILayout.Button("Resume")) {
-			Debug.Log("Resume button clicked");
+			Debug.Log("Resuming Game");
 			gameManager.resumeRound();
 		}
 		else if(GUILayout.Button("Reset Round")) {
-			Debug.Log ("Resetting Game");
-			gameManager.resetGame();
+			Debug.Log ("Resetting Round");
+			gameManager.resetRound();
 		}
 		
 		GUILayout.EndArea();
@@ -79,10 +88,27 @@ public class GUIDrawer : MonoBehaviour
 
 		Drink currentDrink = drinkManager.getCurrentDrink();
 		currentOrder.text = "Order: " + currentDrink.getDrinkName() + " - " + currentDrink.getFormattedIngredients();
+
+		PlayerState player = GameManager.getPlayer();
+
+		tipsEarned.text = "Tips: $" + player.getTipsEarned();
+		drinksServed.text = "Drinks Served: " + player.getDrinkCount();
+
 	}
 
 	public void drawRoundStats() {
 		GUILayout.BeginArea(new Rect(Screen.width / 2 - this.menuXFromCenter, Screen.height /2 - this.menuYFromCenter, this.menuWidth, this.menuHeight));
+
+		GUILayout.Label("Drinks Served: " + GameManager.getPlayer().getDrinkCount());
+		GUILayout.Label("Tips: $" + GameManager.getPlayer().getTipsEarned());
+		GUILayout.Label("Starbucks: $" + GameManager.getPlayer().getStarbucks());
+
+		if(GUILayout.Button("Next Round")) {
+			Debug.Log ("Resetting Round");
+			GameManager.getPlayer().endRound();
+			gameManager.resetRound();
+		}
+
 		GUILayout.EndArea();
 	}
 	

@@ -7,6 +7,8 @@ public class GameManager : MonoBehaviour
 	private GameState gameState;
 	public float roundTime;
 
+	private static PlayerState player;
+
 	private GUIDrawer guiDrawer;
 	private DrinkManager drinkManager;
 
@@ -16,22 +18,20 @@ public class GameManager : MonoBehaviour
 
 		this.gameState = GameState.Menu;
 		this.roundTime = 90.0f;
-	}
 
+}
+	
 	public void startGame() {
 
 		Debug.Log("Starting game");
 		Time.timeScale = 1;
-		
-//		DontDestroyOnLoad(gamestate.Instance);
-//		gamestate.Instance.startState();
-		//      gamestate.Instance.resetRoundState();
 
 		this.gameState = GameState.Playing;
 	}
 
 	public void pauseGame() {
 		Time.timeScale = 0;
+		this.gameState = GameState.Paused;
 	}
 
 	public void endRound() {
@@ -44,8 +44,11 @@ public class GameManager : MonoBehaviour
 		this.gameState = GameState.Playing;
 	}
 
-	public void resetGame() {
+	public void resetRound() {
 		this.resetRoundTime();
+		GameManager.getPlayer().resetRound();
+	
+		//restart the game
 		Time.timeScale = 1;
 		this.gameState = GameState.Playing;
 	}
@@ -57,7 +60,7 @@ public class GameManager : MonoBehaviour
 	public float getRoundTime() {
 		return this.roundTime;
 	}
-
+	
 	// Use this for initialization
 	void Start()
 	{
@@ -66,7 +69,6 @@ public class GameManager : MonoBehaviour
 		//Get HUD Manager
 		GameObject gui = GameObject.Find("GUIDrawer");
 		this.guiDrawer = (GUIDrawer) gui.GetComponent(typeof(GUIDrawer));
-		Debug.DebugBreak();
 		this.guiDrawer.setManagers(this, this.drinkManager);
 	
 	}
@@ -102,6 +104,20 @@ public class GameManager : MonoBehaviour
 			this.guiDrawer.drawRoundStats();
 			break;
 		}
+	}
+
+	public static PlayerState getPlayer() {
+		if(GameManager.player == null) {
+			GameManager.player = new PlayerState();
+		}
+
+		DontDestroyOnLoad(GameManager.player);
+
+		return GameManager.player;
+	}
+	
+	public static void destroyPlayer() {
+		GameManager.player = null;
 	}
 	
 }

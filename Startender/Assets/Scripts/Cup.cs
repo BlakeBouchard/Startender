@@ -98,11 +98,13 @@ public class Cup : MonoBehaviour {
         }
 		else if(collider.gameObject.name == "Tray")
 		{
-//			//TODO: figure out the most elegant way to handle this interaction
-//			GameObject dm = GameObject.Find("DrinkManager");
-//			DrinkManager drinkManager = (DrinkManager) dm.GetComponent(typeof(DrinkManager));
-//
-//			bool success = drinkManager.madeSuccessfully(this.ingredients);
+			//TODO: figure out the most elegant way to handle this interaction
+			GameObject dm = GameObject.Find("DrinkManager");
+			DrinkManager drinkManager = (DrinkManager) dm.GetComponent(typeof(DrinkManager));
+
+			int tip = drinkManager.finishAndTip(this.ingredients);
+			GameManager.getPlayer().addTip(tip);
+			GameManager.getPlayer().incrementDrinkCount();
 
 		}
     }

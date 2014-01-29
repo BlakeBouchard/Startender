@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DrinkManager {
+public class DrinkManager : MonoBehaviour {
 	
 	// need to call populate drinks list before anything
 	private List<Drink> drinkList;
@@ -46,22 +46,24 @@ public class DrinkManager {
 		//return a 0 inclusive number
 		return randomNumber;
 	}
+
+	public int finishAndTip(List<Ingredient> ingredients) {
+
+		return this.getTipAmount(this.madeSuccessfully(ingredients));
+
+	}
 	
 	// figures out tip amount
 	// need to cut off after 2 decimal places
 	// maybe pick random number between -3/3? then add that to the total?
 	// making sure it is over 0!
-	public float getTipAmount(bool drinkSuccess) {
+	public int getTipAmount(bool drinkSuccess) {
 		if(!drinkSuccess){
-		 	return -1.0f;
+		 	return -1;
 		}
 
-		System.Random rand = new System.Random (this.maxTip);
-		return this.currentDrink.getDifficulty() * rand.Next();
-	}
-	
-	private float roundTip(float tip) {
-		return Mathf.Round((tip * 100f) / 100f);
+		System.Random rand = new System.Random();
+		return (int) Math.Round(this.currentDrink.getDifficulty() * rand.Next(this.maxTip));
 	}
 	
 	public bool madeSuccessfully(List<Ingredient> ingredients) {

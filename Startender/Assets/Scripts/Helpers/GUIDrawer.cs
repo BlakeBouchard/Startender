@@ -9,6 +9,7 @@ public class GUIDrawer : MonoBehaviour
 	private GUIText roundTime;
 	private GUIText currentOrder;
 	private GUIText tipsEarned;
+	private GUIText drinksServed;
 
 	public int menuXFromCenter;
 	public int menuYFromCenter;
@@ -43,7 +44,11 @@ public class GUIDrawer : MonoBehaviour
 
 		GameObject tipsEarned = GameObject.Find ("TipsEarned");
 		this.tipsEarned = (GUIText) tipsEarned.GetComponent(typeof(GUIText));
-		this.tipsEarned.text = "Tips: $0";
+		this.tipsEarned.text = "";
+
+		GameObject drinkCount = GameObject.Find ("DrinkCount");
+		this.drinksServed = (GUIText) drinkCount.GetComponent(typeof(GUIText));
+		this.drinksServed.text = "";
 	}
 
 	public void drawMainMenu() {
@@ -64,7 +69,6 @@ public class GUIDrawer : MonoBehaviour
 		//Draw Game Menu Here
 		GUILayout.BeginArea(new Rect(Screen.width / 2 - this.menuXFromCenter, Screen.height /2 - this.menuYFromCenter, this.menuWidth, this.menuHeight));
 
-		
 		this.drawBaseMenu();
 		
 		if(GUILayout.Button("Resume")) {
@@ -85,7 +89,10 @@ public class GUIDrawer : MonoBehaviour
 		Drink currentDrink = drinkManager.getCurrentDrink();
 		currentOrder.text = "Order: " + currentDrink.getDrinkName() + " - " + currentDrink.getFormattedIngredients();
 
-		tipsEarned.text = "Tips: $" + GameManager.getPlayer().getTipsEarned();
+		PlayerState player = GameManager.getPlayer();
+
+		tipsEarned.text = "Tips: $" + player.getTipsEarned();
+		drinksServed.text = "Drinks Served: " + player.getDrinkCount();
 
 	}
 
@@ -94,7 +101,6 @@ public class GUIDrawer : MonoBehaviour
 
 		GUILayout.Label("Drinks Served: " + GameManager.getPlayer().getDrinkCount());
 		GUILayout.Label("Tips: $" + GameManager.getPlayer().getTipsEarned());
-
 		GUILayout.Label("Starbucks: $" + GameManager.getPlayer().getStarbucks());
 
 		if(GUILayout.Button("Next Round")) {

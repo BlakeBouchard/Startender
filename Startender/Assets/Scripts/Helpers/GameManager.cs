@@ -10,12 +10,16 @@ public class GameManager : MonoBehaviour
 	private GUIDrawer guiDrawer;
 	private DrinkManager drinkManager;
 
+	private int tipsEarned;
+
 	public GameManager() {
 
 		this.drinkManager = new DrinkManager();
 
 		this.gameState = GameState.Menu;
 		this.roundTime = 90.0f;
+
+		this.tipsEarned = 0;
 	}
 
 	public void startGame() {
@@ -32,6 +36,7 @@ public class GameManager : MonoBehaviour
 
 	public void pauseGame() {
 		Time.timeScale = 0;
+		this.gameState = GameState.Paused;
 	}
 
 	public void endRound() {
@@ -52,10 +57,15 @@ public class GameManager : MonoBehaviour
 
 	private void resetRoundTime() {
 		this.roundTime = 90.0f;
+		this.tipsEarned = 0;
 	}
 
 	public float getRoundTime() {
 		return this.roundTime;
+	}
+
+	public int getTipsEarned() {
+		return this.tipsEarned;
 	}
 
 	// Use this for initialization
@@ -66,7 +76,6 @@ public class GameManager : MonoBehaviour
 		//Get HUD Manager
 		GameObject gui = GameObject.Find("GUIDrawer");
 		this.guiDrawer = (GUIDrawer) gui.GetComponent(typeof(GUIDrawer));
-		Debug.DebugBreak();
 		this.guiDrawer.setManagers(this, this.drinkManager);
 	
 	}

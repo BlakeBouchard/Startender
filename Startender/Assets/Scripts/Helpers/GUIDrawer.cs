@@ -8,6 +8,7 @@ public class GUIDrawer : MonoBehaviour
 
 	private GUIText roundTime;
 	private GUIText currentOrder;
+	private GUIText tipsEarned;
 
 	public int menuXFromCenter;
 	public int menuYFromCenter;
@@ -39,6 +40,10 @@ public class GUIDrawer : MonoBehaviour
 		GameObject currentOrder = GameObject.Find("CurrentOrder");
 		this.currentOrder = (GUIText) currentOrder.GetComponent(typeof(GUIText));
 		this.currentOrder.text = "";
+
+		GameObject tipsEarned = GameObject.Find ("TipsEarned");
+		this.tipsEarned = (GUIText) tipsEarned.GetComponent(typeof(GUIText));
+		this.tipsEarned.text = "Tips: $0";
 	}
 
 	public void drawMainMenu() {
@@ -79,6 +84,9 @@ public class GUIDrawer : MonoBehaviour
 
 		Drink currentDrink = drinkManager.getCurrentDrink();
 		currentOrder.text = "Order: " + currentDrink.getDrinkName() + " - " + currentDrink.getFormattedIngredients();
+
+		tipsEarned.text = "Tips: $" + gameManager.getTipsEarned();
+
 	}
 
 	public void drawRoundStats() {

@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Bubble : MonoBehaviour {
 
-	private Ingredient ingredient;
+	public Ingredient ingredient;
 
 	public Bubble(Ingredient ingredient) {
 		this.ingredient = ingredient;

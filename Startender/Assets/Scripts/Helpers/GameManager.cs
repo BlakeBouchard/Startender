@@ -25,10 +25,6 @@ public class GameManager : MonoBehaviour
 
 		Debug.Log("Starting game");
 		Time.timeScale = 1;
-		
-//		DontDestroyOnLoad(gamestate.Instance);
-//		gamestate.Instance.startState();
-		//      gamestate.Instance.resetRoundState();
 
 		this.gameState = GameState.Playing;
 	}
@@ -114,6 +110,9 @@ public class GameManager : MonoBehaviour
 		if(GameManager.player == null) {
 			GameManager.player = new PlayerState();
 		}
+
+		DontDestroyOnLoad(GameManager.player);
+
 		return GameManager.player;
 	}
 	

@@ -7,10 +7,10 @@ public class GameManager : MonoBehaviour
 	private GameState gameState;
 	public float roundTime;
 
+	private static PlayerState player;
+
 	private GUIDrawer guiDrawer;
 	private DrinkManager drinkManager;
-
-	private int tipsEarned;
 
 	public GameManager() {
 
@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour
 
 		this.tipsEarned = 0;
 	}
-
+	
 	public void startGame() {
 
 		Debug.Log("Starting game");
@@ -63,11 +63,7 @@ public class GameManager : MonoBehaviour
 	public float getRoundTime() {
 		return this.roundTime;
 	}
-
-	public int getTipsEarned() {
-		return this.tipsEarned;
-	}
-
+	
 	// Use this for initialization
 	void Start()
 	{
@@ -111,6 +107,17 @@ public class GameManager : MonoBehaviour
 			this.guiDrawer.drawRoundStats();
 			break;
 		}
+	}
+
+	public static PlayerState getPlayer() {
+		if(GameManager.player == null) {
+			GameManager.player = new PlayerState();
+		}
+		return GameManager.player;
+	}
+	
+	public static void destroyPlayer() {
+		GameManager.player = null;
 	}
 	
 }

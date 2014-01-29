@@ -102,7 +102,8 @@ public class Cup : MonoBehaviour {
 			GameObject dm = GameObject.Find("DrinkManager");
 			DrinkManager drinkManager = (DrinkManager) dm.GetComponent(typeof(DrinkManager));
 
-			bool success = drinkManager.madeSuccessfully(this.ingredients);
+			int tip = drinkManager.finishAndTip(this.ingredients);
+			GameManager.getPlayer().addTip(tip);
 
 		}
     }

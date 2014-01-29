@@ -85,7 +85,7 @@ public class GUIDrawer : MonoBehaviour
 		Drink currentDrink = drinkManager.getCurrentDrink();
 		currentOrder.text = "Order: " + currentDrink.getDrinkName() + " - " + currentDrink.getFormattedIngredients();
 
-		tipsEarned.text = "Tips: $" + gameManager.getTipsEarned();
+		tipsEarned.text = "Tips: $" + GameManager.getPlayer().getTipsEarned();
 
 	}
 

@@ -7,6 +7,7 @@ public class PlayerState : MonoBehaviour
 	private int starBucks;
 
 	//round specific stats
+	private int drinksServed;
 	private int tipsEarned;
 
 	public PlayerState() {
@@ -19,8 +20,21 @@ public class PlayerState : MonoBehaviour
 		GameManager.destroyPlayer();
 	}
 
+	public int getDrinkCount() {
+		return this.drinksServed;
+	}
+
+	public void incrementDrinkCount() {
+		this.drinksServed++;
+	}
+
 	public void endRound() {
 		this.starBucks += this.tipsEarned;
+		this.tipsEarned = 0;
+		this.drinksServed = 0;
+	}
+
+	public void resetRound() {
 		this.tipsEarned = 0;
 	}
 

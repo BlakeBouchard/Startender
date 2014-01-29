@@ -104,6 +104,7 @@ public class Cup : MonoBehaviour {
 
 			int tip = drinkManager.finishAndTip(this.ingredients);
 			GameManager.getPlayer().addTip(tip);
+			GameManager.getPlayer().incrementDrinkCount();
 
 		}
     }

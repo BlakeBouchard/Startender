@@ -63,7 +63,7 @@ public class DrinkManager : MonoBehaviour {
 		}
 
 		System.Random rand = new System.Random();
-		return this.currentDrink.getDifficulty() * rand.Next(this.maxTip);
+		return (int) Math.Round(this.currentDrink.getDifficulty() * rand.Next(this.maxTip));
 	}
 	
 	public bool madeSuccessfully(List<Ingredient> ingredients) {

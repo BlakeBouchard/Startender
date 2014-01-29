@@ -68,12 +68,12 @@ public class GUIDrawer : MonoBehaviour
 		this.drawBaseMenu();
 		
 		if(GUILayout.Button("Resume")) {
-			Debug.Log("Resume button clicked");
+			Debug.Log("Resuming Game");
 			gameManager.resumeRound();
 		}
 		else if(GUILayout.Button("Reset Round")) {
-			Debug.Log ("Resetting Game");
-			gameManager.resetGame();
+			Debug.Log ("Resetting Round");
+			gameManager.resetRound();
 		}
 		
 		GUILayout.EndArea();
@@ -91,6 +91,18 @@ public class GUIDrawer : MonoBehaviour
 
 	public void drawRoundStats() {
 		GUILayout.BeginArea(new Rect(Screen.width / 2 - this.menuXFromCenter, Screen.height /2 - this.menuYFromCenter, this.menuWidth, this.menuHeight));
+
+		GUILayout.Label("Drinks Served: " + GameManager.getPlayer().getDrinkCount());
+		GUILayout.Label("Tips: $" + GameManager.getPlayer().getTipsEarned());
+
+		GUILayout.Label("Starbucks: $" + GameManager.getPlayer().getStarbucks());
+
+		if(GUILayout.Button("Next Round")) {
+			Debug.Log ("Resetting Round");
+			GameManager.getPlayer().endRound();
+			gameManager.resetRound();
+		}
+
 		GUILayout.EndArea();
 	}
 	

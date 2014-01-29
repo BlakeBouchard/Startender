@@ -19,8 +19,7 @@ public class GameManager : MonoBehaviour
 		this.gameState = GameState.Menu;
 		this.roundTime = 90.0f;
 
-		this.tipsEarned = 0;
-	}
+}
 	
 	public void startGame() {
 
@@ -49,15 +48,17 @@ public class GameManager : MonoBehaviour
 		this.gameState = GameState.Playing;
 	}
 
-	public void resetGame() {
+	public void resetRound() {
 		this.resetRoundTime();
+		GameManager.getPlayer().resetRound();
+	
+		//restart the game
 		Time.timeScale = 1;
 		this.gameState = GameState.Playing;
 	}
 
 	private void resetRoundTime() {
 		this.roundTime = 90.0f;
-		this.tipsEarned = 0;
 	}
 
 	public float getRoundTime() {

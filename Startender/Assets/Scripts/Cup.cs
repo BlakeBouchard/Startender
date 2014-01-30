@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using System.Collections;
-
 using System.Collections.Generic;
 
 public class Cup : MonoBehaviour {
@@ -8,13 +7,12 @@ public class Cup : MonoBehaviour {
     private bool clicked;
 	private List<Ingredient> ingredients;
 
-	public Cup() {
-		this.ingredients = new List<Ingredient>();
-	}
+    private Vector3 previousPosition;
 
 	// Use this for initialization
 	void Start () {
         this.clicked = false;
+        this.ingredients = new List<Ingredient>();
 	}
 
     private void checkSimpleTouch()
@@ -52,7 +50,7 @@ public class Cup : MonoBehaviour {
 		Vector3 rightTouch = Camera.main.ScreenToWorldPoint(Input.GetTouch(1).position);
 
 		//determine if left is actually left
-		if(leftTouch.x > rightTouch.x) {
+		if (leftTouch.x > rightTouch.x) {
 			Vector3 temp = leftTouch;
 			leftTouch = rightTouch;
 			rightTouch = temp;
@@ -62,27 +60,23 @@ public class Cup : MonoBehaviour {
 
 	}
 
-    private void checkClick()
+    private void OnMouseDown()
     {
-        Vector3 worldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Vector2 mousePosition = new Vector2(worldPoint.x, worldPoint.y);
-        
-		if(!clicked && Input.GetMouseButtonDown(0) && collider2D == Physics2D.OverlapPoint(mousePosition))
-        {
-            Debug.Log("Clicked Cup");
-            clicked = true;
-		} 
-		else if(clicked && Input.GetMouseButtonUp(0)) {
-			clicked = false;
-			Debug.Log("Let go of cup");
-		}
+        Debug.Log("Clicked Cup");
+        previousPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+    }
 
-		if(clicked) {
-			Vector3 newPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-    		newPosition.z = 0;
-    		transform.position = newPosition;
-		}
+    private void OnMouseDrag()
+    {
+        Vector3 currentPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector3 deltaPosition = currentPosition - previousPosition;
+        transform.position += deltaPosition;
+        previousPosition = currentPosition;
+    }
 
+    private void OnMouseUp()
+    {
+        Debug.Log("Let go of cup");
     }
 
     void OnTriggerEnter2D(Collider2D collider)
@@ -96,7 +90,7 @@ public class Cup : MonoBehaviour {
             Destroy(collider.gameObject);
             Debug.Log("Killed bubble");
         }
-		else if(collider.gameObject.name == "Tray")
+		else if (collider.gameObject.name == "Tray")
 		{
 			//TODO: figure out the most elegant way to handle this interaction
 			GameObject dm = GameObject.Find("DrinkManager");
@@ -105,22 +99,18 @@ public class Cup : MonoBehaviour {
 			int tip = drinkManager.finishAndTip(this.ingredients);
 			GameManager.getPlayer().addTip(tip);
 			GameManager.getPlayer().incrementDrinkCount();
-
 		}
     }
 	
 	// Update is called once per frame
 	void Update () {
-        if(Input.touchCount == 1)
+        if (Input.touchCount == 1)
         {
             checkSimpleTouch();
         }
-		else if(clicked && Input.touchCount == 2) {
+		else if (clicked && Input.touchCount == 2)
+        {
 			doubleTouch();
 		}
-        else if (Input.GetMouseButton(0))
-        {
-            checkClick();
-        }
 	}
 }

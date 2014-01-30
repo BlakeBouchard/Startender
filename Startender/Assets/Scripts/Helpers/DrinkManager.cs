@@ -15,8 +15,8 @@ public class DrinkManager : MonoBehaviour {
 
 		//sample drink
 		Ingredient[] quasar = new Ingredient[2];
-		quasar[0] = new Ingredient("Vodka", true, Color.white);
-		quasar[1] = new Ingredient("Space Clam", false, Color.red);
+		quasar[0] = new Vodka();
+		quasar[1] = new SpaceClam();
 
 		this.drinkList.Add(new Drink("Quasar", 0.3f, quasar, Color.red));
 
@@ -75,11 +75,22 @@ public class DrinkManager : MonoBehaviour {
 			return false;
 		}
 
-		foreach (Ingredient ingredient in this.currentDrink.getIngredients()) {
-			if(!ingredients.Contains(ingredient)) {
-				Debug.Log("Missing Drink Ingredient: " + ingredient.getName());
+		//check if there is a matching drink ingredient for all actual ingredients
+		foreach(Ingredient actualIngredient in this.currentDrink.getIngredients()) {
+			bool match = false;
+
+			foreach(Ingredient drinkIngredient in ingredients) {
+				if(typeof(drinkIngredient) == typeof(actualIngredient)) {
+					match = true;
+				}
+			}
+
+			//missing an ingredient type
+			if(!match) {
+				Debug.Log("Missing Drink Ingredient: " + actualIngredient.getName());
 				return false;
 			}
+
 		}
 
 		return true;

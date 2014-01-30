@@ -1,19 +1,8 @@
 using UnityEngine;
 using System.Collections;
 
-public class SpaceClam : BubbleButton
+public class SpaceClam : Ingredient
 {
-
-		// Use this for initialization
-		void Start ()
-		{
-	
-		}
-	
-		// Update is called once per frame
-		void Update ()
-		{
-	
-		}
+	public SpaceClam() : base("Space Clam", false, Color.red) {}
 }
 

@@ -111,8 +111,6 @@ public class GameManager : MonoBehaviour
 			GameManager.player = new PlayerState();
 		}
 
-		DontDestroyOnLoad(GameManager.player);
-
 		return GameManager.player;
 	}
 	

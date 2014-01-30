@@ -3,6 +3,7 @@ using System.Collections;
 
 public class BubbleButton : MonoBehaviour {
 
+	public Transform bubble;
     GameObject cannon;
     Cannon cannonScript;
 
@@ -21,7 +22,7 @@ public class BubbleButton : MonoBehaviour {
             if (collider2D == Physics2D.OverlapPoint(touchPos))
             {
                 Debug.Log("Touched Bubble Button");
-                cannonScript.loadBubble();
+                cannonScript.loadBubble(bubble);
             }
         }
 		if (Input.GetMouseButtonDown(0))
@@ -31,7 +32,7 @@ public class BubbleButton : MonoBehaviour {
 			if (collider2D == Physics2D.OverlapPoint(touchPos))
 			{
 				Debug.Log("Touched Bubble Button");
-				cannonScript.loadBubble();
+				cannonScript.loadBubble(bubble);
 			}
 		}
 	}

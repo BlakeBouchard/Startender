@@ -1,26 +1,23 @@
 using UnityEngine;
 using System.Collections;
 
-public class Drink
+public class Drink : MonoBehaviour
 {
 	private Ingredient[] ingredients;
-	private string drinkName;
-	private float difficulty;
-	private Color drinkColor;
+	public float difficulty;
+	public Color drinkColor;
 
-	public Drink(string name, float difficulty, Ingredient[] ingredients, Color color) {
-		this.ingredients = ingredients;
-		this.drinkName = name;
-		this.difficulty = difficulty;
-		this.drinkColor = color;
-	}
+    void Start()
+    {
+        ingredients = GetComponentsInChildren<Ingredient>();
+    }
 
 	public string getFormattedIngredients() {
 
 		string formatted = "";
 
 		for(int x = 0; x < this.ingredients.Length; x++) {
-			formatted += ingredients[x].getName();
+			formatted += ingredients[x].name;
 
 			if(x + 1 < this.ingredients.Length) {
 				formatted += ", ";
@@ -31,24 +28,25 @@ public class Drink
 
 	}
 
-	public Ingredient[] getIngredients() {
+	public Ingredient[] getIngredients()
+    {
 		return this.ingredients;
 	}
 
-	public int getIngredientCount() {
+	public int getIngredientCount()
+    {
 		return this.ingredients.Length;
 	}
 
-	public string getDrinkName() {
-		return this.drinkName;
-	}
+    public string getDrinkName()
+    {
+        return name;
+    }
 
-	public float getDifficulty() {
-		return this.difficulty;
-	}
+    public float getDifficulty()
+    {
+        return this.difficulty;
+    }
 
-	public Color getDrinkColor() {
-		return this.drinkColor;
-	}
 }
 

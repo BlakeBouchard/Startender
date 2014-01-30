@@ -12,6 +12,12 @@ public class BubbleButton : MonoBehaviour {
         cannon = GameObject.Find("Cannon");
         cannonScript = (Cannon) cannon.GetComponent(typeof(Cannon));
 	}
+
+    void OnMouseDown()
+    {
+        Debug.Log("Clicked Bubble Button");
+        cannonScript.loadBubble(bubble);
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -25,15 +31,6 @@ public class BubbleButton : MonoBehaviour {
                 cannonScript.loadBubble(bubble);
             }
         }
-		if (Input.GetMouseButtonDown(0))
-		{
-			Vector3 wp = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-			Vector2 touchPos = new Vector2(wp.x, wp.y);
-			if (collider2D == Physics2D.OverlapPoint(touchPos))
-			{
-				Debug.Log("Touched Bubble Button");
-				cannonScript.loadBubble(bubble);
-			}
-		}
+		
 	}
 }

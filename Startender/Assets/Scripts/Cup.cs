@@ -5,20 +5,21 @@ using System.Collections.Generic;
 public class Cup : MonoBehaviour {
 
     private bool clicked;
-	private List<Ingredient> ingredients;
+    private List<Ingredient> ingredients;
 
     private Vector3 previousPosition;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start ()
+    {
         this.clicked = false;
         this.ingredients = new List<Ingredient>();
-	}
+    }
 
-    private void checkSimpleTouch()
+    private void CheckSimpleTouch()
     {
         Touch touch = Input.GetTouch(0);
-		Debug.Log (touch);
+        Debug.Log (touch);
 
         if (!clicked && touch.phase == TouchPhase.Began)
         {
@@ -43,22 +44,23 @@ public class Cup : MonoBehaviour {
         }
     }
 
-	private void doubleTouch() {
+    private void DoubleTouch()
+    {
 
-		//get our two touch positions
-		Vector3 leftTouch = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
-		Vector3 rightTouch = Camera.main.ScreenToWorldPoint(Input.GetTouch(1).position);
+        //get our two touch positions
+        Vector3 leftTouch = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
+        Vector3 rightTouch = Camera.main.ScreenToWorldPoint(Input.GetTouch(1).position);
 
-		//determine if left is actually left
-		if (leftTouch.x > rightTouch.x) {
-			Vector3 temp = leftTouch;
-			leftTouch = rightTouch;
-			rightTouch = temp;
-		}
+        //determine if left is actually left
+        if (leftTouch.x > rightTouch.x) {
+            Vector3 temp = leftTouch;
+            leftTouch = rightTouch;
+            rightTouch = temp;
+        }
 
-		//TODO: figure out the god damn math to pivot/rotate the cup based on double touch turning
+        //TODO: figure out the god damn math to pivot/rotate the cup based on double touch turning
 
-	}
+    }
 
     private void OnMouseDown()
     {
@@ -82,38 +84,40 @@ public class Cup : MonoBehaviour {
     void OnTriggerEnter2D(Collider2D collider)
     {
         Debug.Log("Trigger detected from: " + collider.gameObject.name);
+        Bubble bubble = collider.gameObject.GetComponent<Bubble>();
 
-		if(collider.gameObject.GetComponent(typeof(Bubble)) != null)
+        if (bubble != null)
         {
-			Bubble bubble = (Bubble) collider.gameObject.GetComponent(typeof(Bubble));
-			this.ingredients.Add(bubble.getIngredient());
+            this.ingredients.Add(bubble.getIngredient());
 
             Destroy(collider.gameObject);
             Debug.Log("Killed bubble");
         }
-		else if (collider.gameObject.name == "Tray")
-		{
-			Debug.Log("Tray Touched");
+        else if (collider.gameObject.name == "Tray")
+        {
+            Debug.Log("Tray Touched");
 
-			//TODO: figure out the most elegant way to handle this interaction
-			GameObject dm = GameObject.Find("DrinkManager");
-			DrinkManager drinkManager = (DrinkManager) dm.GetComponent(typeof(DrinkManager));
+            //TODO: figure out the most elegant way to handle this interaction
+            GameObject dm = GameObject.Find("DrinkManager");
+            DrinkManager drinkManager = (DrinkManager) dm.GetComponent(typeof(DrinkManager));
 
-			int tip = drinkManager.finishAndTip(this.ingredients);
-			GameManager.getPlayer().addTip(tip);
-			GameManager.getPlayer().incrementDrinkCount();
-		}
+            int tip = drinkManager.finishAndTip(this.ingredients);
+            GameManager.getPlayer().addTip(tip);
+            GameManager.getPlayer().incrementDrinkCount();
+        }
     }
-	
-	// Update is called once per frame
-	void Update () {
+    
+    // Update is called once per frame
+    void Update () {
+
         if (Input.touchCount == 1)
         {
-            checkSimpleTouch();
+            CheckSimpleTouch();
         }
-		else if (clicked && Input.touchCount == 2)
+        else if (clicked && Input.touchCount == 2)
         {
-			doubleTouch();
-		}
-	}
+            DoubleTouch();
+        }
+
+    }
 }

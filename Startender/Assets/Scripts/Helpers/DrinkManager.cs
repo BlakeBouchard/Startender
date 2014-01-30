@@ -10,19 +10,13 @@ public class DrinkManager : MonoBehaviour {
 
 	private int maxTip;
 
-	public DrinkManager() {
-		this.drinkList = new List<Drink>();
+    void Start()
+    {
+        this.drinkList = new List<Drink>(GetComponentsInChildren<Drink>());
 
-		//sample drink
-		Ingredient[] quasar = new Ingredient[2];
-		quasar[0] = new Vodka();
-		quasar[1] = new SpaceClam();
-
-		this.drinkList.Add(new Drink("Quasar", 0.3f, quasar, Color.red));
-
-		//sets the biggest possible tip a player can get
-		this.maxTip = 20;
-	}
+        //sets the biggest possible tip a player can get
+        this.maxTip = 20;
+    }
 
 	public Drink getCurrentDrink() {
 		if(this.currentDrink == null) {
@@ -79,15 +73,15 @@ public class DrinkManager : MonoBehaviour {
 		foreach(Ingredient actualIngredient in this.currentDrink.getIngredients()) {
 			bool match = false;
 
-			foreach(Ingredient drinkIngredient in ingredients) {
-				if(typeof(drinkIngredient) == typeof(actualIngredient)) {
+			foreach (Ingredient drinkIngredient in ingredients) {
+				if (drinkIngredient.name == actualIngredient.name) {
 					match = true;
 				}
 			}
 
 			//missing an ingredient type
 			if(!match) {
-				Debug.Log("Missing Drink Ingredient: " + actualIngredient.getName());
+				Debug.Log("Missing Drink Ingredient: " + actualIngredient.name);
 				return false;
 			}
 

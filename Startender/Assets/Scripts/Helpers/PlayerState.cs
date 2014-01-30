@@ -1,7 +1,6 @@
-using UnityEngine;
 using System.Collections;
 
-public class PlayerState : MonoBehaviour
+public class PlayerState
 {
 	//persistent game stats
 	private int starBucks;
@@ -13,11 +12,6 @@ public class PlayerState : MonoBehaviour
 	public PlayerState() {
 		this.starBucks = 40;
 		this.tipsEarned = 0;
-	}
-	
-	// Sets the instance to null when the application quits
-	public void OnApplicationQuit() {
-		GameManager.destroyPlayer();
 	}
 
 	public int getDrinkCount() {

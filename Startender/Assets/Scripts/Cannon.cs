@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class Cannon : MonoBehaviour {
-
-    public Transform redBubble;
+	
     public float xForce = 1.0f;
     public float yForce = 1.0f;
 
@@ -21,8 +21,8 @@ public class Cannon : MonoBehaviour {
 	public float fireDelayTimer;
 	public float fireDelayTime;
 	public float reloadTime;
-	public int loadedBubbles;
-	public bool cannonLoaded;
+
+	private Queue<Transform> bubbleQueue;
 
 	// Use this for initialization
 	void Start () {
@@ -32,16 +32,16 @@ public class Cannon : MonoBehaviour {
 		bubbleDrag = 0.2f;
 		gravityScale = 10.0f;
 
-		cannonLoaded = false;
-		loadedBubbles = 0;
 		reloadTime = 0.8f;
 		fireDelayTime = 2.0f;
 		this.resetFireDelay();
+
+		bubbleQueue = new Queue<Transform>();
 	}
 
-    public void fireBubble()
+    public void fireBubble(Transform bubbleObj)
     {
-        Transform bubble = Instantiate(redBubble, new Vector3(transform.position.x, transform.position.y, transform.position.z + 2), Quaternion.identity) as Transform;
+        Transform bubble = Instantiate(bubbleObj, new Vector3(transform.position.x, transform.position.y, transform.position.z + 2), Quaternion.identity) as Transform;
         float bubbleAngle = (transform.rotation.eulerAngles.z - 270) * Mathf.Deg2Rad;
         bubble.gameObject.rigidbody2D.velocity = new Vector2(Mathf.Cos(bubbleAngle) * bubbleSpeed, Mathf.Sin(bubbleAngle) * bubbleSpeed);
 		bubble.gameObject.rigidbody2D.drag = bubbleDrag;
@@ -74,30 +74,27 @@ public class Cannon : MonoBehaviour {
 		this.fireDelayTimer = this.fireDelayTime;
 	}
 
-	public void loadBubble() {
+	public void loadBubble(Transform bubble) {
 
 		//if we're about to fire a shot, reset so they come out close to each other
-		if(this.cannonLoaded) {
+		if(this.bubbleQueue.Count > 0) {
 			this.resetFireDelay();
 		}
 
-		this.loadedBubbles++;
-		this.cannonLoaded = true;
+		this.bubbleQueue.Enqueue(bubble);
 	}
 
 	private void fireIfReady() {
 
 		//if we've reached the delay, fire
 		if(this.fireDelayTimer <= 0.0f) {
-			this.fireBubble();
-			this.loadedBubbles--;
+			this.fireBubble(bubbleQueue.Dequeue());
 		
 			//if we still have shots left, "reload"
-			if(this.loadedBubbles > 0) {
+			if(this.bubbleQueue.Count > 0) {
 				this.fireDelayTimer = 0.0f + this.reloadTime;
 			}
 			else {
-				this.cannonLoaded = false;
 				this.resetFireDelay();
 			}
 		}
@@ -106,11 +103,8 @@ public class Cannon : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetKeyDown(KeyCode.A)) {
-            this.loadBubble();
-        }
 
-		if(this.cannonLoaded) {
+		if(this.bubbleQueue.Count > 0) {
 			this.fireDelayTimer -= Time.deltaTime;
 			this.fireIfReady();
 		}

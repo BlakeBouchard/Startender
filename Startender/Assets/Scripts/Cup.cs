@@ -88,7 +88,8 @@ public class Cup : MonoBehaviour {
     void OnTriggerEnter2D(Collider2D collider)
     {
         Debug.Log("Trigger detected from: " + collider.gameObject.name);
-        if (collider.gameObject.name == "RedBubble(Clone)")
+
+		if(collider.gameObject.GetComponent(typeof(Bubble)) != null)
         {
 			Bubble bubble = (Bubble) collider.gameObject.GetComponent(typeof(Bubble));
 			this.ingredients.Add(bubble.getIngredient());
@@ -98,6 +99,8 @@ public class Cup : MonoBehaviour {
         }
 		else if(collider.gameObject.name == "Tray")
 		{
+			Debug.Log("Tray Touched");
+
 			//TODO: figure out the most elegant way to handle this interaction
 			GameObject dm = GameObject.Find("DrinkManager");
 			DrinkManager drinkManager = (DrinkManager) dm.GetComponent(typeof(DrinkManager));

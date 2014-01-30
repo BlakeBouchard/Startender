@@ -1,11 +1,11 @@
 using System;
 using UnityEngine;
 
-public class Ingredient
+public abstract class Ingredient
 {
-	private string name;
-	private bool liquid;
-	private Color drinkColor;
+	protected string name;
+	protected bool liquid;
+	protected Color drinkColor;
 	
 	public Ingredient(string name, bool liquid, Color color){
 		this.name = name;

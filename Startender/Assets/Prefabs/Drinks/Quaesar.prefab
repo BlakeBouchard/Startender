@@ -12,7 +12,7 @@ GameObject:
   m_Layer: 0
   m_Name: Quasar
   m_TagString: Untagged
-  m_Icon: {fileID: 1182211791, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -26,7 +26,7 @@ GameObject:
   - 4: {fileID: 400002}
   - 114: {fileID: 11400002}
   m_Layer: 0
-  m_Name: Space Clam
+  m_Name: Vodka
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -42,7 +42,7 @@ GameObject:
   - 4: {fileID: 400004}
   - 114: {fileID: 11400004}
   m_Layer: 0
-  m_Name: Vodka
+  m_Name: Space Clam
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -58,8 +58,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 400002}
   - {fileID: 400004}
+  - {fileID: 400002}
   m_Father: {fileID: 0}
 --- !u!4 &400002
 Transform:
@@ -104,9 +104,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 100002}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 53766e7b3e91845a0869833dc039670a, type: 3}
+  m_Script: {fileID: 11500000, guid: 2642cf549642d43b98bbc28f658629f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  liquid: 0
+  drinkColor: {r: 1, g: 1, b: 1, a: 0}
 --- !u!114 &11400004
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -115,9 +117,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 100004}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 439e0fed473934fa7b6bc40861ad5c22, type: 3}
+  m_Script: {fileID: 11500000, guid: 2642cf549642d43b98bbc28f658629f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  liquid: 0
+  drinkColor: {r: .852941155, g: .131704167, b: .131704167, a: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

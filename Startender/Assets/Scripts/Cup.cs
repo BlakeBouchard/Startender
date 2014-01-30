@@ -88,10 +88,11 @@ public class Cup : MonoBehaviour {
 
         if (bubble != null)
         {
+            
             this.ingredients.Add(bubble.getIngredient());
+            Debug.Log("Cup has ingredients");
 
             Destroy(collider.gameObject);
-            Debug.Log("Killed bubble");
         }
         else if (collider.gameObject.name == "Tray")
         {

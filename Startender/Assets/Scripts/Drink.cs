@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Drink : MonoBehaviour
 {
-	private Ingredient[] ingredients;
+	public Ingredient[] ingredients;
 	public float difficulty;
 	public Color drinkColor;
 
@@ -12,20 +12,21 @@ public class Drink : MonoBehaviour
         ingredients = GetComponentsInChildren<Ingredient>();
     }
 
-	public string getFormattedIngredients() {
-
+	public string getFormattedIngredients()
+    {
 		string formatted = "";
 
-		for(int x = 0; x < this.ingredients.Length; x++) {
+		for (int x = 0; x < this.ingredients.Length; x++)
+        {
 			formatted += ingredients[x].name;
 
-			if(x + 1 < this.ingredients.Length) {
+			if (x + 1 < this.ingredients.Length)
+            {
 				formatted += ", ";
 			}
 		}
 
 		return formatted;
-
 	}
 
 	public Ingredient[] getIngredients()

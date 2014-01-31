@@ -7,16 +7,33 @@ public class CupMovement : MonoBehaviour {
 
     private Vector3 previousPosition;
 
+    public float rotateThreshold = 0.03f;
+
     // Use this for initialization
     void Start ()
     {
         this.clicked = false;
     }
 
+    private void MoveCup(Vector3 startPoint, Vector3 endPoint)
+    {
+        Vector3 deltaPosition = endPoint - startPoint;
+
+        // Get rotation
+        if (Mathf.Abs(deltaPosition.x) > rotateThreshold && Mathf.Abs(deltaPosition.y) > rotateThreshold)
+        {
+            float angle = Mathf.Rad2Deg * Mathf.Atan2(deltaPosition.y, deltaPosition.x);
+            transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle - 90));
+        }
+
+        // Set position
+        transform.position += deltaPosition;
+    }
+
     private void CheckSimpleTouch()
     {
         Touch touch = Input.GetTouch(0);
-        Debug.Log (touch);
+        Debug.Log(touch);
 
         if (!clicked && touch.phase == TouchPhase.Began)
         {
@@ -31,8 +48,8 @@ public class CupMovement : MonoBehaviour {
         else if (clicked && touch.phase == TouchPhase.Moved)
         {
             Vector3 newPosition = Camera.main.ScreenToWorldPoint(touch.position);
-            newPosition.z = 0;
-            transform.position = newPosition;
+            MoveCup(previousPosition, newPosition);
+            previousPosition = newPosition;
         }
         else if (clicked && touch.phase == TouchPhase.Ended)
         {
@@ -61,21 +78,21 @@ public class CupMovement : MonoBehaviour {
 
     private void OnMouseDown()
     {
-        Debug.Log("Clicked Cup");
         previousPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
     }
 
     private void OnMouseDrag()
     {
         Vector3 currentPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Vector3 deltaPosition = currentPosition - previousPosition;
-        transform.position += deltaPosition;
-        previousPosition = currentPosition;
-    }
-
-    private void OnMouseUp()
-    {
-        Debug.Log("Let go of cup");
+        if (currentPosition == previousPosition)
+        {
+            return;
+        }
+        else
+        {
+            MoveCup(previousPosition, currentPosition);
+            previousPosition = currentPosition;
+        }
     }
     
     // Update is called once per frame

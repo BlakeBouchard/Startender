@@ -12,7 +12,7 @@ GameObject:
   - 114: {fileID: 11400000}
   - 58: {fileID: 5800000}
   m_Layer: 0
-  m_Name: Clam Button
+  m_Name: Orange Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -25,8 +25,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.54854536, y: 3.78869581, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalPosition: {x: -6.55183554, y: 1.27818334, z: 0}
+  m_LocalScale: {x: 2.08999991, y: 2.04999995, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
 --- !u!58 &5800000
@@ -51,7 +51,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f7449ebf4f71fb408d538361fc579af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bubble: {fileID: 400000, guid: b8bf69bb0b521a7498a741a14699f957, type: 2}
+  bubble: {fileID: 400002, guid: e6647bd0205d0d04198db5e0b35cb29d, type: 2}
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_SortingLayerID: 0
-  m_Sprite: {fileID: 21300000, guid: dc50b17deeeb863438559fe36de98093, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 670693b32d0db4fb58b17cdc82535bec, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1001 &100100000
 Prefab:

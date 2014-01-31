@@ -10,9 +10,10 @@ GameObject:
   - 4: {fileID: 400000}
   - 212: {fileID: 21200000}
   - 114: {fileID: 11400000}
-  - 50: {fileID: 5000000}
-  - 61: {fileID: 6100000}
   - 114: {fileID: 11400002}
+  - 82: {fileID: 8200000}
+  - 60: {fileID: 6000000}
+  - 50: {fileID: 5000000}
   m_Layer: 0
   m_Name: Cup
   m_TagString: Untagged
@@ -27,7 +28,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.26062775, y: -3.59086943, z: -3}
+  m_LocalPosition: {x: 3.66210055, y: -1.07011557, z: -3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -46,17 +47,93 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
---- !u!61 &6100000
-BoxCollider2D:
+--- !u!60 &6000000
+PolygonCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Size: {x: 1.20000005, y: 1.20000005}
-  m_Center: {x: 0, y: 0}
+  m_IsTrigger: 0
+  m_Poly:
+    m_Paths:
+    - - {x: .439999998, y: .099999994}
+      - {x: .469999999, y: .340000004}
+      - {x: .479999989, y: .419999987}
+      - {x: .48999998, y: .5}
+      - {x: .5, y: .579999983}
+      - {x: .5, y: .599999964}
+      - {x: -.519999981, y: .599999964}
+      - {x: -.519999981, y: .529999971}
+      - {x: -.48999998, y: .419999987}
+      - {x: -.389999986, y: -.099999994}
+      - {x: -.370000005, y: -.219999999}
+      - {x: -.349999994, y: -.319999993}
+      - {x: -.299999982, y: -.579999983}
+      - {x: -.289999992, y: -.599999964}
+      - {x: .349999994, y: -.599999964}
+      - {x: .359999985, y: -.529999971}
+      - {x: .370000005, y: -.449999988}
+      - {x: .419999987, y: -.0599999987}
+--- !u!82 &8200000
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_audioClip: {fileID: 8300000, guid: 89989393cb2148a43862cf716d1ce492, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -68,6 +145,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37f64fff4f7e6994eb833c4647e5f1bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rotateThreshold: .0299999993
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1

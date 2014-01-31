@@ -3,12 +3,9 @@ using System.Collections;
 
 public class Bubble : MonoBehaviour {
 
-    private Ingredient ingredient;
-
     // Use this for initialization
     void Start () {
-        this.ingredient = this.GetComponentInChildren<Ingredient>();
-        Debug.Log("New Bubble with Ingredient: " + ingredient.name);
+        Debug.Log("New Bubble with Ingredient: " + getIngredient().name);
     }
     
     // Update is called once per frame
@@ -27,6 +24,6 @@ public class Bubble : MonoBehaviour {
     }
 
     public Ingredient getIngredient() {
-        return this.ingredient;
+        return GetComponentInChildren<Ingredient>();
     }
 }

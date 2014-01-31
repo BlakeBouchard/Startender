@@ -39,6 +39,7 @@ public class Cannon : MonoBehaviour {
 		bubble.gameObject.rigidbody2D.drag = bubbleDrag;
 		bubble.gameObject.rigidbody2D.mass = bubbleMass;
 		bubble.gameObject.rigidbody2D.gravityScale = gravityScale;
+        audio.Play();
     }
 
     void IncrementAngle()

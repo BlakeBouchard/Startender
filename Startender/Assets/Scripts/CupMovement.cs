@@ -78,7 +78,6 @@ public class CupMovement : MonoBehaviour {
 
     private void OnMouseDown()
     {
-        Debug.Log("Clicked Cup");
         previousPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
     }
 
@@ -94,11 +93,6 @@ public class CupMovement : MonoBehaviour {
             MoveCup(previousPosition, currentPosition);
             previousPosition = currentPosition;
         }
-    }
-
-    private void OnMouseUp()
-    {
-        Debug.Log("Let go of cup");
     }
     
     // Update is called once per frame

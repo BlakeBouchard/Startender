@@ -9,13 +9,11 @@ GameObject:
   m_Component:
   - 4: {fileID: 400000}
   - 212: {fileID: 21200000}
+  - 61: {fileID: 6100000}
   - 114: {fileID: 11400000}
-  - 114: {fileID: 11400002}
   - 82: {fileID: 8200000}
-  - 60: {fileID: 6000000}
-  - 50: {fileID: 5000000}
   m_Layer: 0
-  m_Name: Cup
+  m_Name: Tray
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27,55 +25,22 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.66210055, y: -1.07011557, z: -3}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: 0, y: 0, z: .707106829, w: .707106829}
+  m_LocalPosition: {x: 6.53116179, y: -4.28916216, z: 0}
+  m_LocalScale: {x: 1.44173813, y: 1.44173861, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
---- !u!50 &5000000
-Rigidbody2D:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100000}
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: .0500000007
-  m_GravityScale: 0
-  m_FixedAngle: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
---- !u!60 &6000000
-PolygonCollider2D:
+--- !u!61 &6100000
+BoxCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Poly:
-    m_Paths:
-    - - {x: .439999998, y: .099999994}
-      - {x: .469999999, y: .340000004}
-      - {x: .479999989, y: .419999987}
-      - {x: .48999998, y: .5}
-      - {x: .5, y: .579999983}
-      - {x: .5, y: .599999964}
-      - {x: -.519999981, y: .599999964}
-      - {x: -.519999981, y: .529999971}
-      - {x: -.48999998, y: .419999987}
-      - {x: -.389999986, y: -.099999994}
-      - {x: -.370000005, y: -.219999999}
-      - {x: -.349999994, y: -.319999993}
-      - {x: -.299999982, y: -.579999983}
-      - {x: -.289999992, y: -.599999964}
-      - {x: .349999994, y: -.599999964}
-      - {x: .359999985, y: -.529999971}
-      - {x: .370000005, y: -.449999988}
-      - {x: .419999987, y: -.0599999987}
+  m_IsTrigger: 1
+  m_Size: {x: .400000066, y: 2.00000048}
+  m_Center: {x: 4.76837158e-07, y: 4.76837158e-07}
 --- !u!82 &8200000
 AudioSource:
   m_ObjectHideFlags: 1
@@ -84,7 +49,7 @@ AudioSource:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   serializedVersion: 3
-  m_audioClip: {fileID: 8300000, guid: 89989393cb2148a43862cf716d1ce492, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 1769804be25bc1946a545d2a409d08d9, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -142,19 +107,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 37f64fff4f7e6994eb833c4647e5f1bd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rotateThreshold: .0299999993
---- !u!114 &11400002
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100000}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4caab5ab605a13f469e7cf2e42e3651c, type: 3}
+  m_Script: {fileID: 11500000, guid: fb44e64187d7c470c8c89adea41d6527, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!212 &21200000
@@ -178,7 +131,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_SortingLayerID: 0
-  m_Sprite: {fileID: 21300000, guid: 62d6f2d9671c5294b9a6f71d371c960a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 95d4996dcd1fca84383f74db8562b770, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1001 &100100000
 Prefab:

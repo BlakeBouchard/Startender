@@ -8,18 +8,20 @@ public class DrinkManager : MonoBehaviour {
 	private List<Drink> drinkList;
 	private Drink currentDrink;
 
-	private int maxTip;
+	private int maxTip = 20;
 
     void Start()
     {
         this.drinkList = new List<Drink>(GetComponentsInChildren<Drink>());
-
-        //sets the biggest possible tip a player can get
-        this.maxTip = 20;
+        foreach (Drink drink in drinkList)
+        {
+            Debug.Log(drink.name + ": " + drink.getFormattedIngredients());
+        }
     }
 
 	public Drink getCurrentDrink() {
-		if(this.currentDrink == null) {
+		if (this.currentDrink == null)
+        {
 			this.setNextDrink();
 		}
 
@@ -27,13 +29,15 @@ public class DrinkManager : MonoBehaviour {
 	}
 
 	// selects random drink from the drink array list
-	public void setNextDrink() {
+	public void setNextDrink() 
+    {
 		int randomNumber = getRandomNumber(drinkList.Count);
 		this.currentDrink = this.drinkList[randomNumber];
 	}
 	
 	// picks random number between 0 and the integer given (includes 0 but not max)
-	public int getRandomNumber(int max) {
+	public int getRandomNumber(int max)
+    {
 		System.Random random = new System.Random();
 		int randomNumber = random.Next(max);
 
@@ -41,52 +45,62 @@ public class DrinkManager : MonoBehaviour {
 		return randomNumber;
 	}
 
-	public int finishAndTip(List<Ingredient> ingredients) {
-
+	public int finishAndTip(List<Ingredient> ingredients)
+    {
 		return this.getTipAmount(this.madeSuccessfully(ingredients));
-
 	}
 	
 	// figures out tip amount
 	// need to cut off after 2 decimal places
 	// maybe pick random number between -3/3? then add that to the total?
 	// making sure it is over 0!
-	public int getTipAmount(bool drinkSuccess) {
-		if(!drinkSuccess){
-		 	return -1;
-		}
+	public int getTipAmount(bool drinkSuccess)
+    {
+        if (!drinkSuccess)
+        {
+            return -1;
+        }
 
-		System.Random rand = new System.Random();
-		return (int) Math.Round(this.currentDrink.getDifficulty() * rand.Next(this.maxTip));
+        System.Random rand = new System.Random();
+        int tip = (int) Math.Round(this.currentDrink.getDifficulty() * rand.Next(this.maxTip));
+
+        setNextDrink();
+
+        return tip;
 	}
 	
 	public bool madeSuccessfully(List<Ingredient> ingredients) {
 
 		int actualIngredientCount = this.currentDrink.getIngredientCount();
 
-		if (ingredients.Count != actualIngredientCount) {
+		if (ingredients.Count != actualIngredientCount)
+        {
 			Debug.Log("Wrong Ingredient Count!");
 			return false;
 		}
 
-		//check if there is a matching drink ingredient for all actual ingredients
-		foreach(Ingredient actualIngredient in this.currentDrink.getIngredients()) {
+		// check if there is a matching drink ingredient for all actual ingredients
+		foreach (Ingredient actualIngredient in this.currentDrink.getIngredients())
+        {
 			bool match = false;
 
-			foreach (Ingredient drinkIngredient in ingredients) {
-				if (drinkIngredient.name == actualIngredient.name) {
+			foreach (Ingredient drinkIngredient in ingredients)
+            {
+				if (drinkIngredient.name == actualIngredient.name)
+                {
 					match = true;
 				}
 			}
 
 			//missing an ingredient type
-			if(!match) {
+			if (!match)
+            {
 				Debug.Log("Missing Drink Ingredient: " + actualIngredient.name);
 				return false;
 			}
 
 		}
-
+        Debug.Log(currentDrink.name + " made successfully!");
 		return true;
 		
 	}

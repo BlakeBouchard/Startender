@@ -4,39 +4,37 @@ using System.Collections.Generic;
 
 public class CupIngredients : MonoBehaviour {
 
-    private List<Ingredient> ingredients;
-    private DrinkManager drinkManager;
-
 	// Use this for initialization
 	void Start ()
     {
-        this.ingredients = new List<Ingredient>();
-        drinkManager = GameObject.Find("Drink Manager").GetComponent<DrinkManager>();
+        
 	}
 
-    void OnTriggerEnter2D(Collider2D collider)
+    void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("Trigger detected from: " + collider.gameObject.name);
-        Bubble bubble = collider.gameObject.GetComponent<Bubble>();
+        Debug.Log("Trigger detected from: " + collision.gameObject.name);
+        Bubble bubble = collision.gameObject.GetComponent<Bubble>();
 
         if (bubble != null)
         {
-            this.ingredients.Add(bubble.getIngredient());
+            bubble.getIngredient().transform.parent = transform;
 
-            Destroy(collider.gameObject);
-
-            Debug.Log("Ingredient added: " + ingredients[0]);
+            Destroy(collision.gameObject);
+            audio.Play();
         }
-        else if (collider.gameObject.name == "Tray")
+    }
+
+    public void ResetIngredients()
+    {
+        foreach (Ingredient child in GetComponentsInChildren<Ingredient>())
         {
-            Debug.Log("Tray Touched");
-
-            //TODO: figure out the most elegant way to handle this interaction
-
-            int tip = drinkManager.finishAndTip(this.ingredients);
-            GameManager.getPlayer().addTip(tip);
-            GameManager.getPlayer().incrementDrinkCount();
+            Destroy(child.gameObject);
         }
+    }
+
+    public List<Ingredient> GetIngredients()
+    {
+        return new List<Ingredient>(GetComponentsInChildren<Ingredient>());
     }
 	
 	// Update is called once per frame

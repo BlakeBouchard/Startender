@@ -8,32 +8,42 @@ public class BubbleButton : MonoBehaviour {
     Cannon cannonScript;
 
 	// Use this for initialization
-	void Start () {
-        cannon = GameObject.Find("Cannon");
+	void Start ()
+    {
+        cannon = GameObject.Find("CannonBarrel");
         cannonScript = (Cannon) cannon.GetComponent(typeof(Cannon));
 	}
+
+    void OnTouchDown()
+    {
+        Debug.Log("Touched Bubble Button");
+        cannonScript.loadBubble(bubble);
+    }
+
+    void OnMouseDown()
+    {
+        Debug.Log("Clicked Bubble Button");
+        cannonScript.loadBubble(bubble);
+    }
 	
 	// Update is called once per frame
-	void Update () {
-        if (Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Began)
+	void Update ()
+    {
+        if (Input.touchCount >= 1)
         {
-            Vector3 wp = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
-            Vector2 touchPos = new Vector2(wp.x, wp.y);
-            if (collider2D == Physics2D.OverlapPoint(touchPos))
+            foreach (Touch touch in Input.touches)
             {
-                Debug.Log("Touched Bubble Button");
-                cannonScript.loadBubble(bubble);
+                if (touch.phase == TouchPhase.Began)
+                {
+                    Vector3 wp = Camera.main.ScreenToWorldPoint(touch.position);
+                    Vector2 touchPos = new Vector2(wp.x, wp.y);
+                    if (collider2D == Physics2D.OverlapPoint(touchPos))
+                    {
+                        this.OnTouchDown();
+                    }
+                }
             }
         }
-		if (Input.GetMouseButtonDown(0))
-		{
-			Vector3 wp = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-			Vector2 touchPos = new Vector2(wp.x, wp.y);
-			if (collider2D == Physics2D.OverlapPoint(touchPos))
-			{
-				Debug.Log("Touched Bubble Button");
-				cannonScript.loadBubble(bubble);
-			}
-		}
+		
 	}
 }

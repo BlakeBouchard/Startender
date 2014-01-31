@@ -12,15 +12,6 @@ public class GameManager : MonoBehaviour
 	private GUIDrawer guiDrawer;
 	private DrinkManager drinkManager;
 
-	public GameManager() {
-
-		this.drinkManager = new DrinkManager();
-
-		this.gameState = GameState.Menu;
-		this.roundTime = 90.0f;
-
-}
-	
 	public void startGame() {
 
 		Debug.Log("Starting game");
@@ -64,6 +55,10 @@ public class GameManager : MonoBehaviour
 	// Use this for initialization
 	void Start()
 	{
+        this.drinkManager = this.GetComponentInChildren<DrinkManager>();
+        this.gameState = GameState.Menu;
+        this.roundTime = 90.0f;
+
 		Time.timeScale = 0;
 
 		//Get HUD Manager

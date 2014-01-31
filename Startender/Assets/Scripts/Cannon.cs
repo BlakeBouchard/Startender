@@ -12,28 +12,20 @@ public class Cannon : MonoBehaviour {
     public static float MIN_CANNON_ANGLE = 320.0f;
     public static float MAX_CANNON_ANGLE = 345.0f;
 
-    public float bubbleSpeed;
-    public float rotateSpeed;
-	public float bubbleMass;
-	public float bubbleDrag;
-	public float gravityScale;
+    public float bubbleSpeed = 12.5f;
+    public float rotateSpeed = 30.0f;
+	public float bubbleMass = 15.0f;
+	public float bubbleDrag = 0.2f;
+	public float gravityScale = 10.0f;
 
 	public float fireDelayTimer;
-	public float fireDelayTime;
-	public float reloadTime;
+	public float fireDelayTime = 2.0f;
+	public float reloadTime = 0.8f;
 
 	private Queue<Transform> bubbleQueue;
 
 	// Use this for initialization
 	void Start () {
-		bubbleMass = 15.0f;
-		bubbleSpeed = 12.5f;
-		rotateSpeed = 30.0f;
-		bubbleDrag = 0.2f;
-		gravityScale = 10.0f;
-
-		reloadTime = 0.8f;
-		fireDelayTime = 2.0f;
 		this.resetFireDelay();
 
 		bubbleQueue = new Queue<Transform>();

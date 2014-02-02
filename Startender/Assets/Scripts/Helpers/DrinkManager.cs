@@ -32,6 +32,7 @@ public class DrinkManager : MonoBehaviour {
 	public void setNextDrink() 
     {
 		int randomNumber = getRandomNumber(drinkList.Count);
+		Debug.Log(randomNumber);
 		this.currentDrink = this.drinkList[randomNumber];
 	}
 	

@@ -47,6 +47,11 @@ public class CupIngredients : MonoBehaviour {
         }
         return ingredientList;
     }
+
+    public int GetIngredientCount()
+    {
+        return ingredientList.Count;
+    }
 	
 	// Update is called once per frame
 	void Update ()

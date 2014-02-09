@@ -17,12 +17,14 @@ public class Tray : MonoBehaviour
         {
 
             CupIngredients cupIngredients = collider.GetComponent<CupIngredients>();
-
-            int tip = drinkManager.finishAndTip(cupIngredients.GetIngredients());
-            cupIngredients.ResetIngredients();
-            GameManager.getPlayer().addTip(tip);
-            GameManager.getPlayer().incrementDrinkCount();
-            audio.Play();
+            if (cupIngredients.GetIngredientCount() > 0)
+            {
+                int tip = drinkManager.finishAndTip(cupIngredients.GetIngredients());
+                cupIngredients.ResetIngredients();
+                GameManager.getPlayer().addTip(tip);
+                GameManager.getPlayer().incrementDrinkCount();
+                audio.Play();
+            }
         }
     }
 

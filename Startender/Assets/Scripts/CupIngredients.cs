@@ -41,6 +41,10 @@ public class CupIngredients : MonoBehaviour {
 
     public List<Ingredient> GetIngredients()
     {
+        foreach (Ingredient ingredient in ingredientList)
+        {
+            Debug.Log(ingredient.name);
+        }
         return ingredientList;
     }
 	

@@ -3,8 +3,6 @@ using System.Collections;
 
 public class CupMovement : MonoBehaviour {
 
-    private bool clicked;
-
     private Vector3 previousPosition;
 
     public float rotateThreshold = 0.03f;
@@ -12,7 +10,7 @@ public class CupMovement : MonoBehaviour {
     // Use this for initialization
     void Start ()
     {
-        this.clicked = false;
+        
     }
 
     private void MoveCup(Vector3 startPoint, Vector3 endPoint)
@@ -30,31 +28,18 @@ public class CupMovement : MonoBehaviour {
         transform.position += deltaPosition;
     }
 
-    private void CheckSimpleTouch()
+    void OnTouchDown(Touch touch)
     {
-        Touch touch = Input.GetTouch(0);
-        Debug.Log(touch);
+        previousPosition = Camera.main.ScreenToWorldPoint(touch.position);
+    }
 
-        if (!clicked && touch.phase == TouchPhase.Began)
+    void OnTouchDrag(Touch touch)
+    {
+        Vector3 currentPosition = Camera.main.ScreenToWorldPoint(touch.position);
+        if (currentPosition != previousPosition)
         {
-            Vector3 wp = Camera.main.ScreenToWorldPoint(touch.position);
-            Vector2 touchPos = new Vector2(wp.x, wp.y);
-            if (collider2D == Physics2D.OverlapPoint(touchPos))
-            {
-                Debug.Log("Touched Cup");
-                clicked = true;
-            }
-        }
-        else if (clicked && touch.phase == TouchPhase.Moved)
-        {
-            Vector3 newPosition = Camera.main.ScreenToWorldPoint(touch.position);
-            MoveCup(previousPosition, newPosition);
-            previousPosition = newPosition;
-        }
-        else if (clicked && touch.phase == TouchPhase.Ended)
-        {
-            Debug.Log("Let go of cup");
-            clicked = false;
+            MoveCup(previousPosition, currentPosition);
+            previousPosition = currentPosition;
         }
     }
 
@@ -84,11 +69,7 @@ public class CupMovement : MonoBehaviour {
     private void OnMouseDrag()
     {
         Vector3 currentPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        if (currentPosition == previousPosition)
-        {
-            return;
-        }
-        else
+        if (currentPosition != previousPosition)
         {
             MoveCup(previousPosition, currentPosition);
             previousPosition = currentPosition;
@@ -97,15 +78,6 @@ public class CupMovement : MonoBehaviour {
     
     // Update is called once per frame
     void Update () {
-
-        if (Input.touchCount == 1)
-        {
-            CheckSimpleTouch();
-        }
-        else if (clicked && Input.touchCount == 2)
-        {
-            DoubleTouch();
-        }
 
     }
 }

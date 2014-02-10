@@ -17,7 +17,7 @@ public class TouchListener : MonoBehaviour {
     void CheckTouch(Touch touch)
     {
         // Touches are measured in camera coordinates, not world position, so we need to convert first
-        Vector3 worldPoint = camera.ScreenToWorldPoint(touch.position);
+        Vector3 worldPoint = Camera.main.ScreenToWorldPoint(touch.position);
 
         // Now we need to detect if the converted world coordinates for the touch overlap with any colliders
         if (multiHit)

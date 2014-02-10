@@ -25,13 +25,19 @@ public class TouchListener : MonoBehaviour {
             Collider2D[] colliders = Physics2D.OverlapPointAll(worldPoint);
             foreach (Collider2D collider in colliders)
             {
-                DelegateTouchEvent(collider, touch);
+                if (collider)
+                {
+                    DelegateTouchEvent(collider, touch);
+                }
             }
         }
         else
         {
             Collider2D collider = Physics2D.OverlapPoint(worldPoint);
-            DelegateTouchEvent(collider, touch);
+            if (collider)
+            {
+                DelegateTouchEvent(collider, touch);
+            }
         }
     }
 
@@ -39,17 +45,17 @@ public class TouchListener : MonoBehaviour {
         switch (touch.phase)
         {
             case TouchPhase.Began :
-                collider.BroadcastMessage("OnTouchDown", touch);
+                collider.SendMessage("OnTouchDown", touch, SendMessageOptions.DontRequireReceiver);
                 break;
             case TouchPhase.Moved :
-                collider.BroadcastMessage("OnTouchDrag", touch);
+                collider.SendMessage("OnTouchDrag", touch, SendMessageOptions.DontRequireReceiver);
                 break;
             case TouchPhase.Canceled :
             case TouchPhase.Ended :
-                collider.BroadcastMessage("OnTouchUp", touch);
+                collider.SendMessage("OnTouchUp", touch, SendMessageOptions.DontRequireReceiver);
                 break;
             case TouchPhase.Stationary :
-                collider.BroadcastMessage("OnTouchStay", touch);
+                collider.SendMessage("OnTouchStay", touch, SendMessageOptions.DontRequireReceiver);
                 break;
         }
     }

@@ -22,8 +22,12 @@ public class BubbleButton : MonoBehaviour {
 
     void OnMouseDown()
     {
-        Debug.Log("Clicked Bubble Button");
-        cannonScript.loadBubble(bubble);
+        // Should not fire when touching, screw you Unity Remote
+        if (Input.touchCount == 0)
+        {
+            Debug.Log("Clicked Bubble Button");
+            cannonScript.loadBubble(bubble);
+        }
     }
 	
 	// Update is called once per frame

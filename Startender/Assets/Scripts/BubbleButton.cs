@@ -14,7 +14,7 @@ public class BubbleButton : MonoBehaviour {
         cannonScript = (Cannon) cannon.GetComponent(typeof(Cannon));
 	}
 
-    void OnTouchDown()
+    void OnTouchDown(Touch touch)
     {
         Debug.Log("Touched Bubble Button");
         cannonScript.loadBubble(bubble);
@@ -22,28 +22,17 @@ public class BubbleButton : MonoBehaviour {
 
     void OnMouseDown()
     {
-        Debug.Log("Clicked Bubble Button");
-        cannonScript.loadBubble(bubble);
+        // Should not fire when touching, screw you Unity Remote
+        if (Input.touchCount == 0)
+        {
+            Debug.Log("Clicked Bubble Button");
+            cannonScript.loadBubble(bubble);
+        }
     }
 	
 	// Update is called once per frame
-	void Update ()
+    void Update()
     {
-        if (Input.touchCount >= 1)
-        {
-            foreach (Touch touch in Input.touches)
-            {
-                if (touch.phase == TouchPhase.Began)
-                {
-                    Vector3 wp = Camera.main.ScreenToWorldPoint(touch.position);
-                    Vector2 touchPos = new Vector2(wp.x, wp.y);
-                    if (collider2D == Physics2D.OverlapPoint(touchPos))
-                    {
-                        this.OnTouchDown();
-                    }
-                }
-            }
-        }
-		
-	}
+
+    }
 }

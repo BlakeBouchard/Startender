@@ -13,16 +13,18 @@ public class Tray : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collider.gameObject.name == "Cup")
+        if (collider.gameObject.name == "Ingredient Collider")
         {
 
             CupIngredients cupIngredients = collider.GetComponent<CupIngredients>();
-
-            int tip = drinkManager.finishAndTip(cupIngredients.GetIngredients());
-            cupIngredients.ResetIngredients();
-            GameManager.getPlayer().addTip(tip);
-            GameManager.getPlayer().incrementDrinkCount();
-            audio.Play();
+            if (cupIngredients.GetIngredientCount() > 0)
+            {
+                int tip = drinkManager.finishAndTip(cupIngredients.GetIngredients());
+                cupIngredients.ResetIngredients();
+                GameManager.getPlayer().addTip(tip);
+                GameManager.getPlayer().incrementDrinkCount();
+                audio.Play();
+            }
         }
     }
 
@@ -37,7 +39,7 @@ public class Tray : MonoBehaviour
 	    // Saying the hell with it
         if (Input.GetKeyDown(KeyCode.T))
         {
-            OnTriggerEnter2D(GameObject.Find("Cup").collider2D);
+            OnTriggerEnter2D(GameObject.Find("Ingredient Collider").collider2D);
         }
 	}
 

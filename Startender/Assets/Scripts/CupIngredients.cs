@@ -41,7 +41,16 @@ public class CupIngredients : MonoBehaviour {
 
     public List<Ingredient> GetIngredients()
     {
+        foreach (Ingredient ingredient in ingredientList)
+        {
+            Debug.Log(ingredient.name);
+        }
         return ingredientList;
+    }
+
+    public int GetIngredientCount()
+    {
+        return ingredientList.Count;
     }
 	
 	// Update is called once per frame

@@ -91,11 +91,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 100004}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba2bfac10f9c64329a1a508b38f271b2, type: 3}
+  m_Script: {fileID: 11500000, guid: 8d65e1d9ba31642e3941fd72efd272b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ingredients: []
   difficulty: .300000012
-  drinkColor: {r: 1, g: .517241359, b: 0, a: 0}
+  drinkColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -104,11 +105,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2642cf549642d43b98bbc28f658629f1, type: 3}
+  m_Script: {fileID: 11500000, guid: c492a29b8fb0a41e09cd508a066872b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   liquid: 0
-  drinkColor: {r: 1, g: .682758629, b: 0, a: 0}
+  drinkColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &11400004
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -117,11 +118,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 100002}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2642cf549642d43b98bbc28f658629f1, type: 3}
+  m_Script: {fileID: 11500000, guid: c492a29b8fb0a41e09cd508a066872b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   liquid: 0
-  drinkColor: {r: .852941155, g: .131704167, b: .131704167, a: 0}
+  drinkColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

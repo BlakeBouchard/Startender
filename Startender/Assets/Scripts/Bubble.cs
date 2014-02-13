@@ -26,4 +26,9 @@ public class Bubble : MonoBehaviour {
     public Ingredient getIngredient() {
         return GetComponentInChildren<Ingredient>();
     }
+
+	public void Die(){
+		Destroy (gameObject);
+	}
+
 }

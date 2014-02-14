@@ -24,8 +24,19 @@ public class CupMovement : MonoBehaviour {
             transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle - 90));
         }
 
+		float posHeight = Camera.main.orthographicSize; 		// Top
+		float negHeight = posHeight * -1f;						// Bottom
+		float posWidth = posHeight * Camera.main.aspect;		// Right
+		float negWidth = posWidth * -1f;						// Left
+
         // Set position
-        transform.position += deltaPosition;
+		if (endPoint.x < posWidth &&
+		    endPoint.x > negWidth &&
+		    endPoint.y < posHeight &&
+		    endPoint.y > negHeight)
+		{
+			transform.position += deltaPosition;
+		}
     }
 
     void OnTouchDown(Touch touch)

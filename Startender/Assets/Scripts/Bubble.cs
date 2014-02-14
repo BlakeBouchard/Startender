@@ -4,12 +4,14 @@ using System.Collections;
 public class Bubble : MonoBehaviour {
 
     // Use this for initialization
-    void Start () {
+    void Start ()
+    {
         Debug.Log("New Bubble with Ingredient: " + getIngredient().name);
     }
     
     // Update is called once per frame
-    void Update () {
+    void Update ()
+    {
         //TODO: Fix garbage collection below
         //this.checkInBounds();
     }
@@ -23,11 +25,13 @@ public class Bubble : MonoBehaviour {
         }
     }
 
-    public Ingredient getIngredient() {
+    public Ingredient getIngredient() 
+    {
         return GetComponentInChildren<Ingredient>();
     }
 
-	public void Die(){
+	public void Die()
+    {
 		Destroy (gameObject);
 	}
 

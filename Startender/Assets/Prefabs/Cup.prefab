@@ -28,10 +28,10 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 400002}
-  - 68: {fileID: 6800000}
   - 114: {fileID: 11400004}
   - 82: {fileID: 8200002}
   - 50: {fileID: 5000002}
+  - 61: {fileID: 6100002}
   m_Layer: 0
   m_Name: Ingredient Collider
   m_TagString: Untagged
@@ -58,7 +58,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100002}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -.460000008, z: 0}
+  m_LocalPosition: {x: .0218009949, y: -.485434979, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 400000}
@@ -103,8 +103,8 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_Size: {x: .99000001, y: 1.20000005}
   m_Center: {x: -.00999999978, y: 0}
---- !u!68 &6800000
-EdgeCollider2D:
+--- !u!61 &6100002
+BoxCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -112,9 +112,8 @@ EdgeCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Points:
-  - {x: -.207689762, y: 0}
-  - {x: .263775349, y: .00271522999}
+  m_Size: {x: .419999987, y: .100000001}
+  m_Center: {x: 0, y: 0}
 --- !u!68 &6800002
 EdgeCollider2D:
   m_ObjectHideFlags: 1

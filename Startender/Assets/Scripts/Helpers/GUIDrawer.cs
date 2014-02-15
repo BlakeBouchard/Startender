@@ -115,8 +115,8 @@ public class GUIDrawer : MonoBehaviour
     //Added by Rebeca.
     public void drawDrinkFeedback()
     {
-        //Currently at the bottom but we can move it.
-        GUILayout.BeginArea(new Rect(Screen.width / 2 - this.menuXFromCenter, Screen.height - this.menuHeight, this.menuWidth, this.menuHeight));
+        //Currently at the bottom right but we can move it.
+        GUILayout.BeginArea(new Rect(Screen.width - this.menuWidth, Screen.height - this.menuHeight, this.menuWidth, this.menuHeight));
 
         GUILayout.Label("Finished Drink: " + drinkManager.getPrevDrinkName());
         int tip = GameManager.getPlayer().getLastTip();

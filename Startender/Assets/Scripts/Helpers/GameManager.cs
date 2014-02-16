@@ -88,6 +88,8 @@ public class GameManager : MonoBehaviour
 		switch(this.gameState) {
 		case GameState.Playing:
 			this.guiDrawer.drawHUD();
+                //Added by Rebeca.
+            this.guiDrawer.drawDrinkFeedback();
 			return;
 		case GameState.Menu:
 			this.guiDrawer.drawMainMenu();

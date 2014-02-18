@@ -11,8 +11,8 @@ GameObject:
   - 212: {fileID: 21200000}
   - 114: {fileID: 11400000}
   - 50: {fileID: 5000000}
-  - 68: {fileID: 6800002}
   - 61: {fileID: 6100000}
+  - 60: {fileID: 6000000}
   m_Layer: 0
   m_Name: Cup
   m_TagString: Untagged
@@ -58,7 +58,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100002}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: .0218009949, y: -.485434979, z: 0}
+  m_LocalPosition: {x: .0218009949, y: -.38100335, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 400000}
@@ -92,6 +92,55 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
+--- !u!60 &6000000
+PolygonCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Poly:
+    m_Paths:
+    - - {x: .449999988, y: .159999996}
+      - {x: .459999979, y: .239999995}
+      - {x: .479999989, y: .389999986}
+      - {x: .48999998, y: .469999999}
+      - {x: .5, y: .550000012}
+      - {x: .5, y: .599999964}
+      - {x: .379999995, y: .599999964}
+      - {x: .359999985, y: .560000002}
+      - {x: .349999994, y: .399999976}
+      - {x: .340000004, y: .319999993}
+      - {x: .329999983, y: .239999995}
+      - {x: .319999993, y: .159999996}
+      - {x: .310000002, y: .0799999982}
+      - {x: .289999992, y: -.0700000003}
+      - {x: .280000001, y: -.149999991}
+      - {x: .269999981, y: -.229999989}
+      - {x: .25999999, y: -.310000002}
+      - {x: .239999995, y: -.469999999}
+      - {x: .239999995, y: -.529999971}
+      - {x: -.179999992, y: -.529999971}
+      - {x: -.25999999, y: -.109999999}
+      - {x: -.289999992, y: .0599999987}
+      - {x: -.299999982, y: .159999996}
+      - {x: -.389999986, y: .560000002}
+      - {x: -.409999996, y: .599999964}
+      - {x: -.519999981, y: .599999964}
+      - {x: -.519999981, y: .550000012}
+      - {x: -.5, y: .399999976}
+      - {x: -.469999999, y: .299999982}
+      - {x: -.409999996, y: -.00999999978}
+      - {x: -.389999986, y: -.129999995}
+      - {x: -.370000005, y: -.229999989}
+      - {x: -.299999982, y: -.579999983}
+      - {x: -.289999992, y: -.599999964}
+      - {x: .349999994, y: -.599999964}
+      - {x: .359999985, y: -.550000012}
+      - {x: .399999976, y: -.239999995}
+      - {x: .439999998, y: .0799999982}
 --- !u!61 &6100000
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -112,22 +161,8 @@ BoxCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Size: {x: .419999987, y: .100000001}
+  m_Size: {x: .419999987, y: .310000002}
   m_Center: {x: 0, y: 0}
---- !u!68 &6800002
-EdgeCollider2D:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100000}
-  m_Enabled: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Points:
-  - {x: -.498226643, y: .596599817}
-  - {x: -.271631241, y: -.588475347}
-  - {x: .327550411, y: -.590871692}
-  - {x: .477170944, y: .60010916}
 --- !u!82 &8200002
 AudioSource:
   m_ObjectHideFlags: 1

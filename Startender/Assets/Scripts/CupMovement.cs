@@ -54,24 +54,6 @@ public class CupMovement : MonoBehaviour {
         }
     }
 
-    private void DoubleTouch()
-    {
-
-        //get our two touch positions
-        Vector3 leftTouch = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
-        Vector3 rightTouch = Camera.main.ScreenToWorldPoint(Input.GetTouch(1).position);
-
-        //determine if left is actually left
-        if (leftTouch.x > rightTouch.x) {
-            Vector3 temp = leftTouch;
-            leftTouch = rightTouch;
-            rightTouch = temp;
-        }
-
-        //TODO: figure out the god damn math to pivot/rotate the cup based on double touch turning
-
-    }
-
     private void OnMouseDown()
     {
         previousPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -91,4 +73,24 @@ public class CupMovement : MonoBehaviour {
     void Update () {
 
     }
+
+    /*
+    private void DoubleTouch()
+    {
+
+        //get our two touch positions
+        Vector3 leftTouch = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
+        Vector3 rightTouch = Camera.main.ScreenToWorldPoint(Input.GetTouch(1).position);
+
+        //determine if left is actually left
+        if (leftTouch.x > rightTouch.x) {
+            Vector3 temp = leftTouch;
+            leftTouch = rightTouch;
+            rightTouch = temp;
+        }
+
+        //TODO: figure out the god damn math to pivot/rotate the cup based on double touch turning
+
+    }
+    */
 }

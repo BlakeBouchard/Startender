@@ -8,6 +8,9 @@ public class DrinkManager : MonoBehaviour {
 	private List<Drink> drinkList;
 	private Drink currentDrink;
 
+    //Added by Rebeca. The previous drink name, saved for feedback.
+    private String prevDrinkName = "";
+
 	private int maxTip = 20;
 
     void Start()
@@ -17,6 +20,11 @@ public class DrinkManager : MonoBehaviour {
         {
             Debug.Log(drink.name + ": " + drink.getFormattedIngredients());
         }
+    }
+
+    //Added by Rebeca.
+    public String getPrevDrinkName() {
+        return this.prevDrinkName;
     }
 
 	public Drink getCurrentDrink() {
@@ -31,6 +39,16 @@ public class DrinkManager : MonoBehaviour {
 	// selects random drink from the drink array list
 	public void setNextDrink() 
     {
+        //Added by Rebeca.
+        if (this.currentDrink == null)
+        {
+            this.prevDrinkName = "";
+        }
+        else
+        {
+            this.prevDrinkName = this.currentDrink.name;
+        }
+
 		int randomNumber = getRandomNumber(drinkList.Count);
 		this.currentDrink = this.drinkList[randomNumber];
 	}

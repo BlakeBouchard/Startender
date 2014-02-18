@@ -6,7 +6,7 @@ public class Bubble : MonoBehaviour {
     // Use this for initialization
     void Start ()
     {
-        Debug.Log("New Bubble with Ingredient: " + getIngredient().name);
+        Debug.Log("New Bubble with Ingredient: " + GetIngredient().name);
     }
     
     // Update is called once per frame
@@ -16,6 +16,7 @@ public class Bubble : MonoBehaviour {
         //this.checkInBounds();
     }
 
+    /*
     private void checkInBounds() {
         Vector3 pos = transform.position;
         if (pos.x > Screen.width) {
@@ -24,8 +25,9 @@ public class Bubble : MonoBehaviour {
             Destroy(this.gameObject);
         }
     }
+    */
 
-    public Ingredient getIngredient() 
+    public Ingredient GetIngredient() 
     {
         return GetComponentInChildren<Ingredient>();
     }

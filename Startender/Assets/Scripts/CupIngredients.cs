@@ -27,11 +27,11 @@ public class CupIngredients : MonoBehaviour {
             Debug.Log("Trigger detected from: " + collider.gameObject.name);
             Bubble bubble = collider.gameObject.GetComponent<Bubble>();
 
-            if (bubble != null && bubble.getIngredient() != null)
+            if (bubble != null && bubble.GetIngredient() != null)
             {
                 //Add ingredient to list organized.
-                ingredientList.Add(bubble.getIngredient());
-                bubble.getIngredient().transform.parent = transform;
+                ingredientList.Add(bubble.GetIngredient());
+                bubble.GetIngredient().transform.parent = transform;
 
                 Destroy(collider.gameObject);
                 audio.Play();

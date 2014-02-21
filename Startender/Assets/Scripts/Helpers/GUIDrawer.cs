@@ -111,6 +111,21 @@ public class GUIDrawer : MonoBehaviour
 
 		GUILayout.EndArea();
 	}
+
+    //Added by Rebeca.
+    public void drawDrinkFeedback()
+    {
+        //Currently at the bottom right but we can move it.
+        GUILayout.BeginArea(new Rect(Screen.width - this.menuWidth, Screen.height - this.menuHeight, this.menuWidth, this.menuHeight));
+
+        GUILayout.Label("Finished Drink: " + drinkManager.getPrevDrinkName());
+        int tip = GameManager.getPlayer().getLastTip();
+        GUILayout.Label("Tip: $" + tip);
+        //TODO: we should pull in a random phrase from a text file.
+        GUILayout.Label("Feedback: " + (tip == 0 ? "" : (tip > 0 ? "Ah, that really hit the sun spot." : "What? That wasn't what I ordered!") ));
+
+        GUILayout.EndArea();
+    }
 	
 	private void drawBaseMenu() {
 		GUILayout.Label("Startender!");

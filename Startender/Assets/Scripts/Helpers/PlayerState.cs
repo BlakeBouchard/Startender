@@ -9,9 +9,13 @@ public class PlayerState
 	private int drinksServed;
 	private int tipsEarned;
 
+    //Added by Rebeca. Last tip amount earned.
+    private int lastTip;
+
 	public PlayerState() {
 		this.starBucks = 40;
 		this.tipsEarned = 0;
+        this.lastTip = 0;
 	}
 
 	public int getDrinkCount() {
@@ -33,8 +37,15 @@ public class PlayerState
 	}
 
 	public void addTip(int tipValue) {
+        //First line added by Rebeca.
+        this.lastTip = tipValue;
 		this.tipsEarned += tipValue;
 	}
+
+    //Added by Rebeca.
+    public int getLastTip() {
+        return this.lastTip;
+    }
 
 	public int getTipsEarned() {
 		return this.tipsEarned;

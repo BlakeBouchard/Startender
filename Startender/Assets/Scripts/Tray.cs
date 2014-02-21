@@ -15,6 +15,7 @@ public class Tray : MonoBehaviour
     {
         if (collider.gameObject.name == "Ingredient Collider")
         {
+			Debug.Log("Cup On Tray");
 
             CupIngredients cupIngredients = collider.GetComponent<CupIngredients>();
             if (cupIngredients.GetIngredientCount() > 0)

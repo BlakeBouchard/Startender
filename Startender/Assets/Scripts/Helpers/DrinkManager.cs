@@ -50,6 +50,7 @@ public class DrinkManager : MonoBehaviour {
         }
 
 		int randomNumber = getRandomNumber(drinkList.Count);
+		Debug.Log(randomNumber);
 		this.currentDrink = this.drinkList[randomNumber];
 	}
 	

@@ -31,12 +31,25 @@ public class CupIngredients : MonoBehaviour {
             {
                 //Add ingredient to list organized.
                 ingredientList.Add(bubble.GetIngredient());
-                bubble.GetIngredient().transform.parent = transform;
+                bubble.GetIngredient().transform.parent = this.transform;
 
                 Destroy(collider.gameObject);
                 audio.Play();
             }
-        }
+		} else if(collider.tag == "Garnish")
+		{
+			Debug.Log("Trigger detected from: " + collider.gameObject.name);
+			Garnish garnish = collider.gameObject.GetComponent<Garnish>();
+			
+			if (garnish != null && garnish.GetIngredient() != null)
+			{
+				//Add ingredient to list organized.
+				ingredientList.Add(garnish.GetIngredient());
+				garnish.GetIngredient().transform.parent = this.transform;
+
+				audio.Play();
+			}
+		}
     }
 
     public void ResetIngredients()

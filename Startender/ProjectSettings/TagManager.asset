@@ -3,6 +3,11 @@
 --- !u!78 &1
 TagManager:
   tags:
+  - Bubble
+  - Ingredient
+  - Cup
+  - Tray
+  - Drink Recipe
   - 
   Builtin Layer 0: Default
   Builtin Layer 1: TransparentFX

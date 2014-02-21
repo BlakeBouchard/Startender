@@ -15,17 +15,27 @@ public class CupIngredients : MonoBehaviour {
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("Trigger detected from: " + collision.gameObject.name);
-        Bubble bubble = collision.gameObject.GetComponent<Bubble>();
+        if (collision.collider.tag == "Bubble") {
+            OnTriggerEnter2D(collision.collider);
+        }
+    }
 
-        if (bubble != null && bubble.getIngredient() != null)
+    void OnTriggerEnter2D(Collider2D collider)
+    {
+        if (collider.tag == "Bubble")
         {
-            //Add ingredient to list organized.
-            ingredientList.Add(bubble.getIngredient());
-            bubble.getIngredient().transform.parent = transform;
+            Debug.Log("Trigger detected from: " + collider.gameObject.name);
+            Bubble bubble = collider.gameObject.GetComponent<Bubble>();
 
-            Destroy(collision.gameObject);
-            audio.Play();
+            if (bubble != null && bubble.GetIngredient() != null)
+            {
+                //Add ingredient to list organized.
+                ingredientList.Add(bubble.GetIngredient());
+                bubble.GetIngredient().transform.parent = transform;
+
+                Destroy(collider.gameObject);
+                audio.Play();
+            }
         }
     }
 

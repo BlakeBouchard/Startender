@@ -6,7 +6,6 @@ public class SliderDrag : MonoBehaviour {
     private Vector3 startPosition;
     public bool rightToLeft = true;
     
-    // TODO: Beep boop
     // Set this if we want the slider to snap back to its original position on release
     public bool snapsBack = false;
 

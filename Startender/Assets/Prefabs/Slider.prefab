@@ -107,7 +107,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 142d732db59639b479a02d5cde06230c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  horizontal: 1
+  rightToLeft: 1
   snapsBack: 0
 --- !u!212 &21200000
 SpriteRenderer:

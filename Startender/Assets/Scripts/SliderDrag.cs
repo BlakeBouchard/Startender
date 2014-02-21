@@ -6,6 +6,7 @@ public class SliderDrag : MonoBehaviour {
     private Vector3 startPosition;
     public bool rightToLeft = true;
     
+    // TODO: Beep boop
     // Set this if we want the slider to snap back to its original position on release
     public bool snapsBack = false;
 
@@ -22,6 +23,7 @@ public class SliderDrag : MonoBehaviour {
     }
 
     // This code should handle moving the slider from left to right
+    // The position should be sent in world coordinates, ie. converted from camera coordinates
     void MoveSliderHorizontally (Vector3 newPosition)
     {
         if ((rightToLeft && newPosition.x < startPosition.x) || (!rightToLeft && newPosition.x > startPosition.x))

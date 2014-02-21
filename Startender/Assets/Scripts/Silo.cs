@@ -19,18 +19,16 @@ public class Silo : MonoBehaviour {
 	public bool coolDown = false;
 	public bool lidOpen = false;
 
-	public float coolDownTimer = 0.0f;
+	
 	public float coolDownTime = 8.0f;
-	public float fireDelayTimer = 0.0f;
+	public float coolDownTimer = 8.0f;
+	public float fireDelayTimer = 2.0f;
 	public float fireDelayTime = 2.0f;
 
 	public GameObject lid;
 
 	// Use this for initialization
-	void Start () {
-		this.resetCoolDownTimer();
-		this.resetFireDelay();
-	}
+	void Start () {}
 	
 	public void fireGarnish()
 	{
@@ -61,7 +59,6 @@ public class Silo : MonoBehaviour {
 
 	private void startCoolDown() {
 		this.resetFireDelay();
-		this.resetCoolDownTimer();
 
 		this.coolDown = true;
 		this.activated = false;
@@ -77,7 +74,10 @@ public class Silo : MonoBehaviour {
 			lid.transform.Rotate(0, 0, rotAngle * Time.deltaTime);
 		} else {
 			float rotAngle = maxAngle / this.coolDownTime;
-			lid.transform.Rotate(0, 0, rotAngle * -1.0f * Time.deltaTime);
+			Debug.Log(rotAngle);
+			float rotAmount = rotAngle * -1.0f * Time.deltaTime;
+			Debug.Log(rotAmount);
+			lid.transform.Rotate(0, 0, rotAmount);
 		}
 
 	}
@@ -107,6 +107,7 @@ public class Silo : MonoBehaviour {
 
 			if(this.coolDownTimer <= 0.0f) {
 				this.coolDown = false;
+				this.resetCoolDownTimer();
 			}
 		}
 	}

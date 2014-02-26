@@ -14,7 +14,6 @@ public class BubbleCleanup : MonoBehaviour {
 	}
 	
 	void OnTriggerEnter2D(Collider2D other){
-		Debug.Log ("GET TO THA TRIGGER!!!");
 		Bubble bubble = other.GetComponent<Bubble> ();
 		if (bubble) {
 			bubble.Die();

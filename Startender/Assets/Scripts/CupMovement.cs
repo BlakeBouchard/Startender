@@ -7,35 +7,39 @@ public class CupMovement : MonoBehaviour {
 
     public float rotateThreshold = 0.03f;
 
+	GameObject gameManager;
+	GameManager gameManagerScript;
+
     // Use this for initialization
     void Start ()
     {
-        
-    }
-
-    private void MoveCup(Vector3 startPoint, Vector3 endPoint)
+		gameManager = GameObject.Find("Game Manager");
+		gameManagerScript = (GameManager) gameManager.GetComponent(typeof(GameManager));
+	}
+	
+	private void MoveCup(Vector3 startPoint, Vector3 endPoint)
     {
-        Vector3 deltaPosition = endPoint - startPoint;
+		if (gameManagerScript.getGameState () == GameManager.GameState.Playing) {
+			Vector3 deltaPosition = endPoint - startPoint;
 
-        // Get rotation
-        if (Mathf.Abs(deltaPosition.x) > rotateThreshold && Mathf.Abs(deltaPosition.y) > rotateThreshold)
-        {
-            float angle = Mathf.Rad2Deg * Mathf.Atan2(deltaPosition.y, deltaPosition.x);
-            transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle - 90));
-        }
+			// Get rotation
+			if (Mathf.Abs (deltaPosition.x) > rotateThreshold && Mathf.Abs (deltaPosition.y) > rotateThreshold) {
+					float angle = Mathf.Rad2Deg * Mathf.Atan2 (deltaPosition.y, deltaPosition.x);
+					transform.rotation = Quaternion.Euler (new Vector3 (0, 0, angle - 90));
+			}
 
-		float posHeight = Camera.main.orthographicSize; 		// Top
-		float negHeight = posHeight * -1f;						// Bottom
-		float posWidth = posHeight * Camera.main.aspect;		// Right
-		float negWidth = posWidth * -1f;						// Left
+			float posHeight = Camera.main.orthographicSize; 		// Top
+			float negHeight = posHeight * -1f;						// Bottom
+			float posWidth = posHeight * Camera.main.aspect;		// Right
+			float negWidth = posWidth * -1f;						// Left
 
-        // Set position
-		if (endPoint.x < posWidth &&
-		    endPoint.x > negWidth &&
-		    endPoint.y < posHeight &&
-		    endPoint.y > negHeight)
-		{
-			transform.position += deltaPosition;
+			// Set position
+			if (endPoint.x < posWidth &&
+				endPoint.x > negWidth &&
+				endPoint.y < posHeight &&
+				endPoint.y > negHeight) {
+					transform.position += deltaPosition;
+			}
 		}
     }
 

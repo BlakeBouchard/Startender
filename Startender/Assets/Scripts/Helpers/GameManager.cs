@@ -3,8 +3,8 @@ using System.Collections;
 
 public class GameManager : MonoBehaviour
 {
-	private enum GameState { Playing, Paused, Menu, RoundOver }
-	private GameState gameState;
+	public enum GameState { Playing, Paused, Menu, RoundOver }
+	public GameState gameState;
 	public float roundTime;
 
 	private static PlayerState player;
@@ -50,6 +50,10 @@ public class GameManager : MonoBehaviour
 
 	public float getRoundTime() {
 		return this.roundTime;
+	}
+
+	public GameState getGameState() {
+		return gameState;
 	}
 	
 	// Use this for initialization

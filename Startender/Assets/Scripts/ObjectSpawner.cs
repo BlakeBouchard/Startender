@@ -1,34 +1,19 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class ObjectSpawner : MonoBehaviour {
 
-    public Transform cannonPrefab;
-    public Transform cupPrefab;
-    public Transform trayPrefab;
+    public Transform[] prefabs;
     
     // Use this for initialization
 	void Start ()
     {
-        InstantiateCannon();
-        InstantiateCup();
-        InstantiateTray();
+        foreach (Transform prefab in prefabs)
+        {
+            Instantiate(prefab);
+        }
 	}
-
-    private void InstantiateCannon()
-    {
-        Instantiate(cannonPrefab);
-    }
-
-    private void InstantiateCup()
-    {
-        Instantiate(cupPrefab);
-    }
-
-    private void InstantiateTray()
-    {
-        Instantiate(trayPrefab);
-    }
 	
 	// Update is called once per frame
 	void Update ()

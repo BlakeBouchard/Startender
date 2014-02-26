@@ -11,13 +11,14 @@ public class ObjectSpawner : MonoBehaviour {
     {
         foreach (Transform prefab in prefabs)
         {
-            Instantiate(prefab);
+            Transform clone = Instantiate(prefab) as Transform;
+            clone.name = prefab.name;
         }
-	}
+    }
 	
 	// Update is called once per frame
 	void Update ()
     {
 	
-	}
+    }
 }

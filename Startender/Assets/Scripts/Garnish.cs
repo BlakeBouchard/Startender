@@ -20,5 +20,10 @@ public class Garnish : MonoBehaviour
 	{
 		return GetComponentInChildren<Ingredient>();
 	}
+
+	public void Die()
+	{
+		Destroy (gameObject);
+	}
 }
 

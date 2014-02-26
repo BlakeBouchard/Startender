@@ -24,11 +24,17 @@ public class Cannon : MonoBehaviour {
 
 	private Queue<Transform> bubbleQueue;
 
+	GameObject gameManager;
+	GameManager gameManagerScript;
+
 	// Use this for initialization
 	void Start () {
 		this.resetFireDelay();
 
 		bubbleQueue = new Queue<Transform>();
+
+		gameManager = GameObject.Find("Game Manager");
+		gameManagerScript = (GameManager) gameManager.GetComponent(typeof(GameManager));
 	}
 
     public void fireBubble(Transform bubbleObj)
@@ -103,6 +109,12 @@ public class Cannon : MonoBehaviour {
 		}
 
         IncrementAngle();
+
+		if (gameManagerScript.getGameState () == GameManager.GameState.RoundOver
+		    && this.bubbleQueue.Count > 0) {
+			Debug.Log("Clearing bubble queue");
+			this.bubbleQueue.Clear();	
+		}
 
 	}
 }

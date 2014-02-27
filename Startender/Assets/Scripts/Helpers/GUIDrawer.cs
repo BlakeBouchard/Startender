@@ -126,7 +126,7 @@ public class GUIDrawer : MonoBehaviour
 
         GUILayout.EndArea();
     }
-	
+
 	private void drawBaseMenu() {
 		GUILayout.Label("Startender!");
 		GUILayout.Space(10.0f);

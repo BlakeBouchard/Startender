@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour
 
 	public void startGame() {
 
+		Application.LoadLevel("mainscene");
+
 		Debug.Log("Starting game");
 		Time.timeScale = 1;
 
@@ -28,6 +30,7 @@ public class GameManager : MonoBehaviour
 	public void endRound() {
 		Time.timeScale = 0;
 		this.gameState = GameState.RoundOver;
+		Application.LoadLevel("rpg");
 	}
 
 	public void resumeRound() {
@@ -86,26 +89,27 @@ public class GameManager : MonoBehaviour
 	
 	void OnGUI() {
 		switch(this.gameState) {
-		case GameState.Playing:
-			this.guiDrawer.drawHUD();
-                //Added by Rebeca.
-            this.guiDrawer.drawDrinkFeedback();
-			return;
-		case GameState.Menu:
-			this.guiDrawer.drawMainMenu();
-			break;
-		case GameState.Paused:
-			this.guiDrawer.drawPauseMenu();
-			break;
-		case GameState.RoundOver:
-			this.guiDrawer.drawRoundStats();
-			break;
+			case GameState.Playing:
+				this.guiDrawer.drawHUD();
+	                //Added by Rebeca.
+	            this.guiDrawer.drawDrinkFeedback();
+				return;
+			case GameState.Menu:
+				this.guiDrawer.drawMainMenu();
+				break;
+			case GameState.Paused:
+				this.guiDrawer.drawPauseMenu();
+				break;
+			case GameState.RoundOver:
+				this.guiDrawer.drawRoundStats();
+				break;
 		}
 	}
 
 	public static PlayerState getPlayer() {
 		if(GameManager.player == null) {
 			GameManager.player = new PlayerState();
+			DontDestroyOnLoad(GameManager.player);
 		}
 
 		return GameManager.player;

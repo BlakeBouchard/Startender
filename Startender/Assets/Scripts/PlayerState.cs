@@ -19,20 +19,17 @@ public class PlayerState
 	//round specific stats
 	private int drinksServed;
 	private int tipsEarned;
-
-<<<<<<< HEAD
+	
 	private Dictionary<string,int> roundCosts;
-=======
+
     //Added by Rebeca. Last tip amount earned.
     private int lastTip;
->>>>>>> master
 
 	public PlayerState() {
 		//base stats
 		this.difficulty = 1;
 		this.starBucks = 40;
 		this.tipsEarned = 0;
-<<<<<<< HEAD
 		this.rest = 10;
 		this.gpa = 3.0f;
 
@@ -42,9 +39,8 @@ public class PlayerState
 		baseTuition = 5;
 
 		roundCosts = new Dictionary<string,int>();
-=======
+
         this.lastTip = 0;
->>>>>>> master
 	}
 
 	//GAME ROUND METHODS

@@ -57,7 +57,7 @@ public class GameManager : MonoBehaviour
 
 	public void ResetRound() {
 		this.ResetRoundTime();
-		GameManager.GetPlayer().resetRound();
+		GameManager.GetPlayer().ResetRound();
 	
 		//restart the game
 		Time.timeScale = 1;

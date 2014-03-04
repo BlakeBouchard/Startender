@@ -18,40 +18,40 @@ public class PlayerState
         this.lastTip = 0;
 	}
 
-	public int getDrinkCount() {
+	public int GetDrinkCount() {
 		return this.drinksServed;
 	}
 
-	public void incrementDrinkCount() {
+	public void IncrementDrinkCount() {
 		this.drinksServed++;
 	}
 
-	public void endRound() {
+	public void EndRound() {
 		this.starBucks += this.tipsEarned;
 		this.tipsEarned = 0;
 		this.drinksServed = 0;
 	}
 
-	public void resetRound() {
+	public void ResetRound() {
 		this.tipsEarned = 0;
 	}
 
-	public void addTip(int tipValue) {
+	public void AddTip(int tipValue) {
         //First line added by Rebeca.
         this.lastTip = tipValue;
 		this.tipsEarned += tipValue;
 	}
 
     //Added by Rebeca.
-    public int getLastTip() {
+    public int GetLastTip() {
         return this.lastTip;
     }
 
-	public int getTipsEarned() {
+	public int GetTipsEarned() {
 		return this.tipsEarned;
 	}
 	
-	public int getStarbucks() {
+	public int GetStarBucks() {
 		return this.starBucks;
 	}
 }

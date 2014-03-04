@@ -23,7 +23,7 @@ public class BubbleButton : MonoBehaviour {
     {
         Debug.Log("Touched Bubble Button");
 		if (gameManagerScript.GetGameState () == GameManager.GameState.Playing) {
-			cannonScript.loadBubble (bubble);
+			cannonScript.LoadBubble (bubble);
 		}
     }
 
@@ -34,7 +34,7 @@ public class BubbleButton : MonoBehaviour {
 		if (Input.touchCount == 0 && gameManagerScript.GetGameState () == GameManager.GameState.Playing)
         {
             Debug.Log("Clicked Bubble Button");
-            cannonScript.loadBubble(bubble);
+            cannonScript.LoadBubble(bubble);
         }
     }
 	

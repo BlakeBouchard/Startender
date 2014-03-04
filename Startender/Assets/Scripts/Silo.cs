@@ -30,7 +30,7 @@ public class Silo : MonoBehaviour {
 	// Use this for initialization
 	void Start () {}
 	
-	public void fireGarnish()
+	public void FireGarnish()
 	{
 		Transform missle = Instantiate(garnish, new Vector3(transform.position.x, transform.position.y, transform.position.z + 2), Quaternion.identity) as Transform;
 		missle.gameObject.rigidbody2D.velocity = new Vector2(0.0f, this.startMissleSpeed);
@@ -38,11 +38,11 @@ public class Silo : MonoBehaviour {
 		missle.gameObject.rigidbody2D.gravityScale = gravityScale;
 	}
 	
-	private void resetFireDelay() {
+	private void ResetFireDelay() {
 		this.fireDelayTimer = this.fireDelayTime;
 	}
 
-	private void resetCoolDownTimer() {
+	private void ResetCoolDownTimer() {
 		this.coolDownTimer = this.coolDownTime;
 	}
 
@@ -57,15 +57,15 @@ public class Silo : MonoBehaviour {
 
 	}
 
-	private void startCoolDown() {
-		this.resetFireDelay();
+	private void StartCoolDown() {
+		this.ResetFireDelay();
 
 		this.coolDown = true;
 		this.activated = false;
 		this.lidOpen = false;
 	}
 
-	private void rotateLid() {
+	private void RotateLid() {
 
 		float maxAngle = 190.0f;
 
@@ -82,12 +82,12 @@ public class Silo : MonoBehaviour {
 
 	}
 	
-	private void fireIfReady() {
+	private void FireIfReady() {
 		
 		//if we've reached the delay, fire
 		if(this.fireDelayTimer <= 0.0f) {
-			this.fireGarnish();
-			this.startCoolDown();
+			this.FireGarnish();
+			this.StartCoolDown();
 		} else {
 			//this.rotateLid();
 		}
@@ -98,7 +98,7 @@ public class Silo : MonoBehaviour {
 	void Update () {
 		if(this.activated) {
 			this.fireDelayTimer -= Time.deltaTime;
-			this.fireIfReady();
+			this.FireIfReady();
 		}
 
 		if(this.coolDown) {
@@ -107,7 +107,7 @@ public class Silo : MonoBehaviour {
 
 			if(this.coolDownTimer <= 0.0f) {
 				this.coolDown = false;
-				this.resetCoolDownTimer();
+				this.ResetCoolDownTimer();
 			}
 		}
 	}

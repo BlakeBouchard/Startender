@@ -86,26 +86,26 @@ public class GUIDrawer : MonoBehaviour
 	public void drawHUD() {
 		roundTime.text = "Time Left: " + gameManager.GetRoundTime().ToString("F0");
 
-		Drink currentDrink = drinkManager.getCurrentDrink();
-		currentOrder.text = "Order: " + currentDrink.getDrinkName() + " - " + currentDrink.getFormattedIngredients();
+		Drink currentDrink = drinkManager.GetCurrentDrink();
+		currentOrder.text = "Order: " + currentDrink.GetDrinkName() + " - " + currentDrink.GetFormattedIngredients();
 
 		PlayerState player = GameManager.GetPlayer();
 
-		tipsEarned.text = "Tips: $" + player.getTipsEarned();
-		drinksServed.text = "Drinks Served: " + player.getDrinkCount();
+		tipsEarned.text = "Tips: $" + player.GetTipsEarned();
+		drinksServed.text = "Drinks Served: " + player.GetDrinkCount();
 
 	}
 
 	public void drawRoundStats() {
 		GUILayout.BeginArea(new Rect(Screen.width / 2 - this.menuXFromCenter, Screen.height /2 - this.menuYFromCenter, this.menuWidth, this.menuHeight));
 
-		GUILayout.Label("Drinks Served: " + GameManager.GetPlayer().getDrinkCount());
-		GUILayout.Label("Tips: $" + GameManager.GetPlayer().getTipsEarned());
-		GUILayout.Label("Starbucks: $" + GameManager.GetPlayer().getStarbucks());
+		GUILayout.Label("Drinks Served: " + GameManager.GetPlayer().GetDrinkCount());
+		GUILayout.Label("Tips: $" + GameManager.GetPlayer().GetTipsEarned());
+		GUILayout.Label("Starbucks: $" + GameManager.GetPlayer().GetStarBucks());
 
 		if(GUILayout.Button("Next Round")) {
 			Debug.Log ("Resetting Round");
-			GameManager.GetPlayer().endRound();
+			GameManager.GetPlayer().EndRound();
 			gameManager.ResetRound();
 		}
 
@@ -118,8 +118,8 @@ public class GUIDrawer : MonoBehaviour
         //Currently at the bottom right but we can move it.
         GUILayout.BeginArea(new Rect(Screen.width - this.menuWidth, Screen.height - this.menuHeight, this.menuWidth, this.menuHeight));
 
-        GUILayout.Label("Finished Drink: " + drinkManager.getPrevDrinkName());
-        int tip = GameManager.GetPlayer().getLastTip();
+        GUILayout.Label("Finished Drink: " + drinkManager.GetPrevDrinkName());
+        int tip = GameManager.GetPlayer().GetLastTip();
         GUILayout.Label("Tip: $" + tip);
         //TODO: we should pull in a random phrase from a text file.
         GUILayout.Label("Feedback: " + (tip == 0 ? "" : (tip > 0 ? "Ah, that really hit the sun spot." : "What? That wasn't what I ordered!") ));

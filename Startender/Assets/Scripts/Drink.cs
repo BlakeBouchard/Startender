@@ -12,7 +12,7 @@ public class Drink : MonoBehaviour
         ingredients = GetComponentsInChildren<Ingredient>();
     }
 
-	public string getFormattedIngredients()
+	public string GetFormattedIngredients()
     {
 		string formatted = "";
 
@@ -29,22 +29,22 @@ public class Drink : MonoBehaviour
 		return formatted;
 	}
 
-	public Ingredient[] getIngredients()
+	public Ingredient[] GetIngredients()
     {
 		return this.ingredients;
 	}
 
-	public int getIngredientCount()
+	public int GetIngredientCount()
     {
 		return this.ingredients.Length;
 	}
 
-    public string getDrinkName()
+    public string GetDrinkName()
     {
         return name;
     }
 
-    public float getDifficulty()
+    public float GetDifficulty()
     {
         return this.difficulty;
     }

@@ -19,10 +19,10 @@ public class Tray : MonoBehaviour
             CupIngredients cupIngredients = collider.GetComponent<CupIngredients>();
             if (cupIngredients.GetIngredientCount() > 0)
             {
-                int tip = drinkManager.finishAndTip(cupIngredients.GetIngredients());
+                int tip = drinkManager.FinishAndTip(cupIngredients.GetIngredients());
                 cupIngredients.ResetIngredients();
-                GameManager.GetPlayer().addTip(tip);
-                GameManager.GetPlayer().incrementDrinkCount();
+                GameManager.GetPlayer().AddTip(tip);
+                GameManager.GetPlayer().IncrementDrinkCount();
                 audio.Play();
             }
         }

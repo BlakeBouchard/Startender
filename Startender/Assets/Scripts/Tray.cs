@@ -38,11 +38,13 @@ public class Tray : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
-	    // Saying the hell with it
+	    /*
+        // This should not be necessary now that the tray works
         if (Input.GetKeyDown(KeyCode.T))
         {
             OnTriggerEnter2D(GameObject.Find("Ingredient Collider").collider2D);
         }
+        */
 	}
 
 }

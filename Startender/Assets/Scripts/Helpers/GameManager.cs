@@ -30,11 +30,6 @@ public class GameManager : MonoBehaviour
         this.guiDrawer.SetManagers(this, this.drinkManager);
     }
 
-    void Awake()
-    {
-        DontDestroyOnLoad(this);
-    }
-
 	public void StartGame() {
 
 		Debug.Log("Starting game");

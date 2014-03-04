@@ -9,8 +9,15 @@ public class NextScene : MonoBehaviour {
 	
 	}
 
+    void OnTouchDown(Touch touch)
+    {
+        OnMouseDown();
+    }
+
+    // Called when mouse clicks a collider attached to this object
     void OnMouseDown()
     {
+        // Go forward one level
         Application.LoadLevel(Application.loadedLevel + 1);
     }
 	

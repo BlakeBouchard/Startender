@@ -5,9 +5,11 @@ public class GameManager : MonoBehaviour
 {
 	public enum GameState { Playing, Paused, Menu, RoundOver }
 	public GameState gameState;
-	public float roundTime;
+    
+    public float maxRoundTime = 90.0f;
+	private float roundTime;
 
-	private static PlayerState player;
+    private PlayerState player;
 
 	private GUIDrawer guiDrawer;
 	private DrinkManager drinkManager;
@@ -17,14 +19,15 @@ public class GameManager : MonoBehaviour
     {
         this.drinkManager = this.GetComponentInChildren<DrinkManager>();
         this.gameState = GameState.Menu;
-        this.roundTime = 90.0f;
+        this.roundTime = maxRoundTime;
+        this.player = GameObject.FindObjectOfType<PlayerState>();
 
         Time.timeScale = 0;
 
         //Get HUD Manager
         GameObject gui = GameObject.Find("GUIDrawer");
         this.guiDrawer = (GUIDrawer)gui.GetComponent(typeof(GUIDrawer));
-        this.guiDrawer.setManagers(this, this.drinkManager);
+        this.guiDrawer.SetManagers(this, this.drinkManager);
     }
 
     void Awake()
@@ -57,7 +60,7 @@ public class GameManager : MonoBehaviour
 
 	public void ResetRound() {
 		this.ResetRoundTime();
-		GameManager.GetPlayer().ResetRound();
+		player.ResetRound();
 	
 		//restart the game
 		Time.timeScale = 1;
@@ -95,32 +98,20 @@ public class GameManager : MonoBehaviour
 	void OnGUI() {
 		switch(this.gameState) {
 		case GameState.Playing:
-			this.guiDrawer.drawHUD();
+			this.guiDrawer.DrawHUD();
                 //Added by Rebeca.
-            this.guiDrawer.drawDrinkFeedback();
+            this.guiDrawer.DrawDrinkFeedback();
 			return;
 		case GameState.Menu:
-			this.guiDrawer.drawMainMenu();
+			this.guiDrawer.DrawMainMenu();
 			break;
 		case GameState.Paused:
-			this.guiDrawer.drawPauseMenu();
+			this.guiDrawer.DrawPauseMenu();
 			break;
 		case GameState.RoundOver:
-			this.guiDrawer.drawRoundStats();
+			this.guiDrawer.DrawRoundStats();
 			break;
 		}
-	}
-
-	public static PlayerState GetPlayer() {
-		if(GameManager.player == null) {
-			GameManager.player = new PlayerState();
-		}
-
-		return GameManager.player;
-	}
-	
-	public static void DestroyPlayer() {
-		GameManager.player = null;
 	}
 	
 }

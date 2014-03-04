@@ -4,11 +4,13 @@ using System.Collections;
 public class Tray : MonoBehaviour
 {
     private DrinkManager drinkManager;
+    private PlayerState player;
 
 	// Use this for initialization
 	void Start ()
 	{
-        drinkManager = GameObject.Find("Drink Manager").GetComponent<DrinkManager>();
+        this.drinkManager = GameObject.Find("Drink Manager").GetComponent<DrinkManager>();
+        this.player = GameObject.Find("Player").GetComponent<PlayerState>();
 	}
 
     void OnTriggerEnter2D(Collider2D collider)
@@ -21,8 +23,8 @@ public class Tray : MonoBehaviour
             {
                 int tip = drinkManager.FinishAndTip(cupIngredients.GetIngredients());
                 cupIngredients.ResetIngredients();
-                GameManager.GetPlayer().AddTip(tip);
-                GameManager.GetPlayer().IncrementDrinkCount();
+                player.AddTip(tip);
+                player.IncrementDrinkCount();
                 audio.Play();
             }
         }

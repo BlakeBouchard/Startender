@@ -1301,6 +1301,45 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 849ed3ff4d1d74541a860a6e98c46c50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &937870934
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 100000, guid: 7bd37c9ea989fce4a858ca192119f1da, type: 2}
+  m_PrefabInternal: {fileID: 1112066316}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 937870936}
+  - 114: {fileID: 937870935}
+  m_Layer: 0
+  m_Name: Player
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &937870935
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400000, guid: 7bd37c9ea989fce4a858ca192119f1da,
+    type: 2}
+  m_PrefabInternal: {fileID: 1112066316}
+  m_GameObject: {fileID: 937870934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1975661d1d841483eb3f69950ace54db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &937870936
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 400000, guid: 7bd37c9ea989fce4a858ca192119f1da, type: 2}
+  m_PrefabInternal: {fileID: 1112066316}
+  m_GameObject: {fileID: 937870934}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
 --- !u!1001 &939414449
 Prefab:
   m_ObjectHideFlags: 0
@@ -1382,6 +1421,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   liquid: 0
   drinkColor: {r: 0, g: 0, b: 0, a: 0}
+--- !u!1001 &1112066316
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 7bd37c9ea989fce4a858ca192119f1da, type: 2}
+  m_RootGameObject: {fileID: 937870934}
+  m_IsPrefabParent: 0
+  m_IsExploded: 1
 --- !u!1001 &1233658183
 Prefab:
   m_ObjectHideFlags: 0
@@ -1677,7 +1728,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameState: 0
-  roundTime: 90
+  maxRoundTime: 90
 --- !u!4 &1453596064
 Transform:
   m_ObjectHideFlags: 0

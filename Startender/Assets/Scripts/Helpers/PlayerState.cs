@@ -1,6 +1,7 @@
 using System.Collections;
+using UnityEngine;
 
-public class PlayerState
+public class PlayerState : MonoBehaviour
 {
 	//persistent game stats
 	private int starBucks;
@@ -12,7 +13,8 @@ public class PlayerState
     //Added by Rebeca. Last tip amount earned.
     private int lastTip;
 
-	public PlayerState() {
+	void Start() {
+        DontDestroyOnLoad(this);
 		this.starBucks = 40;
 		this.tipsEarned = 0;
         this.lastTip = 0;

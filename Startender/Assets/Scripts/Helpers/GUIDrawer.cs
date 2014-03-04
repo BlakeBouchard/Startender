@@ -59,7 +59,7 @@ public class GUIDrawer : MonoBehaviour
 
 		if(GUILayout.Button("Start Game")) {
 			Debug.Log("Start Game button clicked");
-			gameManager.startGame();
+			gameManager.StartGame();
 		}
 		
 		GUILayout.EndArea();
@@ -73,23 +73,23 @@ public class GUIDrawer : MonoBehaviour
 		
 		if(GUILayout.Button("Resume")) {
 			Debug.Log("Resuming Game");
-			gameManager.resumeRound();
+			gameManager.ResumeRound();
 		}
 		else if(GUILayout.Button("Reset Round")) {
 			Debug.Log ("Resetting Round");
-			gameManager.resetRound();
+			gameManager.ResetRound();
 		}
 		
 		GUILayout.EndArea();
 	}
 
 	public void drawHUD() {
-		roundTime.text = "Time Left: " + gameManager.getRoundTime().ToString("F0");
+		roundTime.text = "Time Left: " + gameManager.GetRoundTime().ToString("F0");
 
 		Drink currentDrink = drinkManager.getCurrentDrink();
 		currentOrder.text = "Order: " + currentDrink.getDrinkName() + " - " + currentDrink.getFormattedIngredients();
 
-		PlayerState player = GameManager.getPlayer();
+		PlayerState player = GameManager.GetPlayer();
 
 		tipsEarned.text = "Tips: $" + player.getTipsEarned();
 		drinksServed.text = "Drinks Served: " + player.getDrinkCount();
@@ -99,14 +99,14 @@ public class GUIDrawer : MonoBehaviour
 	public void drawRoundStats() {
 		GUILayout.BeginArea(new Rect(Screen.width / 2 - this.menuXFromCenter, Screen.height /2 - this.menuYFromCenter, this.menuWidth, this.menuHeight));
 
-		GUILayout.Label("Drinks Served: " + GameManager.getPlayer().getDrinkCount());
-		GUILayout.Label("Tips: $" + GameManager.getPlayer().getTipsEarned());
-		GUILayout.Label("Starbucks: $" + GameManager.getPlayer().getStarbucks());
+		GUILayout.Label("Drinks Served: " + GameManager.GetPlayer().getDrinkCount());
+		GUILayout.Label("Tips: $" + GameManager.GetPlayer().getTipsEarned());
+		GUILayout.Label("Starbucks: $" + GameManager.GetPlayer().getStarbucks());
 
 		if(GUILayout.Button("Next Round")) {
 			Debug.Log ("Resetting Round");
-			GameManager.getPlayer().endRound();
-			gameManager.resetRound();
+			GameManager.GetPlayer().endRound();
+			gameManager.ResetRound();
 		}
 
 		GUILayout.EndArea();
@@ -119,7 +119,7 @@ public class GUIDrawer : MonoBehaviour
         GUILayout.BeginArea(new Rect(Screen.width - this.menuWidth, Screen.height - this.menuHeight, this.menuWidth, this.menuHeight));
 
         GUILayout.Label("Finished Drink: " + drinkManager.getPrevDrinkName());
-        int tip = GameManager.getPlayer().getLastTip();
+        int tip = GameManager.GetPlayer().getLastTip();
         GUILayout.Label("Tip: $" + tip);
         //TODO: we should pull in a random phrase from a text file.
         GUILayout.Label("Feedback: " + (tip == 0 ? "" : (tip > 0 ? "Ah, that really hit the sun spot." : "What? That wasn't what I ordered!") ));

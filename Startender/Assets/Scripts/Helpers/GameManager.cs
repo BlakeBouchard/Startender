@@ -12,7 +12,27 @@ public class GameManager : MonoBehaviour
 	private GUIDrawer guiDrawer;
 	private DrinkManager drinkManager;
 
-	public void startGame() {
+    // Use this for initialization
+    void Start()
+    {
+        this.drinkManager = this.GetComponentInChildren<DrinkManager>();
+        this.gameState = GameState.Menu;
+        this.roundTime = 90.0f;
+
+        Time.timeScale = 0;
+
+        //Get HUD Manager
+        GameObject gui = GameObject.Find("GUIDrawer");
+        this.guiDrawer = (GUIDrawer)gui.GetComponent(typeof(GUIDrawer));
+        this.guiDrawer.setManagers(this, this.drinkManager);
+    }
+
+    void Awake()
+    {
+        DontDestroyOnLoad(this);
+    }
+
+	public void StartGame() {
 
 		Debug.Log("Starting game");
 		Time.timeScale = 1;
@@ -20,56 +40,40 @@ public class GameManager : MonoBehaviour
 		this.gameState = GameState.Playing;
 	}
 
-	public void pauseGame() {
+	public void PauseGame() {
 		Time.timeScale = 0;
 		this.gameState = GameState.Paused;
 	}
 
-	public void endRound() {
+	public void EndRound() {
 		Time.timeScale = 0;
 		this.gameState = GameState.RoundOver;
 	}
 
-	public void resumeRound() {
+	public void ResumeRound() {
 		Time.timeScale = 1;
 		this.gameState = GameState.Playing;
 	}
 
-	public void resetRound() {
-		this.resetRoundTime();
-		GameManager.getPlayer().resetRound();
+	public void ResetRound() {
+		this.ResetRoundTime();
+		GameManager.GetPlayer().resetRound();
 	
 		//restart the game
 		Time.timeScale = 1;
 		this.gameState = GameState.Playing;
 	}
 
-	private void resetRoundTime() {
+	private void ResetRoundTime() {
 		this.roundTime = 90.0f;
 	}
 
-	public float getRoundTime() {
+	public float GetRoundTime() {
 		return this.roundTime;
 	}
 
-	public GameState getGameState() {
+	public GameState GetGameState() {
 		return gameState;
-	}
-	
-	// Use this for initialization
-	void Start()
-	{
-        this.drinkManager = this.GetComponentInChildren<DrinkManager>();
-        this.gameState = GameState.Menu;
-        this.roundTime = 90.0f;
-
-		Time.timeScale = 0;
-
-		//Get HUD Manager
-		GameObject gui = GameObject.Find("GUIDrawer");
-		this.guiDrawer = (GUIDrawer) gui.GetComponent(typeof(GUIDrawer));
-		this.guiDrawer.setManagers(this, this.drinkManager);
-	
 	}
 
 	// Update is called once per frame
@@ -79,11 +83,11 @@ public class GameManager : MonoBehaviour
 			this.roundTime -= Time.deltaTime;
 
 			if(this.roundTime <= 0.0f) {
-				this.endRound ();
+				this.EndRound ();
 			}
 
 			if(Input.GetKeyDown(KeyCode.Escape)) {
-				this.pauseGame();
+				this.PauseGame();
 			}
 		}
 	}
@@ -107,7 +111,7 @@ public class GameManager : MonoBehaviour
 		}
 	}
 
-	public static PlayerState getPlayer() {
+	public static PlayerState GetPlayer() {
 		if(GameManager.player == null) {
 			GameManager.player = new PlayerState();
 		}
@@ -115,7 +119,7 @@ public class GameManager : MonoBehaviour
 		return GameManager.player;
 	}
 	
-	public static void destroyPlayer() {
+	public static void DestroyPlayer() {
 		GameManager.player = null;
 	}
 	

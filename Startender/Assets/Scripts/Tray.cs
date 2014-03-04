@@ -21,8 +21,8 @@ public class Tray : MonoBehaviour
             {
                 int tip = drinkManager.finishAndTip(cupIngredients.GetIngredients());
                 cupIngredients.ResetIngredients();
-                GameManager.getPlayer().addTip(tip);
-                GameManager.getPlayer().incrementDrinkCount();
+                GameManager.GetPlayer().addTip(tip);
+                GameManager.GetPlayer().incrementDrinkCount();
                 audio.Play();
             }
         }

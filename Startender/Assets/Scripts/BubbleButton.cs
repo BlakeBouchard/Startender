@@ -22,7 +22,7 @@ public class BubbleButton : MonoBehaviour {
     void OnTouchDown(Touch touch)
     {
         Debug.Log("Touched Bubble Button");
-		if (gameManagerScript.getGameState () == GameManager.GameState.Playing) {
+		if (gameManagerScript.GetGameState () == GameManager.GameState.Playing) {
 			cannonScript.loadBubble (bubble);
 		}
     }
@@ -31,7 +31,7 @@ public class BubbleButton : MonoBehaviour {
     {
         // Should not fire when touching, screw you Unity Remote
 		// Stops cannon from adding bubble if the game is not playing
-		if (Input.touchCount == 0 && gameManagerScript.getGameState () == GameManager.GameState.Playing)
+		if (Input.touchCount == 0 && gameManagerScript.GetGameState () == GameManager.GameState.Playing)
         {
             Debug.Log("Clicked Bubble Button");
             cannonScript.loadBubble(bubble);

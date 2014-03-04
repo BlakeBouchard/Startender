@@ -110,7 +110,7 @@ public class Cannon : MonoBehaviour {
 
         IncrementAngle();
 
-		if (gameManagerScript.getGameState () == GameManager.GameState.RoundOver
+		if (gameManagerScript.GetGameState () == GameManager.GameState.RoundOver
 		    && this.bubbleQueue.Count > 0) {
 			Debug.Log("Clearing bubble queue");
 			this.bubbleQueue.Clear();	

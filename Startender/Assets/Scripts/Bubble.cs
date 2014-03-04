@@ -18,7 +18,7 @@ public class Bubble : MonoBehaviour {
     // Update is called once per frame
     void Update ()
     {
-		if (gameManagerScript.getGameState () == GameManager.GameState.RoundOver) {
+		if (gameManagerScript.GetGameState () == GameManager.GameState.RoundOver) {
 			Debug.Log("Destroying bubbles at end of round");
 			this.Die();
 		}

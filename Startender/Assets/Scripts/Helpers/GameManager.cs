@@ -32,12 +32,10 @@ public class GameManager : MonoBehaviour
 
     public void StartGame() {
 
-	Application.LoadLevel("mainscene");
+		Debug.Log("Starting game");
+		Time.timeScale = 1;
 
-	Debug.Log("Starting game");
-	Time.timeScale = 1;
-
-	this.gameState = GameState.Playing;
+		this.gameState = GameState.Playing;
     }
 
     public void PauseGame() {
@@ -48,7 +46,8 @@ public class GameManager : MonoBehaviour
     public void EndRound() {
 	    Time.timeScale = 0;
 	    this.gameState = GameState.RoundOver;
-	    Application.LoadLevel("rpg");
+		player.EndRound();
+		Application.LoadLevel("Payment");
     }
 
     public void ResumeRound() {
@@ -92,23 +91,23 @@ public class GameManager : MonoBehaviour
 		    }
 	    }
     }
-	
+
     void OnGUI() {
-	switch(this.gameState) {
-	    case GameState.Playing:
-		this.guiDrawer.drawHUD();
-		this.guiDrawer.drawDrinkFeedback();
-		return;
-	    case GameState.Menu:
-		this.guiDrawer.drawMainMenu();
-		break;
-	    case GameState.Paused:
-		this.guiDrawer.drawPauseMenu();
-		break;
-	    case GameState.RoundOver:
-		this.guiDrawer.drawRoundStats();
-		break;
-	}
+		switch(this.gameState) {
+		    case GameState.Playing:
+				this.guiDrawer.DrawHUD();
+				this.guiDrawer.DrawDrinkFeedback();
+				return;
+		    case GameState.Menu:
+				this.guiDrawer.DrawMainMenu();
+				break;
+		    case GameState.Paused:
+				this.guiDrawer.DrawPauseMenu();
+				break;
+		    case GameState.RoundOver:
+				this.guiDrawer.DrawRoundStats();
+				break;
+		}
     }
 }
 

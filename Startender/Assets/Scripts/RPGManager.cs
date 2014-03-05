@@ -9,7 +9,7 @@ public class RPGManager : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
-		player = GameManager.getPlayer();
+		player = GameObject.FindObjectOfType<PlayerState>();
 	}
 
 	// Update is called once per frame

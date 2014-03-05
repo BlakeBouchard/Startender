@@ -31,10 +31,14 @@ public class RPGuiDrawer : MonoBehaviour
 		Dictionary<string, int> paid = new Dictionary<string, int>();
 
 		GUILayout.BeginArea(new Rect(Screen.width / 2 - this.menuXFromCenter, Screen.height /2 - this.menuYFromCenter, this.menuWidth, this.menuHeight));
-		this.drawBaseMenu();
+		this.DrawBaseMenu();
 		GUILayout.EndArea();
 
 		return paid;
+	}
+
+	public void DrawBaseMenu() {
+		GUILayout.Space(10.0f);
 	}
 
 }

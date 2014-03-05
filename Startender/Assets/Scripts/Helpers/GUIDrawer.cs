@@ -102,9 +102,7 @@ public class GUIDrawer : MonoBehaviour
 
 		if(GUILayout.Button("Next Round")) {
 			Debug.Log ("Resetting Round");
-			player.EndRound();
-            Application.LoadLevel("Payment");
-			gameManager.ResetRound();
+			gameManager.EndRound();
 		}
 
 		GUILayout.EndArea();

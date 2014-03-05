@@ -458,7 +458,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7632f3e2d2f04e6899975b2f00457ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roundTime: 90
+  gameState: 0
+  maxRoundTime: 90
+  playerPrefab: {fileID: 400000, guid: 7bd37c9ea989fce4a858ca192119f1da, type: 2}
 --- !u!114 &11400004
 MonoBehaviour:
   m_ObjectHideFlags: 1

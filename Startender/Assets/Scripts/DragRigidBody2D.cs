@@ -14,7 +14,7 @@ public class DragRigidBody2D : MonoBehaviour
 
 	// Class Variables
 	public float distance = 0.2f;
-	public float damper = 0.5f; // damping ration in SpringJoint2D (0.0.- 1.0)
+	public float damper = 0.5f; //damping ration in SpringJoint2D (0.0.- 1.0)
 	public float frequency = 8.0f;
 	public float drag = 1.0f; // this doesn't exist on 2D Spring...
 	public float angularDrag = 5.0f;

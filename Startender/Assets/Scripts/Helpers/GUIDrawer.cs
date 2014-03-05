@@ -5,7 +5,7 @@ public class GUIDrawer : MonoBehaviour
 {
 	private GameManager gameManager;
 	private DrinkManager drinkManager;
-    private PlayerState player;
+    protected PlayerState player;
 
 	private GUIText roundTime;
 	private GUIText currentOrder;
@@ -22,7 +22,7 @@ public class GUIDrawer : MonoBehaviour
 		this.drinkManager = drinkManager;
 	}
 
-	void Start() {
+	public virtual void Start() {
 
 		//setup basic drawing params
 		this.menuWidth = 240;
@@ -32,19 +32,24 @@ public class GUIDrawer : MonoBehaviour
 
         this.player = GameObject.FindObjectOfType<PlayerState>();
 
+		this.FindTextLabels();
+	}
+
+	public virtual void FindTextLabels() {
+
 		//Prep HUD
 		GameObject roundTime = GameObject.Find("RoundTime");
 		this.roundTime = (GUIText) roundTime.GetComponent(typeof(GUIText));
 		this.roundTime.text = "";
-
+		
 		GameObject currentOrder = GameObject.Find("CurrentOrder");
 		this.currentOrder = (GUIText) currentOrder.GetComponent(typeof(GUIText));
 		this.currentOrder.text = "";
-
+		
 		GameObject tipsEarned = GameObject.Find ("TipsEarned");
 		this.tipsEarned = (GUIText) tipsEarned.GetComponent(typeof(GUIText));
 		this.tipsEarned.text = "";
-
+		
 		GameObject drinkCount = GameObject.Find ("DrinkCount");
 		this.drinksServed = (GUIText) drinkCount.GetComponent(typeof(GUIText));
 		this.drinksServed.text = "";
@@ -91,21 +96,6 @@ public class GUIDrawer : MonoBehaviour
 		tipsEarned.text = "Tips: $" + player.GetTipsEarned();
 		drinksServed.text = "Drinks Served: " + player.GetDrinkCount();
 
-	}
-
-	public void DrawRoundStats() {
-		GUILayout.BeginArea(new Rect(Screen.width / 2 - this.menuXFromCenter, Screen.height /2 - this.menuYFromCenter, this.menuWidth, this.menuHeight));
-
-		GUILayout.Label("Drinks Served: " + player.GetDrinkCount());
-		GUILayout.Label("Tips: $" + player.GetTipsEarned());
-		GUILayout.Label("Starbucks: $" + player.GetStarBucks());
-
-		if(GUILayout.Button("Next Round")) {
-			Debug.Log ("Resetting Round");
-			gameManager.EndRound();
-		}
-
-		GUILayout.EndArea();
 	}
 
     //Added by Rebeca.

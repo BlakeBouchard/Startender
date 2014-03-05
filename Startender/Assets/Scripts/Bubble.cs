@@ -14,7 +14,7 @@ public class Bubble : MonoBehaviour {
 		gameManager = GameObject.Find("Game Manager");
 		gameManagerScript = (GameManager) gameManager.GetComponent(typeof(GameManager));
     }
-    
+
     // Update is called once per frame
     void Update ()
     {

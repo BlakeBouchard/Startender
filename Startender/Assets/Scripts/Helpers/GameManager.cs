@@ -104,9 +104,6 @@ public class GameManager : MonoBehaviour
 		    case GameState.Paused:
 				this.guiDrawer.DrawPauseMenu();
 				break;
-		    case GameState.RoundOver:
-				this.guiDrawer.DrawRoundStats();
-				break;
 		}
     }
 }

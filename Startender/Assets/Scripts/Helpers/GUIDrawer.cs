@@ -102,9 +102,7 @@ public class GUIDrawer : MonoBehaviour
 
 		if(GUILayout.Button("Next Round")) {
 			Debug.Log ("Resetting Round");
-			player.EndRound();
-            Application.LoadLevel("Payment");
-			gameManager.ResetRound();
+			gameManager.EndRound();
 		}
 
 		GUILayout.EndArea();
@@ -125,9 +123,9 @@ public class GUIDrawer : MonoBehaviour
         GUILayout.EndArea();
     }
 	
-	private void DrawBaseMenu() {
-		GUILayout.Label("Startender!");
-		GUILayout.Space(10.0f);
-	}
+    private void DrawBaseMenu() {
+	    GUILayout.Label("Startender!");
+	    GUILayout.Space(10.0f);
+    }
 }
 

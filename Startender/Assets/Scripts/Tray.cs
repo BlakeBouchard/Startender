@@ -4,11 +4,13 @@ using System.Collections;
 public class Tray : MonoBehaviour
 {
     private DrinkManager drinkManager;
+    private PlayerState player;
 
 	// Use this for initialization
 	void Start ()
 	{
-        drinkManager = GameObject.Find("Drink Manager").GetComponent<DrinkManager>();
+        this.drinkManager = GameObject.Find("Drink Manager").GetComponent<DrinkManager>();
+        this.player = GameObject.Find("Player").GetComponent<PlayerState>();
 	}
 
     void OnTriggerEnter2D(Collider2D collider)
@@ -19,10 +21,10 @@ public class Tray : MonoBehaviour
             CupIngredients cupIngredients = collider.GetComponent<CupIngredients>();
             if (cupIngredients.GetIngredientCount() > 0)
             {
-                int tip = drinkManager.finishAndTip(cupIngredients.GetIngredients());
+                int tip = drinkManager.FinishAndTip(cupIngredients.GetIngredients());
                 cupIngredients.ResetIngredients();
-                GameManager.getPlayer().addTip(tip);
-                GameManager.getPlayer().incrementDrinkCount();
+                player.AddTip(tip);
+                player.IncrementDrinkCount();
                 audio.Play();
             }
         }
@@ -36,11 +38,13 @@ public class Tray : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
-	    // Saying the hell with it
+	    /*
+        // This should not be necessary now that the tray works
         if (Input.GetKeyDown(KeyCode.T))
         {
             OnTriggerEnter2D(GameObject.Find("Ingredient Collider").collider2D);
         }
+        */
 	}
 
 }

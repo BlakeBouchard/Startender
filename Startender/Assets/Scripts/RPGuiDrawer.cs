@@ -35,7 +35,6 @@ public class RPGuiDrawer : MonoBehaviour
 		GUILayout.EndArea();
 
 		return paid;
-		
 	}
 
 }

@@ -24,14 +24,20 @@ public class Cannon : MonoBehaviour {
 
 	private Queue<Transform> bubbleQueue;
 
+	GameObject gameManager;
+	GameManager gameManagerScript;
+
 	// Use this for initialization
 	void Start () {
-		this.resetFireDelay();
+		this.ResetFireDelay();
 
 		bubbleQueue = new Queue<Transform>();
+
+		gameManager = GameObject.Find("Game Manager");
+		gameManagerScript = (GameManager) gameManager.GetComponent(typeof(GameManager));
 	}
 
-    public void fireBubble(Transform bubbleObj)
+    public void FireBubble(Transform bubbleObj)
     {
         Transform bubble = Instantiate(bubbleObj, new Vector3(transform.position.x, transform.position.y, transform.position.z + 2), Quaternion.identity) as Transform;
         float bubbleAngle = (transform.rotation.eulerAngles.z - 270) * Mathf.Deg2Rad;
@@ -63,32 +69,32 @@ public class Cannon : MonoBehaviour {
         }
     }
 
-	private void resetFireDelay() {
+	private void ResetFireDelay() {
 		this.fireDelayTimer = this.fireDelayTime;
 	}
 
-	public void loadBubble(Transform bubble) {
+	public void LoadBubble(Transform bubble) {
 
 		//if we're about to fire a shot, reset so they come out close to each other
 		if(this.bubbleQueue.Count > 0) {
-			this.resetFireDelay();
+			this.ResetFireDelay();
 		}
 
 		this.bubbleQueue.Enqueue(bubble);
 	}
 
-	private void fireIfReady() {
+	private void FireIfReady() {
 
 		//if we've reached the delay, fire
 		if(this.fireDelayTimer <= 0.0f) {
-			this.fireBubble(bubbleQueue.Dequeue());
+			this.FireBubble(bubbleQueue.Dequeue());
 		
 			//if we still have shots left, "reload"
 			if(this.bubbleQueue.Count > 0) {
 				this.fireDelayTimer = 0.0f + this.reloadTime;
 			}
 			else {
-				this.resetFireDelay();
+				this.ResetFireDelay();
 			}
 		}
 
@@ -99,10 +105,16 @@ public class Cannon : MonoBehaviour {
 
 		if(this.bubbleQueue.Count > 0) {
 			this.fireDelayTimer -= Time.deltaTime;
-			this.fireIfReady();
+			this.FireIfReady();
 		}
 
         IncrementAngle();
+
+		if (gameManagerScript.GetGameState () == GameManager.GameState.RoundOver
+		    && this.bubbleQueue.Count > 0) {
+			Debug.Log("Clearing bubble queue");
+			this.bubbleQueue.Clear();	
+		}
 
 	}
 }

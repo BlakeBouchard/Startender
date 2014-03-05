@@ -90,6 +90,10 @@ public class PlayerState : MonoBehaviour
 		this.drinksServed++;
 	}
 
+	public void IncrementStarbucks(int delta) {
+		this.starBucks =+ delta;
+	}
+
 	public void EndRound() {
 		this.starBucks += this.tipsEarned;
 		this.tipsEarned = 0;

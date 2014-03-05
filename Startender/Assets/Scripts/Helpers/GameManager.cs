@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     public float maxRoundTime = 90.0f;
     private float roundTime;
 
+    public Transform playerPrefab;
     private PlayerState player;
 
     private GUIDrawer guiDrawer;
@@ -20,7 +21,7 @@ public class GameManager : MonoBehaviour
         this.drinkManager = this.GetComponentInChildren<DrinkManager>();
         this.gameState = GameState.Menu;
         this.roundTime = maxRoundTime;
-        this.player = GameObject.FindObjectOfType<PlayerState>();
+        this.player = SpawnPlayer();
 
         Time.timeScale = 0;
 
@@ -28,6 +29,20 @@ public class GameManager : MonoBehaviour
         GameObject gui = GameObject.Find("GUIDrawer");
         this.guiDrawer = (GUIDrawer)gui.GetComponent(typeof(GUIDrawer));
         this.guiDrawer.SetManagers(this, this.drinkManager);
+    }
+
+    private PlayerState SpawnPlayer()
+    {
+        GameObject playerObject = GameObject.Find("Player");
+        if (!playerObject)
+        {
+            Debug.Log("No player object found, creating one");
+            Transform playerTransform = Instantiate(playerPrefab) as Transform;
+            playerTransform.name = playerPrefab.name;
+            playerObject = playerTransform.gameObject;
+        }
+
+        return playerObject.GetComponent<PlayerState>();
     }
 
     public void StartGame() {

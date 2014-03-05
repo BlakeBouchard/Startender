@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class Missle : MonoBehaviour
+public class Missile : MonoBehaviour
 {
 	public float accelerationTime = 2.0f;
 	public float accelerationRemaining = 2.0f;
@@ -25,7 +25,7 @@ public class Missle : MonoBehaviour
 		}
 	}
 	
-	public Garnish getGarnish() {
+	public Garnish GetGarnish() {
 		return this.GetComponentInChildren<Garnish>();
 	}
 }

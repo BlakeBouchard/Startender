@@ -5,14 +5,32 @@ public class GameManager : MonoBehaviour
 {
 	public enum GameState { Playing, Paused, Menu, RoundOver }
 	public GameState gameState;
-	public float roundTime;
+    
+    public float maxRoundTime = 90.0f;
+	private float roundTime;
 
-	private static PlayerState player;
+    private PlayerState player;
 
 	private GUIDrawer guiDrawer;
 	private DrinkManager drinkManager;
 
-	public void startGame() {
+    // Use this for initialization
+    void Start()
+    {
+        this.drinkManager = this.GetComponentInChildren<DrinkManager>();
+        this.gameState = GameState.Menu;
+        this.roundTime = maxRoundTime;
+        this.player = GameObject.FindObjectOfType<PlayerState>();
+
+        Time.timeScale = 0;
+
+        //Get HUD Manager
+        GameObject gui = GameObject.Find("GUIDrawer");
+        this.guiDrawer = (GUIDrawer)gui.GetComponent(typeof(GUIDrawer));
+        this.guiDrawer.SetManagers(this, this.drinkManager);
+    }
+
+	public void StartGame() {
 
 		Debug.Log("Starting game");
 		Time.timeScale = 1;
@@ -20,56 +38,40 @@ public class GameManager : MonoBehaviour
 		this.gameState = GameState.Playing;
 	}
 
-	public void pauseGame() {
+	public void PauseGame() {
 		Time.timeScale = 0;
 		this.gameState = GameState.Paused;
 	}
 
-	public void endRound() {
+	public void EndRound() {
 		Time.timeScale = 0;
 		this.gameState = GameState.RoundOver;
 	}
 
-	public void resumeRound() {
+	public void ResumeRound() {
 		Time.timeScale = 1;
 		this.gameState = GameState.Playing;
 	}
 
-	public void resetRound() {
-		this.resetRoundTime();
-		GameManager.getPlayer().resetRound();
+	public void ResetRound() {
+		this.ResetRoundTime();
+		player.ResetRound();
 	
 		//restart the game
 		Time.timeScale = 1;
 		this.gameState = GameState.Playing;
 	}
 
-	private void resetRoundTime() {
+	private void ResetRoundTime() {
 		this.roundTime = 90.0f;
 	}
 
-	public float getRoundTime() {
+	public float GetRoundTime() {
 		return this.roundTime;
 	}
 
-	public GameState getGameState() {
+	public GameState GetGameState() {
 		return gameState;
-	}
-	
-	// Use this for initialization
-	void Start()
-	{
-        this.drinkManager = this.GetComponentInChildren<DrinkManager>();
-        this.gameState = GameState.Menu;
-        this.roundTime = 90.0f;
-
-		Time.timeScale = 0;
-
-		//Get HUD Manager
-		GameObject gui = GameObject.Find("GUIDrawer");
-		this.guiDrawer = (GUIDrawer) gui.GetComponent(typeof(GUIDrawer));
-		this.guiDrawer.setManagers(this, this.drinkManager);
-	
 	}
 
 	// Update is called once per frame
@@ -79,11 +81,11 @@ public class GameManager : MonoBehaviour
 			this.roundTime -= Time.deltaTime;
 
 			if(this.roundTime <= 0.0f) {
-				this.endRound ();
+				this.EndRound ();
 			}
 
 			if(Input.GetKeyDown(KeyCode.Escape)) {
-				this.pauseGame();
+				this.PauseGame();
 			}
 		}
 	}
@@ -91,32 +93,20 @@ public class GameManager : MonoBehaviour
 	void OnGUI() {
 		switch(this.gameState) {
 		case GameState.Playing:
-			this.guiDrawer.drawHUD();
+			this.guiDrawer.DrawHUD();
                 //Added by Rebeca.
-            this.guiDrawer.drawDrinkFeedback();
+            this.guiDrawer.DrawDrinkFeedback();
 			return;
 		case GameState.Menu:
-			this.guiDrawer.drawMainMenu();
+			this.guiDrawer.DrawMainMenu();
 			break;
 		case GameState.Paused:
-			this.guiDrawer.drawPauseMenu();
+			this.guiDrawer.DrawPauseMenu();
 			break;
 		case GameState.RoundOver:
-			this.guiDrawer.drawRoundStats();
+			this.guiDrawer.DrawRoundStats();
 			break;
 		}
-	}
-
-	public static PlayerState getPlayer() {
-		if(GameManager.player == null) {
-			GameManager.player = new PlayerState();
-		}
-
-		return GameManager.player;
-	}
-	
-	public static void destroyPlayer() {
-		GameManager.player = null;
 	}
 	
 }

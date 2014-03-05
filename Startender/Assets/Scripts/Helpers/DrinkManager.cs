@@ -18,26 +18,26 @@ public class DrinkManager : MonoBehaviour {
         this.drinkList = new List<Drink>(GetComponentsInChildren<Drink>());
         foreach (Drink drink in drinkList)
         {
-            Debug.Log(drink.name + ": " + drink.getFormattedIngredients());
+            Debug.Log(drink.name + ": " + drink.GetFormattedIngredients());
         }
     }
 
     //Added by Rebeca.
-    public String getPrevDrinkName() {
+    public String GetPrevDrinkName() {
         return this.prevDrinkName;
     }
 
-	public Drink getCurrentDrink() {
+	public Drink GetCurrentDrink() {
 		if (this.currentDrink == null)
         {
-			this.setNextDrink();
+			this.SetNextDrink();
 		}
 
 		return this.currentDrink;
 	}
 
 	// selects random drink from the drink array list
-	public void setNextDrink() 
+	public void SetNextDrink() 
     {
         //Added by Rebeca.
         if (this.currentDrink == null)
@@ -49,12 +49,12 @@ public class DrinkManager : MonoBehaviour {
             this.prevDrinkName = this.currentDrink.name;
         }
 
-		int randomNumber = getRandomNumber(drinkList.Count);
+		int randomNumber = GetRandomNumber(drinkList.Count);
 		this.currentDrink = this.drinkList[randomNumber];
 	}
 	
 	// picks random number between 0 and the integer given (includes 0 but not max)
-	public int getRandomNumber(int max)
+	public int GetRandomNumber(int max)
     {
 		System.Random random = new System.Random();
 		int randomNumber = random.Next(max);
@@ -63,16 +63,16 @@ public class DrinkManager : MonoBehaviour {
 		return randomNumber;
 	}
 
-	public int finishAndTip(List<Ingredient> ingredients)
+	public int FinishAndTip(List<Ingredient> ingredients)
     {
-		return this.getTipAmount(this.madeSuccessfully(ingredients));
+		return this.GetTipAmount(this.MadeSuccessfully(ingredients));
 	}
 	
 	// figures out tip amount
 	// need to cut off after 2 decimal places
 	// maybe pick random number between -3/3? then add that to the total?
 	// making sure it is over 0!
-	public int getTipAmount(bool drinkSuccess)
+	public int GetTipAmount(bool drinkSuccess)
     {
         if (!drinkSuccess)
         {
@@ -80,23 +80,23 @@ public class DrinkManager : MonoBehaviour {
         }
 
         System.Random rand = new System.Random();
-        int tip = (int) Math.Round(this.currentDrink.getDifficulty() * rand.Next(this.maxTip));
+        int tip = (int) Math.Round(this.currentDrink.GetDifficulty() * rand.Next(this.maxTip));
 
-        setNextDrink();
+        SetNextDrink();
 
         return tip;
 	}
 
-    public bool madeSuccessfully(List<Ingredient> ingredientsInCup)
+    public bool MadeSuccessfully(List<Ingredient> ingredientsInCup)
     {
-        return madeSuccessfully(ingredientsInCup, false);
+        return MadeSuccessfully(ingredientsInCup, false);
     }
 
     //Checks if the drink was made successfully or not. Returns true if it was, false if it wasn't.
     //If orderMatters is true, the ingredients must be added to the cup in a specific order.
-	public bool madeSuccessfully(List<Ingredient> ingredientsInCup, Boolean orderMatters) {
+	public bool MadeSuccessfully(List<Ingredient> ingredientsInCup, Boolean orderMatters) {
 
-		int actualIngredientCount = this.currentDrink.getIngredientCount();
+		int actualIngredientCount = this.currentDrink.GetIngredientCount();
 
 		if (ingredientsInCup.Count != actualIngredientCount)
         {
@@ -104,7 +104,7 @@ public class DrinkManager : MonoBehaviour {
 			return false;
 		}
 
-        Ingredient[] actualIngredients = this.currentDrink.getIngredients();
+        Ingredient[] actualIngredients = this.currentDrink.GetIngredients();
 
         List<Ingredient> remainingIngredients = new List<Ingredient>();
         remainingIngredients.AddRange(ingredientsInCup);

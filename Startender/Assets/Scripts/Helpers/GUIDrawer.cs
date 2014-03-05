@@ -5,6 +5,7 @@ public class GUIDrawer : MonoBehaviour
 {
 	private GameManager gameManager;
 	private DrinkManager drinkManager;
+    private PlayerState player;
 
 	private GUIText roundTime;
 	private GUIText currentOrder;
@@ -16,11 +17,7 @@ public class GUIDrawer : MonoBehaviour
 	public int menuWidth;
 	public int menuHeight;
 
-	public GUIDrawer() {
-
-	}
-
-	public void setManagers(GameManager gameManager, DrinkManager drinkManager) {
+	public void SetManagers(GameManager gameManager, DrinkManager drinkManager) {
 		this.gameManager = gameManager;
 		this.drinkManager = drinkManager;
 	}
@@ -32,6 +29,8 @@ public class GUIDrawer : MonoBehaviour
 		this.menuHeight = 100;
 		this.menuXFromCenter = this.menuWidth / 2;
 		this.menuYFromCenter = this.menuHeight / 2;
+
+        this.player = GameObject.FindObjectOfType<PlayerState>();
 
 		//Prep HUD
 		GameObject roundTime = GameObject.Find("RoundTime");
@@ -51,75 +50,74 @@ public class GUIDrawer : MonoBehaviour
 		this.drinksServed.text = "";
 	}
 
-	public void drawMainMenu() {
+	public void DrawMainMenu() {
 		//Draw Game Menu Here
 		GUILayout.BeginArea(new Rect(Screen.width / 2 - this.menuXFromCenter, Screen.height /2 - this.menuYFromCenter, this.menuWidth, this.menuHeight));
 
-		this.drawBaseMenu();
+		this.DrawBaseMenu();
 
 		if(GUILayout.Button("Start Game")) {
 			Debug.Log("Start Game button clicked");
-			gameManager.startGame();
+			gameManager.StartGame();
 		}
 		
 		GUILayout.EndArea();
 	}
 
-	public void drawPauseMenu() {
+	public void DrawPauseMenu() {
 		//Draw Game Menu Here
 		GUILayout.BeginArea(new Rect(Screen.width / 2 - this.menuXFromCenter, Screen.height /2 - this.menuYFromCenter, this.menuWidth, this.menuHeight));
 
-		this.drawBaseMenu();
+		this.DrawBaseMenu();
 		
 		if(GUILayout.Button("Resume")) {
 			Debug.Log("Resuming Game");
-			gameManager.resumeRound();
+			gameManager.ResumeRound();
 		}
 		else if(GUILayout.Button("Reset Round")) {
 			Debug.Log ("Resetting Round");
-			gameManager.resetRound();
+			gameManager.ResetRound();
 		}
 		
 		GUILayout.EndArea();
 	}
 
-	public void drawHUD() {
-		roundTime.text = "Time Left: " + gameManager.getRoundTime().ToString("F0");
+	public void DrawHUD() {
+		roundTime.text = "Time Left: " + gameManager.GetRoundTime().ToString("F0");
 
-		Drink currentDrink = drinkManager.getCurrentDrink();
-		currentOrder.text = "Order: " + currentDrink.getDrinkName() + " - " + currentDrink.getFormattedIngredients();
+		Drink currentDrink = drinkManager.GetCurrentDrink();
+		currentOrder.text = "Order: " + currentDrink.GetDrinkName() + " - " + currentDrink.GetFormattedIngredients();
 
-		PlayerState player = GameManager.getPlayer();
-
-		tipsEarned.text = "Tips: $" + player.getTipsEarned();
-		drinksServed.text = "Drinks Served: " + player.getDrinkCount();
+		tipsEarned.text = "Tips: $" + player.GetTipsEarned();
+		drinksServed.text = "Drinks Served: " + player.GetDrinkCount();
 
 	}
 
-	public void drawRoundStats() {
+	public void DrawRoundStats() {
 		GUILayout.BeginArea(new Rect(Screen.width / 2 - this.menuXFromCenter, Screen.height /2 - this.menuYFromCenter, this.menuWidth, this.menuHeight));
 
-		GUILayout.Label("Drinks Served: " + GameManager.getPlayer().getDrinkCount());
-		GUILayout.Label("Tips: $" + GameManager.getPlayer().getTipsEarned());
-		GUILayout.Label("Starbucks: $" + GameManager.getPlayer().getStarbucks());
+		GUILayout.Label("Drinks Served: " + player.GetDrinkCount());
+		GUILayout.Label("Tips: $" + player.GetTipsEarned());
+		GUILayout.Label("Starbucks: $" + player.GetStarBucks());
 
 		if(GUILayout.Button("Next Round")) {
 			Debug.Log ("Resetting Round");
-			GameManager.getPlayer().endRound();
-			gameManager.resetRound();
+			player.EndRound();
+            Application.LoadLevel("Payment");
+			gameManager.ResetRound();
 		}
 
 		GUILayout.EndArea();
 	}
 
     //Added by Rebeca.
-    public void drawDrinkFeedback()
+    public void DrawDrinkFeedback()
     {
         //Currently at the bottom right but we can move it.
         GUILayout.BeginArea(new Rect(Screen.width - this.menuWidth, Screen.height - this.menuHeight, this.menuWidth, this.menuHeight));
 
-        GUILayout.Label("Finished Drink: " + drinkManager.getPrevDrinkName());
-        int tip = GameManager.getPlayer().getLastTip();
+        GUILayout.Label("Finished Drink: " + drinkManager.GetPrevDrinkName());
+        int tip = player.GetLastTip();
         GUILayout.Label("Tip: $" + tip);
         //TODO: we should pull in a random phrase from a text file.
         GUILayout.Label("Feedback: " + (tip == 0 ? "" : (tip > 0 ? "Ah, that really hit the sun spot." : "What? That wasn't what I ordered!") ));
@@ -127,7 +125,7 @@ public class GUIDrawer : MonoBehaviour
         GUILayout.EndArea();
     }
 	
-	private void drawBaseMenu() {
+	private void DrawBaseMenu() {
 		GUILayout.Label("Startender!");
 		GUILayout.Space(10.0f);
 	}

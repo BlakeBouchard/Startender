@@ -19,7 +19,7 @@ public class CupMovement : MonoBehaviour {
 	
 	private void MoveCup(Vector3 startPoint, Vector3 endPoint)
     {
-		if (gameManagerScript.getGameState () == GameManager.GameState.Playing) {
+		if (gameManagerScript.GetGameState () == GameManager.GameState.Playing) {
 			Vector3 deltaPosition = endPoint - startPoint;
 
 			// Get rotation

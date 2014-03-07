@@ -9,6 +9,10 @@ public class PaymentGuiDrawer : MonoBehaviour
     public float menuWidth = 1;
     public float menuHeight = 1;
 
+    private int drinksServed;
+    private int tipsEarned;
+    private int newStarBucks;
+
 	// Use this for initialization
 	void Start ()
 	{
@@ -17,6 +21,16 @@ public class PaymentGuiDrawer : MonoBehaviour
         {
             Debug.Log("Oh no! Couldn't find player!");
         }
+        else
+        {
+            // Get last round stats and save them as local variables for the purpose of the GUI
+            drinksServed = player.GetDrinkCount();
+            tipsEarned = player.GetTipsEarned();
+            newStarBucks = player.GetStarBucks() + tipsEarned;
+
+            // This adds the tips to the total StarBucks and resets the round stats
+            player.EndRound();
+        }
 	}
 
 	void OnGUI() {
@@ -24,9 +38,9 @@ public class PaymentGuiDrawer : MonoBehaviour
 
         if (player)
         {
-            GUILayout.Label("Drinks Served: " + player.GetDrinkCount());
-            GUILayout.Label("Tips: $" + player.GetTipsEarned());
-            GUILayout.Label("Starbucks: $" + player.GetStarBucks());
+            GUILayout.Label("Drinks Served: " + drinksServed);
+            GUILayout.Label("Tips: $" + tipsEarned);
+            GUILayout.Label("Starbucks: $" + newStarBucks);
         }
 		
 		GUILayout.EndArea();

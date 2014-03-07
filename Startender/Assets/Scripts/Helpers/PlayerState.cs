@@ -54,10 +54,6 @@ public class PlayerState : MonoBehaviour
 		return roundCosts;
 	}
 	
-	public int GetStarbucks() {
-		return this.starBucks;
-	}
-	
 	public int GetRest() {
 		return this.rest;
 	}

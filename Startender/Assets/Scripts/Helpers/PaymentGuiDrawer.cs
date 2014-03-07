@@ -1,26 +1,33 @@
 using UnityEngine;
 using System.Collections;
 
-public class PaymentGuiDrawer : GUIDrawer
+public class PaymentGuiDrawer : MonoBehaviour
 {
+    private PlayerState player;
+    public int menuXFromCenter = 0;
+    public int menuYFromCenter = 0;
+    public float menuWidth = 1;
+    public float menuHeight = 1;
 
 	// Use this for initialization
-	public override void Start ()
+	void Start ()
 	{
-		base.Start();
+        player = FindObjectOfType<PlayerState>();
+        if (!player)
+        {
+            Debug.Log("Oh no! Couldn't find player!");
+        }
 	}
 
-	public override void FindTextLabels() {
+	void OnGUI() {
 		GUILayout.BeginArea(new Rect(Screen.width / 2 - this.menuXFromCenter, Screen.height /2 - this.menuYFromCenter, this.menuWidth, this.menuHeight));
-		
-		GUILayout.Label("Drinks Served: " + player.GetDrinkCount());
-		GUILayout.Label("Tips: $" + player.GetTipsEarned());
-		GUILayout.Label("Starbucks: $" + player.GetStarBucks());
-		
-		if(GUILayout.Button("Next Round")) {
-			Debug.Log ("Resetting Round");
-			Application.LoadLevel("rpg");
-		}
+
+        if (player)
+        {
+            GUILayout.Label("Drinks Served: " + player.GetDrinkCount());
+            GUILayout.Label("Tips: $" + player.GetTipsEarned());
+            GUILayout.Label("Starbucks: $" + player.GetStarBucks());
+        }
 		
 		GUILayout.EndArea();
 	}

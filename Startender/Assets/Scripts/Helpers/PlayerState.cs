@@ -53,6 +53,18 @@ public class PlayerState : MonoBehaviour
 		
 		return roundCosts;
 	}
+
+	public int GetBaseRent() {
+		return this.baseRent;
+	}
+
+	public int GetBaseFood() {
+		return this.baseGroceries;
+	}
+
+	public int GetBaseTuition() {
+		return this.baseTuition;
+	}
 	
 	public int GetRest() {
 		return this.rest;

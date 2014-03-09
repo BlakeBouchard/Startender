@@ -12,10 +12,10 @@ public class GUIDrawer : MonoBehaviour
 	private GUIText tipsEarned;
 	private GUIText drinksServed;
 
-	public int menuXFromCenter = 240;
-	public int menuYFromCenter = 100;
-	public int menuWidth;
-	public int menuHeight;
+	public int menuXFromCenter;
+	public int menuYFromCenter;
+    public int menuWidth = 240;
+    public int menuHeight = 100;
 
 	public void SetManagers(GameManager gameManager, DrinkManager drinkManager, PlayerState player) {
 		this.gameManager = gameManager;
@@ -58,7 +58,7 @@ public class GUIDrawer : MonoBehaviour
 
 		this.DrawBaseMenu();
 
-		if(GUILayout.Button("Start Game")) {
+		if (GUILayout.Button("Start Game")) {
 			Debug.Log("Start Game button clicked");
 			gameManager.StartGame();
 		}
@@ -72,14 +72,26 @@ public class GUIDrawer : MonoBehaviour
 
 		this.DrawBaseMenu();
 		
-		if(GUILayout.Button("Resume")) {
+		if (GUILayout.Button("Resume"))
+        {
 			Debug.Log("Resuming Game");
 			gameManager.ResumeRound();
 		}
-		else if(GUILayout.Button("Reset Round")) {
+		else if (GUILayout.Button("Reset Round"))
+        {
 			Debug.Log ("Resetting Round");
 			gameManager.ResetRound();
-		}
+        }
+        else if (Debug.isDebugBuild && GUILayout.Button("End Round")) 
+        {
+            Debug.Log("Ending round");
+            gameManager.EndRound();
+        }
+        else if (GUILayout.Button("Quit Game"))
+        {
+            Debug.Log("Quitting game");
+            Application.LoadLevel(0);
+        }
 		
 		GUILayout.EndArea();
 	}

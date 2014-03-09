@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+
         this.drinkManager = this.GetComponentInChildren<DrinkManager>();
         this.gameState = GameState.Menu;
         this.roundTime = maxRoundTime;

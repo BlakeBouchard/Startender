@@ -20,7 +20,7 @@ public class QuitListener : MonoBehaviour {
             else
             {
                 Application.LoadLevel(0);
-            } 
+            }
         }
 	}
 }

@@ -165,7 +165,11 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 11400002, guid: 969825e8c62bae34daf4d9119323f6da, type: 2}
+      propertyPath: menuHeight
+      value: 240
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 969825e8c62bae34daf4d9119323f6da, type: 2}
   m_RootGameObject: {fileID: 2137380472}
@@ -1168,7 +1172,7 @@ MonoBehaviour:
   menuXFromCenter: 30
   menuYFromCenter: 30
   menuWidth: 240
-  menuHeight: 100
+  menuHeight: 240
 --- !u!1 &1752900920
 GameObject:
   m_ObjectHideFlags: 0

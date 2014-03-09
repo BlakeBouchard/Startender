@@ -28,7 +28,7 @@ public class GameManager : MonoBehaviour
         //Get HUD Manager
         GameObject gui = GameObject.Find("GUIDrawer");
         this.guiDrawer = (GUIDrawer)gui.GetComponent(typeof(GUIDrawer));
-        this.guiDrawer.SetManagers(this, this.drinkManager);
+        this.guiDrawer.SetManagers(this, this.drinkManager, this.player);
     }
 
     private PlayerState SpawnPlayer()

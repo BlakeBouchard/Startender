@@ -61,7 +61,7 @@ public class GameManager : MonoBehaviour
     public void EndRound() {
 	    Time.timeScale = 0;
 	    //this.gameState = GameState.RoundOver;
-		Application.LoadLevel("Payment");
+		Application.LoadLevel("endOfRound");
     }
 
     public void ResumeRound() {

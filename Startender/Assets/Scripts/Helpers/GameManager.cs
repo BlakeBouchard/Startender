@@ -75,7 +75,7 @@ public class GameManager : MonoBehaviour
     
 	    //restart the game
 	    Time.timeScale = 1;
-	    this.gameState = GameState.Playing;
+	    this.gameState = GameState.Menu;
     }
 
     private void ResetRoundTime() {

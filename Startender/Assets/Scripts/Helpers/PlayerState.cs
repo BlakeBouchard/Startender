@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerState : MonoBehaviour
 {
 	//persistent game stats
-	private int starBucks;
+	public int starBucks;
 	private int rest;
 	private float gpa;
 
@@ -64,10 +64,6 @@ public class PlayerState : MonoBehaviour
 
 	public int GetBaseTuition() {
 		return this.baseTuition;
-	}
-	
-	public int GetStarbucks() {
-		return this.starBucks;
 	}
 	
 	public int GetRest() {

@@ -65,7 +65,10 @@ public class DrinkManager : MonoBehaviour {
 
 	public int FinishAndTip(List<Ingredient> ingredients)
     {
-		return this.GetTipAmount(this.MadeSuccessfully(ingredients));
+        //Added by Rebeca. Used to fade out the drink feedback GUI.
+        GameObject.Find("GUIDrawer").SendMessage("setDrinkCompletionTime", Time.time);
+
+        return this.GetTipAmount(this.MadeSuccessfully(ingredients));
 	}
 	
 	// figures out tip amount

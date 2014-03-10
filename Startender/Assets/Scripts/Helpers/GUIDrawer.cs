@@ -12,6 +12,9 @@ public class GUIDrawer : MonoBehaviour
 	private GUIText tipsEarned;
 	private GUIText drinksServed;
 
+    //Added by Rebeca. Used to calculate the "fade" or alpha of the feedback gui.
+    private float drinkCompletionTime = -2.0f;
+
 	public int menuXFromCenter;
 	public int menuYFromCenter;
     public int menuWidth = 240;
@@ -110,14 +113,22 @@ public class GUIDrawer : MonoBehaviour
     //Added by Rebeca.
     public void DrawDrinkFeedback()
     {
-        //Currently at the bottom right but we can move it.
-        GUILayout.BeginArea(new Rect(Screen.width - this.menuWidth, Screen.height - this.menuHeight, this.menuWidth, this.menuHeight));
+        //Currently just above the bottom right but we can move it.
+        GUILayout.BeginArea(new Rect(Screen.width - this.menuWidth, (Screen.height * 0.9f) - this.menuHeight, this.menuWidth, this.menuHeight));
 
-        GUILayout.Label("Finished Drink: " + drinkManager.GetPrevDrinkName());
+        GUIStyle fadedText = new GUIStyle();
+        fadedText.normal.textColor = new Color(255, 255, 255, 0);
+
+        if (Time.time - drinkCompletionTime < 2)
+        {
+            fadedText.normal.textColor = new Color(255, 255, 255, (1 - (Time.time - drinkCompletionTime) / 2));
+        }
+
+        GUILayout.Label("Finished Drink: " + drinkManager.GetPrevDrinkName(), fadedText);
         int tip = player.GetLastTip();
-        GUILayout.Label("Tip: $" + tip);
+        GUILayout.Label("Tip: $" + tip, fadedText);
         //TODO: we should pull in a random phrase from a text file.
-        GUILayout.Label("Feedback: " + (tip == 0 ? "" : (tip > 0 ? "Ah, that really hit the sun spot." : "What? That wasn't what I ordered!") ));
+        GUILayout.Label("Feedback: " + (tip == 0 ? "" : (tip > 0 ? "Ah, that really hit the sun spot." : "What? That wasn't what I ordered!")), fadedText);
 
         GUILayout.EndArea();
     }
@@ -125,6 +136,14 @@ public class GUIDrawer : MonoBehaviour
     private void DrawBaseMenu() {
 	    GUILayout.Label("Startender!");
 	    GUILayout.Space(10.0f);
+    }
+
+    public void setDrinkCompletionTime(float value)
+    {
+        //Setter for the drinkCompletionTime variable
+        drinkCompletionTime = value;
+
+        Debug.Log("Set the drink completion time to " + value);
     }
 }
 

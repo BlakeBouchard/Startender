@@ -17,3 +17,5 @@ EditorBuildSettings:
     path: Assets/Scenes/rpg.unity
   - enabled: 1
     path: Assets/Scenes/credits.unity
+  - enabled: 1
+    path: Assets/Scenes/failScene.unity

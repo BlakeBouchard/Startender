@@ -4,10 +4,14 @@ using UnityEngine;
 
 public class PlayerState : MonoBehaviour
 {
+	//so we don't overwrite the player state on scene change
+	public bool initialized;
+
 	//persistent game stats
 	public int starBucks;
-	private int rest;
-	private float gpa;
+	public int rest;
+	public float gpa;
+	public int hunger;
 
 	//round specific stats
 	private int drinksServed;
@@ -21,26 +25,43 @@ public class PlayerState : MonoBehaviour
 
 	//base level difficulty
 	private int difficulty;
+	
+	public int hungerThreshold;
+	public int failedRentPayments;
+	public int failedRentThreshold;
+	public float gpaThreshold;
 
-	private Dictionary<string,int> roundCosts;
+	public string gameFailMessage;
+
+	public float gpaIncreaseChance = 0.4f;
 
 	void Start() {
         DontDestroyOnLoad(this);
-		this.starBucks = 40;
-		this.tipsEarned = 0;
-        this.lastTip = 0;
-		this.rest = 10;
-		this.gpa = 3.0f;
 
-		//base stats
-		this.difficulty = 1;
-		
-		//base costs
-		this.baseRent = 10;
-		this.baseGroceries = 5;
-		this.baseTuition = 5;
+		if(!this.initialized) {
+			this.starBucks = 40;
+			this.tipsEarned = 0;
+	        this.lastTip = 0;
+			this.rest = 10;
+			this.gpa = 3.0f;
 
-		this.roundCosts = new Dictionary<string,int>();
+			//base stats
+			this.difficulty = 1;
+			
+			//base costs
+			this.baseRent = 10;
+			this.baseGroceries = 5;
+			this.baseTuition = 5;
+
+			this.failedRentPayments = 0;
+			this.failedRentThreshold = 3;
+			this.hunger = 0;
+			this.hungerThreshold = 3;
+			this.gpa = 3.0f;
+			this.gpaThreshold = 1.3f;
+			this.initialized = true;
+		}
+
 	}
 
 	//RPG METHODS
@@ -54,6 +75,10 @@ public class PlayerState : MonoBehaviour
 		return roundCosts;
 	}
 
+	private void EndGame() {
+		Application.LoadLevel("failScene");
+	}
+
 	public int GetBaseRent() {
 		return this.baseRent;
 	}
@@ -65,6 +90,10 @@ public class PlayerState : MonoBehaviour
 	public int GetBaseTuition() {
 		return this.baseTuition;
 	}
+
+	public string GetFailMessage() {
+		return this.gameFailMessage;
+	}
 	
 	public int GetRest() {
 		return this.rest;
@@ -73,19 +102,37 @@ public class PlayerState : MonoBehaviour
 	public float GetGPA() {
 		return this.gpa;
 	}
+
+	public int GetFailedRentThreshold() {
+		return this.failedRentThreshold;
+	}
 	
 	public int GetDifficulty() {
 		return this.difficulty;
 	}
 	
-	public void IncrementGPA(float delta) {
-		this.gpa += delta;
+	public void IncrementGPA() {
+		if(Random.value > gpaIncreaseChance) {
+			this.gpa += 0.3f;
+		}
+	}
+
+	public void DecrementGPA() {
+		this.gpa -= 0.3f;
+		if(this.gpa < this.gpaThreshold) {
+			this.gameFailMessage = "You were kicked out of school for poor performance!";
+			this.EndGame();
+		}
 	}
 	
 	public void IncrementRest(int delta) {
 		this.rest += delta;
 	}
-	
+
+	public void IncrementFailedRentPayments() {
+		this.failedRentPayments += 1;
+	}
+
 	public void IncrementDifficulty() {
 		this.difficulty++;
 	}
@@ -99,7 +146,11 @@ public class PlayerState : MonoBehaviour
 	}
 
 	public void IncrementStarbucks(int delta) {
-		this.starBucks =+ delta;
+		this.starBucks += delta;
+	}
+
+	public void IncrementHunger() {
+		this.hunger += 1;
 	}
 
 	public void EndRound() {
@@ -113,7 +164,6 @@ public class PlayerState : MonoBehaviour
 	}
 
 	public void AddTip(int tipValue) {
-        //First line added by Rebeca.
         this.lastTip = tipValue;
 		this.tipsEarned += tipValue;
 	}

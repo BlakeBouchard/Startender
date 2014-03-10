@@ -6,12 +6,12 @@ public class RPGManager : MonoBehaviour
 {
 	private PlayerState player;
 	private RPGuiDrawer gui;
-	private Dictionary<string, int> roundCosts;
 
 	// Use this for initialization
 	void Start () {
 		player = GameObject.FindObjectOfType<PlayerState>();
 		gui = GameObject.FindObjectOfType<RPGuiDrawer>();
+		gui.setManagers(this);
 	}
 
 	public int FoodCost() {
@@ -26,8 +26,22 @@ public class RPGManager : MonoBehaviour
 		return player.GetDifficulty() * player.GetBaseTuition();
 	}
 
+	public void updateBaseStats(bool rent, bool food, bool tuition) {
+		if(!rent) {
+			player.IncrementFailedRentPayments();
+		}
+		if(!food) {
+			player.IncrementHunger();
+		}
+		if(!tuition) {
+			player.DecrementGPA();
+		} else {
+			player.IncrementGPA();
+		}
+	}
+
 	void OnGUI() {
-		this.roundCosts = this.gui.DrawPaymentScreen(player.GetStarbucks());
+		this.gui.DrawPaymentScreen(player.GetStarBucks());
 	}
 
 }

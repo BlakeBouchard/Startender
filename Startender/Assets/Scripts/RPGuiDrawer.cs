@@ -63,7 +63,7 @@ public class RPGuiDrawer : MonoBehaviour
 
 		if(GUILayout.Button("Pay and Continue")) {
 			Debug.Log("Pay Button Clicked");
-			rpgManager.updateBaseStats(this.rent, this.food, this.tuition);
+			rpgManager.updateBaseStats(remainingStarBucks, this.rent, this.food, this.tuition);
 			Application.LoadLevel("noObjectsScene");
 		}
 

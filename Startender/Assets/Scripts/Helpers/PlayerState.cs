@@ -179,4 +179,8 @@ public class PlayerState : MonoBehaviour
 	public int GetStarBucks() {
 		return this.starBucks;
 	}
+
+	public void SetStarBucks(int starBucks) {
+		this.starBucks = starBucks;
+	}
 }

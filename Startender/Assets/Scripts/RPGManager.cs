@@ -26,7 +26,10 @@ public class RPGManager : MonoBehaviour
 		return player.GetDifficulty() * player.GetBaseTuition();
 	}
 
-	public void updateBaseStats(bool rent, bool food, bool tuition) {
+	public void updateBaseStats(int starBucks, bool rent, bool food, bool tuition) {
+		
+		player.SetStarBucks(starBucks);
+
 		if(!rent) {
 			player.IncrementFailedRentPayments();
 		}

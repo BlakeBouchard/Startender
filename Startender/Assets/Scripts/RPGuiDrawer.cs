@@ -24,7 +24,7 @@ public class RPGuiDrawer : MonoBehaviour
 	{
 		//setup basic drawing params
 		this.menuWidth = 240;
-		this.menuHeight = 100;
+		this.menuHeight = 200;
 		this.menuXFromCenter = this.menuWidth / 2;
 		this.menuYFromCenter = this.menuHeight / 2;
 
@@ -33,9 +33,7 @@ public class RPGuiDrawer : MonoBehaviour
 		this.tuition = false;
 	}
 
-	public Dictionary<string,int> DrawPaymentScreen(int starBucks) {
-
-		Dictionary<string, int> paid = new Dictionary<string, int>();
+	public void DrawPaymentScreen(int starBucks) {
 
 		GUILayout.BeginArea(new Rect(Screen.width / 2 - this.menuXFromCenter, Screen.height /2 - this.menuYFromCenter, this.menuWidth, this.menuHeight));
 		this.DrawBaseMenu();
@@ -63,9 +61,13 @@ public class RPGuiDrawer : MonoBehaviour
 		this.food = GUILayout.Toggle(this.food, "Food: " + foodCost);
 		this.tuition = GUILayout.Toggle(this.tuition, "School: " + tuitionCost);
 
-		GUILayout.EndArea();
+		if(GUILayout.Button("Pay and Continue")) {
+			Debug.Log("Pay Button Clicked");
+			rpgManager.updateBaseStats(this.rent, this.food, this.tuition);
+			Application.LoadLevel("noObjectsScene");
+		}
 
-		return paid;
+		GUILayout.EndArea();
 	}
 
 	public void DrawBaseMenu() {

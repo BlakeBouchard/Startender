@@ -9,10 +9,14 @@ public class RPGuiDrawer : MonoBehaviour
 	public int menuWidth;
 	public int menuHeight;
 
-	public GameManager gameManager;
+	public bool rent;
+	public bool food;
+	public bool tuition;
 
-	public void setManagers(GameManager gameManager) {
-		this.gameManager = gameManager;
+	public RPGManager rpgManager;
+
+	public void setManagers(RPGManager rpgManager) {
+		this.rpgManager = rpgManager;
 	}
 
 	// Use this for initialization
@@ -20,26 +24,54 @@ public class RPGuiDrawer : MonoBehaviour
 	{
 		//setup basic drawing params
 		this.menuWidth = 240;
-		this.menuHeight = 100;
+		this.menuHeight = 200;
 		this.menuXFromCenter = this.menuWidth / 2;
 		this.menuYFromCenter = this.menuHeight / 2;
 
+		this.rent = false;
+		this.food = false;
+		this.tuition = false;
 	}
 
-	public Dictionary<string,int> drawPaymentScreen(Dictionary<string, int> roundCosts, int starBucks) {
-
-		Dictionary<string, int> paid = new Dictionary<string, int>();
+	public void DrawPaymentScreen(int starBucks) {
 
 		GUILayout.BeginArea(new Rect(Screen.width / 2 - this.menuXFromCenter, Screen.height /2 - this.menuYFromCenter, this.menuWidth, this.menuHeight));
 		this.DrawBaseMenu();
-		GUILayout.EndArea();
 
-		return paid;
+		int remainingStarBucks = starBucks;
+		int rentCost = rpgManager.RentCost();
+		int foodCost = rpgManager.FoodCost();
+		int tuitionCost = rpgManager.TuitionCost();
+
+		if(this.rent) {
+			remainingStarBucks -= rentCost;
+		}
+
+		if(this.food) {
+			remainingStarBucks -= foodCost;
+		}
+
+		if(this.tuition) {
+			remainingStarBucks -= tuitionCost;
+		}
+
+		GUILayout.Label("Starbucks: $" + remainingStarBucks);
+
+		this.rent = GUILayout.Toggle(this.rent, "Rent: " + rentCost);
+		this.food = GUILayout.Toggle(this.food, "Food: " + foodCost);
+		this.tuition = GUILayout.Toggle(this.tuition, "School: " + tuitionCost);
+
+		if(GUILayout.Button("Pay and Continue")) {
+			Debug.Log("Pay Button Clicked");
+			rpgManager.updateBaseStats(remainingStarBucks, this.rent, this.food, this.tuition);
+			Application.LoadLevel("noObjectsScene");
+		}
+
+		GUILayout.EndArea();
 	}
 
 	public void DrawBaseMenu() {
 		GUILayout.Space(10.0f);
 	}
-
 }
 

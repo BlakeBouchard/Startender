@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerState : MonoBehaviour
 {
 	//persistent game stats
-	private int starBucks;
+	public int starBucks;
 	private int rest;
 	private float gpa;
 
@@ -52,10 +52,6 @@ public class PlayerState : MonoBehaviour
 		roundCosts.Add("Tuition", this.baseTuition);
 		
 		return roundCosts;
-	}
-	
-	public int GetStarbucks() {
-		return this.starBucks;
 	}
 	
 	public int GetRest() {

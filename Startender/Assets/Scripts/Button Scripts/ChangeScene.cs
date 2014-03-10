@@ -4,6 +4,7 @@ using System.Collections;
 public class ChangeScene : MonoBehaviour {
 
     public string scene = null;
+    public int sceneNumber = 0;
 
 	// Use this for initialization
 	void Start ()
@@ -23,6 +24,10 @@ public class ChangeScene : MonoBehaviour {
         if (scene != null)
         {
             Application.LoadLevel(scene);
+        }
+        else
+        {
+            Application.LoadLevel(sceneNumber);
         }
     }
 	

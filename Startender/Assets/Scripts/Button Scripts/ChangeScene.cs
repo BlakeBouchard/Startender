@@ -21,7 +21,7 @@ public class ChangeScene : MonoBehaviour {
     // Called when mouse is clicked on a collider attached to this object
     void OnMouseDown()
     {
-        if (scene != null)
+        if (!string.IsNullOrEmpty(scene))
         {
             Application.LoadLevel(scene);
         }

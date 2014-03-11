@@ -10,6 +10,7 @@ GameObject:
   - 4: {fileID: 400000}
   - 212: {fileID: 21200000}
   - 114: {fileID: 11400000}
+  - 61: {fileID: 6100000}
   m_Layer: 0
   m_Name: silo
   m_TagString: Untagged
@@ -28,6 +29,17 @@ Transform:
   m_LocalScale: {x: .2692945, y: .269294649, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
+--- !u!61 &6100000
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Size: {x: 3.61999989, y: 3.6099999}
+  m_Center: {x: 0, y: 0}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -39,7 +51,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e382ae90a5b6845d48bc3df02b1c5707, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  garnish: {fileID: 0}
+  garnish: {fileID: 400000, guid: cdf5f88dc26ac4d329daf391410100f5, type: 2}
   xForce: 1
   yForce: 1
   startMissleSpeed: 10.5

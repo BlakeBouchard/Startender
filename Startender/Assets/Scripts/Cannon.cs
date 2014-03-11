@@ -9,8 +9,9 @@ public class Cannon : MonoBehaviour {
 
     private bool goingUp;
 
-    public static float MIN_CANNON_ANGLE = 320.0f;
-    public static float MAX_CANNON_ANGLE = 345.0f;
+    public float MIN_CANNON_ANGLE = 320.0f;
+    public float MAX_CANNON_ANGLE = 345.0f;
+    private Quaternion startRotation;
 
     public float bubbleSpeed = 12.5f;
     public float rotateSpeed = 30.0f;
@@ -24,17 +25,17 @@ public class Cannon : MonoBehaviour {
 
 	private Queue<Transform> bubbleQueue;
 
-	GameObject gameManager;
-	GameManager gameManagerScript;
+	GameManager gameManager;
 
 	// Use this for initialization
-	void Start () {
+	void Start ()
+    {
 		this.ResetFireDelay();
+        this.startRotation = transform.rotation;
 
 		bubbleQueue = new Queue<Transform>();
 
-		gameManager = GameObject.Find("Game Manager");
-		gameManagerScript = (GameManager) gameManager.GetComponent(typeof(GameManager));
+        gameManager = GameObject.FindObjectOfType<GameManager>();
 	}
 
     public void FireBubble(Transform bubbleObj)
@@ -69,14 +70,20 @@ public class Cannon : MonoBehaviour {
         }
     }
 
-	private void ResetFireDelay() {
+    public void ResetAngle()
+    {
+        transform.rotation = startRotation;
+    }
+
+	private void ResetFireDelay()
+    {
 		this.fireDelayTimer = this.fireDelayTime;
 	}
 
-	public void LoadBubble(Transform bubble) {
-
-		//if we're about to fire a shot, reset so they come out close to each other
-		if(this.bubbleQueue.Count > 0) {
+	public void LoadBubble(Transform bubble)
+    {
+		// if we're about to fire a shot, reset so they come out close to each other
+		if (this.bubbleQueue.Count > 0) {
 			this.ResetFireDelay();
 		}
 
@@ -85,35 +92,41 @@ public class Cannon : MonoBehaviour {
 
 	private void FireIfReady() {
 
-		//if we've reached the delay, fire
-		if(this.fireDelayTimer <= 0.0f) {
+		// if we've reached the delay, fire
+		if (this.fireDelayTimer <= 0.0f)
+        {
 			this.FireBubble(bubbleQueue.Dequeue());
 		
-			//if we still have shots left, "reload"
-			if(this.bubbleQueue.Count > 0) {
+			// if we still have shots left, "reload"
+			if (this.bubbleQueue.Count > 0)
+            {
 				this.fireDelayTimer = 0.0f + this.reloadTime;
 			}
-			else {
+			else
+            {
 				this.ResetFireDelay();
 			}
 		}
-
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update ()
+    {
 
-		if(this.bubbleQueue.Count > 0) {
+		if (this.bubbleQueue.Count > 0)
+        {
 			this.fireDelayTimer -= Time.deltaTime;
 			this.FireIfReady();
 		}
 
-        IncrementAngle();
-
-		if (gameManagerScript.GetGameState () == GameManager.GameState.RoundOver
-		    && this.bubbleQueue.Count > 0) {
-			Debug.Log("Clearing bubble queue");
-			this.bubbleQueue.Clear();	
+        switch (gameManager.GetGameState())
+        {
+            case GameManager.GameState.Playing :
+                IncrementAngle();
+                break;
+            case GameManager.GameState.Menu :
+                ResetAngle();
+                break;
 		}
 
 	}

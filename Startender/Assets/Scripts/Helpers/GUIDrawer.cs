@@ -5,7 +5,7 @@ public class GUIDrawer : MonoBehaviour
 {
 	private GameManager gameManager;
 	private DrinkManager drinkManager;
-    protected PlayerState player;
+    public PlayerState player;
 
 	private GUIText roundTime;
 	private GUIText currentOrder;
@@ -17,23 +17,20 @@ public class GUIDrawer : MonoBehaviour
 
 	public int menuXFromCenter;
 	public int menuYFromCenter;
-	public int menuWidth;
-	public int menuHeight;
+    public int menuWidth = 240;
+    public int menuHeight = 100;
 
-	public void SetManagers(GameManager gameManager, DrinkManager drinkManager) {
+	public void SetManagers(GameManager gameManager, DrinkManager drinkManager, PlayerState player) {
 		this.gameManager = gameManager;
 		this.drinkManager = drinkManager;
+        this.player = player;
 	}
 
 	public virtual void Start() {
 
 		//setup basic drawing params
-		this.menuWidth = 240;
-		this.menuHeight = 100;
 		this.menuXFromCenter = this.menuWidth / 2;
 		this.menuYFromCenter = this.menuHeight / 2;
-
-        this.player = GameObject.FindObjectOfType<PlayerState>();
 
 		this.FindTextLabels();
 	}
@@ -64,7 +61,7 @@ public class GUIDrawer : MonoBehaviour
 
 		this.DrawBaseMenu();
 
-		if(GUILayout.Button("Start Game")) {
+		if (GUILayout.Button("Start Game")) {
 			Debug.Log("Start Game button clicked");
 			gameManager.StartGame();
 		}
@@ -78,14 +75,26 @@ public class GUIDrawer : MonoBehaviour
 
 		this.DrawBaseMenu();
 		
-		if(GUILayout.Button("Resume")) {
+		if (GUILayout.Button("Resume"))
+        {
 			Debug.Log("Resuming Game");
 			gameManager.ResumeRound();
 		}
-		else if(GUILayout.Button("Reset Round")) {
+		else if (GUILayout.Button("Reset Round"))
+        {
 			Debug.Log ("Resetting Round");
 			gameManager.ResetRound();
-		}
+        }
+        else if (Debug.isDebugBuild && GUILayout.Button("End Round")) 
+        {
+            Debug.Log("Ending round");
+            gameManager.EndRound();
+        }
+        else if (GUILayout.Button("Quit Game"))
+        {
+            Debug.Log("Quitting game");
+            Application.LoadLevel(0);
+        }
 		
 		GUILayout.EndArea();
 	}

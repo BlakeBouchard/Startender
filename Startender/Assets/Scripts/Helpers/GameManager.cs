@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+
         this.drinkManager = this.GetComponentInChildren<DrinkManager>();
         this.gameState = GameState.Menu;
         this.roundTime = maxRoundTime;
@@ -28,7 +29,7 @@ public class GameManager : MonoBehaviour
         //Get HUD Manager
         GameObject gui = GameObject.Find("GUIDrawer");
         this.guiDrawer = (GUIDrawer)gui.GetComponent(typeof(GUIDrawer));
-        this.guiDrawer.SetManagers(this, this.drinkManager);
+        this.guiDrawer.SetManagers(this, this.drinkManager, this.player);
     }
 
     private PlayerState SpawnPlayer()
@@ -75,7 +76,7 @@ public class GameManager : MonoBehaviour
     
 	    //restart the game
 	    Time.timeScale = 1;
-	    this.gameState = GameState.Playing;
+	    this.gameState = GameState.Menu;
     }
 
     private void ResetRoundTime() {

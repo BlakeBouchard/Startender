@@ -166,10 +166,18 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 11400036, guid: 969825e8c62bae34daf4d9119323f6da, type: 2}
+      propertyPath: prefabs.Array.size
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 11400002, guid: 969825e8c62bae34daf4d9119323f6da, type: 2}
       propertyPath: menuHeight
       value: 240
       objectReference: {fileID: 0}
+    - target: {fileID: 11400036, guid: 969825e8c62bae34daf4d9119323f6da, type: 2}
+      propertyPath: prefabs.Array.data[7]
+      value: 
+      objectReference: {fileID: 400000, guid: ac6aa19ad08dbbd42baa583f9f051a88, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 969825e8c62bae34daf4d9119323f6da, type: 2}
   m_RootGameObject: {fileID: 2137380472}
@@ -1209,6 +1217,7 @@ MonoBehaviour:
   - {fileID: 400000, guid: b193af77e6086cb4ba337fd0709bc5c9, type: 2}
   - {fileID: 400000, guid: e377be37f05c041a6aabac58f3893049, type: 2}
   - {fileID: 400000, guid: 85ffdadbf44f82048bc264b03cff59da, type: 2}
+  - {fileID: 400000, guid: ac6aa19ad08dbbd42baa583f9f051a88, type: 2}
 --- !u!4 &1752900922
 Transform:
   m_ObjectHideFlags: 0

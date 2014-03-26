@@ -34,7 +34,6 @@ public class Cannon : MonoBehaviour {
         this.startRotation = transform.rotation;
 
 		bubbleQueue = new Queue<Transform>();
-
         gameManager = GameObject.FindObjectOfType<GameManager>();
 	}
 
@@ -68,6 +67,10 @@ public class Cannon : MonoBehaviour {
         {
             goingUp = false;
         }
+    }
+
+    public void EmptyCannon() {
+        this.bubbleQueue.Clear();
     }
 
     public void ResetAngle()

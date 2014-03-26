@@ -99,65 +99,70 @@ public class DrinkManager : MonoBehaviour {
     //If orderMatters is true, the ingredients must be added to the cup in a specific order.
 	public bool MadeSuccessfully(List<Ingredient> ingredientsInCup, Boolean orderMatters) {
 
-		int actualIngredientCount = this.currentDrink.GetIngredientCount();
-
-		if (ingredientsInCup.Count != actualIngredientCount)
+        if (this.currentDrink != null)
         {
-			Debug.Log("Wrong Ingredient Count!");
-			return false;
-		}
+            int actualIngredientCount = this.currentDrink.GetIngredientCount();
 
-        Ingredient[] actualIngredients = this.currentDrink.GetIngredients();
-
-        List<Ingredient> remainingIngredients = new List<Ingredient>();
-        remainingIngredients.AddRange(ingredientsInCup);
-
-		// Check if there is a matching drink ingredient for all actual ingredients, in order if applicable.
-        for (int i = 0; i < actualIngredientCount; i++ )
-        {
-            Boolean ingredientsMatch = true;
-            if (orderMatters)
+            if (ingredientsInCup.Count != actualIngredientCount)
             {
-                if (actualIngredients[i].name != ingredientsInCup[i].name)
-                {
-                    ingredientsMatch = false;
-                }
-            }
-            else
-            {
-                //Assume there is no match (guilty until proven innocent).
-                ingredientsMatch = false;
-
-                Ingredient match = null;
-
-                //loop through to see if there is a match that hasn't been taken.
-                for (int j = 0; j < remainingIngredients.Count && !ingredientsMatch; j++)
-                {
-                    if (remainingIngredients[j].name == actualIngredients[i].name)
-                    {
-                        ingredientsMatch = true;
-                        match = remainingIngredients[j];
-                    }
-                }
-
-                //If there was a match, remove it from the remaining ingredients list.
-                if (match != null)
-                {
-                    remainingIngredients.Remove(match);
-                }
-
-            }
-
-            //There was failure somewhere, ingredients didn't match what they should have been.
-            if (!ingredientsMatch)
-            {
-                Debug.Log("Missing Drink Ingredient: " + actualIngredients[i].name);
+                Debug.Log("Wrong Ingredient Count!");
                 return false;
             }
 
+            Ingredient[] actualIngredients = this.currentDrink.GetIngredients();
+
+            List<Ingredient> remainingIngredients = new List<Ingredient>();
+            remainingIngredients.AddRange(ingredientsInCup);
+
+            // Check if there is a matching drink ingredient for all actual ingredients, in order if applicable.
+            for (int i = 0; i < actualIngredientCount; i++)
+            {
+                Boolean ingredientsMatch = true;
+                if (orderMatters)
+                {
+                    if (actualIngredients[i].name != ingredientsInCup[i].name)
+                    {
+                        ingredientsMatch = false;
+                    }
+                }
+                else
+                {
+                    //Assume there is no match (guilty until proven innocent).
+                    ingredientsMatch = false;
+
+                    Ingredient match = null;
+
+                    //loop through to see if there is a match that hasn't been taken.
+                    for (int j = 0; j < remainingIngredients.Count && !ingredientsMatch; j++)
+                    {
+                        if (remainingIngredients[j].name == actualIngredients[i].name)
+                        {
+                            ingredientsMatch = true;
+                            match = remainingIngredients[j];
+                        }
+                    }
+
+                    //If there was a match, remove it from the remaining ingredients list.
+                    if (match != null)
+                    {
+                        remainingIngredients.Remove(match);
+                    }
+
+                }
+
+                //There was failure somewhere, ingredients didn't match what they should have been.
+                if (!ingredientsMatch)
+                {
+                    Debug.Log("Missing Drink Ingredient: " + actualIngredients[i].name);
+                    return false;
+                }
+
+            }
+            Debug.Log(currentDrink.name + " made successfully!");
+            return true;
         }
-        Debug.Log(currentDrink.name + " made successfully!");
-		return true;
+
+        return false;
 		
 	}
 

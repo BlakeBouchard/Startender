@@ -14,11 +14,11 @@ public class GameManager : MonoBehaviour
 
     private GUIDrawer guiDrawer;
     private DrinkManager drinkManager;
+    private Cannon cannon;
 
     // Use this for initialization
     void Start()
     {
-
         this.drinkManager = this.GetComponentInChildren<DrinkManager>();
         this.gameState = GameState.Menu;
         this.roundTime = maxRoundTime;
@@ -30,6 +30,9 @@ public class GameManager : MonoBehaviour
         GameObject gui = GameObject.Find("GUIDrawer");
         this.guiDrawer = (GUIDrawer)gui.GetComponent(typeof(GUIDrawer));
         this.guiDrawer.SetManagers(this, this.drinkManager, this.player);
+
+        GameObject cannonObj = GameObject.Find("CannonBarrel");
+        this.cannon = (Cannon) cannonObj.GetComponent(typeof(Cannon));
     }
 
     private PlayerState SpawnPlayer()
@@ -62,6 +65,7 @@ public class GameManager : MonoBehaviour
     public void EndRound() {
 	    Time.timeScale = 0;
 	    //this.gameState = GameState.RoundOver;
+        this.cannon.EmptyCannon();
 		Application.LoadLevel("endOfRound");
     }
 
@@ -72,7 +76,8 @@ public class GameManager : MonoBehaviour
 
     public void ResetRound() {
 	    this.ResetRoundTime();
-	    player.ResetRound();
+	    this.player.ResetRound();
+        this.cannon.EmptyCannon();
     
 	    //restart the game
 	    Time.timeScale = 1;

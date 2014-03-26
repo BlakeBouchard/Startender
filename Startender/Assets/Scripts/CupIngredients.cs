@@ -15,7 +15,8 @@ public class CupIngredients : MonoBehaviour {
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.collider.tag == "Bubble") {
+        if (collision.collider.tag == "Bubble")
+        {
             OnTriggerEnter2D(collision.collider);
         }
     }
@@ -36,8 +37,9 @@ public class CupIngredients : MonoBehaviour {
                 Destroy(collider.gameObject);
                 audio.Play();
             
-			} else {
-
+			}
+            else
+            {
 				Garnish garnish = collider.gameObject.GetComponent<Garnish>();
 
 				if (garnish != null && garnish.GetIngredient() != null)
@@ -53,7 +55,8 @@ public class CupIngredients : MonoBehaviour {
 
 
 
-		} else if(collider.tag == "Garnish")
+		}
+        else if (collider.tag == "Garnish")
 		{
 			Debug.Log("Trigger detected from: " + collider.gameObject.name);
 			Garnish garnish = collider.gameObject.GetComponent<Garnish>();

@@ -12,11 +12,21 @@ public class ObjectSpawner : MonoBehaviour {
     // Use this for initialization
 	void Start ()
     {
+        SpawnAllPrefabs(this.prefabs);
+    }
+
+    void SpawnAllPrefabs(Transform[] prefabs)
+    {
         foreach (Transform prefab in prefabs)
         {
-            Transform clone = Instantiate(prefab) as Transform;
-            clone.name = prefab.name;
+            SpawnPrefab(prefab);
         }
+    }
+
+    void SpawnPrefab(Transform prefab)
+    {
+        Transform clone = Instantiate(prefab) as Transform;
+        clone.name = prefab.name;
     }
 	
 	// Update is called once per frame

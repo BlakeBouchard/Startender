@@ -4,7 +4,7 @@ using System.Collections;
 public class SliderDrag : MonoBehaviour {
 
     private Vector3 startPosition;
-    public bool rightToLeft = true;
+    private Vector3 maxLeftPosition;
     
     // Set this if we want the slider to snap back to its original position on release
     public bool snapsBack = false;
@@ -13,25 +13,33 @@ public class SliderDrag : MonoBehaviour {
 	void Start ()
     {
         startPosition = transform.position;
+        float maxLeftX = startPosition.x * -1;
+        maxLeftPosition = new Vector3(maxLeftX, startPosition.y, startPosition.z); 
 	}
 
     // This function should send the slider back to its starting position 
     void SnapBack ()
     {
-        transform.position = startPosition;
+        this.transform.position = startPosition;
     }
 
     // This code should handle moving the slider from left to right
     // The position should be sent in world coordinates, ie. converted from camera coordinates
     void MoveSliderHorizontally (Vector3 newPosition)
     {
-        if ((rightToLeft && newPosition.x < startPosition.x) || (!rightToLeft && newPosition.x > startPosition.x))
+        //if we are going off the left hand side, lock
+        if (newPosition.x <= this.maxLeftPosition.x)
         {
-            transform.position = new Vector3(newPosition.x, startPosition.y, startPosition.z);
+            this.transform.position = this.maxLeftPosition;
         }
-        else
+        //if we are going off the right hand side, lock
+        else if(newPosition.x >= this.startPosition.x)
         {
-            transform.position = startPosition;
+            this.transform.position = this.startPosition;
+        }
+        //otherwise slide freely 
+        else {
+            this.transform.position = new Vector3(newPosition.x, this.startPosition.y, this.startPosition.z);
         }
     }
 

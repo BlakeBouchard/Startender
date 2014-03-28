@@ -185,11 +185,11 @@ public class PlayerState : MonoBehaviour
 	}
 
 	public void SaveGame(){
-		PlayerPrefs.SetInt ("StarBucks", starBucks);
-		PlayerPrefs.SetInt ("Rest", rest);
-		PlayerPrefs.SetInt ("Hunger", hunger);
-		PlayerPrefs.SetInt ("Difficulty", difficulty);
-		PlayerPrefs.SetFloat ("GPA", gpa);
+		PlayerPrefs.SetInt ("StarBucks", this.starBucks);
+		PlayerPrefs.SetInt ("Rest", this.rest);
+		PlayerPrefs.SetInt ("Hunger", this.hunger);
+		PlayerPrefs.SetInt ("Difficulty", this.difficulty);
+		PlayerPrefs.SetFloat ("GPA", this.gpa);
 	}
 	
 	public void LoadGame(){

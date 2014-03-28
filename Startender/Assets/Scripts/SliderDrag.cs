@@ -1,11 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class SliderDrag : MonoBehaviour {
 
     private Vector3 startPosition;
     private Vector3 maxLeftPosition;
     
+    public List<Drink> drinkList;
+	public int drinkListIndex;
+
     // Set this if we want the slider to snap back to its original position on release
     public bool snapsBack = false;
 
@@ -15,7 +19,14 @@ public class SliderDrag : MonoBehaviour {
         startPosition = transform.position;
         float maxLeftX = startPosition.x * -1;
         maxLeftPosition = new Vector3(maxLeftX, startPosition.y, startPosition.z); 
+
+		this.drinkListIndex = 0;
 	}
+
+    public void SetDrinks(List<Drink> drinks) {
+        Debug.Log("Adding drinks to drink book.");
+        this.drinkList = drinks;
+    }
 
     // This function should send the slider back to its starting position 
     void SnapBack ()

@@ -5,8 +5,8 @@ using UnityEngine;
 public class DrinkManager : MonoBehaviour {
 	
 	// need to call populate drinks list before anything
-	private List<Drink> drinkList;
-	private Drink currentDrink;
+	public List<Drink> drinkList;
+	public Drink currentDrink;
 
     //Added by Rebeca. The previous drink name, saved for feedback.
     private String prevDrinkName = "";
@@ -20,6 +20,11 @@ public class DrinkManager : MonoBehaviour {
         {
             Debug.Log(drink.name + ": " + drink.GetFormattedIngredients());
         }
+
+        //feed drinks to Drink Book
+        GameObject slider = GameObject.Find("Slider");
+        SliderDrag drinkBook = (SliderDrag) slider.GetComponent(typeof(SliderDrag));
+        drinkBook.SetDrinks(this.drinkList);
     }
 
     //Added by Rebeca.
@@ -165,53 +170,5 @@ public class DrinkManager : MonoBehaviour {
         return false;
 		
 	}
-
-	
-//	// For testing
-//	// name, difficulty, tip, ingredients
-//	private void populateDrinksList()
-//	{
-//		Color red = new Color(Color.RED);
-//		Color green = new Color(Color.GREEN);
-//		Color blue = new Color(Color.BLUE);
-//		Color yellow = new Color(Color.YELLOW);
-//		Color white = new Color(Color.WHITE);
-//		
-//		ArrayList<String> vw = new ArrayList<String>();
-//		vw.add("Vodka");
-//		vw.add("Water");
-//		vw.add("Lime");
-//		Drink vodkaWater = new Drink("Vodka Water",0,vw,green);
-//		allDrinks.add(vodkaWater);
-//		
-//		ArrayList<String> rc = new ArrayList<String>();
-//		rc.add("Rum");
-//		rc.add("Coke");
-//		rc.add("Ice");
-//		Drink rumCoke = new Drink("Rum & Coke",2,rc,blue);
-//		allDrinks.add(rumCoke);
-//		
-//		ArrayList<String> mtc = new ArrayList<String>();
-//		mtc.add("Gin");
-//		mtc.add("Lemon Juice");
-//		mtc.add("Club Soda");
-//		Drink tomCollins = new Drink("Major Tom Collins",4,mtc,yellow);
-//		allDrinks.add(tomCollins);
-//		
-//		ArrayList<String> wr = new ArrayList<String>();
-//		wr.add("Vodka");
-//		wr.add("Kahlua");
-//		wr.add("Cream");
-//		Drink whiteRussian = new Drink("White Russian Space Shuttle",7,wr,white);
-//		allDrinks.add(whiteRussian);
-//		
-//		ArrayList<String> qr = new ArrayList<String>();
-//		qr.add("Clamato");
-//		qr.add("Sun Sauce");
-//		qr.add("Vodka");
-//		Drink quasar = new Drink("Quasar",9,qr,red);
-//		allDrinks.add(quasar);
-//		
-//	}
 	
 }

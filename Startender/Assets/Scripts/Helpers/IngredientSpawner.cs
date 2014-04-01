@@ -10,13 +10,13 @@ public class IngredientSpawner : MonoBehaviour {
     // The list of all BubbleButtons
     BubbleButton[] bubbleButtons;
 
-	// Use this for initialization
-	void Start()
+    // Use this for initialization
+    void Start()
     {
         // Need this to determine what inredients buttons are needed
         DrinkManager drinkManager = GetComponent<DrinkManager>();
         ingredients = PopulateIngredientsList(drinkManager);
-	}
+    }
 
     // Go through all of the Drinks attached to the Drink Manager
     // and return a list of all ingredients required
@@ -35,10 +35,10 @@ public class IngredientSpawner : MonoBehaviour {
 
         return allIngredients;
     }
-	
-	// Update is called once per frame
-	void Update()
+    
+    // Update is called once per frame
+    void Update()
     {
-	
-	}
+    
+    }
 }

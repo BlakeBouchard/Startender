@@ -21,10 +21,6 @@ public class DrinkManager : MonoBehaviour {
             Debug.Log(drink.name + ": " + drink.GetFormattedIngredients());
         }
 
-        //feed drinks to Drink Book
-        GameObject slider = GameObject.Find("Slider");
-        SliderDrag drinkBook = (SliderDrag) slider.GetComponent(typeof(SliderDrag));
-        drinkBook.SetDrinks(this.drinkList);
     }
 
     //Added by Rebeca.
@@ -40,6 +36,10 @@ public class DrinkManager : MonoBehaviour {
 
 		return this.currentDrink;
 	}
+
+    public List<Drink> GetDrinks() {
+        return this.drinkList;
+    }
 
 	// selects random drink from the drink array list
 	public void SetNextDrink() 

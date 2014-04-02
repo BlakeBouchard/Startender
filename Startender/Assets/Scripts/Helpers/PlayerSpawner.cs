@@ -24,7 +24,10 @@ public class PlayerSpawner : MonoBehaviour {
             playerObject = playerTransform.gameObject;
         }
 
-        return playerObject.GetComponent<PlayerState>();
+        PlayerState playerState = playerObject.GetComponent<PlayerState>();
+        playerState.LoadGame();
+
+        return playerState;
     }
 	
 	// Update is called once per frame
@@ -32,4 +35,5 @@ public class PlayerSpawner : MonoBehaviour {
     {
 	
 	}
+
 }

@@ -7,6 +7,11 @@ public class IngredientSpawner : MonoBehaviour {
     // based on the drinks attached to the Drink Manager
     Ingredient[] ingredients;
 
+    // This should be the list of all available ingredients
+    // So any time someone comes up with a new ingredient,
+    // it needs to get added to this array
+    public Ingredient[] allIngredients;
+
     // The list of all BubbleButtons
     BubbleButton[] bubbleButtons;
 

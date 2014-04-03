@@ -2,24 +2,32 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
 public class LevelSettings : MonoBehaviour {
 
     // This should contain all available ingredient buttons
-    public Transform[] allIngredientButtons;
+    public Transform[] allBubbles;
+    public Transform[] allGarnishSilos;
     
     // This should point to a file in the Text directory called "AllDrinks.txt" in the Inspector
     public TextAsset allDrinks;
+
+    // This should point to a prefab with the Drink script attached to it
+    public Transform blankDrinkPrefab;
     
     Dictionary<string, List<string>> drinkList;
+
+    // This Dictionary stores each bubble with the key being the name of the ingredient attached to it
+    Dictionary<string, Transform> bubbleList;
 
 	// Use this for initialization
 	void Start()
     {
         this.drinkList = PopulateDrinkList();
+        this.bubbleList = PopulateBubbleList();
 
-        GenerateLevel(drinkList);
-        SendDrinksToManager();
+        GenerateRandomBubbleButtons();
 	}
 
     private Dictionary<string, List<string>> PopulateDrinkList()
@@ -27,7 +35,7 @@ public class LevelSettings : MonoBehaviour {
         Dictionary<string, List<string>> tempDrinkList = new Dictionary<string, List<string>>();
 
         // Get an array consisting of each non-empty string, delimited by newlines
-        string[] drinkLines = allDrinks.text.Split(new string[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
+        string[] drinkLines = this.allDrinks.text.Split(new string[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
         for (int i = 0; i < drinkLines.Length; i++)
         {
             // Check if line is a comment first
@@ -61,7 +69,7 @@ public class LevelSettings : MonoBehaviour {
             string drinkName = nameAndIngredients[0].Trim();
             string[] untrimmedIngredients = nameAndIngredients[1].Split(',');
             List<string> drinkIngredients = new List<string>();
-            
+
             // Remove leading and trailing whitespace from each ingredient definition
             foreach (string untrimmedIngredient in untrimmedIngredients)
             {
@@ -75,24 +83,68 @@ public class LevelSettings : MonoBehaviour {
         return tempDrinkList;
     }
 
-    /** 
-     * Should generate a number of random ingredients based on the current difficulty level
-     * 
-     * Then choose a proportionate number of drinks from the list of drinks
-     */
-    private void GenerateLevel(Dictionary<string, List<string>> drinkList)
+    private Dictionary<string, Transform> PopulateBubbleList()
+    {
+        Dictionary<string, Transform> tempBubbleList = new Dictionary<string, Transform>();
+        
+        foreach (Transform bubble in allBubbles)
+        {
+            tempBubbleList.Add(bubble.GetComponentInChildren<Ingredient>().name, bubble);
+        }
+
+        return tempBubbleList;
+    }
+
+    private Transform CreateDrinkObject(string drinkName)
+    {
+        if (!drinkList.ContainsKey(drinkName))
+        {
+            Debug.Log("Error! Drink List does not contain drink called: " + drinkName);
+            return null;
+        }
+
+        Transform drink = Instantiate(blankDrinkPrefab) as Transform;
+        List<string> drinkIngredients = drinkList[drinkName];
+
+        foreach (string ingredientName in drinkIngredients)
+        {
+            if (!this.bubbleList.ContainsKey(ingredientName))
+            {
+                Debug.Log("Error! Ingredient List does not contain an ingredient called: " + ingredientName);
+                return null;
+            }
+            Transform ingredient = Instantiate(this.bubbleList[ingredientName]) as Transform;
+            ingredient.parent = drink;
+        }
+        
+        return drink;
+    }
+
+    private void GenerateRandomBubbleButtons()
     {
         PlayerState player = GetComponent<PlayerState>();
         int difficulty = player.GetDifficulty();
 
+        List<Transform> randomBubbles = new List<Transform>();
+
+        while (randomBubbles.Count < difficulty + 1)
+        {
+            // Pick a random unique ingredient from the dictionary
+            int randomNumber = UnityEngine.Random.Range(0, bubbleList.Count);
+            Transform selectedBubble = bubbleList.ElementAt(randomNumber).Value;
+
+            if (!randomBubbles.Contains(selectedBubble))
+            {
+                // Selected bubble hasn't been added yet, so add it to list
+                randomBubbles.Add(selectedBubble);
+                CreateButtonFromBubble(selectedBubble);
+            }
+        }
     }
 
-    private void SendDrinksToManager()
+    private Transform CreateButtonFromBubble(Transform bubble)
     {
-        foreach (KeyValuePair<string, List<string>> drink in drinkList)
-        {
-
-        }
+        return null;
     }
 	
 	// Update is called once per frame

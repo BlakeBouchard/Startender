@@ -13,7 +13,7 @@ GameObject:
   - 50: {fileID: 5000000}
   - 58: {fileID: 5800000}
   m_Layer: 9
-  m_Name: OrangeGarnish
+  m_Name: Orange Garnish
   m_TagString: Bubble
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

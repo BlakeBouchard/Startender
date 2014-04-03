@@ -45,9 +45,12 @@ public class LevelSettings : MonoBehaviour {
                 continue;
             }
 
-            // Divide line into two strings:
-            //  One containing the drink name
-            //  One containing the comma-delimited ingredients
+            /** 
+             * Divide line into two strings:
+             * 
+             * 1. Drink name
+             * 2. Comma-delimited ingredients
+             */
             string[] nameAndIngredients = drinkLines[i].Split(':');
             if (nameAndIngredients.Length != 2)
             {

@@ -668,10 +668,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccfe2762520ec41e39d48487811c6c9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
   menuXFromCenter: 30
   menuYFromCenter: 30
   menuWidth: 240
-  menuHeight: 100
+  menuHeight: 240
 --- !u!114 &11400004
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -901,6 +902,7 @@ MonoBehaviour:
   - {fileID: 400000, guid: b193af77e6086cb4ba337fd0709bc5c9, type: 2}
   - {fileID: 400000, guid: e377be37f05c041a6aabac58f3893049, type: 2}
   - {fileID: 400000, guid: 85ffdadbf44f82048bc264b03cff59da, type: 2}
+  - {fileID: 400000, guid: 37ccc6990ee0aa94e9d486010ce4bd8c, type: 2}
 --- !u!132 &13200000
 GUIText:
   m_ObjectHideFlags: 1

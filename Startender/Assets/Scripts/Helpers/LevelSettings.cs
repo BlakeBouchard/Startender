@@ -5,7 +5,10 @@ using System.Collections.Generic;
 
 public class LevelSettings : MonoBehaviour {
 
-    public Ingredient[] allIngredients;
+    // This should contain all available ingredient buttons
+    public Transform[] allIngredientButtons;
+    
+    // This should point to a file in the Text directory called "AllDrinks.txt" in the Inspector
     public TextAsset allDrinks;
     
     Dictionary<string, List<string>> drinkList;
@@ -15,7 +18,7 @@ public class LevelSettings : MonoBehaviour {
     {
         this.drinkList = PopulateDrinkList();
 
-        GenerateLevel();
+        GenerateLevel(drinkList);
         SendDrinksToManager();
 	}
 
@@ -74,14 +77,19 @@ public class LevelSettings : MonoBehaviour {
      * 
      * Then choose a proportionate number of drinks from the list of drinks
      */
-    private void GenerateLevel()
+    private void GenerateLevel(Dictionary<string, List<string>> drinkList)
     {
-        
+        PlayerState player = GetComponent<PlayerState>();
+        int difficulty = player.GetDifficulty();
+
     }
 
     private void SendDrinksToManager()
     {
-        
+        foreach (KeyValuePair<string, List<string>> drink in drinkList)
+        {
+
+        }
     }
 	
 	// Update is called once per frame

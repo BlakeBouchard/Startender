@@ -132,5 +132,14 @@ public class Cannon : MonoBehaviour {
                 break;
 		}
 
+
+        //Set the length of the timer bar.
+        float percentLength = this.fireDelayTimer/this.fireDelayTime;
+        if (percentLength > 0.99)
+        {
+            percentLength = 0;
+        }
+        GameObject.Find("CannonTimerBar").SendMessage("SetLength", percentLength);
+
 	}
 }

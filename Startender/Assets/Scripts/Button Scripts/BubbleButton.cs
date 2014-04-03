@@ -3,7 +3,7 @@ using System.Collections;
 
 public class BubbleButton : MonoBehaviour {
 
-	public Transform bubble;
+	public Transform bubblePrefab;
     GameObject cannon;
     Cannon cannonScript;
 	GameObject gameManager;
@@ -22,8 +22,9 @@ public class BubbleButton : MonoBehaviour {
     void OnTouchDown(Touch touch)
     {
         Debug.Log("Touched Bubble Button");
-		if (gameManagerScript.GetGameState () == GameManager.GameState.Playing) {
-			cannonScript.LoadBubble (bubble);
+		if (gameManagerScript.GetGameState () == GameManager.GameState.Playing)
+        {
+			cannonScript.LoadBubble(this.bubblePrefab);
 		}
     }
 
@@ -34,8 +35,13 @@ public class BubbleButton : MonoBehaviour {
 		if (Input.touchCount == 0 && gameManagerScript.GetGameState () == GameManager.GameState.Playing)
         {
             Debug.Log("Clicked Bubble Button");
-            cannonScript.LoadBubble(bubble);
+            cannonScript.LoadBubble(this.bubblePrefab);
         }
+    }
+
+    public void SetBubbleTransform(Transform bubbleTransform)
+    {
+        this.bubblePrefab = bubbleTransform;
     }
 	
 	// Update is called once per frame

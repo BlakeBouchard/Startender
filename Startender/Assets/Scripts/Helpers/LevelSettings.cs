@@ -15,11 +15,16 @@ public class LevelSettings : MonoBehaviour {
 
     // This should point to a prefab with the Drink script attached to it
     public Transform blankDrinkPrefab;
+    public Transform blankBubbleButtonPrefab;
     
     Dictionary<string, List<string>> drinkList;
 
     // This Dictionary stores each bubble with the key being the name of the ingredient attached to it
     Dictionary<string, Transform> bubbleList;
+    
+    // This value controls how far apart the buttons should be and how much bigger than their bubbles they should be
+    public float buttonSpacing = 1;
+    public float buttonScale = 2;
 
 	// Use this for initialization
 	void Start()
@@ -87,9 +92,9 @@ public class LevelSettings : MonoBehaviour {
     {
         Dictionary<string, Transform> tempBubbleList = new Dictionary<string, Transform>();
         
-        foreach (Transform bubble in allBubbles)
+        foreach (Transform bubble in this.allBubbles)
         {
-            tempBubbleList.Add(bubble.GetComponentInChildren<Ingredient>().name, bubble);
+            tempBubbleList.Add(bubble.name, bubble);
         }
 
         return tempBubbleList;
@@ -122,7 +127,7 @@ public class LevelSettings : MonoBehaviour {
 
     private void GenerateRandomBubbleButtons()
     {
-        PlayerState player = GetComponent<PlayerState>();
+        PlayerState player = GameObject.Find("Player").GetComponent<PlayerState>();
         int difficulty = player.GetDifficulty();
 
         List<Transform> randomBubbles = new List<Transform>();
@@ -137,14 +142,42 @@ public class LevelSettings : MonoBehaviour {
             {
                 // Selected bubble hasn't been added yet, so add it to list
                 randomBubbles.Add(selectedBubble);
-                CreateButtonFromBubble(selectedBubble);
+
+                // Get the correct position offset from the number of bubbles 
+                float positionOffset = (randomBubbles.Count - 1) * this.buttonSpacing;
+                Vector2 buttonPosition = new Vector2(this.transform.position.x, this.transform.position.y - positionOffset);
+                
+                // Send position value and chosen bubble to the appropriate function
+                CreateButtonFromBubble(selectedBubble, buttonPosition);
             }
         }
     }
 
-    private Transform CreateButtonFromBubble(Transform bubble)
+    private Transform CreateButtonFromBubble(Transform bubble, Vector2 position)
     {
-        return null;
+        // Create the button object from the blank button prefab
+        Transform bubbleButton = Instantiate(blankBubbleButtonPrefab, position, Quaternion.identity) as Transform;
+        bubbleButton.name = bubble.name + " Button";
+
+        // Set the sprite of the new button to the sprite of the bubble
+        Sprite bubbleSprite = bubble.GetComponent<SpriteRenderer>().sprite;
+        bubbleButton.GetComponent<SpriteRenderer>().sprite = bubbleSprite;
+
+        // Set the x/y scale of the button to be the same as the bubble multiplied by a set value
+        Vector3 newScale = bubble.transform.localScale;
+        newScale.x *= buttonScale;
+        newScale.y *= buttonScale;
+        bubbleButton.transform.localScale = newScale;
+
+        // Set the radius of the button's Circle Collider to be the same as the bubble
+        CircleCollider2D bubbleCollider = bubble.GetComponent<CircleCollider2D>();
+        bubbleButton.GetComponent<CircleCollider2D>().radius = bubbleCollider.radius;
+
+        // Set the generated bubble associated with this button to the selected bubble
+        BubbleButton buttonScript = bubbleButton.GetComponent<BubbleButton>();
+        buttonScript.SetBubbleTransform(bubble);
+
+        return bubbleButton;
     }
 	
 	// Update is called once per frame

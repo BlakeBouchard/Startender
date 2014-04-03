@@ -222,7 +222,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d564abaa95cbe2342b9908474d891483, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  allIngredients: []
+  allIngredientButtons: []
   allDrinks: {fileID: 4900000, guid: a3ff7e571bedcb540b77364b4f14527c, type: 3}
 --- !u!4 &1490412223
 Transform:
@@ -232,6 +232,48 @@ Transform:
   m_GameObject: {fileID: 1490412221}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+--- !u!1 &2127214226
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 100000, guid: 7128f5643fd112743954e42f6baeb517, type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 2127214228}
+  - 114: {fileID: 2127214227}
+  m_Layer: 0
+  m_Name: Blank Drink
+  m_TagString: Drink Recipe
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2127214227
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400000, guid: 7128f5643fd112743954e42f6baeb517,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2127214226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba2bfac10f9c64329a1a508b38f271b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ingredients: []
+  difficulty: .300000012
+  drinkColor: {r: 0, g: 0, b: 0, a: 0}
+--- !u!4 &2127214228
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 400000, guid: 7128f5643fd112743954e42f6baeb517, type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2127214226}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

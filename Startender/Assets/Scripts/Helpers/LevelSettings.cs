@@ -33,6 +33,7 @@ public class LevelSettings : MonoBehaviour {
         this.bubbleList = PopulateBubbleList();
 
         GenerateRandomBubbleButtons();
+        // TODO: GenerateRandomDrinks();
 	}
 
     private Dictionary<string, List<string>> PopulateDrinkList()
@@ -185,8 +186,24 @@ public class LevelSettings : MonoBehaviour {
         Transform drink = Instantiate(blankDrinkPrefab) as Transform;
         drink.name = drinkName;
 
+        foreach (string ingredientName in drinkList[drinkName])
+        {
+            Transform ingredient = CreateIngredient(ingredientName);
+            ingredient.parent = drink;
+        }
 
         return drink;
+    }
+
+    private Transform CreateIngredient(string ingredientName)
+    {
+        Transform bubblePrefab = bubbleList[ingredientName];
+        Bubble bubbleScript = bubblePrefab.GetComponent<Bubble>();
+
+        Transform ingredient = Instantiate(bubbleScript.GetIngredientPrefab()) as Transform;
+        ingredient.name = ingredientName;
+
+        return ingredient;
     }
 	
 	// Update is called once per frame

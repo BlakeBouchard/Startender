@@ -33,7 +33,7 @@ public class Cannon : MonoBehaviour {
 		this.ResetFireDelay();
         this.startRotation = transform.rotation;
 
-		bubbleQueue = new Queue<Transform>();
+		this.bubbleQueue = new Queue<Transform>();
         gameManager = GameObject.FindObjectOfType<GameManager>();
 	}
 

@@ -103,7 +103,7 @@ public class GUIDrawer : MonoBehaviour
 		roundTime.text = "Time Left: " + gameManager.GetRoundTime().ToString("F0");
 
 		Drink currentDrink = drinkManager.GetCurrentDrink();
-		currentOrder.text = "Order: " + currentDrink.GetDrinkName() + " - " + currentDrink.GetFormattedIngredients();
+		currentOrder.text = "Order: " + currentDrink.GetDrinkName();
 
 		tipsEarned.text = "Tips: $" + player.GetTipsEarned();
 		drinksServed.text = "Drinks Served: " + player.GetDrinkCount();

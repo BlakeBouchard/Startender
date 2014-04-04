@@ -37,14 +37,15 @@ public class Cannon : MonoBehaviour {
         gameManager = GameObject.FindObjectOfType<GameManager>();
 	}
 
-    public void FireBubble(Transform bubbleObj)
+    public void FireBubble(Transform bubblePrefab)
     {
-        Transform bubble = Instantiate(bubbleObj, new Vector3(transform.position.x, transform.position.y, transform.position.z + 2), Quaternion.identity) as Transform;
+        Transform bubble = Instantiate(bubblePrefab, new Vector3(transform.position.x, transform.position.y, transform.position.z + 2), Quaternion.identity) as Transform;
         float bubbleAngle = (transform.rotation.eulerAngles.z - 270) * Mathf.Deg2Rad;
-        bubble.gameObject.rigidbody2D.velocity = new Vector2(Mathf.Cos(bubbleAngle) * bubbleSpeed, Mathf.Sin(bubbleAngle) * bubbleSpeed);
-		bubble.gameObject.rigidbody2D.drag = bubbleDrag;
-		bubble.gameObject.rigidbody2D.mass = bubbleMass;
-		bubble.gameObject.rigidbody2D.gravityScale = gravityScale;
+        bubble.rigidbody2D.velocity = new Vector2(Mathf.Cos(bubbleAngle) * bubbleSpeed, Mathf.Sin(bubbleAngle) * bubbleSpeed);
+		bubble.rigidbody2D.drag = bubbleDrag;
+		bubble.rigidbody2D.mass = bubbleMass;
+		bubble.rigidbody2D.gravityScale = gravityScale;
+        bubble.name = bubblePrefab.name + " Bubble";
         audio.Play();
     }
 

@@ -179,6 +179,15 @@ public class LevelSettings : MonoBehaviour {
 
         return bubbleButton;
     }
+
+    private Transform CreateDrinkFromList(string drinkName)
+    {
+        Transform drink = Instantiate(blankDrinkPrefab) as Transform;
+        drink.name = drinkName;
+
+
+        return drink;
+    }
 	
 	// Update is called once per frame
 	void Update()

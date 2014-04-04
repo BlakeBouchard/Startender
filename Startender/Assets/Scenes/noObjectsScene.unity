@@ -74,222 +74,11 @@ NavMeshSettings:
     widthInaccuracy: 16.666666
     heightInaccuracy: 10
   m_NavMesh: {fileID: 0}
---- !u!1 &47027005
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 100004, guid: 969825e8c62bae34daf4d9119323f6da, type: 2}
-  m_PrefabInternal: {fileID: 1361438971}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 47027006}
-  - 114: {fileID: 47027007}
-  m_Layer: 0
-  m_Name: SecTini
-  m_TagString: Drink Recipe
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &47027006
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 400004, guid: 969825e8c62bae34daf4d9119323f6da, type: 2}
-  m_PrefabInternal: {fileID: 1361438971}
-  m_GameObject: {fileID: 47027005}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.38864386, y: -.196744636, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 567422475}
-  - {fileID: 298212463}
-  m_Father: {fileID: 451194937}
---- !u!114 &47027007
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11400004, guid: 969825e8c62bae34daf4d9119323f6da,
-    type: 2}
-  m_PrefabInternal: {fileID: 1361438971}
-  m_GameObject: {fileID: 47027005}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba2bfac10f9c64329a1a508b38f271b2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ingredients: []
-  difficulty: .300000012
-  drinkColor: {r: 1, g: .889655232, b: 0, a: 0}
---- !u!1 &104294933
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 100008, guid: 969825e8c62bae34daf4d9119323f6da, type: 2}
-  m_PrefabInternal: {fileID: 1361438971}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 104294934}
-  - 114: {fileID: 104294935}
-  m_Layer: 0
-  m_Name: Space Clam
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &104294934
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 400008, guid: 969825e8c62bae34daf4d9119323f6da, type: 2}
-  m_PrefabInternal: {fileID: 1361438971}
-  m_GameObject: {fileID: 104294933}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1552714478}
---- !u!114 &104294935
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11400008, guid: 969825e8c62bae34daf4d9119323f6da,
-    type: 2}
-  m_PrefabInternal: {fileID: 1361438971}
-  m_GameObject: {fileID: 104294933}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2642cf549642d43b98bbc28f658629f1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  liquid: 0
-  drinkColor: {r: .852941155, g: .131704167, b: .131704167, a: 0}
---- !u!1 &281496051
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 100030, guid: 969825e8c62bae34daf4d9119323f6da, type: 2}
-  m_PrefabInternal: {fileID: 1361438971}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 281496052}
-  - 114: {fileID: 281496053}
-  m_Layer: 0
-  m_Name: Quaesar
-  m_TagString: Drink Recipe
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &281496052
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 400030, guid: 969825e8c62bae34daf4d9119323f6da, type: 2}
-  m_PrefabInternal: {fileID: 1361438971}
-  m_GameObject: {fileID: 281496051}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 2130540907}
-  - {fileID: 1991170143}
-  m_Father: {fileID: 451194937}
---- !u!114 &281496053
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11400030, guid: 969825e8c62bae34daf4d9119323f6da,
-    type: 2}
-  m_PrefabInternal: {fileID: 1361438971}
-  m_GameObject: {fileID: 281496051}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba2bfac10f9c64329a1a508b38f271b2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ingredients: []
-  difficulty: .300000012
-  drinkColor: {r: 0, g: 0, b: 0, a: 0}
---- !u!1 &298212461
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 100010, guid: 969825e8c62bae34daf4d9119323f6da, type: 2}
-  m_PrefabInternal: {fileID: 1361438971}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 298212463}
-  - 114: {fileID: 298212462}
-  m_Layer: 0
-  m_Name: Vodka
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &298212462
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11400010, guid: 969825e8c62bae34daf4d9119323f6da,
-    type: 2}
-  m_PrefabInternal: {fileID: 1361438971}
-  m_GameObject: {fileID: 298212461}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2642cf549642d43b98bbc28f658629f1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  liquid: 0
-  drinkColor: {r: 1, g: 1, b: 1, a: 0}
---- !u!4 &298212463
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 400010, guid: 969825e8c62bae34daf4d9119323f6da, type: 2}
-  m_PrefabInternal: {fileID: 1361438971}
-  m_GameObject: {fileID: 298212461}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 47027006}
---- !u!1 &397809258
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 100026, guid: 969825e8c62bae34daf4d9119323f6da, type: 2}
-  m_PrefabInternal: {fileID: 1361438971}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 397809259}
-  - 114: {fileID: 397809260}
-  m_Layer: 0
-  m_Name: Triple Sector
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &397809259
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 400026, guid: 969825e8c62bae34daf4d9119323f6da, type: 2}
-  m_PrefabInternal: {fileID: 1361438971}
-  m_GameObject: {fileID: 397809258}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -.0352812484, y: .225082666, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 504468301}
---- !u!114 &397809260
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11400026, guid: 969825e8c62bae34daf4d9119323f6da,
-    type: 2}
-  m_PrefabInternal: {fileID: 1361438971}
-  m_GameObject: {fileID: 397809258}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2642cf549642d43b98bbc28f658629f1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  liquid: 0
-  drinkColor: {r: 1, g: .682758629, b: 0, a: 0}
 --- !u!1 &413683680
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 100034, guid: 969825e8c62bae34daf4d9119323f6da, type: 2}
-  m_PrefabInternal: {fileID: 1361438971}
+  m_PrefabInternal: {fileID: 1033623996}
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 413683681}
@@ -305,7 +94,7 @@ GameObject:
 Transform:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 400036, guid: 969825e8c62bae34daf4d9119323f6da, type: 2}
-  m_PrefabInternal: {fileID: 1361438971}
+  m_PrefabInternal: {fileID: 1033623996}
   m_GameObject: {fileID: 413683680}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: .150000006, y: .99000001, z: 0}
@@ -317,7 +106,7 @@ GUIText:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 13200002, guid: 969825e8c62bae34daf4d9119323f6da,
     type: 2}
-  m_PrefabInternal: {fileID: 1361438971}
+  m_PrefabInternal: {fileID: 1033623996}
   m_GameObject: {fileID: 413683680}
   m_Enabled: 1
   serializedVersion: 3
@@ -386,52 +175,11 @@ Transform:
   m_LocalScale: {x: 3.78205395, y: 3.78205347, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
---- !u!1 &433935471
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 100024, guid: 969825e8c62bae34daf4d9119323f6da, type: 2}
-  m_PrefabInternal: {fileID: 1361438971}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 433935472}
-  - 114: {fileID: 433935473}
-  m_Layer: 0
-  m_Name: Triple Sector
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &433935472
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 400024, guid: 969825e8c62bae34daf4d9119323f6da, type: 2}
-  m_PrefabInternal: {fileID: 1361438971}
-  m_GameObject: {fileID: 433935471}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -.0352812484, y: .225082666, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1552714478}
---- !u!114 &433935473
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11400024, guid: 969825e8c62bae34daf4d9119323f6da,
-    type: 2}
-  m_PrefabInternal: {fileID: 1361438971}
-  m_GameObject: {fileID: 433935471}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2642cf549642d43b98bbc28f658629f1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  liquid: 0
-  drinkColor: {r: 1, g: .682758629, b: 0, a: 0}
 --- !u!1 &451194936
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 100006, guid: 969825e8c62bae34daf4d9119323f6da, type: 2}
-  m_PrefabInternal: {fileID: 1361438971}
+  m_PrefabInternal: {fileID: 1033623996}
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 451194937}
@@ -447,23 +195,20 @@ GameObject:
 Transform:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 400006, guid: 969825e8c62bae34daf4d9119323f6da, type: 2}
-  m_PrefabInternal: {fileID: 1361438971}
+  m_PrefabInternal: {fileID: 1033623996}
   m_GameObject: {fileID: 451194936}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 504468301}
-  - {fileID: 281496052}
-  - {fileID: 47027006}
-  - {fileID: 1552714478}
+  - {fileID: 1000465577}
   m_Father: {fileID: 2137380473}
 --- !u!114 &451194938
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 11400006, guid: 969825e8c62bae34daf4d9119323f6da,
     type: 2}
-  m_PrefabInternal: {fileID: 1361438971}
+  m_PrefabInternal: {fileID: 1033623996}
   m_GameObject: {fileID: 451194936}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -472,56 +217,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   drinkList: []
   currentDrink: {fileID: 0}
---- !u!1 &504468300
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 100028, guid: 969825e8c62bae34daf4d9119323f6da, type: 2}
-  m_PrefabInternal: {fileID: 1361438971}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 504468301}
-  - 114: {fileID: 504468302}
-  m_Layer: 0
-  m_Name: Blood Orange
-  m_TagString: Drink Recipe
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &504468301
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 400028, guid: 969825e8c62bae34daf4d9119323f6da, type: 2}
-  m_PrefabInternal: {fileID: 1361438971}
-  m_GameObject: {fileID: 504468300}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 748903973}
-  - {fileID: 1236245660}
-  - {fileID: 397809259}
-  m_Father: {fileID: 451194937}
---- !u!114 &504468302
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11400028, guid: 969825e8c62bae34daf4d9119323f6da,
-    type: 2}
-  m_PrefabInternal: {fileID: 1361438971}
-  m_GameObject: {fileID: 504468300}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba2bfac10f9c64329a1a508b38f271b2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ingredients: []
-  difficulty: .300000012
-  drinkColor: {r: 1, g: .517241359, b: 0, a: 0}
 --- !u!1 &548007650
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 100042, guid: 969825e8c62bae34daf4d9119323f6da, type: 2}
-  m_PrefabInternal: {fileID: 1361438971}
+  m_PrefabInternal: {fileID: 1033623996}
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 548007651}
@@ -537,7 +237,7 @@ GameObject:
 Transform:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 400042, guid: 969825e8c62bae34daf4d9119323f6da, type: 2}
-  m_PrefabInternal: {fileID: 1361438971}
+  m_PrefabInternal: {fileID: 1033623996}
   m_GameObject: {fileID: 548007650}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -549,7 +249,7 @@ MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 11400034, guid: 969825e8c62bae34daf4d9119323f6da,
     type: 2}
-  m_PrefabInternal: {fileID: 1361438971}
+  m_PrefabInternal: {fileID: 1033623996}
   m_GameObject: {fileID: 548007650}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -558,129 +258,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   multiHit: 0
   multiTouch: 1
---- !u!1 &557739611
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 100020, guid: 969825e8c62bae34daf4d9119323f6da, type: 2}
-  m_PrefabInternal: {fileID: 1361438971}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 557739612}
-  - 114: {fileID: 557739613}
-  m_Layer: 0
-  m_Name: Space Clam
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &557739612
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 400020, guid: 969825e8c62bae34daf4d9119323f6da, type: 2}
-  m_PrefabInternal: {fileID: 1361438971}
-  m_GameObject: {fileID: 557739611}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1552714478}
---- !u!114 &557739613
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11400020, guid: 969825e8c62bae34daf4d9119323f6da,
-    type: 2}
-  m_PrefabInternal: {fileID: 1361438971}
-  m_GameObject: {fileID: 557739611}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2642cf549642d43b98bbc28f658629f1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  liquid: 0
-  drinkColor: {r: .852941155, g: .131704167, b: .131704167, a: 0}
---- !u!1 &567422474
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 100022, guid: 969825e8c62bae34daf4d9119323f6da, type: 2}
-  m_PrefabInternal: {fileID: 1361438971}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 567422475}
-  - 114: {fileID: 567422476}
-  m_Layer: 0
-  m_Name: Triple Sector
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &567422475
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 400022, guid: 969825e8c62bae34daf4d9119323f6da, type: 2}
-  m_PrefabInternal: {fileID: 1361438971}
-  m_GameObject: {fileID: 567422474}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -.0352812484, y: .225082666, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 47027006}
---- !u!114 &567422476
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11400022, guid: 969825e8c62bae34daf4d9119323f6da,
-    type: 2}
-  m_PrefabInternal: {fileID: 1361438971}
-  m_GameObject: {fileID: 567422474}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2642cf549642d43b98bbc28f658629f1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  liquid: 0
-  drinkColor: {r: 1, g: .682758629, b: 0, a: 0}
---- !u!1 &748903972
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 100016, guid: 969825e8c62bae34daf4d9119323f6da, type: 2}
-  m_PrefabInternal: {fileID: 1361438971}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 748903973}
-  - 114: {fileID: 748903974}
-  m_Layer: 0
-  m_Name: Orange Slice
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &748903973
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 400016, guid: 969825e8c62bae34daf4d9119323f6da, type: 2}
-  m_PrefabInternal: {fileID: 1361438971}
-  m_GameObject: {fileID: 748903972}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 504468301}
---- !u!114 &748903974
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11400016, guid: 969825e8c62bae34daf4d9119323f6da,
-    type: 2}
-  m_PrefabInternal: {fileID: 1361438971}
-  m_GameObject: {fileID: 748903972}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2642cf549642d43b98bbc28f658629f1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  liquid: 0
-  drinkColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &859997006
 GameObject:
   m_ObjectHideFlags: 0
@@ -735,7 +312,7 @@ Transform:
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 100036, guid: 969825e8c62bae34daf4d9119323f6da, type: 2}
-  m_PrefabInternal: {fileID: 1361438971}
+  m_PrefabInternal: {fileID: 1033623996}
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 916824246}
@@ -751,7 +328,7 @@ GameObject:
 Transform:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 400038, guid: 969825e8c62bae34daf4d9119323f6da, type: 2}
-  m_PrefabInternal: {fileID: 1361438971}
+  m_PrefabInternal: {fileID: 1033623996}
   m_GameObject: {fileID: 916824245}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: .5, y: .99000001, z: 0}
@@ -763,7 +340,7 @@ GUIText:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 13200004, guid: 969825e8c62bae34daf4d9119323f6da,
     type: 2}
-  m_PrefabInternal: {fileID: 1361438971}
+  m_PrefabInternal: {fileID: 1033623996}
   m_GameObject: {fileID: 916824245}
   m_Enabled: 1
   serializedVersion: 3
@@ -795,6 +372,7 @@ GameObject:
   - 124: {fileID: 927040061}
   - 81: {fileID: 927040060}
   - 114: {fileID: 927040065}
+  - 82: {fileID: 927040066}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -874,11 +452,114 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 849ed3ff4d1d74541a860a6e98c46c50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!82 &927040066
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 927040059}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_audioClip: {fileID: 8300000, guid: c6a71ae8048e24db18970c3bc6bd3c46, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+--- !u!1 &1000465576
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 100012, guid: 969825e8c62bae34daf4d9119323f6da, type: 2}
+  m_PrefabInternal: {fileID: 1033623996}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1000465577}
+  - 114: {fileID: 1000465578}
+  m_Layer: 0
+  m_Name: Blood Orange
+  m_TagString: Drink Recipe
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1000465577
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 400012, guid: 969825e8c62bae34daf4d9119323f6da, type: 2}
+  m_PrefabInternal: {fileID: 1033623996}
+  m_GameObject: {fileID: 1000465576}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1462380085}
+  - {fileID: 2017807262}
+  - {fileID: 1567092307}
+  m_Father: {fileID: 451194937}
+--- !u!114 &1000465578
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400012, guid: 969825e8c62bae34daf4d9119323f6da,
+    type: 2}
+  m_PrefabInternal: {fileID: 1033623996}
+  m_GameObject: {fileID: 1000465576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba2bfac10f9c64329a1a508b38f271b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ingredients: []
+  difficulty: .300000012
+  drinkColor: {r: 1, g: .517241359, b: 0, a: 0}
 --- !u!1 &1024954839
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 100038, guid: 969825e8c62bae34daf4d9119323f6da, type: 2}
-  m_PrefabInternal: {fileID: 1361438971}
+  m_PrefabInternal: {fileID: 1033623996}
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1024954840}
@@ -894,7 +575,7 @@ GameObject:
 Transform:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 400040, guid: 969825e8c62bae34daf4d9119323f6da, type: 2}
-  m_PrefabInternal: {fileID: 1361438971}
+  m_PrefabInternal: {fileID: 1033623996}
   m_GameObject: {fileID: 1024954839}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: .99000001, z: 0}
@@ -906,7 +587,7 @@ GUIText:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 13200006, guid: 969825e8c62bae34daf4d9119323f6da,
     type: 2}
-  m_PrefabInternal: {fileID: 1361438971}
+  m_PrefabInternal: {fileID: 1033623996}
   m_GameObject: {fileID: 1024954839}
   m_Enabled: 1
   serializedVersion: 3
@@ -925,47 +606,46 @@ GUIText:
     rgba: 4294967295
   m_PixelCorrect: 1
   m_RichText: 1
---- !u!1 &1236245659
-GameObject:
+--- !u!1001 &1033623996
+Prefab:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 100014, guid: 969825e8c62bae34daf4d9119323f6da, type: 2}
-  m_PrefabInternal: {fileID: 1361438971}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 1236245660}
-  - 114: {fileID: 1236245661}
-  m_Layer: 0
-  m_Name: Space Clam
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1236245660
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 400014, guid: 969825e8c62bae34daf4d9119323f6da, type: 2}
-  m_PrefabInternal: {fileID: 1361438971}
-  m_GameObject: {fileID: 1236245659}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 504468301}
---- !u!114 &1236245661
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11400014, guid: 969825e8c62bae34daf4d9119323f6da,
-    type: 2}
-  m_PrefabInternal: {fileID: 1361438971}
-  m_GameObject: {fileID: 1236245659}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2642cf549642d43b98bbc28f658629f1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  liquid: 0
-  drinkColor: {r: .852941155, g: .131704167, b: .131704167, a: 0}
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 400000, guid: 969825e8c62bae34daf4d9119323f6da, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 969825e8c62bae34daf4d9119323f6da, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 969825e8c62bae34daf4d9119323f6da, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 969825e8c62bae34daf4d9119323f6da, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 969825e8c62bae34daf4d9119323f6da, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 969825e8c62bae34daf4d9119323f6da, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 969825e8c62bae34daf4d9119323f6da, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 969825e8c62bae34daf4d9119323f6da, type: 2}
+  m_RootGameObject: {fileID: 2137380472}
+  m_IsPrefabParent: 0
+  m_IsExploded: 1
 --- !u!1 &1267554054
 GameObject:
   m_ObjectHideFlags: 0
@@ -1066,96 +746,93 @@ Transform:
   m_LocalScale: {x: 3.46958208, y: 3.46958542, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
---- !u!1001 &1361438971
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 400000, guid: 969825e8c62bae34daf4d9119323f6da, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 969825e8c62bae34daf4d9119323f6da, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 969825e8c62bae34daf4d9119323f6da, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 969825e8c62bae34daf4d9119323f6da, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 969825e8c62bae34daf4d9119323f6da, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 969825e8c62bae34daf4d9119323f6da, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 969825e8c62bae34daf4d9119323f6da, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 969825e8c62bae34daf4d9119323f6da, type: 2}
-  m_RootGameObject: {fileID: 2137380472}
-  m_IsPrefabParent: 0
-  m_IsExploded: 1
---- !u!1 &1552714477
+--- !u!1 &1462380084
 GameObject:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 100018, guid: 969825e8c62bae34daf4d9119323f6da, type: 2}
-  m_PrefabInternal: {fileID: 1361438971}
+  m_PrefabParentObject: {fileID: 100004, guid: 969825e8c62bae34daf4d9119323f6da, type: 2}
+  m_PrefabInternal: {fileID: 1033623996}
   serializedVersion: 4
   m_Component:
-  - 4: {fileID: 1552714478}
-  - 114: {fileID: 1552714479}
+  - 4: {fileID: 1462380085}
+  - 114: {fileID: 1462380086}
   m_Layer: 0
-  m_Name: Sun Tan
-  m_TagString: Drink Recipe
+  m_Name: Orange Slice
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1552714478
+--- !u!4 &1462380085
 Transform:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 400018, guid: 969825e8c62bae34daf4d9119323f6da, type: 2}
-  m_PrefabInternal: {fileID: 1361438971}
-  m_GameObject: {fileID: 1552714477}
+  m_PrefabParentObject: {fileID: 400010, guid: 969825e8c62bae34daf4d9119323f6da, type: 2}
+  m_PrefabInternal: {fileID: 1033623996}
+  m_GameObject: {fileID: 1462380084}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 557739612}
-  - {fileID: 104294934}
-  - {fileID: 433935472}
-  m_Father: {fileID: 451194937}
---- !u!114 &1552714479
+  m_Children: []
+  m_Father: {fileID: 1000465577}
+--- !u!114 &1462380086
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11400018, guid: 969825e8c62bae34daf4d9119323f6da,
+  m_PrefabParentObject: {fileID: 11400010, guid: 969825e8c62bae34daf4d9119323f6da,
     type: 2}
-  m_PrefabInternal: {fileID: 1361438971}
-  m_GameObject: {fileID: 1552714477}
+  m_PrefabInternal: {fileID: 1033623996}
+  m_GameObject: {fileID: 1462380084}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba2bfac10f9c64329a1a508b38f271b2, type: 3}
+  m_Script: {fileID: 11500000, guid: 2642cf549642d43b98bbc28f658629f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ingredients: []
-  difficulty: .300000012
-  drinkColor: {r: 1, g: .517241359, b: 0, a: 0}
+  liquid: 0
+  drinkColor: {r: 0, g: 0, b: 0, a: 0}
+--- !u!1 &1567092306
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 100010, guid: 969825e8c62bae34daf4d9119323f6da, type: 2}
+  m_PrefabInternal: {fileID: 1033623996}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1567092307}
+  - 114: {fileID: 1567092308}
+  m_Layer: 0
+  m_Name: Triple Sector
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1567092307
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 400004, guid: 969825e8c62bae34daf4d9119323f6da, type: 2}
+  m_PrefabInternal: {fileID: 1033623996}
+  m_GameObject: {fileID: 1567092306}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -.0352812484, y: .225082666, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1000465577}
+--- !u!114 &1567092308
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400004, guid: 969825e8c62bae34daf4d9119323f6da,
+    type: 2}
+  m_PrefabInternal: {fileID: 1033623996}
+  m_GameObject: {fileID: 1567092306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2642cf549642d43b98bbc28f658629f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  liquid: 0
+  drinkColor: {r: 1, g: .682758629, b: 0, a: 0}
 --- !u!1 &1681610463
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 100040, guid: 969825e8c62bae34daf4d9119323f6da, type: 2}
-  m_PrefabInternal: {fileID: 1361438971}
+  m_PrefabInternal: {fileID: 1033623996}
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1681610464}
@@ -1171,7 +848,7 @@ GameObject:
 Transform:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 400002, guid: 969825e8c62bae34daf4d9119323f6da, type: 2}
-  m_PrefabInternal: {fileID: 1361438971}
+  m_PrefabInternal: {fileID: 1033623996}
   m_GameObject: {fileID: 1681610463}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -1187,7 +864,7 @@ MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 11400002, guid: 969825e8c62bae34daf4d9119323f6da,
     type: 2}
-  m_PrefabInternal: {fileID: 1361438971}
+  m_PrefabInternal: {fileID: 1033623996}
   m_GameObject: {fileID: 1681610463}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -1203,7 +880,7 @@ MonoBehaviour:
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 100044, guid: 969825e8c62bae34daf4d9119323f6da, type: 2}
-  m_PrefabInternal: {fileID: 1361438971}
+  m_PrefabInternal: {fileID: 1033623996}
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1752900922}
@@ -1220,7 +897,7 @@ MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 11400036, guid: 969825e8c62bae34daf4d9119323f6da,
     type: 2}
-  m_PrefabInternal: {fileID: 1361438971}
+  m_PrefabInternal: {fileID: 1033623996}
   m_GameObject: {fileID: 1752900920}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -1231,16 +908,17 @@ MonoBehaviour:
   - {fileID: 400002, guid: bca0fc1eca859534ca464559a370bf79, type: 2}
   - {fileID: 400000, guid: f74035ec830971246a67ec16c6e01b55, type: 2}
   - {fileID: 400000, guid: fa8b76f3c9eb6894bbd48666c770b59c, type: 2}
-  - {fileID: 400000, guid: 915eb5ab272381b46a2ef1af04d9b0a5, type: 2}
+  - {fileID: 400000, guid: 4849252340526e84e9023b3442c42c5c, type: 2}
   - {fileID: 400000, guid: b193af77e6086cb4ba337fd0709bc5c9, type: 2}
   - {fileID: 400000, guid: e377be37f05c041a6aabac58f3893049, type: 2}
   - {fileID: 400000, guid: 85ffdadbf44f82048bc264b03cff59da, type: 2}
+  - {fileID: 400000, guid: 37ccc6990ee0aa94e9d486010ce4bd8c, type: 2}
   - {fileID: 400006, guid: eb725d78c0db04378a994bbc99818c2d, type: 2}
 --- !u!4 &1752900922
 Transform:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 400044, guid: 969825e8c62bae34daf4d9119323f6da, type: 2}
-  m_PrefabInternal: {fileID: 1361438971}
+  m_PrefabInternal: {fileID: 1033623996}
   m_GameObject: {fileID: 1752900920}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -1251,7 +929,7 @@ Transform:
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 100002, guid: 969825e8c62bae34daf4d9119323f6da, type: 2}
-  m_PrefabInternal: {fileID: 1361438971}
+  m_PrefabInternal: {fileID: 1033623996}
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1845277561}
@@ -1267,7 +945,7 @@ GameObject:
 Transform:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 400034, guid: 969825e8c62bae34daf4d9119323f6da, type: 2}
-  m_PrefabInternal: {fileID: 1361438971}
+  m_PrefabInternal: {fileID: 1033623996}
   m_GameObject: {fileID: 1845277560}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: .699999988, y: .99000001, z: 0}
@@ -1279,7 +957,7 @@ GUIText:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 13200000, guid: 969825e8c62bae34daf4d9119323f6da,
     type: 2}
-  m_PrefabInternal: {fileID: 1361438971}
+  m_PrefabInternal: {fileID: 1033623996}
   m_GameObject: {fileID: 1845277560}
   m_Enabled: 1
   serializedVersion: 3
@@ -1298,56 +976,15 @@ GUIText:
     rgba: 4294967295
   m_PixelCorrect: 1
   m_RichText: 1
---- !u!1 &1991170142
+--- !u!1 &2017807261
 GameObject:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 100012, guid: 969825e8c62bae34daf4d9119323f6da, type: 2}
-  m_PrefabInternal: {fileID: 1361438971}
+  m_PrefabParentObject: {fileID: 100008, guid: 969825e8c62bae34daf4d9119323f6da, type: 2}
+  m_PrefabInternal: {fileID: 1033623996}
   serializedVersion: 4
   m_Component:
-  - 4: {fileID: 1991170143}
-  - 114: {fileID: 1991170144}
-  m_Layer: 0
-  m_Name: Vodka
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1991170143
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 400012, guid: 969825e8c62bae34daf4d9119323f6da, type: 2}
-  m_PrefabInternal: {fileID: 1361438971}
-  m_GameObject: {fileID: 1991170142}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 281496052}
---- !u!114 &1991170144
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11400012, guid: 969825e8c62bae34daf4d9119323f6da,
-    type: 2}
-  m_PrefabInternal: {fileID: 1361438971}
-  m_GameObject: {fileID: 1991170142}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2642cf549642d43b98bbc28f658629f1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  liquid: 0
-  drinkColor: {r: 1, g: 1, b: 1, a: 0}
---- !u!1 &2130540906
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 100032, guid: 969825e8c62bae34daf4d9119323f6da, type: 2}
-  m_PrefabInternal: {fileID: 1361438971}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 2130540907}
-  - 114: {fileID: 2130540908}
+  - 4: {fileID: 2017807262}
+  - 114: {fileID: 2017807263}
   m_Layer: 0
   m_Name: Space Clam
   m_TagString: Untagged
@@ -1355,24 +992,24 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2130540907
+--- !u!4 &2017807262
 Transform:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 400032, guid: 969825e8c62bae34daf4d9119323f6da, type: 2}
-  m_PrefabInternal: {fileID: 1361438971}
-  m_GameObject: {fileID: 2130540906}
+  m_PrefabParentObject: {fileID: 400008, guid: 969825e8c62bae34daf4d9119323f6da, type: 2}
+  m_PrefabInternal: {fileID: 1033623996}
+  m_GameObject: {fileID: 2017807261}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 281496052}
---- !u!114 &2130540908
+  m_Father: {fileID: 1000465577}
+--- !u!114 &2017807263
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11400032, guid: 969825e8c62bae34daf4d9119323f6da,
+  m_PrefabParentObject: {fileID: 11400008, guid: 969825e8c62bae34daf4d9119323f6da,
     type: 2}
-  m_PrefabInternal: {fileID: 1361438971}
-  m_GameObject: {fileID: 2130540906}
+  m_PrefabInternal: {fileID: 1033623996}
+  m_GameObject: {fileID: 2017807261}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2642cf549642d43b98bbc28f658629f1, type: 3}
@@ -1384,7 +1021,7 @@ MonoBehaviour:
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 100000, guid: 969825e8c62bae34daf4d9119323f6da, type: 2}
-  m_PrefabInternal: {fileID: 1361438971}
+  m_PrefabInternal: {fileID: 1033623996}
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 2137380473}
@@ -1400,7 +1037,7 @@ GameObject:
 Transform:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 400000, guid: 969825e8c62bae34daf4d9119323f6da, type: 2}
-  m_PrefabInternal: {fileID: 1361438971}
+  m_PrefabInternal: {fileID: 1033623996}
   m_GameObject: {fileID: 2137380472}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -1416,7 +1053,7 @@ MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 11400000, guid: 969825e8c62bae34daf4d9119323f6da,
     type: 2}
-  m_PrefabInternal: {fileID: 1361438971}
+  m_PrefabInternal: {fileID: 1033623996}
   m_GameObject: {fileID: 2137380472}
   m_Enabled: 1
   m_EditorHideFlags: 0

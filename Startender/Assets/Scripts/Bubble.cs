@@ -7,7 +7,7 @@ public class Bubble : MonoBehaviour {
 	GameManager gameManagerScript;
 
     public Transform ingredientPrefab;
-    public Ingredient attachedIngredient;
+    private Ingredient attachedIngredient;
 
     // Use this for initialization
     void Start()
@@ -20,6 +20,7 @@ public class Bubble : MonoBehaviour {
         Transform ingredientObject = Instantiate(ingredientPrefab) as Transform;
         ingredientObject.name = ingredientPrefab.name;
         ingredientObject.parent = this.transform;
+        attachedIngredient = ingredientObject.GetComponent<Ingredient>();
     }
 
     // Update is called once per frame
@@ -30,7 +31,12 @@ public class Bubble : MonoBehaviour {
 
     public Ingredient GetIngredient() 
     {
-        return GetComponentInChildren<Ingredient>();
+        return attachedIngredient;
+    }
+
+    public Transform GetIngredientPrefab()
+    {
+        return ingredientPrefab;
     }
 
 	public void Die()

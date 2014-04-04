@@ -10,6 +10,7 @@ public class Drink : MonoBehaviour
     void Start()
     {
         ingredients = GetComponentsInChildren<Ingredient>();
+		Debug.Log (this.name + " Drink::ingredients: " + ingredients.Length);
     }
 
 	public string GetFormattedIngredients()
@@ -41,7 +42,7 @@ public class Drink : MonoBehaviour
 
     public string GetDrinkName()
     {
-        return name;
+        return this.name;
     }
 
     public float GetDifficulty()

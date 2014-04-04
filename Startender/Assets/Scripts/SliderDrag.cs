@@ -10,8 +10,9 @@ public class SliderDrag : MonoBehaviour {
     
     public List<Drink> drinkList;
 	public int drinkListPointer;
+	public List<GameObject> ingredientTexts;
 
-	public float drinkBookPadding;
+	public TextMesh drinkBookDrinkTitle;
 
     // Set this if we want the slider to snap back to its original position on release
     public bool snapsBack = false;
@@ -23,7 +24,6 @@ public class SliderDrag : MonoBehaviour {
         float maxLeftX = startPosition.x * -1;
         maxLeftPosition = new Vector3(maxLeftX, startPosition.y, startPosition.z); 
 
-		this.drinkBookPadding = 3.0f;
 		this.drinkListPointer = 0;
 
         //feed drinks to Drink Book
@@ -33,12 +33,29 @@ public class SliderDrag : MonoBehaviour {
 
 		this.box = GameObject.Find("Slider Box");
 
+		GameObject drinkBookDrinkTitleGO = GameObject.Find("DrinkBookDrinkTitle");
+		this.drinkBookDrinkTitle = (TextMesh)drinkBookDrinkTitleGO.GetComponent(typeof(TextMesh));
+		this.drinkBookDrinkTitle.renderer.sortingOrder = 100;
+		this.drinkBookDrinkTitle.renderer.sortingLayerName = "DrinkBook";
+
+		this.ingredientTexts = new List<GameObject>();
 	}
 
-    // public void SetDrinks(List<Drink> drinks) {
-    //     Debug.Log("Adding drinks to drink book.");
-    //     this.drinkList = drinks;
-    // }
+    public void prevDrink() {
+		if(this.drinkListPointer > 0) {
+			this.drinkListPointer--;
+		} else {
+			this.drinkListPointer = this.drinkList.Count - 1;
+		}
+	}
+
+	public void nextDrink() {
+		if(this.drinkListPointer < this.drinkList.Count - 1) {
+			this.drinkListPointer++;
+		} else {
+			this.drinkListPointer = 0;
+		}
+	}
 
     // This function should send the slider back to its starting position 
     void SnapBack ()
@@ -101,49 +118,58 @@ public class SliderDrag : MonoBehaviour {
 
 	void OnGUI() {
 
-		float x = this.box.renderer.bounds.min.x;
-		x = 0.5f;
-		float y = this.box.renderer.bounds.min.y;
-		y =0.5f;
-		float width = this.box.renderer.bounds.size.x;
-		float height = this.box.renderer.bounds.size.y;
+	}
+	
+	private TextMesh createTextObject(Vector3 position, Vector3 translation, Material material, string text) {
 
-		Drink drink = this.drinkList[this.drinkListPointer];
+		GameObject textObj = new GameObject("IngredientLabel");
+		textObj.transform.position = position + translation;
+		textObj.name = "IngredientLabel";
+		MeshRenderer mr = textObj.AddComponent<MeshRenderer>();
+		mr.material = material;
+		TextMesh tm = textObj.AddComponent<TextMesh>();
+		tm.renderer.sortingOrder = 100;
+		tm.renderer.sortingLayerName = "DrinkBook";
+		tm.text = text;
+		tm.font = Resources.GetBuiltinResource(typeof(Font), "Arial.ttf") as Font;
+		tm.characterSize = 0.4f;
 
-		Rect rect = new Rect(x, y, width, height);
-
-		//left, top, width, height
-		GUILayout.BeginArea(rect);
-
-		if(GUILayout.Button("Prev")) {
-			if(this.drinkListPointer == 0) {
-				this.drinkListPointer = this.drinkList.Count - 1;
-			}
-			else {
-				this.drinkListPointer--;
-			}
-		}
-		if(GUILayout.Button("Next")) {
-			if(this.drinkListPointer == this.drinkList.Count - 1) {
-				this.drinkListPointer = 0;
-			}
-			else {
-				this.drinkListPointer++;
-			}
-		}
-		GUILayout.Label(drink.GetDrinkName());
-
-		//foreach(Ingredient ingredient in drink.GetIngredients()) {
-		//	GUILayout.Label(ingredient.name);
-		//}
-
-		GUILayout.EndArea();
+		this.ingredientTexts.Add(textObj);
+		
+		return tm;
 
 	}
 
 	// Update is called once per frame
 	void Update ()
     {
-	    
+		Drink drink = this.drinkList[this.drinkListPointer];
+		this.drinkBookDrinkTitle.text = drink.GetDrinkName();
+
+		float paddingY = 0.2f;
+		float paddingX = 0.2f;
+
+		float down = -1 * this.drinkBookDrinkTitle.renderer.bounds.size.y - paddingY;
+		Vector3 position = new Vector3(this.drinkBookDrinkTitle.transform.position.x + paddingX, this.drinkBookDrinkTitle.transform.position.y, -4);
+		Vector3 translation = new Vector3(0, down, 0);
+
+		List<GameObject>.Enumerator e = this.ingredientTexts.GetEnumerator();
+		while(e.MoveNext()) {
+			GameObject g = e.Current;
+			Destroy(g);
+		}
+		this.ingredientTexts.Clear();
+			
+		Ingredient[] ingredients = drink.GetIngredients();
+		
+		for(int x = 0; x < ingredients.Length; x++) {
+			Ingredient ingredient = ingredients[x];
+			TextMesh tm = this.createTextObject(position, translation, this.drinkBookDrinkTitle.renderer.material, ingredient.name);
+
+			//prepare next ingredient position
+			down = -1 * tm.renderer.bounds.size.y - paddingY;
+			position = tm.transform.position;
+			translation = new Vector3(0, down, 0);
+		} 
 	}
 }

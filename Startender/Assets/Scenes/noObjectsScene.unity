@@ -177,7 +177,7 @@ Prefab:
     - target: {fileID: 11400036, guid: 969825e8c62bae34daf4d9119323f6da, type: 2}
       propertyPath: prefabs.Array.data[7]
       value: 
-      objectReference: {fileID: 400002, guid: 0e9d96e566f7b4d9d8d5f9d74db68f27, type: 2}
+      objectReference: {fileID: 400006, guid: eb725d78c0db04378a994bbc99818c2d, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 969825e8c62bae34daf4d9119323f6da, type: 2}
   m_RootGameObject: {fileID: 2137380472}
@@ -494,6 +494,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8af6b21554a1245e38f78bb70c44c47b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  drinkList: []
+  currentDrink: {fileID: 0}
 --- !u!1 &504468300
 GameObject:
   m_ObjectHideFlags: 0
@@ -882,7 +884,7 @@ Transform:
   m_GameObject: {fileID: 927040059}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -10}
-  m_LocalScale: {x: 16.3600006, y: 10.4200001, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
 --- !u!114 &927040065
@@ -1217,7 +1219,7 @@ MonoBehaviour:
   - {fileID: 400000, guid: b193af77e6086cb4ba337fd0709bc5c9, type: 2}
   - {fileID: 400000, guid: e377be37f05c041a6aabac58f3893049, type: 2}
   - {fileID: 400000, guid: 85ffdadbf44f82048bc264b03cff59da, type: 2}
-  - {fileID: 400002, guid: 0e9d96e566f7b4d9d8d5f9d74db68f27, type: 2}
+  - {fileID: 400006, guid: eb725d78c0db04378a994bbc99818c2d, type: 2}
 --- !u!4 &1752900922
 Transform:
   m_ObjectHideFlags: 0

@@ -199,4 +199,12 @@ public class PlayerState : MonoBehaviour
 		this.difficulty = PlayerPrefs.GetInt ("Difficulty");
 		this.gpa = PlayerPrefs.GetFloat ("GPA");
 	}
+
+	public void ResetGame(){
+		PlayerPrefs.SetInt ("StarBucks", 40);
+		PlayerPrefs.SetInt ("Rest", 10);
+		PlayerPrefs.SetInt ("Hunger", 0);
+		PlayerPrefs.SetInt ("Difficulty", 1);
+		PlayerPrefs.SetFloat ("GPA", 3.0f);
+	}
 }

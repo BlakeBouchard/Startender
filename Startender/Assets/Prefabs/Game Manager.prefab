@@ -34,15 +34,15 @@ GameObject:
   m_IsActive: 1
 --- !u!1 &100004
 GameObject:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
   m_Component:
-  - 4: {fileID: 400010}
-  - 114: {fileID: 11400010}
+  - 4: {fileID: 400004}
+  - 114: {fileID: 11400004}
   m_Layer: 0
-  m_Name: Orange Slice
+  m_Name: Level Settings
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -60,54 +60,6 @@ GameObject:
   m_Layer: 0
   m_Name: Drink Manager
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!1 &100008
-GameObject:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 400008}
-  - 114: {fileID: 11400008}
-  m_Layer: 0
-  m_Name: Space Clam
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!1 &100010
-GameObject:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 400004}
-  - 114: {fileID: 11400004}
-  m_Layer: 0
-  m_Name: Triple Sector
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!1 &100012
-GameObject:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 400012}
-  - 114: {fileID: 11400012}
-  m_Layer: 0
-  m_Name: Blood Orange
-  m_TagString: Drink Recipe
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -220,6 +172,7 @@ Transform:
   m_Children:
   - {fileID: 400006}
   - {fileID: 400002}
+  - {fileID: 400004}
   - {fileID: 400044}
   - {fileID: 400042}
   m_Father: {fileID: 0}
@@ -243,12 +196,12 @@ Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100010}
+  m_GameObject: {fileID: 100004}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -.0352812484, y: .225082666, z: 0}
+  m_LocalPosition: {x: -7.61822605, y: 3.22558928, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 400012}
+  m_Father: {fileID: 400000}
 --- !u!4 &400006
 Transform:
   m_ObjectHideFlags: 1
@@ -258,45 +211,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 400012}
+  m_Children: []
   m_Father: {fileID: 400000}
---- !u!4 &400008
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100008}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 400012}
---- !u!4 &400010
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100004}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 400012}
---- !u!4 &400012
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100012}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 400010}
-  - {fileID: 400008}
-  - {fileID: 400004}
-  m_Father: {fileID: 400006}
 --- !u!4 &400034
 Transform:
   m_ObjectHideFlags: 1
@@ -398,14 +314,24 @@ MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100010}
+  m_GameObject: {fileID: 100004}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2642cf549642d43b98bbc28f658629f1, type: 3}
+  m_Script: {fileID: 11500000, guid: d564abaa95cbe2342b9908474d891483, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  liquid: 0
-  drinkColor: {r: 1, g: .682758629, b: 0, a: 0}
+  allBubbles:
+  - {fileID: 400000, guid: b8bf69bb0b521a7498a741a14699f957, type: 2}
+  - {fileID: 400000, guid: eef2f91405563490d818472df28e85ed, type: 2}
+  - {fileID: 400002, guid: e6647bd0205d0d04198db5e0b35cb29d, type: 2}
+  allGarnishSilos:
+  - {fileID: 400000, guid: cdf5f88dc26ac4d329daf391410100f5, type: 2}
+  allDrinks: {fileID: 4900000, guid: a3ff7e571bedcb540b77364b4f14527c, type: 3}
+  blankDrinkPrefab: {fileID: 400000, guid: 7b2bc5a7d043773478d561f61bd14604, type: 2}
+  blankBubbleButtonPrefab: {fileID: 400000, guid: 2005b1230e69af147b2eff27b8e043e6,
+    type: 2}
+  buttonSpacing: 1.25
+  buttonScale: 2
 --- !u!114 &11400006
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -419,46 +345,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   drinkList: []
   currentDrink: {fileID: 0}
---- !u!114 &11400008
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100008}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2642cf549642d43b98bbc28f658629f1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  liquid: 0
-  drinkColor: {r: .852941155, g: .131704167, b: .131704167, a: 0}
---- !u!114 &11400010
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100004}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2642cf549642d43b98bbc28f658629f1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  liquid: 0
-  drinkColor: {r: 0, g: 0, b: 0, a: 0}
---- !u!114 &11400012
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100012}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba2bfac10f9c64329a1a508b38f271b2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ingredients: []
-  difficulty: .300000012
-  drinkColor: {r: 1, g: .517241359, b: 0, a: 0}
 --- !u!114 &11400034
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -487,12 +373,11 @@ MonoBehaviour:
   - {fileID: 400002, guid: bca0fc1eca859534ca464559a370bf79, type: 2}
   - {fileID: 400000, guid: f74035ec830971246a67ec16c6e01b55, type: 2}
   - {fileID: 400000, guid: fa8b76f3c9eb6894bbd48666c770b59c, type: 2}
-  - {fileID: 400000, guid: 4849252340526e84e9023b3442c42c5c, type: 2}
+  - {fileID: 400006, guid: eb725d78c0db04378a994bbc99818c2d, type: 2}
   - {fileID: 400000, guid: b193af77e6086cb4ba337fd0709bc5c9, type: 2}
   - {fileID: 400000, guid: e377be37f05c041a6aabac58f3893049, type: 2}
   - {fileID: 400000, guid: 85ffdadbf44f82048bc264b03cff59da, type: 2}
   - {fileID: 400000, guid: 37ccc6990ee0aa94e9d486010ce4bd8c, type: 2}
-  - {fileID: 400006, guid: eb725d78c0db04378a994bbc99818c2d, type: 2}
 --- !u!132 &13200000
 GUIText:
   m_ObjectHideFlags: 1

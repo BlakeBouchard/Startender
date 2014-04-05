@@ -41,18 +41,26 @@ public class SliderDrag : MonoBehaviour {
 		this.ingredientTexts = new List<GameObject>();
 	}
 
-    public void prevDrink() {
-		if(this.drinkListPointer > 0) {
+    public void prevDrink()
+    {
+		if (this.drinkListPointer > 0)
+        {
 			this.drinkListPointer--;
-		} else {
+		}
+        else
+        {
 			this.drinkListPointer = this.drinkList.Count - 1;
 		}
 	}
 
-	public void nextDrink() {
-		if(this.drinkListPointer < this.drinkList.Count - 1) {
+	public void nextDrink()
+    {
+		if (this.drinkListPointer < this.drinkList.Count - 1)
+        {
 			this.drinkListPointer++;
-		} else {
+		}
+        else
+        {
 			this.drinkListPointer = 0;
 		}
 	}
@@ -73,12 +81,13 @@ public class SliderDrag : MonoBehaviour {
             this.transform.position = this.maxLeftPosition;
         }
         //if we are going off the right hand side, lock
-        else if(newPosition.x >= this.startPosition.x)
+        else if (newPosition.x >= this.startPosition.x)
         {
             this.transform.position = this.startPosition;
         }
         //otherwise slide freely 
-        else {
+        else
+        {
             this.transform.position = new Vector3(newPosition.x, this.startPosition.y, this.startPosition.z);
         }
     }
@@ -116,11 +125,13 @@ public class SliderDrag : MonoBehaviour {
         }
     }
 
-	void OnGUI() {
+	void OnGUI()
+    {
 
 	}
 	
-	private TextMesh createTextObject(Vector3 position, Vector3 translation, Material material, string text) {
+	private TextMesh createTextObject(Vector3 position, Vector3 translation, Material material, string text)
+    {
 
 		GameObject textObj = new GameObject("IngredientLabel");
 		textObj.transform.position = position + translation;
@@ -154,7 +165,8 @@ public class SliderDrag : MonoBehaviour {
 		Vector3 translation = new Vector3(0, down, 0);
 
 		List<GameObject>.Enumerator e = this.ingredientTexts.GetEnumerator();
-		while(e.MoveNext()) {
+		while(e.MoveNext())
+        {
 			GameObject g = e.Current;
 			Destroy(g);
 		}
@@ -162,7 +174,8 @@ public class SliderDrag : MonoBehaviour {
 			
 		Ingredient[] ingredients = drink.GetIngredients();
 		
-		for(int x = 0; x < ingredients.Length; x++) {
+		for (int x = 0; x < ingredients.Length; x++)
+        {
 			Ingredient ingredient = ingredients[x];
 			TextMesh tm = this.createTextObject(position, translation, this.drinkBookDrinkTitle.renderer.material, ingredient.name);
 

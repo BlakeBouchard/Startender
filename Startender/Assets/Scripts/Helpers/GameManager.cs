@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
 
     private GUIDrawer guiDrawer;
     private DrinkManager drinkManager;
-    private Cannon cannon;
+    // private Cannon cannon;
 
     // Use this for initialization
     void Start()
@@ -31,8 +31,8 @@ public class GameManager : MonoBehaviour
         this.guiDrawer = (GUIDrawer)gui.GetComponent(typeof(GUIDrawer));
         this.guiDrawer.SetManagers(this, this.drinkManager, this.player);
 
-        GameObject cannonObj = GameObject.Find("CannonBarrel");
-        this.cannon = (Cannon) cannonObj.GetComponent(typeof(Cannon));
+        //GameObject cannonObj = GameObject.Find("CannonBarrel");
+        //this.cannon = (Cannon) cannonObj.GetComponent(typeof(Cannon));
     }
 
     private PlayerState SpawnPlayer()
@@ -49,71 +49,76 @@ public class GameManager : MonoBehaviour
         return playerObject.GetComponent<PlayerState>();
     }
 
-    public void StartGame() {
-
+    public void StartGame()
+    {
 		Debug.Log("Starting game");
 		Time.timeScale = 1;
 
 		this.gameState = GameState.Playing;
     }
 
-    public void PauseGame() {
+    public void PauseGame()
+    {
 	    Time.timeScale = 0;
 	    this.gameState = GameState.Paused;
     }
 
-    public void EndRound() {
-	    Time.timeScale = 0;
+    public void EndRound()
+    {
+	    //Time.timeScale = 0;
 	    //this.gameState = GameState.RoundOver;
-        this.cannon.EmptyCannon();
 		Application.LoadLevel("endOfRound");
     }
 
-    public void ResumeRound() {
+    public void ResumeRound()
+    {
 	    Time.timeScale = 1;
 	    this.gameState = GameState.Playing;
     }
 
-    public void ResetRound() {
-	    this.ResetRoundTime();
-	    this.player.ResetRound();
-        this.cannon.EmptyCannon();
-    
-	    //restart the game
-	    Time.timeScale = 1;
-	    this.gameState = GameState.Menu;
+    public void ResetRound()
+    {
+        player.ResetRound();
+        Application.LoadLevel(Application.loadedLevel);
     }
 
-    private void ResetRoundTime() {
+    private void ResetRoundTime()
+    {
 	    this.roundTime = 90.0f;
     }
 
-    public float GetRoundTime() {
+    public float GetRoundTime()
+    {
 	    return this.roundTime;
     }
 
-    public GameState GetGameState() {
+    public GameState GetGameState()
+    {
 	    return gameState;
     }
 
     // Update is called once per frame
     void Update()
     {
-	    if(this.gameState == GameState.Playing) {
+	    if (this.gameState == GameState.Playing) {
 		    this.roundTime -= Time.deltaTime;
 
-		    if(this.roundTime <= 0.0f) {
+		    if (this.roundTime <= 0.0f)
+            {
 			    this.EndRound ();
 		    }
 
-		    if(Input.GetKeyDown(KeyCode.Escape)) {
+		    if (Input.GetKeyDown(KeyCode.Escape))
+            {
 			    this.PauseGame();
 		    }
 	    }
     }
 
-    void OnGUI() {
-		switch(this.gameState) {
+    void OnGUI()
+    {
+		switch (this.gameState)
+        {
 		    case GameState.Playing:
 				this.guiDrawer.DrawHUD();
 				this.guiDrawer.DrawDrinkFeedback();

@@ -12,8 +12,6 @@ public class Bubble : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
-        Debug.Log("New Bubble with Ingredient: " + GetIngredient().name);
-
 		gameManager = GameObject.Find("Game Manager");
 		gameManagerScript = (GameManager) gameManager.GetComponent(typeof(GameManager));
 
@@ -21,6 +19,8 @@ public class Bubble : MonoBehaviour {
         ingredientObject.name = ingredientPrefab.name;
         ingredientObject.parent = this.transform;
         attachedIngredient = ingredientObject.GetComponent<Ingredient>();
+
+        Debug.Log("New Bubble with Ingredient: " + GetIngredient().name);
     }
 
     // Update is called once per frame

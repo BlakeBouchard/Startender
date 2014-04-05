@@ -95,7 +95,8 @@ public class LevelSettings : MonoBehaviour {
         
         foreach (Transform bubble in this.allBubbles)
         {
-            tempBubbleList.Add(bubble.name, bubble);
+            Transform ingredient = bubble.GetComponent<Bubble>().GetIngredientPrefab();
+            tempBubbleList.Add(ingredient.name, bubble);
         }
 
         return tempBubbleList;

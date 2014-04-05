@@ -24,7 +24,7 @@ public class PlayerState : MonoBehaviour
 	private int baseTuition;
 
 	//base level difficulty
-	private int difficulty;
+	public int difficulty;
 	
 	public int hungerThreshold;
 	public int failedRentPayments;
@@ -108,7 +108,14 @@ public class PlayerState : MonoBehaviour
 	}
 	
 	public int GetDifficulty() {
-		return this.difficulty;
+        if (!this.initialized)
+        {
+            return 1;
+        }
+        else
+        {
+            return this.difficulty;
+        }
 	}
 	
 	public void IncrementGPA() {

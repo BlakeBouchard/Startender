@@ -200,6 +200,11 @@ public class LevelSettings : MonoBehaviour {
 
         foreach (string ingredientName in drinkList[drinkName])
         {
+            if (!bubbleList.ContainsKey(ingredientName))
+            {
+                Debug.Log("Error! Ingredient called \"" + ingredientName + "\"does not exist, skipping " + drinkName);
+                return null;
+            }
             Transform ingredient = CreateIngredient(ingredientName);
             ingredient.parent = drink;
         }
@@ -213,6 +218,10 @@ public class LevelSettings : MonoBehaviour {
         foreach (KeyValuePair<string, List<string>> drink in drinkList)
         {
             Transform drinkObject = CreateDrinkFromList(drink.Key);
+            if (drinkObject == null)
+            {
+                continue;
+            }
             drinks.Add(drinkObject);
         }
         return drinks;

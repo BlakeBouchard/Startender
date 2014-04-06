@@ -39,14 +39,14 @@ public class PlayerState : MonoBehaviour
         DontDestroyOnLoad(this);
 
 		if (!this.initialized) {
-			this.starBucks = 40;
+			//this.starBucks = 40;
 			this.tipsEarned = 0;
 	        this.lastTip = 0;
-			this.rest = 10;
-			this.gpa = 3.0f;
+			//this.rest = 10;
+			//this.gpa = 3.0f;
 
 			//base stats
-			this.difficulty = 1;
+			//this.difficulty = 1;
 			
 			//base costs
 			this.baseRent = 10;
@@ -55,9 +55,9 @@ public class PlayerState : MonoBehaviour
 
 			this.failedRentPayments = 0;
 			this.failedRentThreshold = 3;
-			this.hunger = 0;
+			//this.hunger = 0;
 			this.hungerThreshold = 3;
-			this.gpa = 3.0f;
+			//this.gpa = 3.0f;
 			this.gpaThreshold = 1.3f;
 			this.initialized = true;
 		}

@@ -13,7 +13,7 @@ GameObject:
   - 50: {fileID: 5000000}
   - 58: {fileID: 5800000}
   m_Layer: 8
-  m_Name: Triple Sector Bubble
+  m_Name: Quadruple Sec Bubble
   m_TagString: Bubble
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

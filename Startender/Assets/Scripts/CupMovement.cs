@@ -6,6 +6,9 @@ public class CupMovement : MonoBehaviour {
     private Vector3 previousPosition;
 
     public float rotateThreshold = 0.03f;
+	public float borderPadding = 010f;
+
+	public Bounds bounds;
 
 	GameObject gameManager;
 	GameManager gameManagerScript;
@@ -15,6 +18,9 @@ public class CupMovement : MonoBehaviour {
     {
 		gameManager = GameObject.Find("Game Manager");
 		gameManagerScript = (GameManager) gameManager.GetComponent(typeof(GameManager));
+
+		GameObject go = GameObject.Find("Bar");
+		this.bounds = go.renderer.bounds;
 	}
 	
 	private void MoveCup(Vector3 startPoint, Vector3 endPoint)
@@ -33,12 +39,18 @@ public class CupMovement : MonoBehaviour {
 			float posWidth = posHeight * Camera.main.aspect;		// Right
 			float negWidth = posWidth * -1f;						// Left
 
+			Bounds cup = this.renderer.bounds;
+			float minX = bounds.min.x + cup.extents.x;
+			float minY = bounds.min.y + cup.extents.y;
+			float maxX = bounds.max.x - cup.extents.x;
+			float maxY = bounds.max.y - cup.extents.y;
+
 			// Set position
 			if (endPoint.x < posWidth &&
 				endPoint.x > negWidth &&
 				endPoint.y < posHeight &&
 				endPoint.y > negHeight) {
-					transform.position += deltaPosition;
+				transform.Translate(deltaPosition);//new Vector3(Mathf.Clamp(deltaPosition.x, minX, maxX), Mathf.Clamp(deltaPosition.y, minY, maxY), deltaPosition.z));
 			}
 		}
     }
@@ -51,6 +63,7 @@ public class CupMovement : MonoBehaviour {
     void OnTouchDrag(Touch touch)
     {
         Vector3 currentPosition = Camera.main.ScreenToWorldPoint(touch.position);
+		Debug.Log (currentPosition);
         if (currentPosition != previousPosition)
         {
             MoveCup(previousPosition, currentPosition);
@@ -66,6 +79,7 @@ public class CupMovement : MonoBehaviour {
     private void OnMouseDrag()
     {
         Vector3 currentPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+		Debug.Log (currentPosition);
         if (currentPosition != previousPosition)
         {
             MoveCup(previousPosition, currentPosition);

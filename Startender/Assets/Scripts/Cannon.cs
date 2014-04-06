@@ -45,7 +45,7 @@ public class Cannon : MonoBehaviour {
 		bubble.rigidbody2D.drag = bubbleDrag;
 		bubble.rigidbody2D.mass = bubbleMass;
 		bubble.rigidbody2D.gravityScale = gravityScale;
-        bubble.name = bubblePrefab.name + " Bubble";
+        bubble.name = bubblePrefab.name;
         audio.Play();
     }
 
@@ -70,7 +70,8 @@ public class Cannon : MonoBehaviour {
         }
     }
 
-    public void EmptyCannon() {
+    public void EmptyCannon()
+    {
         this.bubbleQueue.Clear();
     }
 
@@ -94,7 +95,8 @@ public class Cannon : MonoBehaviour {
 		this.bubbleQueue.Enqueue(bubble);
 	}
 
-	private void FireIfReady() {
+	private void FireIfReady()
+    {
 
 		// if we've reached the delay, fire
 		if (this.fireDelayTimer <= 0.0f)
@@ -141,6 +143,5 @@ public class Cannon : MonoBehaviour {
             percentLength = 0;
         }
         GameObject.Find("CannonTimerBar").SendMessage("SetLength", percentLength);
-
 	}
 }

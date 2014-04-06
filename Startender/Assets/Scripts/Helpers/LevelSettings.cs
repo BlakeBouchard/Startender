@@ -17,10 +17,12 @@ public class LevelSettings : MonoBehaviour {
     public Transform blankDrinkPrefab;
     public Transform blankBubbleButtonPrefab;
     
+    // This Dictionary links the name of each drink with a list of the names of its ingredients, not the transforms themselves
     Dictionary<string, List<string>> drinkList;
 
     // This Dictionary stores each bubble with the key being the name of the ingredient attached to it
     Dictionary<string, Transform> bubbleList;
+    Dictionary<string, Transform> garnishList;
     
     // This value controls how far apart the buttons should be and how much bigger than their bubbles they should be
     public float buttonSpacing = 1;
@@ -29,11 +31,25 @@ public class LevelSettings : MonoBehaviour {
 	// Use this for initialization
 	void Start()
     {
+        // Run the necessary scripts on each of the "full" lists
+        // NOTE: None of these lists contain anything that has been randomly selected
         this.drinkList = PopulateDrinkList();
         this.bubbleList = PopulateBubbleList();
-
-        GenerateRandomBubbleButtons();
+        this.garnishList = PopulateGarnishList();
 	}
+
+    // Drink Manager calls this script to get the necessary
+    public List<Transform> GetDrinkDefinitions()
+    {
+        PlayerState player = GameObject.Find("Player").GetComponent<PlayerState>();
+        int difficulty = player.GetDifficulty();
+
+        int numberOfButtons = difficulty + 1;
+        List<string> selectedIngredients = GenerateRandomBubbleButtons(numberOfButtons);
+
+        int numberOfDrinks = difficulty + 2;
+        return GenerateRandomDrinksFromIngredients(selectedIngredients, numberOfDrinks);
+    }
 
     private Dictionary<string, List<string>> PopulateDrinkList()
     {
@@ -94,23 +110,42 @@ public class LevelSettings : MonoBehaviour {
         
         foreach (Transform bubble in this.allBubbles)
         {
-            tempBubbleList.Add(bubble.name, bubble);
+            Transform ingredient = bubble.GetComponent<Bubble>().GetIngredientPrefab();
+            tempBubbleList.Add(ingredient.name, bubble);
         }
 
         return tempBubbleList;
     }
 
+    private Dictionary<string, Transform> PopulateGarnishList()
+    {
+        Dictionary<string, Transform> tempGarnishList = new Dictionary<string, Transform>();
+
+        foreach (Transform garnish in this.allGarnishSilos)
+        {
+            Transform ingredient = garnish.GetComponent<Garnish>().GetIngredientPrefab();
+            tempGarnishList.Add(ingredient.name, garnish);
+        }
+
+        return tempGarnishList;
+    }
+
     private Transform CreateDrinkObject(string drinkName)
     {
+        // Check to make sure the drink list actually contains the drink in question
         if (!drinkList.ContainsKey(drinkName))
         {
             Debug.Log("Error! Drink List does not contain drink called: " + drinkName);
             return null;
         }
 
+        // Create the drink object from a prefab
         Transform drink = Instantiate(blankDrinkPrefab) as Transform;
+        
+        // Grab the list of the ingredient names from the drink dictionary
         List<string> drinkIngredients = drinkList[drinkName];
 
+        // Go through the ingredient list and instantiate each ingredient as an object
         foreach (string ingredientName in drinkIngredients)
         {
             if (!this.bubbleList.ContainsKey(ingredientName))
@@ -125,32 +160,31 @@ public class LevelSettings : MonoBehaviour {
         return drink;
     }
 
-    private void GenerateRandomBubbleButtons()
+    private List<string> GenerateRandomBubbleButtons(int numberOfButtons)
     {
-        PlayerState player = GameObject.Find("Player").GetComponent<PlayerState>();
-        int difficulty = player.GetDifficulty();
+        List<string> randomIngredientNames = new List<string>();
 
-        List<Transform> randomBubbles = new List<Transform>();
-
-        while (randomBubbles.Count < difficulty + 1)
+        while (randomIngredientNames.Count < numberOfButtons)
         {
             // Pick a random unique ingredient from the dictionary
             int randomNumber = UnityEngine.Random.Range(0, bubbleList.Count);
-            Transform selectedBubble = bubbleList.ElementAt(randomNumber).Value;
+            string selectedBubble = bubbleList.ElementAt(randomNumber).Key;
 
-            if (!randomBubbles.Contains(selectedBubble))
+            if (!randomIngredientNames.Contains(selectedBubble))
             {
                 // Selected bubble hasn't been added yet, so add it to list
-                randomBubbles.Add(selectedBubble);
+                randomIngredientNames.Add(selectedBubble);
 
                 // Get the correct position offset from the number of bubbles 
-                float positionOffset = (randomBubbles.Count - 1) * this.buttonSpacing;
+                float positionOffset = (randomIngredientNames.Count - 1) * this.buttonSpacing;
                 Vector2 buttonPosition = new Vector2(this.transform.position.x, this.transform.position.y - positionOffset);
                 
                 // Send position value and chosen bubble to the appropriate function
-                CreateButtonFromBubble(selectedBubble, buttonPosition);
+                CreateButtonFromBubble(bubbleList[selectedBubble], buttonPosition);
             }
         }
+
+        return randomIngredientNames;
     }
 
     private Transform CreateButtonFromBubble(Transform bubble, Vector2 position)
@@ -180,13 +214,103 @@ public class LevelSettings : MonoBehaviour {
         return bubbleButton;
     }
 
-    private Transform CreateDrinkFromList(string drinkName)
+    private Transform CreateIngredient(string ingredientName)
+    {
+        Transform ingredient;
+        // Check to see if ingredient is a garnish
+        if (ingredientName.StartsWith("*"))
+        {
+            // Ingredient is a garnish
+            string garnishName = ingredientName.TrimStart(new char[] { '*' });
+            Transform garnishPrefab = garnishList[garnishName];
+            Garnish garnishScript = garnishPrefab.GetComponent<Garnish>();
+
+            // Instantiate a copy of the ingredient attached to the garnish associated with ingredientName
+            ingredient = Instantiate(garnishScript.GetIngredientPrefab()) as Transform;
+            ingredient.name = garnishName;
+        }
+        else
+        {
+            // Get the bubble script from the bubble prefab associated with the name of the ingredient
+            Transform bubblePrefab = bubbleList[ingredientName];
+            Bubble bubbleScript = bubblePrefab.GetComponent<Bubble>();
+
+            // Instantiate a copy of the ingredient attached to the bubble associated with ingredientName
+            ingredient = Instantiate(bubbleScript.GetIngredientPrefab()) as Transform;
+            ingredient.name = ingredientName;
+        }
+
+        return ingredient;
+    }
+    
+    private Transform CreateDrinkObject(string drinkName, List<string> drinkIngredients)
     {
         Transform drink = Instantiate(blankDrinkPrefab) as Transform;
         drink.name = drinkName;
 
+        foreach (string ingredientName in drinkIngredients)
+        {
+            // Check the list of bubbles for the ingredient in question or if it is a garnish
+            if (!bubbleList.ContainsKey(ingredientName) && !ingredientName.StartsWith("*"))
+            {
+                // Ingredient both does not exist in the bubble list and does not have a "*" indicating it is not a garnish
+                Debug.Log("Error! Ingredient called \"" + ingredientName + "\"does not exist, skipping " + drinkName);
+                return null;
+            }
+            Transform ingredient = CreateIngredient(ingredientName);
+            ingredient.parent = drink;
+        }
 
         return drink;
+    }
+
+    public List<Transform> GenerateRandomDrinksFromIngredients(List<string> selectedIngredientNames, int numberOfDrinks)
+    {
+        List<string> drinksWithSelectedIngredients = new List<string>();
+        List<Transform> selectedDrinks = new List<Transform>();
+        
+        // Iterate through the list of drinks and get rid of the ones that aren't solely comprised of ingredients with the selected names or garnishes
+        foreach (KeyValuePair<string, List<string>> drinkRecipe in drinkList)
+        {
+            bool drinkContainsSelectedIngredients = true;
+            foreach (string ingredientName in drinkRecipe.Value)
+            {
+                // Check to see if each ingredient in the recipe has a bubble button, or it is a garnish
+                if (!selectedIngredientNames.Contains(ingredientName) && !ingredientName.StartsWith("*"))
+                {
+                    drinkContainsSelectedIngredients = false;
+                    break;
+                }
+            }
+
+            // Check to see if the bool is still true after checking all ingredients in the list
+            if (drinkContainsSelectedIngredients && !drinksWithSelectedIngredients.Contains(drinkRecipe.Key))
+            {
+                // Create the drink object using the CreateDrinkObject function and add it to the list of drinks
+                drinksWithSelectedIngredients.Add(drinkRecipe.Key);
+            }
+        }
+        
+        while (selectedDrinks.Count < numberOfDrinks && drinksWithSelectedIngredients.Count != 0)
+        {
+            // Get a random drink from the list
+            string randomDrinkName = drinksWithSelectedIngredients.ElementAt(UnityEngine.Random.Range(0, drinksWithSelectedIngredients.Count));
+
+            Transform drinkObject = CreateDrinkObject(randomDrinkName, drinkList[randomDrinkName]);
+
+            if (drinkObject == null)
+            {
+                // If CreateDrinkFromList returns a null, it means that creating the drink failed, so skip this one and keep going
+                continue;
+            }
+            else
+            {
+                selectedDrinks.Add(drinkObject);
+                drinksWithSelectedIngredients.Remove(randomDrinkName);
+            }
+        }
+
+        return selectedDrinks;
     }
 	
 	// Update is called once per frame
@@ -194,5 +318,4 @@ public class LevelSettings : MonoBehaviour {
     {
 	
 	}
-
 }

@@ -70,7 +70,7 @@ public class Silo : MonoBehaviour {
 		float maxAngle = 190.0f;
 
 		if(lidOpen) {
-			float rotAngle = maxAngle / this.fireDelayTime;
+			//float rotAngle = maxAngle / this.fireDelayTime;
 			//lid.transform.Rotate(0, 0, rotAngle * Time.deltaTime);
 		} else {
 			float rotAngle = maxAngle / this.coolDownTime;

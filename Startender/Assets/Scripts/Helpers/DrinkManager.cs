@@ -15,20 +15,17 @@ public class DrinkManager : MonoBehaviour {
 
     void Start()
     {
-        this.drinkList = new List<Drink>(GetComponentsInChildren<Drink>());
-        foreach (Drink drink in drinkList)
-        {
-            Debug.Log(drink.name + ": " + drink.GetFormattedIngredients());
-        }
-
+        this.drinkList = CreateDrinkList();
     }
 
     //Added by Rebeca.
-    public String GetPrevDrinkName() {
+    public String GetPrevDrinkName()
+    {
         return this.prevDrinkName;
     }
 
-	public Drink GetCurrentDrink() {
+	public Drink GetCurrentDrink()
+    {
 		if (this.currentDrink == null)
         {
 			this.SetNextDrink();
@@ -37,8 +34,26 @@ public class DrinkManager : MonoBehaviour {
 		return this.currentDrink;
 	}
 
-    public List<Drink> GetDrinks() {
+    public List<Drink> GetDrinks()
+    {
         return this.drinkList;
+    }
+
+    public List<Drink> CreateDrinkList()
+    {
+        LevelSettings levelSettings = GameObject.Find("Level Settings").GetComponent<LevelSettings>();
+
+        List<Transform> drinkObjects = levelSettings.GetDrinkDefinitions();
+        List<Drink> drinkList = new List<Drink>();
+
+        foreach (Transform drinkObject in drinkObjects)
+        {
+            drinkObject.transform.parent = this.transform;
+            Drink drink = drinkObject.GetComponent<Drink>();
+            drinkList.Add(drink);
+            Debug.Log(drink.name + ": " + drink.GetFormattedIngredients());
+        }
+        return drinkList;
     }
 
 	// selects random drink from the drink array list
@@ -102,8 +117,8 @@ public class DrinkManager : MonoBehaviour {
 
     //Checks if the drink was made successfully or not. Returns true if it was, false if it wasn't.
     //If orderMatters is true, the ingredients must be added to the cup in a specific order.
-	public bool MadeSuccessfully(List<Ingredient> ingredientsInCup, Boolean orderMatters) {
-
+	public bool MadeSuccessfully(List<Ingredient> ingredientsInCup, Boolean orderMatters)
+    {
         if (this.currentDrink != null)
         {
             int actualIngredientCount = this.currentDrink.GetIngredientCount();
@@ -152,7 +167,6 @@ public class DrinkManager : MonoBehaviour {
                     {
                         remainingIngredients.Remove(match);
                     }
-
                 }
 
                 //There was failure somewhere, ingredients didn't match what they should have been.
@@ -168,7 +182,5 @@ public class DrinkManager : MonoBehaviour {
         }
 
         return false;
-		
 	}
-	
 }

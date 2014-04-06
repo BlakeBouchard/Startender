@@ -24,7 +24,7 @@ public class PlayerState : MonoBehaviour
 	private int baseTuition;
 
 	//base level difficulty
-	private int difficulty;
+	public int difficulty;
 	
 	public int hungerThreshold;
 	public int failedRentPayments;
@@ -38,7 +38,7 @@ public class PlayerState : MonoBehaviour
 	void Start() {
         DontDestroyOnLoad(this);
 
-		if(!this.initialized) {
+		if (!this.initialized) {
 			this.starBucks = 40;
 			this.tipsEarned = 0;
 	        this.lastTip = 0;
@@ -108,18 +108,25 @@ public class PlayerState : MonoBehaviour
 	}
 	
 	public int GetDifficulty() {
-		return this.difficulty;
+        if (!this.initialized)
+        {
+            return 1;
+        }
+        else
+        {
+            return this.difficulty;
+        }
 	}
 	
 	public void IncrementGPA() {
-		if(Random.value > gpaIncreaseChance) {
+		if (Random.value > gpaIncreaseChance) {
 			this.gpa += 0.3f;
 		}
 	}
 
 	public void DecrementGPA() {
 		this.gpa -= 0.3f;
-		if(this.gpa < this.gpaThreshold) {
+		if (this.gpa < this.gpaThreshold) {
 			this.gameFailMessage = "You were kicked out of school for poor performance!";
 			this.EndGame();
 		}
@@ -184,7 +191,7 @@ public class PlayerState : MonoBehaviour
 		this.starBucks = starBucks;
 	}
 
-	public void SaveGame(){
+	public void SaveGame() {
 		PlayerPrefs.SetInt ("StarBucks", this.starBucks);
 		PlayerPrefs.SetInt ("Rest", this.rest);
 		PlayerPrefs.SetInt ("Hunger", this.hunger);
@@ -192,7 +199,7 @@ public class PlayerState : MonoBehaviour
 		PlayerPrefs.SetFloat ("GPA", this.gpa);
 	}
 	
-	public void LoadGame(){
+	public void LoadGame() {
 		this.starBucks = PlayerPrefs.GetInt ("StarBucks");
 		this.rest = PlayerPrefs.GetInt ("Rest");
 		this.hunger = PlayerPrefs.GetInt ("Hunger");
@@ -200,7 +207,7 @@ public class PlayerState : MonoBehaviour
 		this.gpa = PlayerPrefs.GetFloat ("GPA");
 	}
 
-	public void ResetGame(){
+	public void ResetGame() {
 		PlayerPrefs.SetInt ("StarBucks", 40);
 		PlayerPrefs.SetInt ("Rest", 10);
 		PlayerPrefs.SetInt ("Hunger", 0);

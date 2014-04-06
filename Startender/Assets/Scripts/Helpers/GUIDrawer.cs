@@ -132,7 +132,22 @@ public class GUIDrawer : MonoBehaviour
 
         GUILayout.EndArea();
     }
-	
+
+	public void DrawPauseButton()
+	{
+		GUI.Box(new Rect(Screen.width - 25, 2, 20, 20), "");
+		GUILayout.BeginArea(new Rect(Screen.width - 25, 3, 20, 30));
+		GUIStyle myStyle = new GUIStyle();
+		myStyle.fontStyle = FontStyle.Bold;
+		myStyle.normal.textColor = Color.white;
+		
+		if (GUILayout.Button(" | |  ", myStyle)) {
+			gameManager.PauseGame();
+		}
+		
+		GUILayout.EndArea ();
+	}
+
     private void DrawBaseMenu() {
 	    GUILayout.Label("Startender!");
 	    GUILayout.Space(10.0f);

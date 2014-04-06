@@ -43,6 +43,11 @@ public class BubbleButton : MonoBehaviour {
     {
         this.bubblePrefab = bubbleTransform;
     }
+
+    public Transform GetBubbleTransform()
+    {
+        return bubblePrefab;
+    }
 	
 	// Update is called once per frame
     void Update()

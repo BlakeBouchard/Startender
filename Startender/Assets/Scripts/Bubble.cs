@@ -3,18 +3,12 @@ using System.Collections;
 
 public class Bubble : MonoBehaviour {
 
-	GameObject gameManager;
-	GameManager gameManagerScript;
-
     public Transform ingredientPrefab;
     private Ingredient attachedIngredient;
 
     // Use this for initialization
     void Start()
     {
-		gameManager = GameObject.Find("Game Manager");
-		gameManagerScript = (GameManager) gameManager.GetComponent(typeof(GameManager));
-
         Transform ingredientObject = Instantiate(ingredientPrefab) as Transform;
         ingredientObject.name = ingredientPrefab.name;
         ingredientObject.parent = this.transform;

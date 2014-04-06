@@ -43,7 +43,7 @@ public class DrinkManager : MonoBehaviour {
     {
         LevelSettings levelSettings = GameObject.Find("Level Settings").GetComponent<LevelSettings>();
 
-        List<Transform> drinkObjects = levelSettings.GenerateRandomDrinks();
+        List<Transform> drinkObjects = levelSettings.GetDrinkDefinitions();
         List<Drink> drinkList = new List<Drink>();
 
         foreach (Transform drinkObject in drinkObjects)

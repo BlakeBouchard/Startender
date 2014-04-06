@@ -26,9 +26,14 @@ public class LevelSettings : MonoBehaviour {
     public float buttonSpacing = 1;
     public float buttonScale = 2;
 
+    private int playerDifficulty;
+
 	// Use this for initialization
 	void Start()
     {
+        PlayerState player = GameObject.Find("Player").GetComponent<PlayerState>();
+        this.playerDifficulty = player.GetDifficulty();
+
         this.drinkList = PopulateDrinkList();
         this.bubbleList = PopulateBubbleList();
 
@@ -104,15 +109,18 @@ public class LevelSettings : MonoBehaviour {
 
     private Transform CreateDrinkObject(string drinkName)
     {
+        // Check to make sure the drink list actually contains the drink in question
         if (!drinkList.ContainsKey(drinkName))
         {
             Debug.Log("Error! Drink List does not contain drink called: " + drinkName);
             return null;
         }
 
+        // 
         Transform drink = Instantiate(blankDrinkPrefab) as Transform;
         List<string> drinkIngredients = drinkList[drinkName];
 
+        // Go through the ingredient list and instantiate each ingredient as an object
         foreach (string ingredientName in drinkIngredients)
         {
             if (!this.bubbleList.ContainsKey(ingredientName))
@@ -129,12 +137,9 @@ public class LevelSettings : MonoBehaviour {
 
     private void GenerateRandomBubbleButtons()
     {
-        PlayerState player = GameObject.Find("Player").GetComponent<PlayerState>();
-        int difficulty = player.GetDifficulty();
-
         List<Transform> randomBubbles = new List<Transform>();
 
-        while (randomBubbles.Count < difficulty + 1)
+        while (randomBubbles.Count < this.playerDifficulty + 1)
         {
             // Pick a random unique ingredient from the dictionary
             int randomNumber = UnityEngine.Random.Range(0, bubbleList.Count);
@@ -184,9 +189,11 @@ public class LevelSettings : MonoBehaviour {
 
     private Transform CreateIngredient(string ingredientName)
     {
+        // Get the bubble script from the bubble prefab associated with the name of the ingredient
         Transform bubblePrefab = bubbleList[ingredientName];
         Bubble bubbleScript = bubblePrefab.GetComponent<Bubble>();
 
+        // Instantiate a copy of the ingredient attached to the bubble associated with ingredientName
         Transform ingredient = Instantiate(bubbleScript.GetIngredientPrefab()) as Transform;
         ingredient.name = ingredientName;
 
@@ -200,6 +207,7 @@ public class LevelSettings : MonoBehaviour {
 
         foreach (string ingredientName in drinkList[drinkName])
         {
+            // Check the list of bubbles for the ingredient in question
             if (!bubbleList.ContainsKey(ingredientName))
             {
                 Debug.Log("Error! Ingredient called \"" + ingredientName + "\"does not exist, skipping " + drinkName);
@@ -214,17 +222,31 @@ public class LevelSettings : MonoBehaviour {
 
     public List<Transform> GenerateRandomDrinks()
     {
-        List<Transform> drinks = new List<Transform>();
-        foreach (KeyValuePair<string, List<string>> drink in drinkList)
+        int numberOfDrinks = playerDifficulty + 2;
+        List<Transform> drinksWithSelectedIngredients = new List<Transform>();
+        List<Transform> selectedDrinks = new List<Transform>();
+
+        // Iterate through the list of drinks and get rid of the ones that aren't solely comprised of 
+        foreach (KeyValuePair<string, List<string>> drinkDefinition in drinkList)
         {
-            Transform drinkObject = CreateDrinkFromList(drink.Key);
+
+        }
+        
+        while (selectedDrinks.Count < numberOfDrinks || drinksWithSelectedIngredients.Count == 0)
+        {
+            Transform drinkDefinition = drinksWithSelectedIngredients.ElementAt(UnityEngine.Random.Range(0, drinksWithSelectedIngredients.Count));
+
+            // TODO: Figure this shit out! Too drunk!
+            Transform drinkObject = CreateDrinkFromList(drinkDefinition.name);
             if (drinkObject == null)
             {
+                // If CreateDrinkFromList returns a null, it means that creating the drink failed, so skip this one and keep going
                 continue;
             }
-            drinks.Add(drinkObject);
+            selectedDrinks.Add(drinkObject);
         }
-        return drinks;
+
+        return selectedDrinks;
     }
 	
 	// Update is called once per frame
@@ -232,5 +254,4 @@ public class LevelSettings : MonoBehaviour {
     {
 	
 	}
-
 }

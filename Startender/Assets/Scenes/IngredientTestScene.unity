@@ -387,6 +387,7 @@ MonoBehaviour:
   rest: 0
   gpa: 0
   hunger: 0
+  difficulty: 0
   hungerThreshold: 0
   failedRentPayments: 0
   failedRentThreshold: 0

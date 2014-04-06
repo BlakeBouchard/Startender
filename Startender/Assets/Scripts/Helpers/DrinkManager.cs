@@ -167,7 +167,6 @@ public class DrinkManager : MonoBehaviour {
                     {
                         remainingIngredients.Remove(match);
                     }
-
                 }
 
                 //There was failure somewhere, ingredients didn't match what they should have been.

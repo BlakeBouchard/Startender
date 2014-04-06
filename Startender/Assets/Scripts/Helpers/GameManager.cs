@@ -122,6 +122,7 @@ public class GameManager : MonoBehaviour
 		    case GameState.Playing:
 				this.guiDrawer.DrawHUD();
 				this.guiDrawer.DrawDrinkFeedback();
+				this.guiDrawer.DrawPauseButton();
 				return;
 		    case GameState.Menu:
 				this.guiDrawer.DrawMainMenu();

@@ -1,6 +1,14 @@
 # I am a comment, this is what comments should look like
 
+# Drink naming convention:
+# Start with the drink name, then add a colon, followed by a comma-separated list of the ingredients required for that drink
+
+# Basic drink layout
 Quaesar: Space Clam, Vodka
-Blood Orange: Space Clam, Triple Sector, *Orange Slice
 Sectini: Triple Sector, Vodka
+
+# Drinks can have duplicate ingredients, just write the ingredient down twice in the list
 Sun Tan: Space Clam, Space Clam, Triple Sector
+
+# If an ingredient is a Garnish, make sure that ingredient has a star (*) in front of it, as below
+Blood Orange: Space Clam, Triple Sector, *Orange Slice

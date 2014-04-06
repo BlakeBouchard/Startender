@@ -5,10 +5,10 @@
 
 # Basic drink layout
 Quaesar: Space Clam, Vodka
-Sectini: Triple Sector, Vodka
+Sectini: Quadruple Sec, Vodka
 
 # Drinks can have duplicate ingredients, just write the ingredient down twice in the list
-Sun Tan: Space Clam, Space Clam, Triple Sector
+Sun Tan: Space Clam, Space Clam, Quadruple Sec
 
 # If an ingredient is a Garnish, make sure that ingredient has a star (*) in front of it, as below
-Blood Orange: Space Clam, Triple Sector, *Orange Slice
+Blood Orange: Space Clam, Quadruple Sec, *Orange Slice

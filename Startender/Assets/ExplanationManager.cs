@@ -36,7 +36,8 @@ public class ExplanationManager : MonoBehaviour {
 
         if (Time.timeSinceLevelLoad > 39.5f)
         {
-            Application.LoadLevel("noObjectsScene");
+            // Load whichever scene comes after the Explanation scene in the Unity Project Build Settings
+            Application.LoadLevel(Application.loadedLevel + 1);
         }
 	}
 }

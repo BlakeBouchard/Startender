@@ -17,6 +17,7 @@ public class LevelSettings : MonoBehaviour {
     public Transform blankDrinkPrefab;
     public Transform blankBubbleButtonPrefab;
     
+    // This Dictionary links the name of each drink with a list of the names of its ingredients, not the transforms themselves
     Dictionary<string, List<string>> drinkList;
 
     // This Dictionary stores each bubble with the key being the name of the ingredient attached to it
@@ -27,23 +28,27 @@ public class LevelSettings : MonoBehaviour {
     public float buttonSpacing = 1;
     public float buttonScale = 2;
 
-    private int playerDifficulty;
-
 	// Use this for initialization
 	void Start()
     {
-        PlayerState player = GameObject.Find("Player").GetComponent<PlayerState>();
-        this.playerDifficulty = player.GetDifficulty();
-
+        // Run the necessary scripts on each of the "full" lists
+        // NOTE: None of these lists contain anything that has been randomly selected
         this.drinkList = PopulateDrinkList();
         this.bubbleList = PopulateBubbleList();
         this.garnishList = PopulateGarnishList();
 	}
 
+    // Drink Manager calls this script to get the necessary
     public List<Transform> GetDrinkDefinitions()
     {
-        List<string> selectedIngredients = GenerateRandomBubbleButtons();
-        return GenerateRandomDrinksFromIngredients(selectedIngredients);
+        PlayerState player = GameObject.Find("Player").GetComponent<PlayerState>();
+        int difficulty = player.GetDifficulty();
+
+        int numberOfButtons = difficulty + 1;
+        List<string> selectedIngredients = GenerateRandomBubbleButtons(numberOfButtons);
+
+        int numberOfDrinks = difficulty + 2;
+        return GenerateRandomDrinksFromIngredients(selectedIngredients, numberOfDrinks);
     }
 
     private Dictionary<string, List<string>> PopulateDrinkList()
@@ -155,11 +160,11 @@ public class LevelSettings : MonoBehaviour {
         return drink;
     }
 
-    private List<string> GenerateRandomBubbleButtons()
+    private List<string> GenerateRandomBubbleButtons(int numberOfButtons)
     {
         List<string> randomIngredientNames = new List<string>();
 
-        while (randomIngredientNames.Count < this.playerDifficulty + 1)
+        while (randomIngredientNames.Count < numberOfButtons)
         {
             // Pick a random unique ingredient from the dictionary
             int randomNumber = UnityEngine.Random.Range(0, bubbleList.Count);
@@ -259,9 +264,8 @@ public class LevelSettings : MonoBehaviour {
         return drink;
     }
 
-    public List<Transform> GenerateRandomDrinksFromIngredients(List<string> selectedIngredientNames)
+    public List<Transform> GenerateRandomDrinksFromIngredients(List<string> selectedIngredientNames, int numberOfDrinks)
     {
-        int numberOfDrinks = playerDifficulty + 2;
         List<string> drinksWithSelectedIngredients = new List<string>();
         List<Transform> selectedDrinks = new List<Transform>();
         

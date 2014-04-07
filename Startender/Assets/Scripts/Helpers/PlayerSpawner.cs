@@ -25,6 +25,7 @@ public class PlayerSpawner : MonoBehaviour {
         }
 
         PlayerState playerState = playerObject.GetComponent<PlayerState>();
+
 		playerState.LoadGame();
 		Debug.Log ("Game Loaded");
         return playerState;

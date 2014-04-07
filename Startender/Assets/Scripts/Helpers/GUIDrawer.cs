@@ -124,7 +124,7 @@ public class GUIDrawer : MonoBehaviour
         int tip = player.GetLastTip();
         GUILayout.Label("Tip: $" + tip, fadedText);
         //TODO: we should pull in a random phrase from a text file.
-        GUILayout.Label("Feedback: " + (tip == 0 ? "" : (tip > 0 ? "Ah, that really hit the sun spot." : "What? That wasn't what I ordered!")), fadedText);
+        GUILayout.Label("Feedback: " + (tip > 0 ? "Ah, that really hit the sun spot." : "What? That wasn't what I ordered!"), fadedText);
 
         GUILayout.EndArea();
     }

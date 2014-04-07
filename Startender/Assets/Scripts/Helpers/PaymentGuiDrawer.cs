@@ -16,6 +16,8 @@ public class PaymentGuiDrawer : MonoBehaviour
 
     private string[] messages = {"You've managed to rack up a bit of debt. You're going to have to work harder, which means your grades will suffer.", "Your grades aren't that great, but at least your rent is all payed up.", "You're going okay in school, but could be better. You've payed all your rent.", "You're going great in school, and your rent is all caught up.", "You're getting your rent in on time and you're doing fantastically in school. You feel great about life."};
 
+	public Font font;
+
 	// Use this for initialization
 	void Start ()
 	{
@@ -63,6 +65,8 @@ public class PaymentGuiDrawer : MonoBehaviour
 
         if (player)
         {
+			GUIStyle style = new GUIStyle();
+			style.font = this.font;
             GUILayout.Label("Drinks Served: " + drinksServed);
             GUILayout.Label("Tips: $" + tipsEarned);
             GUILayout.Label("Rent Due: $" + rent);

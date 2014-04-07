@@ -15,6 +15,8 @@ public class RPGuiDrawer : MonoBehaviour
 
 	public RPGManager rpgManager;
 
+	public Font font;
+
 	public void setManagers(RPGManager rpgManager) {
 		this.rpgManager = rpgManager;
 	}
@@ -36,6 +38,9 @@ public class RPGuiDrawer : MonoBehaviour
 	public void DrawPaymentScreen(int starBucks) {
 
 		GUILayout.BeginArea(new Rect(Screen.width / 2 - this.menuXFromCenter, Screen.height /2 - this.menuYFromCenter, this.menuWidth, this.menuHeight));
+		GUIStyle style = new GUIStyle();
+		style.font = this.font;
+
 		this.DrawBaseMenu();
 
 		int remainingStarBucks = starBucks;

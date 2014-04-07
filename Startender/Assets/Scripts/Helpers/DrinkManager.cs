@@ -76,8 +76,7 @@ public class DrinkManager : MonoBehaviour {
 	// picks random number between 0 and the integer given (includes 0 but not max)
 	public int GetRandomNumber(int max)
     {
-		System.Random random = new System.Random();
-		int randomNumber = random.Next(max);
+		int randomNumber = UnityEngine.Random.Range(0, max);
 
 		//return a 0 inclusive number
 		return randomNumber;
@@ -102,8 +101,7 @@ public class DrinkManager : MonoBehaviour {
             return -1;
         }
 
-        System.Random rand = new System.Random();
-        int tip = (int) Math.Round(this.currentDrink.GetDifficulty() * rand.Next(this.maxTip));
+        int tip = (int) Math.Round(this.currentDrink.GetDifficulty() * UnityEngine.Random.Range(1, this.maxTip));
 
         SetNextDrink();
 

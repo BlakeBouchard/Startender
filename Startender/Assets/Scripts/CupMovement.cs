@@ -6,6 +6,9 @@ public class CupMovement : MonoBehaviour {
     private Vector3 previousPosition;
 
     public float rotateThreshold = 0.03f;
+	public float borderPadding = 010f;
+
+	public Bounds bounds;
 
 	GameObject gameManager;
 	GameManager gameManagerScript;
@@ -15,6 +18,9 @@ public class CupMovement : MonoBehaviour {
     {
 		gameManager = GameObject.Find("Game Manager");
 		gameManagerScript = (GameManager) gameManager.GetComponent(typeof(GameManager));
+
+		GameObject go = GameObject.Find("Bar");
+		this.bounds = go.renderer.bounds;
 	}
 	
 	private void MoveCup(Vector3 startPoint, Vector3 endPoint)
@@ -33,13 +39,15 @@ public class CupMovement : MonoBehaviour {
 			float posWidth = posHeight * Camera.main.aspect;		// Right
 			float negWidth = posWidth * -1f;						// Left
 
+			Bounds cup = this.renderer.bounds;
+
 			// Set position
-			if (endPoint.x < posWidth &&
-				endPoint.x > negWidth &&
-				endPoint.y < posHeight &&
-				endPoint.y > negHeight) {
-					transform.position += deltaPosition;
-			}
+			if (endPoint.x + cup.extents.x < posWidth &&
+				endPoint.x - cup.extents.x  > negWidth &&
+				endPoint.y + cup.extents.y < posHeight &&
+				endPoint.y - cup.extents.x > negHeight) {
+				transform.position += deltaPosition;
+			} 
 		}
     }
 

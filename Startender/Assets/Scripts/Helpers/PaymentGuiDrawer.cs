@@ -69,7 +69,8 @@ public class PaymentGuiDrawer : MonoBehaviour
 			style.font = this.font;
             GUILayout.Label("Drinks Served: " + drinksServed);
             GUILayout.Label("Tips: $" + tipsEarned);
-            GUILayout.Label("Rent Due: $" + rent);
+            int daysUntilRent = player.daysLeft % 7 + 1;
+            GUILayout.Label("Rent Due: " + (rent != 0 ? ("$" + rent) : "in " + daysUntilRent + ((daysUntilRent == 1) ? " day" : " days")));
             if (newStarBucks > 0)
             {
                 GUILayout.Label("Starbucks: $" + newStarBucks);

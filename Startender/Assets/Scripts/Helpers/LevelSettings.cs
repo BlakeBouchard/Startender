@@ -195,26 +195,9 @@ public class LevelSettings : MonoBehaviour {
     private Transform CreateButtonFromBubble(Transform bubble, Vector2 position)
     {
         // Create the button object from the blank button prefab
-        Transform bubbleButton = Instantiate(blankBubbleButtonPrefab, position, Quaternion.identity) as Transform;
-        bubbleButton.name = bubble.name + " Button";
-
-        // Set the sprite of the new button to the sprite of the bubble
-        Sprite bubbleSprite = bubble.GetComponent<SpriteRenderer>().sprite;
-        bubbleButton.GetComponent<SpriteRenderer>().sprite = bubbleSprite;
-
-        // Set the x/y scale of the button to be the same as the bubble multiplied by a set value
-        Vector3 newScale = bubble.transform.localScale;
-        newScale.x *= buttonScale;
-        newScale.y *= buttonScale;
-        bubbleButton.transform.localScale = newScale;
-
-        // Set the radius of the button's Circle Collider to be the same as the bubble
-        CircleCollider2D bubbleCollider = bubble.GetComponent<CircleCollider2D>();
-        bubbleButton.GetComponent<CircleCollider2D>().radius = bubbleCollider.radius;
-
-        // Set the generated bubble associated with this button to the selected bubble
-        BubbleButton buttonScript = bubbleButton.GetComponent<BubbleButton>();
-        buttonScript.SetBubbleTransform(bubble);
+        Transform bubblePrefab = bubble.GetComponent<Bubble>().GetButtonPrefab();
+        Transform bubbleButton = Instantiate(bubblePrefab, position, Quaternion.identity) as Transform;
+        bubbleButton.name = bubblePrefab.name;
 
         return bubbleButton;
     }

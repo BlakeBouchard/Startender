@@ -68,6 +68,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ingredientPrefab: {fileID: 400000, guid: 698368ef40b929b429e1959b12ce4695, type: 2}
+  buttonPrefab: {fileID: 400000, guid: 2083c2acdd67fba43b2df28da405d274, type: 2}
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1

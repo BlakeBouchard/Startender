@@ -36,7 +36,7 @@ public class LevelSettings : MonoBehaviour {
         // Run the necessary scripts on each of the "full" lists
         // NOTE: None of these lists contain anything that has been randomly selected
         this.drinkList = PopulateDrinkList(allDrinks);
-        this.levelList = PopulateLevelList(allLevels);
+        //this.levelList = PopulateLevelList(allLevels);
         this.bubbleList = PopulateBubbleList(allBubbles);
         this.garnishList = PopulateGarnishList(allGarnishSilos);
 	}

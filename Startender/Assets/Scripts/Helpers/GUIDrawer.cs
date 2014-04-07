@@ -49,10 +49,7 @@ public class GUIDrawer : MonoBehaviour
 		GameObject tipsEarned = GameObject.Find ("TipsEarned");
 		this.tipsEarned = (GUIText) tipsEarned.GetComponent(typeof(GUIText));
 		this.tipsEarned.text = "";
-		
-		GameObject drinkCount = GameObject.Find ("DrinkCount");
-		this.drinksServed = (GUIText) drinkCount.GetComponent(typeof(GUIText));
-		this.drinksServed.text = "";
+
 	}
 
 	public void DrawMainMenu() {
@@ -100,13 +97,12 @@ public class GUIDrawer : MonoBehaviour
 	}
 
 	public void DrawHUD() {
-		roundTime.text = "Time Left: " + gameManager.GetRoundTime().ToString("F0");
+		roundTime.text = gameManager.GetRoundTime().ToString("F0");
 
 		Drink currentDrink = drinkManager.GetCurrentDrink();
-		currentOrder.text = "Order: " + currentDrink.GetDrinkName();
+		currentOrder.text = currentDrink.GetDrinkName();
 
 		tipsEarned.text = "Tips: $" + player.GetTipsEarned();
-		drinksServed.text = "Drinks Served: " + player.GetDrinkCount();
 
 	}
 

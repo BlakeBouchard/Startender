@@ -8,7 +8,7 @@ Quaesar: Space Clam, Liquid Stardust
 Sectini: Quadruple Sec, Liquid Stardust
 
 # Drinks can have duplicate ingredients, just write the ingredient down twice in the list
-Sun Tan: Space Clam, Space Clam, Quadruple Sec
+Sun Tan: Liquid Stardust, Liquid Stardust, Quadruple Sec
 
 # If an ingredient is a Garnish, make sure that ingredient has a star (*) in front of it, as below
 Blood Orange: Space Clam, Quadruple Sec, *Orange Slice

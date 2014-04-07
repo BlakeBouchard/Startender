@@ -59,7 +59,6 @@ public class CupMovement : MonoBehaviour {
     void OnTouchDrag(Touch touch)
     {
         Vector3 currentPosition = Camera.main.ScreenToWorldPoint(touch.position);
-		Debug.Log (currentPosition);
         if (currentPosition != previousPosition)
         {
             MoveCup(previousPosition, currentPosition);

@@ -12,6 +12,7 @@ public class LevelSettings : MonoBehaviour {
     
     // This should point to a file in the Text directory called "AllDrinks.txt" in the Inspector
     public TextAsset allDrinks;
+    public TextAsset allLevels;
 
     // This should point to a prefab with the Drink script attached to it
     public Transform blankDrinkPrefab;
@@ -19,6 +20,7 @@ public class LevelSettings : MonoBehaviour {
     
     // This Dictionary links the name of each drink with a list of the names of its ingredients, not the transforms themselves
     Dictionary<string, List<string>> drinkList;
+    List<string[]> levelList;
 
     // This Dictionary stores each bubble with the key being the name of the ingredient attached to it
     Dictionary<string, Transform> bubbleList;
@@ -33,35 +35,48 @@ public class LevelSettings : MonoBehaviour {
     {
         // Run the necessary scripts on each of the "full" lists
         // NOTE: None of these lists contain anything that has been randomly selected
-        this.drinkList = PopulateDrinkList();
-        this.bubbleList = PopulateBubbleList();
-        this.garnishList = PopulateGarnishList();
+        this.drinkList = PopulateDrinkList(allDrinks);
+        this.levelList = PopulateLevelList(allLevels);
+        this.bubbleList = PopulateBubbleList(allBubbles);
+        this.garnishList = PopulateGarnishList(allGarnishSilos);
 	}
 
-    // Drink Manager calls this script to get the necessary
-    public List<Transform> GetDrinkDefinitions()
+    private List<string[]> PopulateLevelList(TextAsset allLevels)
     {
-        PlayerState player = GameObject.Find("Player").GetComponent<PlayerState>();
-        int difficulty = player.GetDifficulty();
+        List<string[]> tempLevelList = new List<string[]>();
 
-        if (difficulty == 0)
+        // Get an array consisting of each non-empty string, delimited by newlines
+        string[] levelLines = allLevels.text.Split(new string[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
+        for (int i = 0; i < levelLines.Length; i++)
         {
-            difficulty = 2;
+            // Check if line is a comment first
+            if (levelLines[i].StartsWith("#"))
+            {
+                // This line is a comment, go to next iteration (line)
+                continue;
+            }
+
+            string[] levelDrinks = levelLines[i].Split(',');
+
+            // Remove leading and trailing whitespace from each ingredient definition
+            for (int j = 0; i < levelDrinks.Length; i++)
+            {
+                levelDrinks[j] = levelDrinks[j].Trim();
+            }
+
+            Debug.Log("Successfully added level " + (i + 1));
+            tempLevelList.Add(levelDrinks);
         }
 
-        int numberOfButtons = difficulty + 1;
-        List<string> selectedIngredients = GenerateRandomBubbleButtons(numberOfButtons);
-
-        int numberOfDrinks = difficulty + 2;
-        return GenerateRandomDrinksFromIngredients(selectedIngredients, numberOfDrinks);
+        return tempLevelList;
     }
 
-    private Dictionary<string, List<string>> PopulateDrinkList()
+    private Dictionary<string, List<string>> PopulateDrinkList(TextAsset allDrinks)
     {
         Dictionary<string, List<string>> tempDrinkList = new Dictionary<string, List<string>>();
 
         // Get an array consisting of each non-empty string, delimited by newlines
-        string[] drinkLines = this.allDrinks.text.Split(new string[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
+        string[] drinkLines = allDrinks.text.Split(new string[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
         for (int i = 0; i < drinkLines.Length; i++)
         {
             // Check if line is a comment first
@@ -109,11 +124,11 @@ public class LevelSettings : MonoBehaviour {
         return tempDrinkList;
     }
 
-    private Dictionary<string, Transform> PopulateBubbleList()
+    private Dictionary<string, Transform> PopulateBubbleList(Transform[] bubbles)
     {
         Dictionary<string, Transform> tempBubbleList = new Dictionary<string, Transform>();
         
-        foreach (Transform bubble in this.allBubbles)
+        foreach (Transform bubble in bubbles)
         {
             Transform ingredient = bubble.GetComponent<Bubble>().GetIngredientPrefab();
             tempBubbleList.Add(ingredient.name, bubble);
@@ -122,11 +137,11 @@ public class LevelSettings : MonoBehaviour {
         return tempBubbleList;
     }
 
-    private Dictionary<string, Transform> PopulateGarnishList()
+    private Dictionary<string, Transform> PopulateGarnishList(Transform[] garnishes)
     {
         Dictionary<string, Transform> tempGarnishList = new Dictionary<string, Transform>();
 
-        foreach (Transform garnish in this.allGarnishSilos)
+        foreach (Transform garnish in garnishes)
         {
             Transform ingredient = garnish.GetComponent<Garnish>().GetIngredientPrefab();
             tempGarnishList.Add(ingredient.name, garnish);
@@ -299,6 +314,24 @@ public class LevelSettings : MonoBehaviour {
         }
 
         return selectedDrinks;
+    }
+
+    // Drink Manager calls this script to get the necessary
+    public List<Transform> GetDrinkDefinitions()
+    {
+        PlayerState player = GameObject.Find("Player").GetComponent<PlayerState>();
+        int difficulty = player.GetDifficulty();
+
+        if (difficulty == 0)
+        {
+            difficulty = 2;
+        }
+
+        int numberOfButtons = difficulty + 1;
+        List<string> selectedIngredients = GenerateRandomBubbleButtons(numberOfButtons);
+
+        int numberOfDrinks = difficulty + 2;
+        return GenerateRandomDrinksFromIngredients(selectedIngredients, numberOfDrinks);
     }
 	
 	// Update is called once per frame

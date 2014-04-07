@@ -79,7 +79,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f7449ebf4f71fb408d538361fc579af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bubble: {fileID: 400002, guid: e6647bd0205d0d04198db5e0b35cb29d, type: 2}
+  bubblePrefab: {fileID: 400002, guid: e6647bd0205d0d04198db5e0b35cb29d, type: 2}
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1

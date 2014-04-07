@@ -327,6 +327,7 @@ MonoBehaviour:
   allGarnishSilos:
   - {fileID: 400000, guid: cdf5f88dc26ac4d329daf391410100f5, type: 2}
   allDrinks: {fileID: 4900000, guid: a3ff7e571bedcb540b77364b4f14527c, type: 3}
+  allLevels: {fileID: 4900000, guid: b1750c73ae5a25b429731b913e18e945, type: 3}
   blankDrinkPrefab: {fileID: 400000, guid: 7b2bc5a7d043773478d561f61bd14604, type: 2}
   blankBubbleButtonPrefab: {fileID: 400000, guid: 2005b1230e69af147b2eff27b8e043e6,
     type: 2}

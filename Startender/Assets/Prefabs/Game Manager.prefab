@@ -333,6 +333,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
+  font: {fileID: 0}
   menuXFromCenter: 30
   menuYFromCenter: 30
   menuWidth: 240
@@ -406,6 +407,7 @@ MonoBehaviour:
   - {fileID: 400000, guid: e377be37f05c041a6aabac58f3893049, type: 2}
   - {fileID: 400000, guid: 85ffdadbf44f82048bc264b03cff59da, type: 2}
   - {fileID: 400000, guid: 37ccc6990ee0aa94e9d486010ce4bd8c, type: 2}
+  backgrounds: []
 --- !u!132 &13200002
 GUIText:
   m_ObjectHideFlags: 1

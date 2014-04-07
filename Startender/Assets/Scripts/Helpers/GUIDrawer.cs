@@ -12,6 +12,8 @@ public class GUIDrawer : MonoBehaviour
 	private GUIText tipsEarned;
 	private GUIText drinksServed;
 
+	public Font font;
+
     //Added by Rebeca. Used to calculate the "fade" or alpha of the feedback gui.
     private float drinkCompletionTime = -2.0f;
 
@@ -55,7 +57,6 @@ public class GUIDrawer : MonoBehaviour
 	public void DrawMainMenu() {
 		//Draw Game Menu Here
 		GUILayout.BeginArea(new Rect(Screen.width / 2 - this.menuXFromCenter, Screen.height /2 - this.menuYFromCenter, this.menuWidth, this.menuHeight));
-
 		this.DrawBaseMenu();
 
 		if (GUILayout.Button("Start Game")) {
@@ -69,7 +70,6 @@ public class GUIDrawer : MonoBehaviour
 	public void DrawPauseMenu() {
 		//Draw Game Menu Here
 		GUILayout.BeginArea(new Rect(Screen.width / 2 - this.menuXFromCenter, Screen.height /2 - this.menuYFromCenter, this.menuWidth, this.menuHeight));
-
 		this.DrawBaseMenu();
 		
 		if (GUILayout.Button("Resume"))
@@ -145,6 +145,8 @@ public class GUIDrawer : MonoBehaviour
 	}
 
     private void DrawBaseMenu() {
+		GUIStyle style = new GUIStyle();
+		style.font = this.font;
 	    GUILayout.Label("Startender!");
 	    GUILayout.Space(10.0f);
     }

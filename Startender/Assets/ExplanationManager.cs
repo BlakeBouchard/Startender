@@ -36,6 +36,7 @@ public class ExplanationManager : MonoBehaviour {
 
         if (Time.timeSinceLevelLoad > 39.5f || Input.touchCount > 0 || Input.anyKeyDown)
         {
+			PlayerPrefs.SetInt("HasBegun", 1);
             // Load whichever scene comes after the Explanation scene in the Unity Project Build Settings
             Application.LoadLevel(Application.loadedLevel + 1);
         }

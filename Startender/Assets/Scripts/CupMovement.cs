@@ -40,18 +40,14 @@ public class CupMovement : MonoBehaviour {
 			float negWidth = posWidth * -1f;						// Left
 
 			Bounds cup = this.renderer.bounds;
-			float minX = bounds.min.x + cup.extents.x;
-			float minY = bounds.min.y + cup.extents.y;
-			float maxX = bounds.max.x - cup.extents.x;
-			float maxY = bounds.max.y - cup.extents.y;
 
 			// Set position
-			if (endPoint.x < posWidth &&
-				endPoint.x > negWidth &&
-				endPoint.y < posHeight &&
-				endPoint.y > negHeight) {
-				transform.Translate(deltaPosition);//new Vector3(Mathf.Clamp(deltaPosition.x, minX, maxX), Mathf.Clamp(deltaPosition.y, minY, maxY), deltaPosition.z));
-			}
+			if (endPoint.x + cup.extents.x < posWidth &&
+				endPoint.x - cup.extents.x  > negWidth &&
+				endPoint.y + cup.extents.y < posHeight &&
+				endPoint.y - cup.extents.x > negHeight) {
+				transform.position += deltaPosition;
+			} 
 		}
     }
 
@@ -79,7 +75,6 @@ public class CupMovement : MonoBehaviour {
     private void OnMouseDrag()
     {
         Vector3 currentPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-		Debug.Log (currentPosition);
         if (currentPosition != previousPosition)
         {
             MoveCup(previousPosition, currentPosition);

@@ -13,7 +13,7 @@ GameObject:
   - 50: {fileID: 5000000}
   - 58: {fileID: 5800000}
   m_Layer: 8
-  m_Name: Vodka Bubble
+  m_Name: Stardust Bubble
   m_TagString: Bubble
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -68,6 +68,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ingredientPrefab: {fileID: 400000, guid: 1dcd5106934722f4f8425a8df23ba47f, type: 2}
+  buttonPrefab: {fileID: 400000, guid: 63710301b95b0fd47b6ed5a7b22d47b1, type: 2}
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1

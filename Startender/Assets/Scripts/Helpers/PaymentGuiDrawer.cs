@@ -31,6 +31,9 @@ public class PaymentGuiDrawer : MonoBehaviour
             newStarBucks = player.GetStarBucks() + tipsEarned;
 
             // This adds the tips to the total StarBucks and resets the round stats
+			player.SetStarBucks(newStarBucks);
+			Debug.Log ("Game Saved");
+			player.SaveGame();
             player.EndRound();
         }
 	}

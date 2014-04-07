@@ -4,8 +4,8 @@
 # Start with the drink name, then add a colon, followed by a comma-separated list of the ingredients required for that drink
 
 # Basic drink layout
-Quaesar: Space Clam, Vodka
-Sectini: Quadruple Sec, Vodka
+Quaesar: Space Clam, Liquid Stardust
+Sectini: Quadruple Sec, Liquid Stardust
 
 # Drinks can have duplicate ingredients, just write the ingredient down twice in the list
 Sun Tan: Space Clam, Space Clam, Quadruple Sec

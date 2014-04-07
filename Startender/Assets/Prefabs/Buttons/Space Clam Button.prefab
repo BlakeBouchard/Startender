@@ -12,7 +12,7 @@ GameObject:
   - 114: {fileID: 11400000}
   - 58: {fileID: 5800000}
   m_Layer: 0
-  m_Name: Clam Button
+  m_Name: Space Clam Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28,7 +28,7 @@ GameObject:
   - 4: {fileID: 400002}
   - 212: {fileID: 21200002}
   m_Layer: 0
-  m_Name: ClamLabel
+  m_Name: Space Clam Label
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -41,7 +41,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -12.6756535, y: 3.73886847, z: 0}
+  m_LocalPosition: {x: 5.04340219, y: -.193413615, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children:
   - {fileID: 400002}
@@ -53,8 +53,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100002}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: .0226478577, y: .00539135933, z: -1}
-  m_LocalScale: {x: .5, y: .5, z: 1}
+  m_LocalPosition: {x: -.00324356556, y: .0101156533, z: -1}
+  m_LocalScale: {x: .0984436497, y: .0984435827, z: 1}
   m_Children: []
   m_Father: {fileID: 400000}
 --- !u!58 &5800000
@@ -65,8 +65,8 @@ CircleCollider2D:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Radius: .25
+  m_IsTrigger: 0
+  m_Radius: .264999986
   m_Center: {x: 0, y: 0}
 --- !u!114 &11400000
 MonoBehaviour:
@@ -79,7 +79,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f7449ebf4f71fb408d538361fc579af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bubble: {fileID: 400000, guid: b8bf69bb0b521a7498a741a14699f957, type: 2}
+  bubblePrefab: {fileID: 400000, guid: b8bf69bb0b521a7498a741a14699f957, type: 2}
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -101,7 +101,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_SortingLayerID: 0
-  m_Sprite: {fileID: 21300000, guid: dc50b17deeeb863438559fe36de98093, type: 3}
+  m_Sprite: {fileID: 21300000, guid: dbcf2b8bfc35f4ad9b51258ebce4f39d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!212 &21200002
 SpriteRenderer:
@@ -124,7 +124,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_SortingLayerID: 0
-  m_Sprite: {fileID: 21300000, guid: 079fbf79dfb134b3a9729c4a345d8ce7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ef031cac9008845dd98ef62a1bb39162, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1001 &100100000
 Prefab:

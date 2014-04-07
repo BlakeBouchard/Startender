@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class PlayerState : MonoBehaviour
 {
-	//so we don't overwrite the player state on scene change
-	public bool initialized;
-
 	//persistent game stats
 	public int starBucks;
 	public int rest;
@@ -39,7 +36,7 @@ public class PlayerState : MonoBehaviour
 	void Start() {
         DontDestroyOnLoad(this);
 
-		if (!this.initialized) {
+		if(PlayerPrefs.GetInt ("HasBegun") == 0) {
 			this.starBucks = 40;
 			this.tipsEarned = 0;
 	        this.lastTip = 0;
@@ -61,7 +58,6 @@ public class PlayerState : MonoBehaviour
 			this.hungerThreshold = 3;
 			this.gpa = 3.0f;
 			this.gpaThreshold = 1.3f;
-			this.initialized = true;
 		}
 
 	}
@@ -110,7 +106,7 @@ public class PlayerState : MonoBehaviour
 	}
 	
 	public int GetDifficulty() {
-        if (!this.initialized)
+		if (PlayerPrefs.GetInt ("HasBegun") == 0)
         {
             return 1;
         }
@@ -162,14 +158,6 @@ public class PlayerState : MonoBehaviour
 		this.hunger += 1;
 	}
 
-    /*
-	public void EndRound() {
-		this.starBucks += this.tipsEarned;
-		this.tipsEarned = 0;
-		this.drinksServed = 0;
-	}
-     */ 
-
 	public void ResetRound() {
 		this.tipsEarned = 0;
 	}
@@ -216,6 +204,11 @@ public class PlayerState : MonoBehaviour
 		PlayerPrefs.SetInt ("Rest", 10);
 		PlayerPrefs.SetInt ("Hunger", 0);
 		PlayerPrefs.SetInt ("Difficulty", 1);
+		PlayerPrefs.SetInt ("HasBegun", 0);
 		PlayerPrefs.SetFloat ("GPA", 3.0f);
+	}
+
+	public void clearPrefs(){
+		PlayerPrefs.DeleteAll ();
 	}
 }

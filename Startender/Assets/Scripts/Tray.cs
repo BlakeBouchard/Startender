@@ -6,6 +6,9 @@ public class Tray : MonoBehaviour
     private DrinkManager drinkManager;
     private PlayerState player;
 
+	public AudioClip success;
+	public AudioClip fail;
+
 	// Use this for initialization
 	void Start ()
 	{
@@ -25,6 +28,11 @@ public class Tray : MonoBehaviour
                 cupIngredients.ResetIngredients();
                 player.AddTip(tip);
                 player.IncrementDrinkCount();
+				if(tip == -1) {
+					audio.clip = fail;
+				} else {
+					audio.clip = success;
+				}
                 audio.Play();
             }
         }

@@ -3,7 +3,9 @@ using System.Collections;
 
 public class CupMovement : MonoBehaviour {
 
-    private Vector3 previousPosition;
+    private Vector2 previousPosition1;
+	private Vector2 previousPosition2;
+	private int lastTouchCount;
 
     public float rotateThreshold = 0.03f;
 	public float borderPadding = 010f;
@@ -21,17 +23,36 @@ public class CupMovement : MonoBehaviour {
 
 		GameObject go = GameObject.Find("Bar");
 		this.bounds = go.renderer.bounds;
+		this.lastTouchCount = 0;
 	}
 	
-	private void MoveCup(Vector3 startPoint, Vector3 endPoint)
+	private void MoveCup(Vector2 endPoint)
     {
 		if (gameManagerScript.GetGameState () == GameManager.GameState.Playing) {
-			Vector3 deltaPosition = endPoint - startPoint;
+			Vector3 deltaPosition = endPoint - this.previousPosition1;
 
-			// Get rotation
-			if (Mathf.Abs (deltaPosition.x) > rotateThreshold && Mathf.Abs (deltaPosition.y) > rotateThreshold) {
+			if(Input.touchCount >= 2) {
+
+				Vector2 pos2 = Input.GetTouch(1).position;
+				Vector2 delta2 = this.previousPosition2 - pos2;
+				Vector2 touchDelta = endPoint - delta2;
+
+				//only multi-touch rotate if we have a second touch frame of reference
+				if(lastTouchCount >= 2) {
+					float angle = Mathf.Rad2Deg * Mathf.Atan2 (touchDelta.y, touchDelta.x);
+					transform.rotation = Quaternion.Euler (new Vector3 (0, 0, angle - 90));
+				}
+
+				this.previousPosition2 = pos2;
+
+			}
+			//otherwise peform Ghetto-Rotation
+			else {
+				// Get rotation
+				if (Mathf.Abs (deltaPosition.x) > rotateThreshold && Mathf.Abs (deltaPosition.y) > rotateThreshold) {
 					float angle = Mathf.Rad2Deg * Mathf.Atan2 (deltaPosition.y, deltaPosition.x);
 					transform.rotation = Quaternion.Euler (new Vector3 (0, 0, angle - 90));
+				}
 			}
 
 			float posHeight = Camera.main.orthographicSize; 		// Top
@@ -47,37 +68,45 @@ public class CupMovement : MonoBehaviour {
 				endPoint.y + cup.extents.y < posHeight &&
 				endPoint.y - cup.extents.x > negHeight) {
 				transform.position += deltaPosition;
-			} 
+			}
+
+			this.lastTouchCount = Input.touchCount;
 		}
     }
 
+	public static Vector3 RotatePointAroundPivot(Vector3 point, Vector3 pivot, Quaternion angle) {
+		return angle * ( point - pivot) + pivot;
+	}
+
     void OnTouchDown(Touch touch)
     {
-        previousPosition = Camera.main.ScreenToWorldPoint(touch.position);
+        this.previousPosition1 = Camera.main.ScreenToWorldPoint(touch.position);
     }
 
     void OnTouchDrag(Touch touch)
     {
-        Vector3 currentPosition = Camera.main.ScreenToWorldPoint(touch.position);
-        if (currentPosition != previousPosition)
+        Vector3 camera = Camera.main.ScreenToWorldPoint(touch.position);
+		Vector2 currentPosition = new Vector2(camera.x, camera.y);
+        if (currentPosition != this.previousPosition1)
         {
-            MoveCup(previousPosition, currentPosition);
-            previousPosition = currentPosition;
+            MoveCup(currentPosition);
+            this.previousPosition1 = currentPosition;
         }
     }
 
     private void OnMouseDown()
     {
-        previousPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        previousPosition1 = Camera.main.ScreenToWorldPoint(Input.mousePosition);
     }
 
     private void OnMouseDrag()
     {
-        Vector3 currentPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        if (currentPosition != previousPosition)
+        Vector3 camera = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+		Vector2 currentPosition = new Vector2(camera.x, camera.y);
+        if (currentPosition != this.previousPosition1)
         {
-            MoveCup(previousPosition, currentPosition);
-            previousPosition = currentPosition;
+            MoveCup(currentPosition);
+            this.previousPosition1 = currentPosition;
         }
     }
     

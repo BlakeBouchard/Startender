@@ -57,6 +57,9 @@ public class PaymentGuiDrawer : MonoBehaviour
             player.tipsEarned = 0;
             player.drinksServed = 0;
             player.daysLeft--;
+			player.SetStarBucks(newStarBucks);
+			Debug.Log ("Game Saved");
+			player.SaveGame();
         }
 	}
 

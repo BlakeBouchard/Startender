@@ -263,13 +263,13 @@ AudioSource:
   serializedVersion: 3
   m_audioClip: {fileID: 8300000, guid: c6a71ae8048e24db18970c3bc6bd3c46, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: .412
   m_Pitch: 1
   Loop: 0
   Mute: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 1
+  MinDistance: 4.92589951
   MaxDistance: 500
   Pan2D: 0
   rolloffMode: 0
@@ -397,6 +397,7 @@ MonoBehaviour:
   allGarnishSilos:
   - {fileID: 400000, guid: cdf5f88dc26ac4d329daf391410100f5, type: 2}
   allDrinks: {fileID: 4900000, guid: a3ff7e571bedcb540b77364b4f14527c, type: 3}
+  allLevels: {fileID: 4900000, guid: b1750c73ae5a25b429731b913e18e945, type: 3}
   blankDrinkPrefab: {fileID: 400000, guid: 7b2bc5a7d043773478d561f61bd14604, type: 2}
   blankBubbleButtonPrefab: {fileID: 400000, guid: 2005b1230e69af147b2eff27b8e043e6,
     type: 2}
@@ -492,11 +493,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1975661d1d841483eb3f69950ace54db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialized: 0
   starBucks: 0
   rest: 0
   gpa: 0
   hunger: 0
+  daysLeft: 0
+  drinksServed: 0
+  tipsEarned: 0
+  lastTip: 0
   difficulty: 0
   hungerThreshold: 0
   failedRentPayments: 0

@@ -42,8 +42,17 @@ public class DrinkManager : MonoBehaviour {
     public List<Drink> CreateDrinkList()
     {
         LevelSettings levelSettings = GameObject.Find("Level Settings").GetComponent<LevelSettings>();
+        List<Transform> drinkObjects;
 
-        List<Transform> drinkObjects = levelSettings.GetDrinkDefinitions();
+        if (levelSettings != null)
+        {
+            drinkObjects = levelSettings.GetDrinkDefinitions();
+        }
+        else
+        {
+            drinkObjects = new List<Transform>(this.GetComponentsInChildren<Transform>());
+        }
+        
         List<Drink> drinkList = new List<Drink>();
 
         foreach (Transform drinkObject in drinkObjects)

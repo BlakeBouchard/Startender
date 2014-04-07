@@ -44,6 +44,11 @@ public class LevelSettings : MonoBehaviour {
         PlayerState player = GameObject.Find("Player").GetComponent<PlayerState>();
         int difficulty = player.GetDifficulty();
 
+        if (difficulty == 0)
+        {
+            difficulty = 2;
+        }
+
         int numberOfButtons = difficulty + 1;
         List<string> selectedIngredients = GenerateRandomBubbleButtons(numberOfButtons);
 

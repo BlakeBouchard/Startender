@@ -8,19 +8,27 @@ public class ObjectSpawner : MonoBehaviour {
     // NOTE: This array should not contain the "Player" object
     // That object needs to have more sophisticated generation
     public Transform[] prefabs;
+
+	public Transform[] backgrounds;
     // public Ingredient[] ingredients;
     
     // Use this for initialization
 	void Start ()
     {
-        SpawnAllPrefabs(this.prefabs);
+		LoadBackground();
+        SpawnAllPrefabs();
         // GameObject drinkManager = GameObject.Find("Drink Manager");
         // ingredients = drinkManager.GetComponentsInChildren<Ingredient>();
     }
 
-    void SpawnAllPrefabs(Transform[] prefabs)
+	void LoadBackground() {
+		int rand = Random.Range(0, this.backgrounds.Length);
+		this.SpawnPrefab(backgrounds[rand]);
+	}
+
+    void SpawnAllPrefabs()
     {
-        foreach (Transform prefab in prefabs)
+        foreach (Transform prefab in this.prefabs)
         {
             SpawnPrefab(prefab);
         }

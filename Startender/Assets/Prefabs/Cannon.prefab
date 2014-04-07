@@ -52,8 +52,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100002}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.8902545, y: -3.82300568, z: -1}
-  m_LocalScale: {x: 1.72781193, y: 1.72781217, z: 1}
+  m_LocalPosition: {x: -7.71511364, y: -3.98346853, z: -1}
+  m_LocalScale: {x: 2.46109509, y: 2.41114593, z: 1}
   m_Children:
   - {fileID: 400000}
   m_Father: {fileID: 0}
@@ -128,6 +128,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   xForce: 1
   yForce: 1
+  MIN_CANNON_ANGLE: 320
+  MAX_CANNON_ANGLE: 345
   bubbleSpeed: 12.5
   rotateSpeed: 30
   bubbleMass: 15

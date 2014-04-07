@@ -12,6 +12,8 @@ public class GUIDrawer : MonoBehaviour
 	private GUIText tipsEarned;
 	private GUIText drinksServed;
 
+	public Font font;
+
     //Added by Rebeca. Used to calculate the "fade" or alpha of the feedback gui.
     private float drinkCompletionTime = -2.0f;
 
@@ -49,16 +51,12 @@ public class GUIDrawer : MonoBehaviour
 		GameObject tipsEarned = GameObject.Find ("TipsEarned");
 		this.tipsEarned = (GUIText) tipsEarned.GetComponent(typeof(GUIText));
 		this.tipsEarned.text = "";
-		
-		GameObject drinkCount = GameObject.Find ("DrinkCount");
-		this.drinksServed = (GUIText) drinkCount.GetComponent(typeof(GUIText));
-		this.drinksServed.text = "";
+
 	}
 
 	public void DrawMainMenu() {
 		//Draw Game Menu Here
 		GUILayout.BeginArea(new Rect(Screen.width / 2 - this.menuXFromCenter, Screen.height /2 - this.menuYFromCenter, this.menuWidth, this.menuHeight));
-
 		this.DrawBaseMenu();
 
 		if (GUILayout.Button("Start Game")) {
@@ -72,7 +70,6 @@ public class GUIDrawer : MonoBehaviour
 	public void DrawPauseMenu() {
 		//Draw Game Menu Here
 		GUILayout.BeginArea(new Rect(Screen.width / 2 - this.menuXFromCenter, Screen.height /2 - this.menuYFromCenter, this.menuWidth, this.menuHeight));
-
 		this.DrawBaseMenu();
 		
 		if (GUILayout.Button("Resume"))
@@ -100,13 +97,12 @@ public class GUIDrawer : MonoBehaviour
 	}
 
 	public void DrawHUD() {
-		roundTime.text = "Time Left: " + gameManager.GetRoundTime().ToString("F0");
+		roundTime.text = gameManager.GetRoundTime().ToString("F0");
 
 		Drink currentDrink = drinkManager.GetCurrentDrink();
-		currentOrder.text = "Order: " + currentDrink.GetDrinkName();
+		currentOrder.text = currentDrink.GetDrinkName();
 
 		tipsEarned.text = "Tips: $" + player.GetTipsEarned();
-		drinksServed.text = "Drinks Served: " + player.GetDrinkCount();
 
 	}
 
@@ -149,6 +145,8 @@ public class GUIDrawer : MonoBehaviour
 	}
 
     private void DrawBaseMenu() {
+		GUIStyle style = new GUIStyle();
+		style.font = this.font;
 	    GUILayout.Label("Startender!");
 	    GUILayout.Space(10.0f);
     }

@@ -13,6 +13,8 @@ public class PaymentGuiDrawer : MonoBehaviour
     private int tipsEarned;
     private int newStarBucks;
 
+	public Font font;
+
 	// Use this for initialization
 	void Start ()
 	{
@@ -41,6 +43,8 @@ public class PaymentGuiDrawer : MonoBehaviour
 
         if (player)
         {
+			GUIStyle style = new GUIStyle();
+			style.font = this.font;
             GUILayout.Label("Drinks Served: " + drinksServed);
             GUILayout.Label("Tips: $" + tipsEarned);
             GUILayout.Label("Starbucks: $" + newStarBucks);

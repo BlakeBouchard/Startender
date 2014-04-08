@@ -24,6 +24,8 @@ public class PlayerState : MonoBehaviour
 	private int baseGroceries;
 	private int baseTuition;
 
+    public static int TOTAL_DAYS = 10;
+
 	//base level difficulty
 	public int difficulty;
 	
@@ -45,7 +47,7 @@ public class PlayerState : MonoBehaviour
 	        this.lastTip = 0;
 			this.rest = 10;
 			this.gpa = 3.0f;
-            this.daysLeft = 10;
+            this.daysLeft = TOTAL_DAYS;
 
 			//base stats
 			this.difficulty = 1;

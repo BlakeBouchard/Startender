@@ -77,7 +77,7 @@ public class CupMovement : MonoBehaviour {
 	public static Vector3 RotatePointAroundPivot(Vector3 point, Vector3 pivot, Quaternion angle) {
 		return angle * ( point - pivot) + pivot;
 	}
-
+    /*
     void OnTouchDown(Touch touch)
     {
         this.previousPosition1 = Camera.main.ScreenToWorldPoint(touch.position);
@@ -92,7 +92,7 @@ public class CupMovement : MonoBehaviour {
             MoveCup(currentPosition);
             this.previousPosition1 = currentPosition;
         }
-    }
+    }*/
 
     private void OnMouseDown()
     {

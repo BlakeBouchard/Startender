@@ -28,6 +28,12 @@ public class PaymentGuiDrawer : MonoBehaviour
         }
         else
         {
+            //Check for graduation
+            if (player.daysLeft <= 0)
+            {
+                Application.LoadLevel("graduation");
+            }
+
             rent = 0;
             if (player.daysLeft % 7 == 0)
             {

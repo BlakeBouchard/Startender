@@ -19,6 +19,7 @@ Scorched Clam: Molten Meteor, Space Clam
 Moon Clam: Moon Tears, Space Clam
 
 # Basic drink layout with 3 ingredients
+Antimargarita: Antimatter, Molten Meteor, Quadruple Sec
 Crying Saucer: Liquid Stardust, Moon Tears, Space Clam
 Teary Sour: Moon Tears, Molten Meteor, *Lemon Wedge
 Molten Tears: Molten Meteor, *Orange Slice, *Lemon Wedge
@@ -36,10 +37,11 @@ Red Giant: Antimatter, Quadruple Sec, Liquid Stardust
 Cortana: Antimatter, Liquid Stardust, *Lemon Wedge
 Van Solo: Molten Meteor, Molten Meteor, *Olive Skewer
 Moongharita: Moon Tears, Quadruple Sec, *Lemon Wedge
+Supernova: Antimatter, Liquid Stardust, Molten Meteor
 
 # Drinks can have duplicate ingredients, just write the ingredient down twice in the list
 Sun Tan: Liquid Stardust, Liquid Stardust, Quadruple Sec
-Planet Core: Molten Meteor, Molten Meteor, Quadruple Sec
+Planet Core: Molten Meteor, Molten Meteor, Liquid Stardust
 
 # If an ingredient is a Garnish, make sure that ingredient has a star (*) in front of it, as below
 Blood Orange: Quadruple Sec, Space Clam, *Orange Slice

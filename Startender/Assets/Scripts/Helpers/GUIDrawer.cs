@@ -119,11 +119,11 @@ public class GUIDrawer : MonoBehaviour
             fadedText.normal.textColor = new Color(255, 255, 255, (1 - (Time.time - drinkCompletionTime) / 2));
         }
 
-        GUILayout.Label("Finished Drink: " + drinkManager.GetPrevDrinkName(), fadedText);
+        GUILayout.Label("<size=16>Finished Drink: " + drinkManager.GetPrevDrinkName() + "</size>", fadedText);
         int tip = player.GetLastTip();
-        GUILayout.Label("Tip: $" + tip, fadedText);
+        GUILayout.Label("<size=16>Tip: $" + tip + "</size>", fadedText);
         //TODO: we should pull in a random phrase from a text file.
-        GUILayout.Label("Feedback: " + (tip > 0 ? "Ah, that really hit the sun spot." : "What? That wasn't what I ordered!"), fadedText);
+        GUILayout.Label("<size=16> Feedback: " + (tip > 0 ? "Ah, that really hit the sun spot.</size>" : "What? That wasn't what I ordered!</size>"), fadedText);
 
         GUILayout.EndArea();
     }

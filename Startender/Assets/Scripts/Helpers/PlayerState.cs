@@ -38,7 +38,7 @@ public class PlayerState : MonoBehaviour
 	void Start() {
         DontDestroyOnLoad(this);
 
-		if(PlayerPrefs.GetInt ("HasBegun") == 0) {
+		if (PlayerPrefs.GetInt ("HasBegun") == 0) {
 			this.starBucks = 40;
 			this.tipsEarned = 0;
 	        this.lastTip = 0;
@@ -191,6 +191,7 @@ public class PlayerState : MonoBehaviour
 		PlayerPrefs.SetInt ("Hunger", this.hunger);
 		PlayerPrefs.SetInt ("Difficulty", this.difficulty);
 		PlayerPrefs.SetFloat ("GPA", this.gpa);
+        PlayerPrefs.SetInt("DaysLeft", this.daysLeft);
 	}
 	
 	public void LoadGame() {
@@ -199,6 +200,7 @@ public class PlayerState : MonoBehaviour
 		this.hunger = PlayerPrefs.GetInt ("Hunger");
 		this.difficulty = PlayerPrefs.GetInt ("Difficulty");
 		this.gpa = PlayerPrefs.GetFloat ("GPA");
+        this.daysLeft = PlayerPrefs.GetInt("DaysLeft");
 	}
 
 	public void ResetGame() {
@@ -208,6 +210,7 @@ public class PlayerState : MonoBehaviour
 		PlayerPrefs.SetInt ("Difficulty", 1);
 		PlayerPrefs.SetInt ("HasBegun", 0);
 		PlayerPrefs.SetFloat ("GPA", 3.0f);
+        PlayerPrefs.SetInt("DaysLeft", TOTAL_DAYS);
 	}
 
 	public void ClearPrefs() {

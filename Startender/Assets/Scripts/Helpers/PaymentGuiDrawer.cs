@@ -38,6 +38,14 @@ public class PaymentGuiDrawer : MonoBehaviour
             if (player.daysLeft % 7 == 0)
             {
                 rent = 50;
+                if (player.GetDifficulty() >= 4)
+                {
+                    player.difficulty = 4;
+                }
+                else
+                {
+                    player.difficulty++;
+                }
             }
 
             // Get last round stats and save them as local variables for the purpose of the GUI

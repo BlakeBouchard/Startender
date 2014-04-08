@@ -60,13 +60,13 @@ public class RPGuiDrawer : MonoBehaviour
 			remainingStarBucks -= tuitionCost;
 		}
 
-		GUILayout.Label("Starbucks: $" + remainingStarBucks);
+		GUILayout.Label("<size=30>Starbucks: $" + remainingStarBucks + "</size>");
 
-		this.rent = GUILayout.Toggle(this.rent, "Rent: " + rentCost);
-		this.food = GUILayout.Toggle(this.food, "Food: " + foodCost);
-		this.tuition = GUILayout.Toggle(this.tuition, "School: " + tuitionCost);
+		this.rent = GUILayout.Toggle(this.rent, "<size=30>Rent: " + rentCost + "</size>");
+		this.food = GUILayout.Toggle(this.food, "<size=30>Food: " + foodCost + "</size>");
+		this.tuition = GUILayout.Toggle(this.tuition, "<size=30>School: " + tuitionCost + "</size>");
 
-		if (GUILayout.Button("Pay and Continue")) {
+		if (GUILayout.Button("<size=30>Pay and Continue</size>")) {
 			Debug.Log("Pay Button Clicked");
 			rpgManager.UpdateBaseStats(remainingStarBucks, this.rent, this.food, this.tuition);
             Debug.Log("Game Saved");

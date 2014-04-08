@@ -19,9 +19,9 @@ public class PlayerState : MonoBehaviour
     public bool rentDue;
 
 	//persistent game costs
-	private int baseRent;
-	private int baseGroceries;
-	private int baseTuition;
+	public int baseRent = 5;
+	public int baseGroceries = 5;
+	public int baseTuition = 5;
 
     public static int TOTAL_DAYS = 28;
 
@@ -50,11 +50,6 @@ public class PlayerState : MonoBehaviour
 
 			//base stats
 			this.difficulty = 1;
-			
-			//base costs
-			this.baseRent = 10;
-			this.baseGroceries = 5;
-			this.baseTuition = 5;
 
 			this.failedRentPayments = 0;
 			this.failedRentThreshold = 3;
@@ -194,6 +189,7 @@ public class PlayerState : MonoBehaviour
 		PlayerPrefs.SetInt ("Difficulty", this.difficulty);
 		PlayerPrefs.SetFloat ("GPA", this.gpa);
         PlayerPrefs.SetInt("DaysLeft", this.daysLeft);
+        PlayerPrefs.SetInt("FailedRentPayments", this.failedRentPayments);
 	}
 	
 	public void LoadGame() {
@@ -203,6 +199,7 @@ public class PlayerState : MonoBehaviour
 		this.difficulty = PlayerPrefs.GetInt ("Difficulty");
 		this.gpa = PlayerPrefs.GetFloat ("GPA");
         this.daysLeft = PlayerPrefs.GetInt("DaysLeft");
+        this.failedRentPayments = PlayerPrefs.GetInt("FailedRentPayments");
 	}
 
 	public void ResetGame() {
@@ -213,6 +210,7 @@ public class PlayerState : MonoBehaviour
 		PlayerPrefs.SetInt ("HasBegun", 0);
 		PlayerPrefs.SetFloat ("GPA", 3.0f);
         PlayerPrefs.SetInt("DaysLeft", TOTAL_DAYS);
+        PlayerPrefs.SetInt("FailedRentPayments", 0);
 	}
 
 	public void ClearPrefs() {

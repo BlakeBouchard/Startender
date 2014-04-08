@@ -34,10 +34,8 @@ public class PaymentGuiDrawer : MonoBehaviour
                 Application.LoadLevel("graduation");
             }
 
-            rent = 0;
             if (player.daysLeft % 7 == 0)
             {
-                rent = 50;
                 if (player.GetDifficulty() >= 4)
                 {
                     player.difficulty = 4;
@@ -51,7 +49,7 @@ public class PaymentGuiDrawer : MonoBehaviour
             // Get last round stats and save them as local variables for the purpose of the GUI
             drinksServed = player.GetDrinkCount();
             tipsEarned = player.GetTipsEarned();
-            newStarBucks = player.GetStarBucks() + tipsEarned - rent;
+            newStarBucks = player.GetStarBucks() + tipsEarned;
 
             player.gpa += Random.Range(-10, 11) * 0.01f;
 
@@ -67,13 +65,11 @@ public class PaymentGuiDrawer : MonoBehaviour
                 player.gpa = 0f;
 
             // This adds the tips to the total StarBucks and resets the round stats
-            player.starBucks += player.tipsEarned - rent;
+            player.starBucks += player.tipsEarned;
             player.tipsEarned = 0;
             player.drinksServed = 0;
             player.daysLeft--;
 			player.SetStarBucks(newStarBucks);
-			Debug.Log ("Game Saved");
-			player.SaveGame();
         }
 	}
 
@@ -86,8 +82,6 @@ public class PaymentGuiDrawer : MonoBehaviour
 			style.font = this.font;
             GUILayout.Label("Drinks Served: " + drinksServed);
             GUILayout.Label("Tips: $" + tipsEarned);
-            int daysUntilRent = player.daysLeft % 7 + 1;
-            GUILayout.Label("Rent Due: " + (rent != 0 ? ("$" + rent) : "in " + daysUntilRent + ((daysUntilRent == 1) ? " day" : " days")));
             if (newStarBucks > 0)
             {
                 GUILayout.Label("Starbucks: $" + newStarBucks);

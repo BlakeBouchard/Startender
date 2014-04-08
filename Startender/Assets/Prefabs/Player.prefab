@@ -38,6 +38,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1975661d1d841483eb3f69950ace54db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  starBucks: 0
+  rest: 0
+  gpa: 0
+  hunger: 0
+  daysLeft: 0
+  drinksServed: 0
+  tipsEarned: 0
+  lastTip: 0
+  rentDue: 0
+  baseRent: 5
+  baseGroceries: 5
+  baseTuition: 5
+  difficulty: 0
+  hungerThreshold: 0
+  failedRentPayments: 0
+  failedRentThreshold: 0
+  gpaThreshold: 0
+  gameFailMessage: 
+  gpaIncreaseChance: .400000006
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

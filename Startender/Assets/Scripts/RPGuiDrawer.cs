@@ -66,10 +66,13 @@ public class RPGuiDrawer : MonoBehaviour
 		this.food = GUILayout.Toggle(this.food, "Food: " + foodCost);
 		this.tuition = GUILayout.Toggle(this.tuition, "School: " + tuitionCost);
 
-		if(GUILayout.Button("Pay and Continue")) {
+		if (GUILayout.Button("Pay and Continue")) {
 			Debug.Log("Pay Button Clicked");
-			rpgManager.updateBaseStats(remainingStarBucks, this.rent, this.food, this.tuition);
-			Application.LoadLevel("noObjectsScene");
+			rpgManager.UpdateBaseStats(remainingStarBucks, this.rent, this.food, this.tuition);
+            Debug.Log("Game Saved");
+            PlayerState player = GameObject.Find("Player").GetComponent<PlayerState>();
+            player.SaveGame();
+			Application.LoadLevel(2);
 		}
 
 		GUILayout.EndArea();

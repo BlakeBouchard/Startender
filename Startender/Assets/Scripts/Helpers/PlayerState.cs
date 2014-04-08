@@ -16,12 +16,14 @@ public class PlayerState : MonoBehaviour
 	public int tipsEarned;
 	public int lastTip;
 
-	//persistent game costs
-	private int baseRent;
-	private int baseGroceries;
-	private int baseTuition;
+    public bool rentDue;
 
-    public static int TOTAL_DAYS = 10;
+	//persistent game costs
+	public int baseRent = 5;
+	public int baseGroceries = 5;
+	public int baseTuition = 5;
+
+    public static int TOTAL_DAYS = 28;
 
 	//base level difficulty
 	public int difficulty;
@@ -38,7 +40,7 @@ public class PlayerState : MonoBehaviour
 	void Start() {
         DontDestroyOnLoad(this);
 
-		if(PlayerPrefs.GetInt ("HasBegun") == 0) {
+		if (PlayerPrefs.GetInt ("HasBegun") == 0) {
 			this.starBucks = 40;
 			this.tipsEarned = 0;
 	        this.lastTip = 0;
@@ -48,11 +50,6 @@ public class PlayerState : MonoBehaviour
 
 			//base stats
 			this.difficulty = 1;
-			
-			//base costs
-			this.baseRent = 10;
-			this.baseGroceries = 5;
-			this.baseTuition = 5;
 
 			this.failedRentPayments = 0;
 			this.failedRentThreshold = 3;
@@ -191,6 +188,8 @@ public class PlayerState : MonoBehaviour
 		PlayerPrefs.SetInt ("Hunger", this.hunger);
 		PlayerPrefs.SetInt ("Difficulty", this.difficulty);
 		PlayerPrefs.SetFloat ("GPA", this.gpa);
+        PlayerPrefs.SetInt("DaysLeft", this.daysLeft);
+        PlayerPrefs.SetInt("FailedRentPayments", this.failedRentPayments);
 	}
 	
 	public void LoadGame() {
@@ -199,6 +198,8 @@ public class PlayerState : MonoBehaviour
 		this.hunger = PlayerPrefs.GetInt ("Hunger");
 		this.difficulty = PlayerPrefs.GetInt ("Difficulty");
 		this.gpa = PlayerPrefs.GetFloat ("GPA");
+        this.daysLeft = PlayerPrefs.GetInt("DaysLeft");
+        this.failedRentPayments = PlayerPrefs.GetInt("FailedRentPayments");
 	}
 
 	public void ResetGame() {
@@ -208,9 +209,11 @@ public class PlayerState : MonoBehaviour
 		PlayerPrefs.SetInt ("Difficulty", 1);
 		PlayerPrefs.SetInt ("HasBegun", 0);
 		PlayerPrefs.SetFloat ("GPA", 3.0f);
+        PlayerPrefs.SetInt("DaysLeft", TOTAL_DAYS);
+        PlayerPrefs.SetInt("FailedRentPayments", 0);
 	}
 
-	public void clearPrefs(){
+	public void ClearPrefs() {
 		PlayerPrefs.DeleteAll ();
 	}
 }

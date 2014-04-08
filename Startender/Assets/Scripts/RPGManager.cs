@@ -15,18 +15,18 @@ public class RPGManager : MonoBehaviour
 	}
 
 	public int FoodCost() {
-		return player.GetDifficulty() * player.GetBaseFood();
+		return (player.GetDifficulty() - 1) * player.GetBaseFood();
 	}
 
 	public int RentCost() {
-		return player.GetDifficulty() * player.GetBaseRent();
+		return (player.GetDifficulty() - 1) * player.GetBaseRent();
 	}
 
 	public int TuitionCost() {
-		return player.GetDifficulty() * player.GetBaseTuition();
+		return (player.GetDifficulty() - 1) * player.GetBaseTuition();
 	}
 
-	public void updateBaseStats(int starBucks, bool rent, bool food, bool tuition) {
+	public void UpdateBaseStats(int starBucks, bool rent, bool food, bool tuition) {
 		
 		player.SetStarBucks(starBucks);
 

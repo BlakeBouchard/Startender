@@ -36,6 +36,7 @@ public class Silo : MonoBehaviour {
 		missle.gameObject.rigidbody2D.velocity = new Vector2(0.0f, this.startMissleSpeed);
 		missle.gameObject.rigidbody2D.mass = missleMass;
 		missle.gameObject.rigidbody2D.gravityScale = gravityScale;
+		this.audio.Play();
 	}
 	
 	private void ResetFireDelay() {

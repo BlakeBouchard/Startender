@@ -56,7 +56,7 @@ public class GUIDrawer : MonoBehaviour
 
 	public void DrawMainMenu() {
 		//Draw Game Menu Here
-		GUILayout.BeginArea(new Rect(Screen.width / 3 - this.menuXFromCenter, Screen.height /2 - this.menuYFromCenter, this.menuWidth * 2, this.menuHeight));
+		GUILayout.BeginArea(new Rect(Screen.width / 2 - this.menuXFromCenter, Screen.height /2 - this.menuYFromCenter, this.menuWidth * 2, this.menuHeight));
 
 		this.DrawBaseMenu();
 
@@ -70,7 +70,7 @@ public class GUIDrawer : MonoBehaviour
 
 	public void DrawPauseMenu() {
 		//Draw Game Menu Here
-		GUILayout.BeginArea(new Rect(Screen.width / 3 - this.menuXFromCenter, Screen.height /2 - this.menuYFromCenter, this.menuWidth * 2, this.menuHeight));
+		GUILayout.BeginArea(new Rect(Screen.width / 2 - this.menuXFromCenter, Screen.height /2 - this.menuYFromCenter, this.menuWidth * 2, this.menuHeight));
 		this.DrawBaseMenu();
 		
 		if (GUILayout.Button("<size=20>Resume</size>"))
@@ -132,13 +132,13 @@ public class GUIDrawer : MonoBehaviour
 
 	public void DrawPauseButton()
 	{
-		GUI.Box(new Rect(Screen.width - 25, 2, 20, 20), "");
-		GUILayout.BeginArea(new Rect(Screen.width - 25, 3, 20, 30));
+		GUI.Box(new Rect(Screen.width - 35, 2, 30, 30), "");
+		GUILayout.BeginArea(new Rect(Screen.width - 35, 3, 30, 30));
 		GUIStyle myStyle = new GUIStyle();
 		myStyle.fontStyle = FontStyle.Bold;
 		myStyle.normal.textColor = Color.white;
 		
-		if (GUILayout.Button(" | |  ", myStyle)) {
+		if (GUILayout.Button("<size=20> | |  </size>", myStyle)) {
 			gameManager.PauseGame();
 		}
 		

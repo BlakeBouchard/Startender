@@ -32,7 +32,7 @@ public class BubbleButton : MonoBehaviour {
     {
         // Should not fire when touching, screw you Unity Remote
 		// Stops cannon from adding bubble if the game is not playing
-		if (Input.touchCount == 0 && gameManagerScript.GetGameState () == GameManager.GameState.Playing)
+		if (gameManagerScript.GetGameState () == GameManager.GameState.Playing)
         {
             Debug.Log("Clicked Bubble Button");
             cannonScript.LoadBubble(this.bubblePrefab);

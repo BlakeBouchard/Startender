@@ -210,7 +210,7 @@ public class PlayerState : MonoBehaviour
 		PlayerPrefs.SetFloat ("GPA", 3.0f);
 	}
 
-	public void clearPrefs(){
+	public void ClearPrefs() {
 		PlayerPrefs.DeleteAll ();
 	}
 }

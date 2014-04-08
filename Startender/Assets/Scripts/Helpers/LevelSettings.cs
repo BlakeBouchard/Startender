@@ -324,7 +324,7 @@ public class LevelSettings : MonoBehaviour {
 
         if (difficulty == 0)
         {
-            difficulty = 2;
+            difficulty = 1;
         }
 
         int numberOfButtons = difficulty + 1;
@@ -332,6 +332,11 @@ public class LevelSettings : MonoBehaviour {
 
         int numberOfDrinks = difficulty + 2;
         return GenerateRandomDrinksFromIngredients(selectedIngredients, numberOfDrinks);
+    }
+
+    public Dictionary<string, Transform> GetBubbleList()
+    {
+        return bubbleList;
     }
 	
 	// Update is called once per frame

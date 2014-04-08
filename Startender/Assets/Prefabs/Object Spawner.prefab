@@ -46,6 +46,8 @@ MonoBehaviour:
   - {fileID: 400000, guid: b193af77e6086cb4ba337fd0709bc5c9, type: 2}
   - {fileID: 400000, guid: e377be37f05c041a6aabac58f3893049, type: 2}
   - {fileID: 400000, guid: 85ffdadbf44f82048bc264b03cff59da, type: 2}
+  - {fileID: 400006, guid: d74263766fdad4fccaa77f835069e577, type: 2}
+  backgrounds: []
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

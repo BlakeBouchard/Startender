@@ -190,7 +190,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e57f92259feac394d928a3d591e14cdd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scene: noObjectsScene
+  scene: rpg
   sceneNumber: 0
 --- !u!61 &70778218
 BoxCollider2D:

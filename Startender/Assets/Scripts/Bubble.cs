@@ -4,6 +4,7 @@ using System.Collections;
 public class Bubble : MonoBehaviour {
 
     public Transform ingredientPrefab;
+    public Transform buttonPrefab;
     private Ingredient attachedIngredient;
 
     // Use this for initialization
@@ -31,6 +32,11 @@ public class Bubble : MonoBehaviour {
     public Transform GetIngredientPrefab()
     {
         return ingredientPrefab;
+    }
+
+    public Transform GetButtonPrefab()
+    {
+        return buttonPrefab;
     }
 
 	public void Die()

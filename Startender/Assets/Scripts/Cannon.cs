@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
+[RequireComponent(typeof(AudioSource))]
 public class Cannon : MonoBehaviour {
 	
     public float xForce = 1.0f;
@@ -21,7 +22,9 @@ public class Cannon : MonoBehaviour {
 
 	public float fireDelayTimer;
 	public float fireDelayTime = 2.0f;
-	public float reloadTime = 0.8f;
+	public float reloadTime = 0.80f;
+
+	public bool instaCannon;
 
 	private Queue<Transform> bubbleQueue;
 
@@ -30,8 +33,10 @@ public class Cannon : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
     {
-		this.ResetFireDelay();
+		this.ResetFireDelay(false);
         this.startRotation = transform.rotation;
+
+		this.instaCannon = false;
 
 		this.bubbleQueue = new Queue<Transform>();
         gameManager = GameObject.FindObjectOfType<GameManager>();
@@ -39,6 +44,11 @@ public class Cannon : MonoBehaviour {
 
     public void FireBubble(Transform bubblePrefab)
     {
+		if(this.instaCannon) {
+			this.audio.time = 0.77f;
+			this.audio.Play();
+		}
+
         Transform bubble = Instantiate(bubblePrefab, new Vector3(transform.position.x, transform.position.y, transform.position.z + 2), Quaternion.identity) as Transform;
         float bubbleAngle = (transform.rotation.eulerAngles.z - 270) * Mathf.Deg2Rad;
         bubble.rigidbody2D.velocity = new Vector2(Mathf.Cos(bubbleAngle) * bubbleSpeed, Mathf.Sin(bubbleAngle) * bubbleSpeed);
@@ -46,7 +56,6 @@ public class Cannon : MonoBehaviour {
 		bubble.rigidbody2D.mass = bubbleMass;
 		bubble.rigidbody2D.gravityScale = gravityScale;
         bubble.name = bubblePrefab.name;
-        audio.Play();
     }
 
     void IncrementAngle()
@@ -80,16 +89,21 @@ public class Cannon : MonoBehaviour {
         transform.rotation = startRotation;
     }
 
-	private void ResetFireDelay()
+	private void ResetFireDelay(bool delayed)
     {
 		this.fireDelayTimer = this.fireDelayTime;
+
+		if(delayed && this.audio.isPlaying) {
+			Debug.Log("Stop Cannon Sound");
+			this.audio.Stop();
+		}
 	}
 
 	public void LoadBubble(Transform bubble)
     {
 		// if we're about to fire a shot, reset so they come out close to each other
 		if (this.bubbleQueue.Count > 0) {
-			this.ResetFireDelay();
+			this.ResetFireDelay(true);
 		}
 
 		this.bubbleQueue.Enqueue(bubble);
@@ -107,12 +121,17 @@ public class Cannon : MonoBehaviour {
 			if (this.bubbleQueue.Count > 0)
             {
 				this.fireDelayTimer = 0.0f + this.reloadTime;
+				this.instaCannon = true;
 			}
 			else
             {
-				this.ResetFireDelay();
+				this.instaCannon = false;
+				this.ResetFireDelay(false);
 			}
-		}
+		} else if(this.fireDelayTimer <= 0.77f && !this.audio.isPlaying) {
+			Debug.Log ("Play Cannon Shot");
+			this.audio.Play();
+		} 
 	}
 	
 	// Update is called once per frame

@@ -94,6 +94,7 @@ MonoBehaviour:
   fireDelayTimer: 2
   fireDelayTime: 2
   lid: {fileID: 0}
+  sound: {fileID: 8300000, guid: 8efa8fb944061422293023bc7733de60, type: 3}
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1

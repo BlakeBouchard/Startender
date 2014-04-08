@@ -9,11 +9,12 @@ public class PlayerState : MonoBehaviour
 	public int rest;
 	public float gpa;
 	public int hunger;
+    public int daysLeft;
 
 	//round specific stats
-	private int drinksServed;
-	private int tipsEarned;
-	private int lastTip;
+	public int drinksServed;
+	public int tipsEarned;
+	public int lastTip;
 
 	//persistent game costs
 	private int baseRent;
@@ -41,6 +42,7 @@ public class PlayerState : MonoBehaviour
 	        this.lastTip = 0;
 			this.rest = 10;
 			this.gpa = 3.0f;
+            this.daysLeft = 10;
 
 			//base stats
 			this.difficulty = 1;
@@ -154,12 +156,6 @@ public class PlayerState : MonoBehaviour
 
 	public void IncrementHunger() {
 		this.hunger += 1;
-	}
-
-	public void EndRound() {
-		this.starBucks += this.tipsEarned;
-		this.tipsEarned = 0;
-		this.drinksServed = 0;
 	}
 
 	public void ResetRound() {

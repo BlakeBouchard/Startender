@@ -263,13 +263,13 @@ AudioSource:
   serializedVersion: 3
   m_audioClip: {fileID: 8300000, guid: c6a71ae8048e24db18970c3bc6bd3c46, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: .412
   m_Pitch: 1
   Loop: 0
   Mute: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 1
+  MinDistance: 4.92589951
   MaxDistance: 500
   Pan2D: 0
   rolloffMode: 0
@@ -497,6 +497,10 @@ MonoBehaviour:
   rest: 0
   gpa: 0
   hunger: 0
+  daysLeft: 0
+  drinksServed: 0
+  tipsEarned: 0
+  lastTip: 0
   difficulty: 0
   hungerThreshold: 0
   failedRentPayments: 0

@@ -20,6 +20,22 @@ Moon Clam: Moon Tears, Space Clam
 
 # Basic drink layout with 3 ingredients
 Crying Saucer: Liquid Stardust, Moon Tears, Space Clam
+Teary Sour: Moon Tears, Molten Meteor, *Lemon Wedge
+Molten Tears: Molten Meteor, *Orange Slice, *Lemon Wedge
+Half Moon: Antimatter, Moon Tears, *Lemon Wedge
+Secs van Moon: Quadruple Sec, Moon Tears, *Olive Skewer
+Meteor Meltdown: Molten Meteor, Liquid Stardust, *Orange Slice
+Solar Eclipse: Antimatter, Molten Meteor, Moon Tears
+Ammeteor: Space Clam, Quadruple Sec, *Olive Skewer
+Dusty Clam: Space Clam, Liquid Stardust, *Olive Skewer
+Black Hole: Antimatter, Antimatter, Moon Tears
+Sour Jupiter: Quadruple Sec, *Orange Slice, *Lemon Wedge
+Black Perl: Space Clam, Space Clam, *Olive Skewer
+Clam Slam: Space Clam, Space Clam, Antimatter
+Red Giant: Antimatter, Quadruple Sec, Liquid Stardust
+Cortana: Antimatter, Liquid Stardust, *Lemon Wedge
+Van Solo: Molten Meteor, Molten Meteor, *Olive Skewer
+Moongharita: Moon Tears, Quadruple Sec, *Lemon Wedge
 
 # Drinks can have duplicate ingredients, just write the ingredient down twice in the list
 Sun Tan: Liquid Stardust, Liquid Stardust, Quadruple Sec

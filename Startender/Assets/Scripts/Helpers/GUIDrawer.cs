@@ -56,8 +56,7 @@ public class GUIDrawer : MonoBehaviour
 
 	public void DrawMainMenu() {
 		//Draw Game Menu Here
-		GUILayout.BeginArea(new Rect(Screen.width / 2 - this.menuXFromCenter, Screen.height /2 - this.menuYFromCenter, this.menuWidth * 2, this.menuHeight));
-
+		GUILayout.BeginArea(new Rect(Screen.width / 2 - this.menuXFromCenter, Screen.height /2 - this.menuYFromCenter, this.menuWidth, this.menuHeight));
 		this.DrawBaseMenu();
 
 		if (GUILayout.Button("<size=20>Start Game</size>")) {
@@ -70,8 +69,7 @@ public class GUIDrawer : MonoBehaviour
 
 	public void DrawPauseMenu() {
 		//Draw Game Menu Here
-		GUILayout.BeginArea(new Rect(Screen.width / 2 - this.menuXFromCenter, Screen.height /2 - this.menuYFromCenter, this.menuWidth * 2, this.menuHeight));
-		this.DrawBaseMenu();
+		GUILayout.BeginArea(new Rect(Screen.width / 2 - this.menuXFromCenter, Screen.height /2 - this.menuYFromCenter, this.menuWidth, this.menuHeight));		this.DrawBaseMenu();
 		
 		if (GUILayout.Button("<size=20>Resume</size>"))
         {

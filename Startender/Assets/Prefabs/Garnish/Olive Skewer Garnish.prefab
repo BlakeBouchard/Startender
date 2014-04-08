@@ -13,7 +13,7 @@ GameObject:
   - 50: {fileID: 5000000}
   - 114: {fileID: 11400000}
   m_Layer: 9
-  m_Name: garnish - lemon
+  m_Name: Olive Skewer Garnish
   m_TagString: Bubble
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26,8 +26,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -.467944235, y: -7.74793386, z: 0}
-  m_LocalScale: {x: .470134884, y: .507008374, z: 1}
+  m_LocalPosition: {x: -1.46731234, y: -5.57189131, z: 0}
+  m_LocalScale: {x: .694863498, y: .694863498, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
 --- !u!50 &5000000
@@ -56,22 +56,22 @@ PolygonCollider2D:
   m_IsTrigger: 0
   m_Poly:
     m_Paths:
-    - - {x: .263008773, y: .244272023}
-      - {x: .100748084, y: .314271897}
-      - {x: -.131504387, y: .314271897}
-      - {x: -.221505418, y: .282847226}
-      - {x: -.341504097, y: .17142342}
-      - {x: -.434503257, y: .048576396}
-      - {x: -.480749279, y: -.061423514}
-      - {x: -.48999998, y: -.0700000003}
-      - {x: -.294560254, y: -.207127303}
-      - {x: -.221505418, y: -.274271846}
-      - {x: -.113754906, y: -.304271638}
-      - {x: .152252018, y: -.312847972}
-      - {x: .25150305, y: -.267120332}
-      - {x: .443757325, y: -.0314246491}
-      - {x: .443757325, y: .0699998587}
-      - {x: .452252746, y: .0828479156}
+    - - {x: .311763167, y: .0171756856}
+      - {x: .289098322, y: .084678553}
+      - {x: .200069398, y: .169737965}
+      - {x: .144901887, y: .194836199}
+      - {x: -.00603060191, y: .210221171}
+      - {x: -.110000156, y: .194520533}
+      - {x: -.224611789, y: .134389162}
+      - {x: -.279255033, y: .0571102388}
+      - {x: -.296951562, y: -.0498039313}
+      - {x: -.274286717, y: -.0920119658}
+      - {x: -.164967284, y: -.189422518}
+      - {x: -.065035522, y: -.209487244}
+      - {x: .0798663571, y: -.219868556}
+      - {x: .164904162, y: -.194836542}
+      - {x: .23948653, y: -.154362619}
+      - {x: .284154713, y: -.0771753043}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -83,7 +83,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbee0f79a1a974077a16c55be5afb60d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ingredientPrefab: {fileID: 400000, guid: be0cdafe612b1444fbf2b4f24bc7d952, type: 2}
+  ingredientPrefab: {fileID: 400000, guid: d0bbc0b4b2d46a44d8ccf3095df73512, type: 2}
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -105,7 +105,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_SortingLayerID: 0
-  m_Sprite: {fileID: 21300000, guid: 2675393f30f3945cc8b211242d695da3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8ff2cdf4ca1ca413f80c80da6aa60e26, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1001 &100100000
 Prefab:

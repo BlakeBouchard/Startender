@@ -9,11 +9,11 @@ GameObject:
   m_Component:
   - 4: {fileID: 400000}
   - 212: {fileID: 21200000}
-  - 60: {fileID: 6000000}
   - 50: {fileID: 5000000}
+  - 60: {fileID: 6000000}
   - 114: {fileID: 11400000}
   m_Layer: 9
-  m_Name: garnish - olive
+  m_Name: Orange Slice Garnish
   m_TagString: Bubble
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26,8 +26,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.46731234, y: -5.57189131, z: 0}
-  m_LocalScale: {x: .694863498, y: .694863498, z: 1}
+  m_LocalPosition: {x: 1.49855387, y: -5.62024689, z: -2}
+  m_LocalScale: {x: .600000024, y: .600000024, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
 --- !u!50 &5000000
@@ -56,22 +56,23 @@ PolygonCollider2D:
   m_IsTrigger: 0
   m_Poly:
     m_Paths:
-    - - {x: .311763167, y: .0171756856}
-      - {x: .289098322, y: .084678553}
-      - {x: .200069398, y: .169737965}
-      - {x: .144901887, y: .194836199}
-      - {x: -.00603060191, y: .210221171}
-      - {x: -.110000156, y: .194520533}
-      - {x: -.224611789, y: .134389162}
-      - {x: -.279255033, y: .0571102388}
-      - {x: -.296951562, y: -.0498039313}
-      - {x: -.274286717, y: -.0920119658}
-      - {x: -.164967284, y: -.189422518}
-      - {x: -.065035522, y: -.209487244}
-      - {x: .0798663571, y: -.219868556}
-      - {x: .164904162, y: -.194836542}
-      - {x: .23948653, y: -.154362619}
-      - {x: .284154713, y: -.0771753043}
+    - - {x: .397440583, y: .149999857}
+      - {x: .419999987, y: .199999988}
+      - {x: .201161698, y: .347439438}
+      - {x: .0899999961, y: .389999986}
+      - {x: -.099999994, y: .389999986}
+      - {x: -.190000534, y: .333720028}
+      - {x: -.253721863, y: .310000181}
+      - {x: -.389999986, y: .189999998}
+      - {x: -.413716614, y: .130000114}
+      - {x: -.413716614, y: -.0800001621}
+      - {x: -.373716354, y: -.193719864}
+      - {x: -.243721008, y: -.307439148}
+      - {x: -.10999997, y: -.380000263}
+      - {x: .10999997, y: -.363719463}
+      - {x: .260000229, y: -.297439873}
+      - {x: .397437394, y: -.133720234}
+      - {x: .429999977, y: -.0399999991}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -83,7 +84,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbee0f79a1a974077a16c55be5afb60d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ingredientPrefab: {fileID: 400000, guid: d0bbc0b4b2d46a44d8ccf3095df73512, type: 2}
+  ingredientPrefab: {fileID: 400000, guid: 8bc0e36745dc546d497721623951e0bd, type: 2}
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -105,7 +106,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_SortingLayerID: 0
-  m_Sprite: {fileID: 21300000, guid: 8ff2cdf4ca1ca413f80c80da6aa60e26, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a021b048ce65a4890a6afb7a0a14fa49, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1001 &100100000
 Prefab:

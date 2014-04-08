@@ -24,7 +24,7 @@ Crying Saucer: Liquid Stardust, Moon Tears, Space Clam
 Supernova: Antimatter, Liquid Stardust, Molten Meteor
 
 # Drinks can have duplicate ingredients, just write the ingredient down twice in the list
-Sectini: Liquid Stardust, Liquid Stardust, Quadruple Sec
+Sun Tan: Liquid Stardust, Liquid Stardust, Quadruple Sec
 Planet Core: Molten Meteor, Molten Meteor, Liquid Stardust
 
 # If an ingredient is a Garnish, make sure that ingredient has a star (*) in front of it, as below

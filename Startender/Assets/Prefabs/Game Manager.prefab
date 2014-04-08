@@ -406,12 +406,15 @@ MonoBehaviour:
   - {fileID: 400002, guid: bca0fc1eca859534ca464559a370bf79, type: 2}
   - {fileID: 400000, guid: f74035ec830971246a67ec16c6e01b55, type: 2}
   - {fileID: 400000, guid: fa8b76f3c9eb6894bbd48666c770b59c, type: 2}
-  - {fileID: 400006, guid: eb725d78c0db04378a994bbc99818c2d, type: 2}
+  - {fileID: 400006, guid: d74263766fdad4fccaa77f835069e577, type: 2}
   - {fileID: 400000, guid: b193af77e6086cb4ba337fd0709bc5c9, type: 2}
   - {fileID: 400000, guid: e377be37f05c041a6aabac58f3893049, type: 2}
   - {fileID: 400000, guid: 85ffdadbf44f82048bc264b03cff59da, type: 2}
   - {fileID: 400000, guid: 37ccc6990ee0aa94e9d486010ce4bd8c, type: 2}
-  backgrounds: []
+  backgrounds:
+  - {fileID: 400000, guid: 32c5bd1aaa09247fab9465e6fe546073, type: 2}
+  - {fileID: 400000, guid: 72897da26b4604029887c9aeb0937070, type: 2}
+  - {fileID: 400000, guid: 53a52c29e0fad403283f5ffea7d6193e, type: 2}
 --- !u!132 &13200002
 GUIText:
   m_ObjectHideFlags: 1

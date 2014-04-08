@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+
 public class Silo : MonoBehaviour {
 
 	public Transform garnish;
@@ -27,6 +28,8 @@ public class Silo : MonoBehaviour {
 
 	public GameObject lid;
 
+	public AudioClip sound;
+
 	// Use this for initialization
 	void Start () {}
 	
@@ -36,6 +39,7 @@ public class Silo : MonoBehaviour {
 		missle.gameObject.rigidbody2D.velocity = new Vector2(0.0f, this.startMissleSpeed);
 		missle.gameObject.rigidbody2D.mass = missleMass;
 		missle.gameObject.rigidbody2D.gravityScale = gravityScale;
+		this.audio.clip = this.sound;
 		this.audio.Play();
 	}
 	

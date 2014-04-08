@@ -357,7 +357,9 @@ MonoBehaviour:
   - {fileID: 400000, guid: ab7a570f4aa90de468d62b75ce52404e, type: 2}
   - {fileID: 400000, guid: 549c71027760fda45a3a4f75e438e1ca, type: 2}
   allGarnishSilos:
-  - {fileID: 400000, guid: cdf5f88dc26ac4d329daf391410100f5, type: 2}
+  - {fileID: 400000, guid: f37e14a247a0f48cda8938196c24e80d, type: 2}
+  - {fileID: 400000, guid: df415eff7b8c94bcca31807960e7fe94, type: 2}
+  - {fileID: 400000, guid: ca0b863218fee44d2882e38484385b69, type: 2}
   allDrinks: {fileID: 4900000, guid: a3ff7e571bedcb540b77364b4f14527c, type: 3}
   allLevels: {fileID: 4900000, guid: b1750c73ae5a25b429731b913e18e945, type: 3}
   blankDrinkPrefab: {fileID: 400000, guid: 7b2bc5a7d043773478d561f61bd14604, type: 2}
@@ -408,7 +410,7 @@ MonoBehaviour:
   - {fileID: 400000, guid: fa8b76f3c9eb6894bbd48666c770b59c, type: 2}
   - {fileID: 400006, guid: d74263766fdad4fccaa77f835069e577, type: 2}
   - {fileID: 400000, guid: b193af77e6086cb4ba337fd0709bc5c9, type: 2}
-  - {fileID: 400000, guid: e377be37f05c041a6aabac58f3893049, type: 2}
+  - {fileID: 400000, guid: 755abe47a8c1bfa45969a2fda741e450, type: 2}
   - {fileID: 400000, guid: 85ffdadbf44f82048bc264b03cff59da, type: 2}
   - {fileID: 400000, guid: 37ccc6990ee0aa94e9d486010ce4bd8c, type: 2}
   backgrounds:

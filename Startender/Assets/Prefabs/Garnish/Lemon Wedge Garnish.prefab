@@ -9,11 +9,11 @@ GameObject:
   m_Component:
   - 4: {fileID: 400000}
   - 212: {fileID: 21200000}
-  - 114: {fileID: 11400000}
-  - 50: {fileID: 5000000}
   - 60: {fileID: 6000000}
+  - 50: {fileID: 5000000}
+  - 114: {fileID: 11400000}
   m_Layer: 9
-  m_Name: garnish - orange
+  m_Name: Lemon Wedge Garnish
   m_TagString: Bubble
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26,8 +26,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -22.7604904, y: -3.9333806, z: -2}
-  m_LocalScale: {x: .600000024, y: .600000024, z: 1}
+  m_LocalPosition: {x: -.467944235, y: -7.74793386, z: 0}
+  m_LocalScale: {x: .470134884, y: .507008374, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
 --- !u!50 &5000000
@@ -56,23 +56,22 @@ PolygonCollider2D:
   m_IsTrigger: 0
   m_Poly:
     m_Paths:
-    - - {x: .397440583, y: .149999857}
-      - {x: .419999987, y: .199999988}
-      - {x: .201161698, y: .347439438}
-      - {x: .0899999961, y: .389999986}
-      - {x: -.099999994, y: .389999986}
-      - {x: -.190000534, y: .333720028}
-      - {x: -.253721863, y: .310000181}
-      - {x: -.389999986, y: .189999998}
-      - {x: -.413716614, y: .130000114}
-      - {x: -.413716614, y: -.0800001621}
-      - {x: -.373716354, y: -.193719864}
-      - {x: -.243721008, y: -.307439148}
-      - {x: -.10999997, y: -.380000263}
-      - {x: .10999997, y: -.363719463}
-      - {x: .260000229, y: -.297439873}
-      - {x: .397437394, y: -.133720234}
-      - {x: .429999977, y: -.0399999991}
+    - - {x: .263008773, y: .244272023}
+      - {x: .100748084, y: .314271897}
+      - {x: -.131504387, y: .314271897}
+      - {x: -.221505418, y: .282847226}
+      - {x: -.341504097, y: .17142342}
+      - {x: -.434503257, y: .048576396}
+      - {x: -.480749279, y: -.061423514}
+      - {x: -.48999998, y: -.0700000003}
+      - {x: -.294560254, y: -.207127303}
+      - {x: -.221505418, y: -.274271846}
+      - {x: -.113754906, y: -.304271638}
+      - {x: .152252018, y: -.312847972}
+      - {x: .25150305, y: -.267120332}
+      - {x: .443757325, y: -.0314246491}
+      - {x: .443757325, y: .0699998587}
+      - {x: .452252746, y: .0828479156}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -84,7 +83,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbee0f79a1a974077a16c55be5afb60d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ingredientPrefab: {fileID: 400000, guid: 8bc0e36745dc546d497721623951e0bd, type: 2}
+  ingredientPrefab: {fileID: 400000, guid: be0cdafe612b1444fbf2b4f24bc7d952, type: 2}
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -106,7 +105,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_SortingLayerID: 0
-  m_Sprite: {fileID: 21300000, guid: a021b048ce65a4890a6afb7a0a14fa49, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2675393f30f3945cc8b211242d695da3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1001 &100100000
 Prefab:

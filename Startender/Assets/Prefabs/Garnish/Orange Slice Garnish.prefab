@@ -9,11 +9,11 @@ GameObject:
   m_Component:
   - 4: {fileID: 400000}
   - 212: {fileID: 21200000}
-  - 114: {fileID: 11400000}
   - 50: {fileID: 5000000}
-  - 58: {fileID: 5800000}
+  - 60: {fileID: 6000000}
+  - 114: {fileID: 11400000}
   m_Layer: 9
-  m_Name: Orange Garnish
+  m_Name: Orange Slice Garnish
   m_TagString: Bubble
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26,8 +26,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1, y: 1, z: -1}
-  m_LocalScale: {x: .150000006, y: .150000006, z: 1}
+  m_LocalPosition: {x: 1.49855387, y: -5.62024689, z: -2}
+  m_LocalScale: {x: .600000024, y: .600000024, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
 --- !u!50 &5000000
@@ -45,8 +45,8 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
---- !u!58 &5800000
-CircleCollider2D:
+--- !u!60 &6000000
+PolygonCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -54,8 +54,25 @@ CircleCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Radius: 2
-  m_Center: {x: 0, y: 0}
+  m_Poly:
+    m_Paths:
+    - - {x: .397440583, y: .149999857}
+      - {x: .419999987, y: .199999988}
+      - {x: .201161698, y: .347439438}
+      - {x: .0899999961, y: .389999986}
+      - {x: -.099999994, y: .389999986}
+      - {x: -.190000534, y: .333720028}
+      - {x: -.253721863, y: .310000181}
+      - {x: -.389999986, y: .189999998}
+      - {x: -.413716614, y: .130000114}
+      - {x: -.413716614, y: -.0800001621}
+      - {x: -.373716354, y: -.193719864}
+      - {x: -.243721008, y: -.307439148}
+      - {x: -.10999997, y: -.380000263}
+      - {x: .10999997, y: -.363719463}
+      - {x: .260000229, y: -.297439873}
+      - {x: .397437394, y: -.133720234}
+      - {x: .429999977, y: -.0399999991}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -89,7 +106,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_SortingLayerID: 0
-  m_Sprite: {fileID: 21300000, guid: 66fa74a2ab6a0415baa7413bda54e962, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a021b048ce65a4890a6afb7a0a14fa49, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1001 &100100000
 Prefab:

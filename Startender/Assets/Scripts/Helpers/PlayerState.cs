@@ -16,12 +16,14 @@ public class PlayerState : MonoBehaviour
 	public int tipsEarned;
 	public int lastTip;
 
+    public bool rentDue;
+
 	//persistent game costs
 	private int baseRent;
 	private int baseGroceries;
 	private int baseTuition;
 
-    public static int TOTAL_DAYS = 10;
+    public static int TOTAL_DAYS = 28;
 
 	//base level difficulty
 	public int difficulty;

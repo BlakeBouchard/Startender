@@ -31,7 +31,7 @@ public class FailSceneManager : MonoBehaviour {
 		GUILayout.BeginArea(new Rect(Screen.width / 2 - this.menuXFromCenter, Screen.height /2 - this.menuYFromCenter, this.menuWidth, this.menuHeight));
 
 		GUILayout.Label(player.GetFailMessage());
-		if(GUILayout.Button("Back To Main Menu")) {
+		if(GUILayout.Button("<size=30>Back To Main Menu</size>")) {
 			Debug.Log("Loading main menu");
 			Application.LoadLevel("titleScreen");
 		}

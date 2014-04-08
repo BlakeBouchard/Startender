@@ -353,6 +353,9 @@ MonoBehaviour:
   - {fileID: 400000, guid: b8bf69bb0b521a7498a741a14699f957, type: 2}
   - {fileID: 400000, guid: eef2f91405563490d818472df28e85ed, type: 2}
   - {fileID: 400002, guid: e6647bd0205d0d04198db5e0b35cb29d, type: 2}
+  - {fileID: 400000, guid: 73065eb0145f77f46ab6250440a9f85f, type: 2}
+  - {fileID: 400000, guid: ab7a570f4aa90de468d62b75ce52404e, type: 2}
+  - {fileID: 400000, guid: 549c71027760fda45a3a4f75e438e1ca, type: 2}
   allGarnishSilos:
   - {fileID: 400000, guid: cdf5f88dc26ac4d329daf391410100f5, type: 2}
   allDrinks: {fileID: 4900000, guid: a3ff7e571bedcb540b77364b4f14527c, type: 3}

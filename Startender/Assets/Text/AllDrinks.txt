@@ -3,12 +3,27 @@
 # Drink naming convention:
 # Start with the drink name, then add a colon, followed by a comma-separated list of the ingredients required for that drink
 
-# Basic drink layout
-Quaesar: Space Clam, Liquid Stardust
-Sectini: Quadruple Sec, Liquid Stardust
+# Basic drink layout with 2 ingredients
+Dying Star: Antimatter, Liquid Stardust
+Anti-Meteor: Antimatter, Molten Meteor
+Moon Matter: Antimatter, Moon Tears
+Four-Matter: Antimatter, Quadruple Sec
+Red Dwarf: Antimatter, Space Clam
+Sectini: Liquid Stardust, Quadruple Sec
+Shooting Star: Liquid Stardust, Molten Meteor
+Lunar Eclipse: Liquid Stardust, Moon Tears
+Quaesar: Liquid Stardust, Space Clam
+Molten Moon: Molten Meteor, Moon Tears
+Meteor-garita: Molten Meteor, Quadruple Sec
+Scorched Clam: Molten Meteor, Space Clam
+Moon Clam: Moon Tears, Space Clam
+
+# Basic drink layout with 3 ingredients
+Crying Saucer: Liquid Stardust, Moon Tears, Space Clam
 
 # Drinks can have duplicate ingredients, just write the ingredient down twice in the list
-Sun Tan: Space Clam, Space Clam, Quadruple Sec
+Sun Tan: Liquid Stardust, Liquid Stardust, Quadruple Sec
+Planet Core: Molten Meteor, Molten Meteor, Quadruple Sec
 
 # If an ingredient is a Garnish, make sure that ingredient has a star (*) in front of it, as below
-Blood Orange: Space Clam, Quadruple Sec, *Orange Slice
+Blood Orange: Quadruple Sec, Space Clam, *Orange Slice

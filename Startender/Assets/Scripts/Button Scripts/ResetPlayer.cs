@@ -21,8 +21,10 @@ public class ResetPlayer : MonoBehaviour {
 
     void ResetPlayerState()
     {
+        Debug.Log("Resetting Player");
         PlayerState player = GameObject.Find("Player").GetComponent<PlayerState>();
-        player.ClearPrefs();
+        player.ResetGame();
+        player.LoadGame();
     }
 	
 	// Update is called once per frame

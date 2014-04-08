@@ -9,10 +9,6 @@ EditorBuildSettings:
     path: Assets/Scenes/titleScreen.unity
   - enabled: 1
     path: Assets/Scenes/explanation.unity
-  - enabled: 0
-    path: Assets/Scenes/noObjectsScene.unity
-  - enabled: 0
-    path: Assets/Scenes/mainscene.unity
   - enabled: 1
     path: Assets/Scenes/IngredientTestScene.unity
   - enabled: 1
@@ -23,5 +19,3 @@ EditorBuildSettings:
     path: Assets/Scenes/credits.unity
   - enabled: 1
     path: Assets/Scenes/failScene.unity
-  - enabled: 1
-    path: Assets/Scenes/explanation.unity

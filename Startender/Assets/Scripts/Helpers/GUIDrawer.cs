@@ -56,10 +56,11 @@ public class GUIDrawer : MonoBehaviour
 
 	public void DrawMainMenu() {
 		//Draw Game Menu Here
-		GUILayout.BeginArea(new Rect(Screen.width / 2 - this.menuXFromCenter, Screen.height /2 - this.menuYFromCenter, this.menuWidth, this.menuHeight));
+		GUILayout.BeginArea(new Rect(Screen.width / 3 - this.menuXFromCenter, Screen.height /2 - this.menuYFromCenter, this.menuWidth * 2, this.menuHeight));
+
 		this.DrawBaseMenu();
 
-		if (GUILayout.Button("Start Game")) {
+		if (GUILayout.Button("<size=20>Start Game</size>")) {
 			Debug.Log("Start Game button clicked");
 			gameManager.StartGame();
 		}
@@ -69,25 +70,25 @@ public class GUIDrawer : MonoBehaviour
 
 	public void DrawPauseMenu() {
 		//Draw Game Menu Here
-		GUILayout.BeginArea(new Rect(Screen.width / 2 - this.menuXFromCenter, Screen.height /2 - this.menuYFromCenter, this.menuWidth, this.menuHeight));
+		GUILayout.BeginArea(new Rect(Screen.width / 3 - this.menuXFromCenter, Screen.height /2 - this.menuYFromCenter, this.menuWidth * 2, this.menuHeight));
 		this.DrawBaseMenu();
 		
-		if (GUILayout.Button("Resume"))
+		if (GUILayout.Button("<size=20>Resume</size>"))
         {
 			Debug.Log("Resuming Game");
 			gameManager.ResumeRound();
 		}
-		else if (GUILayout.Button("Reset Round"))
+		else if (GUILayout.Button("<size=20>Reset Round</size>"))
         {
 			Debug.Log ("Resetting Round");
 			gameManager.ResetRound();
         }
-        else if (Debug.isDebugBuild && GUILayout.Button("End Round")) 
+		else if (Debug.isDebugBuild && GUILayout.Button("<size=20>End Round</size>")) 
         {
             Debug.Log("Ending round");
             gameManager.EndRound();
         }
-        else if (GUILayout.Button("Quit Game"))
+		else if (GUILayout.Button("<size=20>Quit Game</size>"))
         {
             Debug.Log("Quitting game");
             Application.LoadLevel(0);
@@ -147,7 +148,7 @@ public class GUIDrawer : MonoBehaviour
     private void DrawBaseMenu() {
 		GUIStyle style = new GUIStyle();
 		style.font = this.font;
-	    GUILayout.Label("Startender!");
+		GUILayout.Label("<size=20>Startender!</size>");
 	    GUILayout.Space(10.0f);
     }
 

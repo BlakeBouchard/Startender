@@ -612,6 +612,8 @@ MonoBehaviour:
   - {fileID: 400000, guid: 37ccc6990ee0aa94e9d486010ce4bd8c, type: 2}
   backgrounds:
   - {fileID: 400000, guid: 32c5bd1aaa09247fab9465e6fe546073, type: 2}
+  - {fileID: 400000, guid: 72897da26b4604029887c9aeb0937070, type: 2}
+  - {fileID: 400000, guid: 53a52c29e0fad403283f5ffea7d6193e, type: 2}
 --- !u!1 &1462912327
 GameObject:
   m_ObjectHideFlags: 0
@@ -753,7 +755,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 11400036, guid: 969825e8c62bae34daf4d9119323f6da, type: 2}
       propertyPath: backgrounds.Array.size
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 969825e8c62bae34daf4d9119323f6da, type: 2}
       propertyPath: m_LocalPosition.x
@@ -787,6 +789,14 @@ Prefab:
       propertyPath: backgrounds.Array.data[0]
       value: 
       objectReference: {fileID: 400000, guid: 32c5bd1aaa09247fab9465e6fe546073, type: 2}
+    - target: {fileID: 11400036, guid: 969825e8c62bae34daf4d9119323f6da, type: 2}
+      propertyPath: backgrounds.Array.data[1]
+      value: 
+      objectReference: {fileID: 400000, guid: 72897da26b4604029887c9aeb0937070, type: 2}
+    - target: {fileID: 11400036, guid: 969825e8c62bae34daf4d9119323f6da, type: 2}
+      propertyPath: backgrounds.Array.data[2]
+      value: 
+      objectReference: {fileID: 400000, guid: 53a52c29e0fad403283f5ffea7d6193e, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 969825e8c62bae34daf4d9119323f6da, type: 2}
   m_RootGameObject: {fileID: 214827430}

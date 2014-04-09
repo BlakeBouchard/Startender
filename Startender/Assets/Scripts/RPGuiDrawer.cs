@@ -26,7 +26,7 @@ public class RPGuiDrawer : MonoBehaviour
 	{
 		//setup basic drawing params
 		this.menuWidth = 240;
-		this.menuHeight = 200;
+		this.menuHeight = 300;
 		this.menuXFromCenter = this.menuWidth / 2;
 		this.menuYFromCenter = this.menuHeight / 2;
 
@@ -61,12 +61,13 @@ public class RPGuiDrawer : MonoBehaviour
 		}
 
 		GUILayout.Label("<size=30>Starbucks: $" + remainingStarBucks + "</size>");
+        GUILayout.Label("Choose which bills you would like to pay:");
 
 		this.rent = GUILayout.Toggle(this.rent, "<size=30>Rent: " + rentCost + "</size>");
 		this.food = GUILayout.Toggle(this.food, "<size=30>Food: " + foodCost + "</size>");
 		this.tuition = GUILayout.Toggle(this.tuition, "<size=30>School: " + tuitionCost + "</size>");
 
-		if (GUILayout.Button("<size=30>Pay and Continue</size>")) {
+		if (GUILayout.Button("<size=24>Pay and Continue</size>")) {
 			Debug.Log("Pay Button Clicked");
 			rpgManager.UpdateBaseStats(remainingStarBucks, this.rent, this.food, this.tuition);
             Debug.Log("Game Saved");
